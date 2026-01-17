@@ -1,11 +1,11 @@
 {
-  "botName": "iga moderation",
-  "botLogo": "https://files.catbox.moe/ll9pg7.jpg",
+  "botName": "breed",
+  "botLogo": "https://files.catbox.moe/8rseje.gif",
   "favicon": "https://files.catbox.moe/ll9pg7.jpg",
-  "tagline": "iga moderation",
-  "description": "iga 6.9",
-  "image": "https://files.catbox.moe/ll9pg7.jpg",
-  "inviteLink": "https://discord.com/oauth2/authorize?client_id=1443346152870252744",
-  "clientSecret": "xyfTzlgp8N44lOO1a6BfRZKXveYP-sv1",
-  "discordServerInvite": "https://discord.gg/5awnBUAG"
+  "tagline": "Breed bot",
+  "description": "**Breed bot.**",
+  "image": "https://files.catbox.moe/g5nxw7.png",
+  "inviteLink": "https://discord.com/oauth2/authorize?client_id=1461665163957764201",
+  "clientSecret": "V3Lb9KQ3DgJmumM0I8FMg0IWV169uYs8",
+  "discordServerInvite": "https://discord.gg/NeYgSnmj"
 }
