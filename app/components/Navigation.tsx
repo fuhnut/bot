@@ -5,7 +5,11 @@ import { usePathname } from "next/navigation"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { useState, useRef, useEffect } from "react"
 import { useSiteConfig } from "@/lib/siteConfig"
+<<<<<<< HEAD
 import { Menu, X, Moon, Sun, LogOut } from "lucide-react"
+=======
+import { Menu, X, Moon, Sun, LogOut, Zap, Palette, HelpCircle, Shield, FileText, Activity, MessageCircle } from "lucide-react"
+>>>>>>> 7d27ad4 (67676767)
 
 interface NavigationProps {
   isDark: boolean
@@ -21,8 +25,16 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
   const siteConfig = useSiteConfig()
 
   const links = [
+<<<<<<< HEAD
     { href: "/commands", label: "Commands" },
     { href: "/embed-builder", label: "Embed Builder" },
+=======
+    { href: "/commands", label: "Commands", icon: Zap },
+    { href: "/embed-builder", label: "Embed Builder", icon: Palette },
+    { href: "/status", label: "Status", icon: Activity },
+    { href: "/faq", label: "FAQ", icon: HelpCircle },
+    { href: "/discord", label: "Support", icon: MessageCircle },
+>>>>>>> 7d27ad4 (67676767)
   ]
 
   useEffect(() => {
@@ -52,17 +64,29 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
           </Link>
 
           {/* Desktop Menu */}
+<<<<<<< HEAD
           <div className="hidden md:flex gap-1">
+=======
+          <div className="hidden lg:flex gap-1">
+>>>>>>> 7d27ad4 (67676767)
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
+<<<<<<< HEAD
                 className={`px-4 py-2 rounded-lg transition-all duration-200 text-sm ${
+=======
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 text-sm ${
+>>>>>>> 7d27ad4 (67676767)
                   pathname === link.href
                     ? "bg-[#CECECE]/15 text-[#FAFAFA] font-semibold"
                     : "text-[#CECECE] hover:text-[#FAFAFA] hover:bg-[#CECECE]/5"
                 }`}
               >
+<<<<<<< HEAD
+=======
+                <link.icon className="w-4 h-4" />
+>>>>>>> 7d27ad4 (67676767)
                 {link.label}
               </Link>
             ))}
@@ -91,7 +115,11 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
+<<<<<<< HEAD
               className="md:hidden p-2 rounded-lg hover:bg-[#CECECE]/10 transition-all duration-200 text-[#FAFAFA]"
+=======
+              className="lg:hidden p-2 rounded-lg hover:bg-[#CECECE]/10 transition-all duration-200 text-[#FAFAFA]"
+>>>>>>> 7d27ad4 (67676767)
             >
               {showMobileMenu ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -155,23 +183,50 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
 
         {/* Mobile Menu */}
         {showMobileMenu && (
+<<<<<<< HEAD
           <div className="md:hidden border-t border-[#CECECE]/10 bg-[#1B1B1B]/50 mt-4 pt-4 pb-4">
+=======
+          <div className="lg:hidden border-t border-[#CECECE]/10 bg-[#1B1B1B]/50 mt-4 pt-4 pb-6 space-y-4">
+>>>>>>> 7d27ad4 (67676767)
             <div className="flex flex-col gap-2">
               {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setShowMobileMenu(false)}
+<<<<<<< HEAD
                   className={`px-4 py-2 rounded-lg transition-all duration-200 ${
+=======
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+>>>>>>> 7d27ad4 (67676767)
                     pathname === link.href
                       ? "bg-[#CECECE]/15 text-[#FAFAFA] font-semibold"
                       : "text-[#CECECE] hover:text-[#FAFAFA] hover:bg-[#CECECE]/5"
                   }`}
                 >
+<<<<<<< HEAD
                   {link.label}
                 </Link>
               ))}
             </div>
+=======
+                  <link.icon className="w-5 h-5" />
+                  <span className="text-base">{link.label}</span>
+                </Link>
+              ))}
+            </div>
+            
+            <div className="px-4 pt-4 border-t border-[#CECECE]/10">
+              <a
+                href={siteConfig.inviteLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full py-4 bg-[#FAFAFA] text-[#0A0A0A] rounded-xl font-bold transition-all duration-200"
+              >
+                Invite Bot
+              </a>
+            </div>
+>>>>>>> 7d27ad4 (67676767)
           </div>
         )}
       </div>

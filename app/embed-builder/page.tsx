@@ -346,7 +346,11 @@ export default function EmbedBuilder() {
     <div className="min-h-screen bg-black text-white">
       <Navigation isDark={isDark} setIsDark={setIsDark} />
 
+<<<<<<< HEAD
       <main className="max-w-[1800px] mx-auto px-6 py-12">
+=======
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+>>>>>>> 7d27ad4 (67676767)
         <div className="flex items-center justify-between mb-8">
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
@@ -372,9 +376,15 @@ export default function EmbedBuilder() {
           </div>
         </div>
 
+<<<<<<< HEAD
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
           {/* Left Side - Discord-like Preview */}
           <div className="space-y-4">
+=======
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Left Side - Discord-like Preview */}
+          <div className="w-full lg:w-1/2 space-y-4">
+>>>>>>> 7d27ad4 (67676767)
             {/* Discord Channel Header */}
             <div className="bg-[#313338] rounded-lg overflow-hidden border border-[#1e1f22] shadow-xl">
               <div className="h-12 bg-[#313338] border-b border-[#1e1f22] flex items-center justify-between px-4">

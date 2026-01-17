@@ -4,9 +4,15 @@
   "private": true,
   "scripts": {
     "build": "next build",
+<<<<<<< HEAD
     "dev": "next dev -p 5000",
     "lint": "next lint",
     "start": "next start -p 5000"
+=======
+    "dev": "next dev -p 6767",
+    "lint": "next lint",
+    "start": "next start -p 6767"
+>>>>>>> 7d27ad4 (67676767)
   },
   "dependencies": {
     "@auth/core": "^0.34.2",
