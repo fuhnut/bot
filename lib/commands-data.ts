@@ -6150,7 +6150,6 @@ export const ALL_COMMANDS: Record<string, Command> = {
     "has_slash": true,
     "is_group": false
   },
-    {
     "invoke_invoke_untimeout_message": {
     "name": "invoke untimeout message",
     "description": "Set custom server message for untimeout actions",
@@ -6165,4 +6164,4 @@ export const ALL_COMMANDS: Record<string, Command> = {
     "has_slash": true,
     "is_group": false
   }
-},
+};
