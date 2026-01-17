@@ -4,11 +4,8 @@
 import { useState, useMemo } from "react";
 import Navigation from "../components/Navigation";
 import { motion, AnimatePresence } from "framer-motion";
-<<<<<<< HEAD
 import { ALL_COMMANDS, Command } from "@/lib/commands-data";
-=======
 import { ALL_COMMANDS, Command } from "@/lib/commands";
->>>>>>> 7d27ad4 (67676767)
 import { getCommandParent } from "@/lib/command-hierarchy";
 import { CATEGORY_ICONS, CATEGORY_COLORS } from "@/lib/category-icons";
 import * as Icons from "lucide-react";

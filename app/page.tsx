@@ -15,8 +15,6 @@ export default function Home() {
   const [guilds, setGuilds] = useState<any[]>([])
   const [loadingGuilds, setLoadingGuilds] = useState(false)
 
-<<<<<<< HEAD
-=======
   const [stats, setStats] = useState<any>(null)
   const [loadingStats, setLoadingStats] = useState(false)
 
@@ -29,7 +27,6 @@ export default function Home() {
       .finally(() => setLoadingStats(false))
   }, [])
 
->>>>>>> 7d27ad4 (67676767)
   useEffect(() => {
     if (session) {
       setLoadingGuilds(true)
@@ -45,7 +42,6 @@ export default function Home() {
     }
   }, [session])
 
-<<<<<<< HEAD
   const navLinks = [
     { href: "/commands", label: "Commands", icon: Icons.Zap },
     { href: "/status", label: "Status", icon: Icons.CheckCircle },
@@ -239,7 +235,6 @@ export default function Home() {
         </main>
       </div>
     </>
-=======
   const sitePages = [
     { href: "/commands", label: "Commands", description: "Browse all available bot commands", icon: Icons.Zap },
     { href: "/embed-builder", label: "Embed Builder", description: "Design beautiful embeds visually", icon: Icons.Palette },
@@ -489,6 +484,5 @@ export default function Home() {
         </footer>
       </main>
     </div>
->>>>>>> 7d27ad4 (67676767)
   )
 }

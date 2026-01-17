@@ -33,7 +33,6 @@ export default function FeatureCards({ isDark }: FeatureCardsProps) {
   const [cards, setCards] = useState<Feature[]>([])
 
   useEffect(() => {
-<<<<<<< HEAD
     // Shuffle features and select random subset on mount and periodically
     const updateCards = () => {
       const shuffled = [...FEATURES].sort(() => Math.random() - 0.5)
@@ -59,7 +58,6 @@ export default function FeatureCards({ isDark }: FeatureCardsProps) {
           const randomDelay = Math.random() * 0.3
           const randomX = (Math.random() - 0.5) * 20
           const randomY = (Math.random() - 0.5) * 20
-=======
     // Select a random subset of features on mount
     const shuffled = [...FEATURES].sort(() => Math.random() - 0.5)
     setCards(shuffled.slice(0, 6))
@@ -80,12 +78,10 @@ export default function FeatureCards({ isDark }: FeatureCardsProps) {
       >
         {cards.map((feature, idx) => {
           const Icon = feature.icon
->>>>>>> 7d27ad4 (67676767)
 
           return (
             <motion.div
               key={feature.title}
-<<<<<<< HEAD
               layout
               initial={{ opacity: 0, x: randomX * 2, y: randomY * 2 }}
               animate={{
@@ -127,7 +123,6 @@ export default function FeatureCards({ isDark }: FeatureCardsProps) {
                   {feature.title}
                 </h3>
                 <p className="text-xs leading-relaxed text-[#CECECE]/80">
-=======
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -148,7 +143,6 @@ export default function FeatureCards({ isDark }: FeatureCardsProps) {
                   {feature.title}
                 </h3>
                 <p className="text-sm leading-relaxed text-[#CECECE]">
->>>>>>> 7d27ad4 (67676767)
                   {feature.description}
                 </p>
               </div>
