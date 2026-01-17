@@ -6164,4 +6164,4 @@ export const ALL_COMMANDS: Record<string, Command> = {
     "has_slash": true,
     "is_group": false
   }
-};
+},
