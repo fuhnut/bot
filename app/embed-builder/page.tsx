@@ -140,7 +140,7 @@ export default function EmbedBuilder() {
     const parts: string[] = [];
 
     if (embedData.content) {
-      parts.push(`{content: ${embedData.content.replace(/\n/g, '\\n')}}`);
+      parts.push(`$v{content: ${embedData.content.replace(/\n/g, '\\n')}}`);
     }
 
     parts.push("$v{embed}");
