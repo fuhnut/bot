@@ -6158,7 +6158,7 @@ export const ALL_COMMANDS: Record<string, Command> = {
     "permissions": ["manage_guild"],
     "required_args": [{ "name": "message", "type": "text" }],
     "optional_args": [],
-    "examples": [",invoke untimeout message {user}'s timeout was removed"],
+    "examples": [",invoke untimeout message {user}\'s timeout was removed"],
     "subcommands": [],
     "has_prefix": true,
     "has_slash": true,
