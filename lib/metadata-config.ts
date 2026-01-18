@@ -35,12 +35,12 @@ export function getMetadataConfig(): MetadataConfig {
       const fileContent = fs.readFileSync(configPath, 'utf-8')
       const config = JSON.parse(fileContent)
       cachedConfig = { ...DEFAULT_CONFIG, ...config }
-      return cachedConfig
+      return cachedConfig!
     }
   } catch (error) {
     console.warn('Failed to load siteconfig.json, using defaults')
   }
 
   cachedConfig = DEFAULT_CONFIG
-  return cachedConfig
+  return cachedConfig!
 }

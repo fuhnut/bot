@@ -4,9 +4,11 @@ import { useState } from "react"
 import Navigation from "../components/Navigation"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { useSiteConfig } from "@/lib/siteConfig"
 
 export default function TOSPage() {
   const [isDark, setIsDark] = useState(true)
+  const siteConfig = useSiteConfig()
 
   return (
     <div className={`min-h-screen ${isDark ? "bg-black text-white" : "bg-white text-black"}`}>
@@ -28,7 +30,7 @@ export default function TOSPage() {
             <section>
               <h2 className="text-2xl font-bold mb-3">1. ACCEPTANCE OF TERMS</h2>
               <p className={isDark ? "text-gray-300" : "text-gray-700"}>
-                By inviting or using the Eris Discord bot ("the Bot"), you agree to these Terms of Service. If you do
+                By inviting or using the {siteConfig.botName} Discord bot (&quot;the Bot&quot;), you agree to these Terms of Service. If you do
                 not agree, please remove the Bot from your server.
               </p>
             </section>
@@ -36,8 +38,8 @@ export default function TOSPage() {
             <section>
               <h2 className="text-2xl font-bold mb-3">2. DESCRIPTION OF SERVICE</h2>
               <p className={isDark ? "text-gray-300" : "text-gray-700"}>
-                Eris is a Discord bot providing moderation, utility, fun, and automation features for Discord servers.
-                The Bot is provided "as is" without warranties of any kind.
+                {siteConfig.botName} is a Discord bot providing moderation, utility, fun, and automation features for Discord servers.
+                The Bot is provided &quot;as is&quot; without warranties of any kind.
               </p>
             </section>
 
@@ -46,8 +48,8 @@ export default function TOSPage() {
               <ul className={`list-disc pl-6 space-y-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
                 <li>You must have proper permissions to add the Bot to a Discord server</li>
                 <li>You are responsible for how the Bot is configured and used in your server</li>
-                <li>You must not use the Bot to violate Discord's Terms of Service or Community Guidelines</li>
-                <li>You must not attempt to exploit, abuse, or damage the Bot's functionality</li>
+                <li>You must not use the Bot to violate Discord&apos;s Terms of Service or Community Guidelines</li>
+                <li>You must not attempt to exploit, abuse, or damage the Bot&apos;s functionality</li>
               </ul>
             </section>
 
@@ -58,7 +60,7 @@ export default function TOSPage() {
                 <li>Harass, abuse, or harm other users</li>
                 <li>Spread spam, malware, or malicious content</li>
                 <li>Violate any applicable laws or regulations</li>
-                <li>Circumvent Discord's rate limits or other restrictions</li>
+                <li>Circumvent Discord&apos;s rate limits or other restrictions</li>
                 <li>Impersonate others or provide false information</li>
               </ul>
             </section>
@@ -113,7 +115,7 @@ export default function TOSPage() {
               <h2 className="text-2xl font-bold mb-3">9. INTELLECTUAL PROPERTY</h2>
               <p className={isDark ? "text-gray-300" : "text-gray-700"}>
                 All code, features, and content related to the Bot remain the property of its developers. You may not
-                copy, modify, or redistribute the Bot's code without permission.
+                copy, modify, or redistribute the Bot&apos;s code without permission.
               </p>
             </section>
 

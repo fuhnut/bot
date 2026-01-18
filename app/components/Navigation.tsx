@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { useState, useRef, useEffect } from "react"
 import { useSiteConfig } from "@/lib/siteConfig"
-import { Menu, X, Moon, Sun, LogOut } from "lucide-react"
-import { Menu, X, Moon, Sun, LogOut, Zap, Palette, HelpCircle, Shield, FileText, Activity, MessageCircle } from "lucide-react"
+import { Menu, X, Moon, Sun, Zap, Palette, HelpCircle, Activity, MessageCircle } from "lucide-react"
 
 interface NavigationProps {
   isDark: boolean
@@ -22,8 +21,6 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
   const siteConfig = useSiteConfig()
 
   const links = [
-    { href: "/commands", label: "Commands" },
-    { href: "/embed-builder", label: "Embed Builder" },
     { href: "/commands", label: "Commands", icon: Zap },
     { href: "/embed-builder", label: "Embed Builder", icon: Palette },
     { href: "/status", label: "Status", icon: Activity },
@@ -59,19 +56,17 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-1">
-          <div className="hidden lg:flex gap-1">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-lg transition-all duration-200 text-sm ${
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 text-sm ${
                   pathname === link.href
                     ? "bg-[#CECECE]/15 text-[#FAFAFA] font-semibold"
                     : "text-[#CECECE] hover:text-[#FAFAFA] hover:bg-[#CECECE]/5"
                 }`}
               >
-                <link.icon className="w-4 h-4" />
+                {link.icon && <link.icon className="w-4 h-4" />}
                 {link.label}
               </Link>
             ))}
@@ -101,7 +96,6 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
             <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
               className="md:hidden p-2 rounded-lg hover:bg-[#CECECE]/10 transition-all duration-200 text-[#FAFAFA]"
-              className="lg:hidden p-2 rounded-lg hover:bg-[#CECECE]/10 transition-all duration-200 text-[#FAFAFA]"
             >
               {showMobileMenu ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -173,7 +167,6 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
                   key={link.href}
                   href={link.href}
                   onClick={() => setShowMobileMenu(false)}
-                  className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
                     pathname === link.href
                       ? "bg-[#CECECE]/15 text-[#FAFAFA] font-semibold"
@@ -181,11 +174,6 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
                   }`}
                 >
                   {link.label}
-                </Link>
-              ))}
-            </div>
-                  <link.icon className="w-5 h-5" />
-                  <span className="text-base">{link.label}</span>
                 </Link>
               ))}
             </div>
@@ -200,6 +188,7 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
                 Invite Bot
               </a>
             </div>
+          </div>
           </div>
         )}
       </div>

@@ -3,6 +3,8 @@
 
 export interface Command {
   name: string;
+  raw_name?: string;
+  func_name?: string;
   description: string;
   aliases: string[];
   category: string;

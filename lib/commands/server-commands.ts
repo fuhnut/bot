@@ -17,7 +17,36 @@ export interface Command {
 }
 
 export const SERVER_COMMANDS: Record<string, Command> = {
-  "cleanup": {
+  "admin": {
+    "raw_name": "admin",
+    "func_name": "admin_group",
+    "parent_func_name": null,
+    "description": "admin tools for managing your server",
+    "aliases": [],
+    "category": "server",
+    "permissions": [
+      "Administrator"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!admin"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "admin announce",
+      "admin cleanup",
+      "admin history",
+      "admin notes",
+      "admin recent",
+      "admin viewwarnings"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
+    "name": "admin"
+  },
+  "admin_cleanup": {
     "raw_name": "cleanup",
     "func_name": "cleanup_group",
     "parent_func_name": "admin_group",
@@ -33,21 +62,21 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!cleanup"
+      "!admin cleanup"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": true,
     "subcommands": [
-      "cleanup bots",
-      "cleanup channels",
-      "cleanup duplicates",
-      "cleanup roles"
+      "admin cleanup bots",
+      "admin cleanup channels",
+      "admin cleanup duplicates",
+      "admin cleanup roles"
     ],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "cleanup"
+    "name": "admin cleanup"
   },
-  "cleanup_roles": {
+  "admin_cleanup_roles": {
     "raw_name": "roles",
     "func_name": "cleanup_roles",
     "parent_func_name": "cleanup_group",
@@ -63,16 +92,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!cleanup roles"
+      "!admin cleanup roles"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "cleanup roles"
+    "name": "admin cleanup roles"
   },
-  "cleanup_channels": {
+  "admin_cleanup_channels": {
     "raw_name": "channels",
     "func_name": "cleanup_channels",
     "parent_func_name": "cleanup_group",
@@ -88,16 +117,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!cleanup channels"
+      "!admin cleanup channels"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "cleanup channels"
+    "name": "admin cleanup channels"
   },
-  "cleanup_bots": {
+  "admin_cleanup_bots": {
     "raw_name": "bots",
     "func_name": "cleanup_bots",
     "parent_func_name": "cleanup_group",
@@ -113,16 +142,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!cleanup bots"
+      "!admin cleanup bots"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "cleanup bots"
+    "name": "admin cleanup bots"
   },
-  "cleanup_duplicates": {
+  "admin_cleanup_duplicates": {
     "raw_name": "duplicates",
     "func_name": "cleanup_duplicates",
     "parent_func_name": "cleanup_group",
@@ -138,16 +167,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!cleanup duplicates"
+      "!admin cleanup duplicates"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "cleanup duplicates"
+    "name": "admin cleanup duplicates"
   },
-  "announce": {
+  "admin_announce": {
     "raw_name": "announce",
     "func_name": "announce",
     "parent_func_name": "admin_group",
@@ -173,16 +202,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
       }
     ],
     "examples": [
-      "!announce <message> [channel]"
+      "!admin announce <message> [channel]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "announce"
+    "name": "admin announce"
   },
-  "notes": {
+  "admin_notes": {
     "raw_name": "notes",
     "func_name": "notes_group",
     "parent_func_name": "admin_group",
@@ -198,20 +227,20 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!notes"
+      "!admin notes"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": true,
     "subcommands": [
-      "notes add",
-      "notes remove",
-      "notes view"
+      "admin notes add",
+      "admin notes remove",
+      "admin notes view"
     ],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "notes"
+    "name": "admin notes"
   },
-  "notes_add": {
+  "admin_notes_add": {
     "raw_name": "add",
     "func_name": "notes_add",
     "parent_func_name": "notes_group",
@@ -236,16 +265,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "optional_args": [],
     "examples": [
-      "!notes add <user> <note>"
+      "!admin notes add <user> <note>"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "notes add"
+    "name": "admin notes add"
   },
-  "notes_remove": {
+  "admin_notes_remove": {
     "raw_name": "remove",
     "func_name": "notes_remove",
     "parent_func_name": "notes_group",
@@ -270,16 +299,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "optional_args": [],
     "examples": [
-      "!notes remove <user> <note_id>"
+      "!admin notes remove <user> <note_id>"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "notes remove"
+    "name": "admin notes remove"
   },
-  "notes_view": {
+  "admin_notes_view": {
     "raw_name": "view",
     "func_name": "notes_view",
     "parent_func_name": "notes_group",
@@ -300,16 +329,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "optional_args": [],
     "examples": [
-      "!notes view <user>"
+      "!admin notes view <user>"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "notes view"
+    "name": "admin notes view"
   },
-  "recent": {
+  "admin_recent": {
     "raw_name": "recent",
     "func_name": "recent_group",
     "parent_func_name": "admin_group",
@@ -325,19 +354,19 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!recent"
+      "!admin recent"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": true,
     "subcommands": [
-      "recent bans",
-      "recent kicks"
+      "admin recent bans",
+      "admin recent kicks"
     ],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "recent"
+    "name": "admin recent"
   },
-  "recent_bans": {
+  "admin_recent_bans": {
     "raw_name": "bans",
     "func_name": "recent_bans",
     "parent_func_name": "recent_group",
@@ -353,16 +382,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!recent bans"
+      "!admin recent bans"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "recent bans"
+    "name": "admin recent bans"
   },
-  "recent_kicks": {
+  "admin_recent_kicks": {
     "raw_name": "kicks",
     "func_name": "recent_kicks",
     "parent_func_name": "recent_group",
@@ -378,16 +407,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!recent kicks"
+      "!admin recent kicks"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "recent kicks"
+    "name": "admin recent kicks"
   },
-  "viewwarnings": {
+  "admin_viewwarnings": {
     "raw_name": "viewwarnings",
     "func_name": "warnings_list",
     "parent_func_name": "admin_group",
@@ -409,16 +438,16 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "optional_args": [],
     "examples": [
-      "!viewwarnings <user>"
+      "!admin viewwarnings <user>"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "viewwarnings"
+    "name": "admin viewwarnings"
   },
-  "history": {
+  "admin_history": {
     "raw_name": "history",
     "func_name": "moderation_history",
     "parent_func_name": "admin_group",
@@ -439,14 +468,14 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "optional_args": [],
     "examples": [
-      "!history <user>"
+      "!admin history <user>"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\admin.py",
-    "name": "history"
+    "name": "admin history"
   },
   "logs": {
     "raw_name": "logs",
@@ -999,8 +1028,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [],
     "optional_args": [
@@ -1031,8 +1060,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [
       {
@@ -1059,8 +1088,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [],
     "optional_args": [
@@ -1091,8 +1120,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [
       {

@@ -346,7 +346,6 @@ export default function EmbedBuilder() {
     <div className="min-h-screen bg-black text-white">
       <Navigation isDark={isDark} setIsDark={setIsDark} />
 
-      <main className="max-w-[1800px] mx-auto px-6 py-12">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12">
         <div className="flex items-center justify-between mb-8">
           <motion.h1
@@ -373,9 +372,6 @@ export default function EmbedBuilder() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-          {/* Left Side - Discord-like Preview */}
-          <div className="space-y-4">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Side - Discord-like Preview */}
           <div className="w-full lg:w-1/2 space-y-4">
@@ -623,7 +619,7 @@ export default function EmbedBuilder() {
               </div>
               {isOverLimit && (
                 <div className="mb-3 p-2 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-xs">
-                  ⚠️ Script exceeds Discord's 6000 character limit! Please reduce content.
+                  ⚠️ Script exceeds Discord&apos;s 6000 character limit! Please reduce content.
                 </div>
               )}
               <div className="bg-black/40 rounded-lg p-3 font-mono text-xs text-gray-300 break-all max-h-32 overflow-y-auto border border-white/5">

@@ -4,7 +4,6 @@
 import { useState, useMemo } from "react";
 import Navigation from "../components/Navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ALL_COMMANDS, Command } from "@/lib/commands-data";
 import { ALL_COMMANDS, Command } from "@/lib/commands";
 import { getCommandParent } from "@/lib/command-hierarchy";
 import { CATEGORY_ICONS, CATEGORY_COLORS } from "@/lib/category-icons";
