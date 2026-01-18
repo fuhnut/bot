@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
   optimizeFonts: true,
   images: {
-    unoptimized: true,
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+  },
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ["lucide-react"],
   },
   headers: async () => {
     return [
@@ -64,6 +68,24 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/_next/static/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/:path*.{gif,png,jpg,jpeg,svg,webp,avif}",
         headers: [
           {
             key: "Cache-Control",

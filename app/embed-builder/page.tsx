@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo, memo, React } from "react";
 import Navigation from "../components/Navigation";
 import { motion } from "framer-motion";
 import { useSiteConfig } from "@/lib/siteConfig";
+import { formatTime } from "@/lib/utils";
 import { Upload, Copy, Check, Hash, ChevronDown, Users, Pin, Bell, HelpCircle, Inbox, AtSign, Gift, Sticker, ImagePlus, Smile, Send } from "lucide-react";
 
 interface ButtonData {
@@ -83,8 +84,6 @@ export default function EmbedBuilder() {
   });
   const [buttonsEnabled, setButtonsEnabled] = useState(true);
   const [generatedScript, setGeneratedScript] = useState("");
-  const [characterCount, setCharacterCount] = useState(0);
-  const [isOverLimit, setIsOverLimit] = useState(false);
 
   useEffect(() => {
     setBotInfo({
@@ -93,11 +92,59 @@ export default function EmbedBuilder() {
     });
   }, [siteConfig.botName, siteConfig.botLogo]);
 
-  useEffect(() => {
-    generateScript();
-  }, [embedData]);
+  const generateScript = useCallback(() => {
+    const parts: string[] = []
+
+    if (embedData.content) {
+      parts.push(`$v{content: ${embedData.content.replace(/\n/g, "\\n")}}`)
+    }
+
+    parts.push("$v{embed}")
+
+    if (embedData.color) parts.push(`$v{color: ${embedData.color}}`)
+    if (embedData.title) parts.push(`$v{title: ${embedData.title.replace(/\n/g, "\\n")}}`)
+    if (embedData.description) parts.push(`$v{description: ${embedData.description.replace(/\n/g, "\\n")}}`)
+    if (embedData.timestamp) parts.push("$v{timestamp}")
+    if (embedData.authorName) parts.push(`$v{author: name: ${embedData.authorName.replace(/\n/g, "\\n")} && icon: ${embedData.authorIcon || ""}}`)
+    if (embedData.thumbnailUrl) parts.push(`$v{thumbnail: ${embedData.thumbnailUrl}}`)
+    if (embedData.imageUrl) parts.push(`$v{image: ${embedData.imageUrl}}`)
+    if (embedData.footerText) parts.push(`$v{footer: text: ${embedData.footerText.replace(/\n/g, "\\n")} && icon: ${embedData.footerIcon || ""}}`)
+
+    if (embedData.fields && embedData.fields.length > 0) {
+      embedData.fields.forEach((field) => {
+        if (field.name || field.value) {
+          parts.push(`$v{field: name: ${field.name.replace(/\n/g, "\\n")} && value: ${field.value.replace(/\n/g, "\\n")} && inline: ${field.inline}}`)
+        }
+      })
+    }
+
+    if (embedData.buttons && embedData.buttons.length > 0) {
+      parts.push("$v{buttons}")
+      if (!buttonsEnabled) parts.push("$v{buttons_disabled}")
+      embedData.buttons.forEach((button) => {
+        const buttonParts: string[] = []
+        if (button.label) buttonParts.push(`label=${button.label.replace(/\n/g, "\\n")}`)
+        if (button.style) buttonParts.push(`style=${button.style}`)
+        if (button.style === 'link' && button.url) buttonParts.push(`url=${button.url}`)
+        if (button.emoji) buttonParts.push(`emoji=${button.emoji}`)
+        if (button.row !== undefined) buttonParts.push(`row=${button.row}`)
+        if (button.disabled) buttonParts.push(`disabled=${button.disabled}`)
+
+        if (buttonParts.length > 0) {
+          parts.push(`$v{button: ${buttonParts.join(" && ")}}`)
+        }
+      })
+    }
+
+    const script = parts.join("")
+    setGeneratedScript(script)
+  }, [embedData, buttonsEnabled])
 
   useEffect(() => {
+    generateScript()
+  }, [generateScript])
+
+  const characterCount = useMemo(() => {
     // Count actual content in the embed/fields/content
     let totalChars = 0;
 
@@ -132,82 +179,10 @@ export default function EmbedBuilder() {
       totalChars += (field.value || '').length;
     });
 
-    setCharacterCount(totalChars);
-    setIsOverLimit(totalChars > 6000);
+    return totalChars;
   }, [embedData]);
 
-  const generateScript = () => {
-    const parts: string[] = [];
-
-    if (embedData.content) {
-      parts.push(`$v{content: ${embedData.content.replace(/\n/g, '\\n')}}`);
-    }
-
-    parts.push("$v{embed}");
-
-    if (embedData.color) {
-      parts.push(`$v{color: ${embedData.color}}`);
-    }
-
-    if (embedData.title) {
-      parts.push(`$v{title: ${embedData.title.replace(/\n/g, '\\n')}}`);
-    }
-
-    if (embedData.description) {
-      parts.push(`$v{description: ${embedData.description.replace(/\n/g, '\\n')}}`);
-    }
-
-    if (embedData.timestamp) {
-      parts.push("$v{timestamp}");
-    }
-
-    if (embedData.authorName) {
-      parts.push(`$v{author: name: ${embedData.authorName.replace(/\n/g, '\\n')} && icon: ${embedData.authorIcon || ""}}`);
-    }
-
-    if (embedData.thumbnailUrl) {
-      parts.push(`$v{thumbnail: ${embedData.thumbnailUrl}}`);
-    }
-
-    if (embedData.imageUrl) {
-      parts.push(`$v{image: ${embedData.imageUrl}}`);
-    }
-
-    if (embedData.footerText) {
-      parts.push(`$v{footer: text: ${embedData.footerText.replace(/\n/g, '\\n')} && icon: ${embedData.footerIcon || ""}}`);
-    }
-
-    if (embedData.fields && embedData.fields.length > 0) {
-      embedData.fields.forEach((field) => {
-        if (field.name || field.value) {
-          parts.push(`$v{field: name: ${field.name.replace(/\n/g, '\\n')} && value: ${field.value.replace(/\n/g, '\\n')} && inline: ${field.inline}}`);
-        }
-      });
-    }
-
-    if (embedData.buttons && embedData.buttons.length > 0) {
-      parts.push("$v{buttons}");
-      if (!buttonsEnabled) {
-        parts.push("$v{buttons_disabled}");
-      }
-      embedData.buttons.forEach((button) => {
-        const buttonParts: string[] = [];
-        if (button.label) buttonParts.push(`label=${button.label.replace(/\n/g, '\\n')}`);
-        if (button.style) buttonParts.push(`style=${button.style}`);
-        if (button.style === 'link' && button.url) buttonParts.push(`url=${button.url}`);
-        if (button.emoji) buttonParts.push(`emoji=${button.emoji}`);
-        if (button.row !== undefined) buttonParts.push(`row=${button.row}`);
-        if (button.disabled) buttonParts.push(`disabled=${button.disabled}`);
-
-        if (buttonParts.length > 0) {
-          parts.push(`$v{button: ${buttonParts.join(" && ")}}`);
-        }
-      });
-    }
-
-    const script = parts.join("");
-    setGeneratedScript(script);
-  };
+  const isOverLimit = useMemo(() => characterCount > 6000, [characterCount]);
 
   const copyScript = () => {
     navigator.clipboard.writeText(generatedScript);
@@ -339,8 +314,14 @@ export default function EmbedBuilder() {
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-[#00a8fc] hover:underline" target="_blank">$1</a>');
   };
 
-  const hasEmbed = embedData.title || embedData.description || embedData.authorName || 
-                   embedData.thumbnailUrl || embedData.imageUrl || embedData.footerText;
+  const hasEmbed = useMemo(() => Boolean(
+    embedData.title ||
+    embedData.description ||
+    embedData.authorName ||
+    embedData.thumbnailUrl ||
+    embedData.imageUrl ||
+    embedData.footerText
+  ), [embedData.title, embedData.description, embedData.authorName, embedData.thumbnailUrl, embedData.imageUrl, embedData.footerText]);
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -402,6 +383,7 @@ export default function EmbedBuilder() {
                   <div className="group flex hover:bg-[#2e3035] rounded px-2 py-0.5 -mx-2">
                     {/* Avatar */}
                     <div className="flex-shrink-0 mr-4 mt-0.5">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img 
                         src={isValidUrl(botInfo.avatar) ? botInfo.avatar : 'https://cdn.discordapp.com/embed/avatars/0.png'} 
                         alt={botInfo.name}
@@ -418,7 +400,7 @@ export default function EmbedBuilder() {
                       <div className="flex items-center gap-2">
                         <span className="font-medium text-[#f2f3f5] hover:underline cursor-pointer">{botInfo.name}</span>
                         <span className="px-1 py-0.5 bg-[#5865F2] rounded text-[10px] font-medium text-white">BOT</span>
-                        <span className="text-xs text-[#949ba4]">Today at {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        <span className="text-xs text-[#949ba4]">Today at {formatTime(new Date())}</span>
                       </div>
 
                       {/* Text Content */}
@@ -441,9 +423,10 @@ export default function EmbedBuilder() {
                               {embedData.authorName && (
                                 <div className="flex items-center gap-2 mb-1">
                                   {isValidUrl(embedData.authorIcon) && (
+                                    // eslint-disable-next-line @next/next/no-img-element
                                     <img 
                                       src={embedData.authorIcon} 
-                                      alt="" 
+                                      alt={embedData.authorName || ''} 
                                       className="w-6 h-6 rounded-full"
                                       onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
                                     />
@@ -493,9 +476,10 @@ export default function EmbedBuilder() {
                             {/* Thumbnail */}
                             {isValidUrl(embedData.thumbnailUrl) && (
                               <div className="flex-shrink-0">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img 
                                   src={embedData.thumbnailUrl} 
-                                  alt="" 
+                                  alt={embedData.title || 'embed thumbnail'} 
                                   className="w-20 h-20 rounded object-cover"
                                   onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
                                 />
@@ -506,9 +490,10 @@ export default function EmbedBuilder() {
                           {/* Image */}
                           {isValidUrl(embedData.imageUrl) && (
                             <div className="px-4 pb-4">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img 
                                 src={embedData.imageUrl} 
-                                alt="" 
+                                alt={embedData.title || 'embed image'} 
                                 className="max-w-full rounded max-h-[300px] object-contain"
                                 onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
                               />
@@ -519,9 +504,10 @@ export default function EmbedBuilder() {
                           {(embedData.footerText || embedData.timestamp) && (
                             <div className="px-4 pb-3 flex items-center gap-2 text-xs text-[#949ba4]">
                               {isValidUrl(embedData.footerIcon) && (
+                                /* eslint-disable-next-line @next/next/no-img-element */
                                 <img 
                                   src={embedData.footerIcon} 
-                                  alt="" 
+                                  alt={embedData.footerText || 'footer icon'} 
                                   className="w-5 h-5 rounded-full"
                                   onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
                                 />

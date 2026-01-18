@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { getTranscript } from "@/lib/transcript-storage";
 
+export const revalidate = 3600; // Cache for 1 hour
+
 export async function GET(
   request: Request,
   { params }: { params: { id: string } }
@@ -16,7 +18,10 @@ export async function GET(
       );
     }
 
-    return NextResponse.json(transcript);
+    const response = NextResponse.json(transcript);
+    response.headers.set('Cache-Control', 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=7200');
+    
+    return response;
   } catch (error) {
     console.error("Error fetching transcript:", error);
     return NextResponse.json(

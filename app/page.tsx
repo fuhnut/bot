@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import Navigation from "./components/Navigation"
 import FeatureCards from "./components/FeatureCards"
 import Link from "next/link"
+import Image from "next/image"
 import { useSiteConfig } from "@/lib/site-config"
 import * as Icons from "lucide-react"
 
@@ -19,27 +20,57 @@ export default function Home() {
   const [loadingStats, setLoadingStats] = useState(false)
 
   useEffect(() => {
-    setLoadingStats(true)
-    fetch("/api/stats")
-      .then((res) => res.json())
-      .then((data) => setStats(data))
-      .catch((err) => console.error("Failed to fetch stats:", err))
-      .finally(() => setLoadingStats(false))
+    const controller = new AbortController()
+    
+    const fetchData = async () => {
+      try {
+        setLoadingStats(true)
+        const statsRes = await fetch("/api/stats", { signal: controller.signal })
+        if (statsRes.ok) {
+          const data = await statsRes.json()
+          setStats(data)
+        }
+      } catch (err) {
+        if (err instanceof Error && err.name !== "AbortError") {
+          console.error("Failed to fetch stats:", err)
+        }
+      } finally {
+        setLoadingStats(false)
+      }
+    }
+
+    fetchData()
+    
+    return () => controller.abort()
   }, [])
 
   useEffect(() => {
-    if (session) {
-      setLoadingGuilds(true)
-      fetch("/api/guilds")
-        .then((res) => res.json())
-        .then((data) => {
+    const controller = new AbortController()
+    
+    const fetchGuilds = async () => {
+      if (!session) return
+      
+      try {
+        setLoadingGuilds(true)
+        const guildsRes = await fetch("/api/guilds", { signal: controller.signal })
+        if (guildsRes.ok) {
+          const data = await guildsRes.json()
           if (Array.isArray(data)) {
             setGuilds(data)
           }
-        })
-        .catch((err) => console.error("Failed to fetch guilds:", err))
-        .finally(() => setLoadingGuilds(false))
+        }
+      } catch (err) {
+        if (err instanceof Error && err.name !== "AbortError") {
+          console.error("Failed to fetch guilds:", err)
+        }
+      } finally {
+        setLoadingGuilds(false)
+      }
     }
+
+    fetchGuilds()
+    
+    return () => controller.abort()
   }, [session])
 
   const sitePages = [
@@ -83,7 +114,7 @@ export default function Home() {
               </h1>
               
               <p className="text-lg md:text-xl text-[#CECECE] mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                {config.tagline || "The ultimate multi-purpose Discord bot designed to elevate your server's experience with powerful automation and moderation."}
+                {config.tagline || "The ultimate multi-purpose Discord bot designed to elevate your server&apos;s experience with powerful automation and moderation."}
               </p>
 
               <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
@@ -113,10 +144,12 @@ export default function Home() {
               <div className="relative w-64 h-64 md:w-72 md:h-72 mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FAFAFA]/20 to-transparent rounded-3xl blur-2xl animate-pulse" />
                 <div className="relative z-10 w-full h-full rounded-3xl p-1 bg-gradient-to-br from-[#FAFAFA]/30 to-[#FAFAFA]/5 backdrop-blur-xl border border-[#FAFAFA]/20 overflow-hidden shadow-2xl">
-                  <img
+                  <Image
                     src={config.botLogo}
                     alt="Bot Logo"
-                    className="w-full h-full object-cover rounded-2xl bg-[#1B1B1B]"
+                    fill
+                    className="object-cover rounded-2xl bg-[#1B1B1B]"
+                    unoptimized
                   />
                 </div>
               </div>
@@ -144,7 +177,7 @@ export default function Home() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 border-t border-[#FAFAFA]/5">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Quick Links</h2>
-            <p className="text-[#CECECE]">Navigate through the site's main sections.</p>
+            <p className="text-[#CECECE]">Navigate through the site&apos;s main sections.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {sitePages.map((page, i) => (
@@ -211,7 +244,7 @@ export default function Home() {
                 <p className="text-[#CECECE]">Manage {config.botName} in your communities.</p>
               </div>
               <div className="flex items-center gap-3 px-4 py-2 rounded-2xl bg-[#1B1B1B]/40 border border-[#FAFAFA]/10">
-                <img src={session.user?.image || ""} className="w-10 h-10 rounded-full border border-[#FAFAFA]/20" />
+                <Image src={session.user?.image || ""} alt={session.user?.name || 'User avatar'} width={40} height={40} className="rounded-full border border-[#FAFAFA]/20" unoptimized />
                 <span className="font-medium">{session.user?.name}</span>
               </div>
             </div>
@@ -229,10 +262,13 @@ export default function Home() {
                     className="group relative p-4 rounded-3xl bg-[#1B1B1B]/40 border border-[#FAFAFA]/5 hover:border-[#FAFAFA]/20 transition-all flex flex-col items-center text-center"
                   >
                     {guild.icon ? (
-                      <img
+                      <Image
                         src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`}
                         alt={guild.name}
+                        width={64}
+                        height={64}
                         className="w-16 h-16 rounded-2xl mb-3 shadow-lg group-hover:shadow-[#FAFAFA]/5 transition-shadow"
+                        unoptimized
                       />
                     ) : (
                       <div className="w-16 h-16 rounded-2xl bg-[#252525] flex items-center justify-center text-xl font-bold mb-3">
@@ -276,7 +312,7 @@ export default function Home() {
         <footer className="max-w-7xl mx-auto px-4 sm:px-6 py-12 border-t border-[#FAFAFA]/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-10">
             <div className="flex items-center gap-3">
-              <img src={config.botLogo} className="w-8 h-8 rounded-lg" />
+              <Image src={config.botLogo} alt={config.botName} width={32} height={32} className="rounded-lg" unoptimized />
               <span className="font-bold text-xl">{config.botName}</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-[#CECECE]">

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { useState, useRef, useEffect } from "react"
 import { useSiteConfig } from "@/lib/siteConfig"
+import Image from "next/image"
 import { Menu, X, Moon, Sun, Zap, Palette, HelpCircle, Activity, MessageCircle } from "lucide-react"
 
 interface NavigationProps {
@@ -50,7 +51,7 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
             href="/"
             className="flex items-center gap-2 text-xl sm:text-2xl font-bold text-[#FAFAFA] hover:text-[#CECECE] transition-colors flex-shrink-0"
           >
-            <img src={siteConfig.botLogo} alt={siteConfig.botName} className="w-7 h-7 sm:w-8 sm:h-8" />
+            <Image src={siteConfig.botLogo} alt={siteConfig.botName} width={32} height={32} className="w-7 h-7 sm:w-8 sm:h-8" unoptimized />
             <span className="hidden sm:inline">{siteConfig.botName}</span>
           </Link>
 
@@ -105,13 +106,16 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
                   onClick={() => setShowDropdown(!showDropdown)}
                   className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#CECECE]/20 hover:border-[#CECECE]/50 transition-all duration-200"
                 >
-                  <img
+                  <Image
                     src={
                       (session.user as any)?.image ||
                       `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 5) || "/placeholder.svg"}.png`
                     }
-                    alt="Profile"
+                    alt={(session.user as any)?.name || "Profile"}
+                    width={40}
+                    height={40}
                     className="w-full h-full object-cover"
+                    unoptimized
                   />
                 </button>
                 {showDropdown && (

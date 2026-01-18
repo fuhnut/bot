@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
+export const revalidate = 300; // Cache for 5 minutes
+
 export async function GET() {
   const session = await getServerSession(authOptions) as any;
   
@@ -25,7 +27,6 @@ export async function GET() {
         reason: "Missing guilds permission" 
       }, { status: 403 });
     }
-
     const userGuilds = await userResponse.json();
     
     // Fetch bot's guilds using Discord bot token
@@ -70,7 +71,11 @@ export async function GET() {
       : [];
     
     console.log(`User has ${userGuilds.length} servers, bot has ${botGuildIds.length}, mutual: ${mutualGuilds.length}`);
-    return NextResponse.json(mutualGuilds);
+    
+    const response = NextResponse.json(mutualGuilds);
+    response.headers.set('Cache-Control', 'private, max-age=300, s-maxage=300, stale-while-revalidate=600');
+    
+    return response;
   } catch (error) {
     console.error("Guilds endpoint error:", error);
     return NextResponse.json({ error: "Failed to fetch guilds" }, { status: 500 });
