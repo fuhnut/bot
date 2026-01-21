@@ -3,8 +3,6 @@
 
 export interface Command {
   name: string;
-  raw_name?: string;
-  func_name?: string;
   description: string;
   aliases: string[];
   category: string;
@@ -37,8 +35,6 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "is_group": true,
     "subcommands": [
       "fun 8ball",
-      "fun ai",
-      "fun aiclear",
       "fun base64",
       "fun caption",
       "fun choose",
@@ -53,7 +49,6 @@ export const FUN_COMMANDS: Record<string, Command> = {
       "fun sha256",
       "fun steal",
       "fun translate",
-      "fun tts",
       "fun urban"
     ],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\fun.py",
@@ -317,56 +312,6 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\fun.py",
     "name": "fun base64"
   },
-  "fun_ai": {
-    "raw_name": "ai",
-    "func_name": "fun_ai_command",
-    "parent_func_name": "fun_group",
-    "description": "chat with the ai or ask it anything",
-    "aliases": [],
-    "category": "fun",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "prompt",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!fun ai [prompt]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\fun.py",
-    "name": "fun ai"
-  },
-  "fun_aiclear": {
-    "raw_name": "aiclear",
-    "func_name": "fun_aiclear",
-    "parent_func_name": "fun_group",
-    "description": "clear AI conversation memory for a user",
-    "aliases": [],
-    "category": "fun",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "user",
-        "type": "Member"
-      }
-    ],
-    "examples": [
-      "!fun aiclear [user]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\fun.py",
-    "name": "fun aiclear"
-  },
   "fun_sha256": {
     "raw_name": "sha256",
     "func_name": "fun_sha256",
@@ -506,31 +451,6 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\fun.py",
     "name": "dihr"
   },
-  "fun_tts": {
-    "raw_name": "tts",
-    "func_name": "fun_tts",
-    "parent_func_name": "fun_group",
-    "description": "turn text into a voice message",
-    "aliases": [],
-    "category": "fun",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "text",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!fun tts [text]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\fun.py",
-    "name": "fun tts"
-  },
   "fun_urban": {
     "raw_name": "urban",
     "func_name": "fun_urban",
@@ -560,7 +480,7 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "raw_name": "image",
     "func_name": "fun_image",
     "parent_func_name": "fun_group",
-    "description": "search for images using DuckDuckGo (completely free)",
+    "description": "scrape the web for images",
     "aliases": [],
     "category": "fun",
     "permissions": [],
@@ -605,5 +525,260 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\fun.py",
     "name": "fun img2gif"
+  },
+  "gpt": {
+    "raw_name": "gpt",
+    "func_name": "gpt",
+    "parent_func_name": null,
+    "description": "AI commands",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "query",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!gpt [query]"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "gpt ask",
+      "gpt channel",
+      "gpt disable",
+      "gpt edit",
+      "gpt frequency",
+      "gpt generate",
+      "gpt personality",
+      "gpt tts"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
+    "name": "gpt"
+  },
+  "gpt_channel": {
+    "raw_name": "channel",
+    "func_name": "channel",
+    "parent_func_name": "gpt",
+    "description": "Set up a channel for automated AI responses",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Channels"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "examples": [
+      "!gpt channel [channel]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
+    "name": "gpt channel"
+  },
+  "gpt_disable": {
+    "raw_name": "disable",
+    "func_name": "disable",
+    "parent_func_name": "gpt",
+    "description": "Disable automated AI responses in this channel",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Channels"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "examples": [
+      "!gpt disable [channel]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
+    "name": "gpt disable"
+  },
+  "gpt_frequency": {
+    "raw_name": "frequency",
+    "func_name": "frequency",
+    "parent_func_name": "gpt",
+    "description": "Set how often AI should respond automatically",
+    "aliases": [
+      "freq"
+    ],
+    "category": "fun",
+    "permissions": [
+      "Manage Channels"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "duration",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!gpt frequency [duration]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
+    "name": "gpt frequency"
+  },
+  "gpt_personality": {
+    "raw_name": "personality",
+    "func_name": "personality",
+    "parent_func_name": "gpt",
+    "description": "Set a custom AI personality",
+    "aliases": [
+      "persona"
+    ],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "personality",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!gpt personality [personality]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
+    "name": "gpt personality"
+  },
+  "gpt_ask": {
+    "raw_name": "ask",
+    "func_name": "ask",
+    "parent_func_name": "gpt",
+    "description": "Ask the AI a question",
+    "aliases": [
+      "chat",
+      "query",
+      "question"
+    ],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "query",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!gpt ask [query]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
+    "name": "gpt ask"
+  },
+  "gpt_generate": {
+    "raw_name": "generate",
+    "func_name": "generate_image",
+    "parent_func_name": "gpt",
+    "description": "No description provided",
+    "aliases": [
+      "gen",
+      "clanker",
+      "draw"
+    ],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "query",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!gpt generate [query]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
+    "name": "gpt generate"
+  },
+  "gpt_edit": {
+    "raw_name": "edit",
+    "func_name": "gpt_edit",
+    "parent_func_name": "gpt",
+    "description": "Edit an image using AI",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "query",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!gpt edit [query]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
+    "name": "gpt edit"
+  },
+  "gpt_tts": {
+    "raw_name": "tts",
+    "func_name": "tts",
+    "parent_func_name": "gpt",
+    "description": "No description provided",
+    "aliases": [
+      "say",
+      "speak"
+    ],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "prompt",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!gpt tts [prompt]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
+    "name": "gpt tts"
   }
 };
