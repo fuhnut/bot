@@ -139,11 +139,11 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="relative hidden lg:block"
+              className="relative hidden lg:block group"
             >
-              <div className="relative w-64 h-64 md:w-72 md:h-72 mx-auto">
+              <div className="relative w-64 h-64 md:w-72 md:h-72 mx-auto cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FAFAFA]/20 to-transparent rounded-3xl blur-2xl animate-pulse" />
-                <div className="relative z-10 w-full h-full rounded-3xl p-1 bg-gradient-to-br from-[#FAFAFA]/30 to-[#FAFAFA]/5 backdrop-blur-xl border border-[#FAFAFA]/20 overflow-hidden shadow-2xl">
+                <div className="relative z-10 w-full h-full rounded-3xl p-1 bg-gradient-to-br from-[#FAFAFA]/30 to-[#FAFAFA]/5 backdrop-blur-xl border border-[#FAFAFA]/20 overflow-hidden shadow-2xl group-hover:scale-110 group-hover:shadow-2xl transition-transform duration-300">
                   <Image
                     src={config.botLogo}
                     alt="Bot Logo"
@@ -311,8 +311,8 @@ export default function Home() {
         {/* Footer */}
         <footer className="max-w-7xl mx-auto px-4 sm:px-6 py-12 border-t border-[#FAFAFA]/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-            <div className="flex items-center gap-3">
-              <Image src={config.botLogo} alt={config.botName} width={32} height={32} className="rounded-lg" unoptimized />
+            <div className="flex items-center gap-3 group">
+              <Image src={config.botLogo} alt={config.botName} width={32} height={32} className="rounded-lg group-hover:scale-110 transition-transform duration-300" unoptimized />
               <span className="font-bold text-xl">{config.botName}</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-[#CECECE]">

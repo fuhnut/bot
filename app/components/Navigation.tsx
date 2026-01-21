@@ -51,7 +51,7 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
             href="/"
             className="flex items-center gap-2 text-xl sm:text-2xl font-bold text-[#FAFAFA] hover:text-[#CECECE] transition-colors flex-shrink-0"
           >
-            <Image src={siteConfig.botLogo} alt={siteConfig.botName} width={32} height={32} className="w-7 h-7 sm:w-8 sm:h-8" unoptimized />
+            <Image src={siteConfig.botLogo} alt={siteConfig.botName} width={32} height={32} className="w-7 h-7 sm:w-8 sm:h-8 hover:scale-110 transition-transform duration-300" unoptimized />
             <span className="hidden sm:inline">{siteConfig.botName}</span>
           </Link>
 
@@ -163,8 +163,7 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
 
         {/* Mobile Menu */}
         {showMobileMenu && (
-          <div className="md:hidden border-t border-[#CECECE]/10 bg-[#1B1B1B]/50 mt-4 pt-4 pb-4">
-          <div className="lg:hidden border-t border-[#CECECE]/10 bg-[#1B1B1B]/50 mt-4 pt-4 pb-6 space-y-4">
+          <div className="md:hidden border-t border-[#CECECE]/10 bg-[#1B1B1B]/50 mt-4 pt-4 pb-6 space-y-4">
             <div className="flex flex-col gap-2">
               {links.map((link) => (
                 <Link
@@ -192,7 +191,6 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
                 Invite Bot
               </a>
             </div>
-          </div>
           </div>
         )}
       </div>
