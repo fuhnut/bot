@@ -18,36 +18,54 @@ export default function Home() {
 
   const [stats, setStats] = useState<any>(null)
   const [loadingStats, setLoadingStats] = useState(false)
+  const [topServers, setTopServers] = useState<any[]>([])
 
   useEffect(() => {
-    const controller = new AbortController()
-    
     const fetchData = async () => {
       try {
         setLoadingStats(true)
-        const statsRes = await fetch("/api/stats", { signal: controller.signal })
+        const statsRes = await fetch("/api/stats")
         if (statsRes.ok) {
           const data = await statsRes.json()
           setStats(data)
         }
       } catch (err) {
-        if (err instanceof Error && err.name !== "AbortError") {
-          console.error("Failed to fetch stats:", err)
-        }
+        console.error("Failed to fetch stats:", err)
       } finally {
         setLoadingStats(false)
       }
     }
 
+    // Fetch immediately
     fetchData()
     
     // Refresh stats every 5 seconds
     const interval = setInterval(fetchData, 5000)
     
-    return () => {
-      controller.abort()
-      clearInterval(interval)
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const fetchTopServers = async () => {
+      try {
+        const res = await fetch("/api/top-servers")
+        if (res.ok) {
+          const data = await res.json()
+          if (Array.isArray(data)) {
+            setTopServers(data)
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch top servers:", err)
+      }
     }
+
+    fetchTopServers()
+    
+    // Refresh top servers every 30 seconds
+    const interval = setInterval(fetchTopServers, 30000)
+    
+    return () => clearInterval(interval)
   }, [])
 
   useEffect(() => {
@@ -106,6 +124,42 @@ export default function Home() {
       </div>
 
       <main className="relative z-10 overflow-x-hidden">
+        {/* Top Servers Banner */}
+        {topServers.length > 0 && (
+          <section className="w-full bg-gradient-to-r from-[#1B1B1B] to-[#0A0A0A] border-b border-[#FAFAFA]/10 py-4 overflow-hidden">
+            <div className="relative flex items-center h-20">
+              <motion.div
+                animate={{ x: [0, -1500] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="flex gap-4 whitespace-nowrap"
+              >
+                {/* Display servers twice for seamless loop */}
+                {[...topServers, ...topServers].map((server, i) => (
+                  <div
+                    key={`${server.id}-${i}`}
+                    className="flex items-center gap-3 px-6 py-2 rounded-full bg-[#1B1B1B]/50 border border-[#FAFAFA]/10 hover:border-[#FAFAFA]/30 transition-all flex-shrink-0"
+                  >
+                    {server.icon && (
+                      <Image
+                        src={server.icon}
+                        alt={server.name}
+                        width={40}
+                        height={40}
+                        className="w-8 h-8 rounded-full"
+                        unoptimized
+                      />
+                    )}
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-[#FAFAFA] text-sm">{server.name}</span>
+                      <span className="text-xs text-[#CECECE]/70">{server.members?.toLocaleString() || 0} members</span>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </section>
+        )}
+
         {/* Hero Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-20 md:pt-32 pb-16 md:pb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
