@@ -71,14 +71,12 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    const controller = new AbortController()
-    
     const fetchGuilds = async () => {
       if (!session) return
       
       try {
         setLoadingGuilds(true)
-        const guildsRes = await fetch("/api/guilds", { signal: controller.signal })
+        const guildsRes = await fetch("/api/guilds")
         if (guildsRes.ok) {
           const data = await guildsRes.json()
           if (Array.isArray(data)) {
@@ -86,9 +84,7 @@ export default function Home() {
           }
         }
       } catch (err) {
-        if (err instanceof Error && err.name !== "AbortError") {
-          console.error("Failed to fetch guilds:", err)
-        }
+        console.error("Failed to fetch guilds:", err)
       } finally {
         setLoadingGuilds(false)
       }
@@ -96,7 +92,7 @@ export default function Home() {
 
     fetchGuilds()
     
-    return () => controller.abort()
+    return () => {}
   }, [session])
 
   const sitePages = [
