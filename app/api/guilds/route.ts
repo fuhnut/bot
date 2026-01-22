@@ -59,8 +59,13 @@ export async function GET() {
       `User has ${userGuilds.length} servers, bot has ${botGuildIds.length}, mutual: ${mutualGuilds.length}`
     );
 
-    // 4️⃣ Return mutual guilds
-    const response = NextResponse.json(mutualGuilds);
+    // 4️⃣ Return mutual guilds plus bot guild count for better client handling
+    const payload = {
+      mutualGuilds,
+      botGuildCount: botGuildIds.length,
+    };
+
+    const response = NextResponse.json(payload);
     response.headers.set(
       "Cache-Control",
       "private, max-age=300, s-maxage=300, stale-while-revalidate=600"

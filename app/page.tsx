@@ -19,6 +19,10 @@ export default function Home() {
   const [stats, setStats] = useState<any>(null)
   const [loadingStats, setLoadingStats] = useState(false)
   const [topServers, setTopServers] = useState<any[]>([])
+  const [guildsError, setGuildsError] = useState<string | null>(null)
+  const marqueeRef = useRef<HTMLDivElement | null>(null)
+  const marqueeInnerRef = useRef<HTMLDivElement | null>(null)
+  const [marqueeDistance, setMarqueeDistance] = useState<number>(0)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,6 +59,13 @@ export default function Home() {
             setTopServers(data)
           } else if (data.servers && Array.isArray(data.servers)) {
             setTopServers(data.servers)
+          } else if (data.servers && data.servers.length === 0 && Array.isArray(data.servers)) {
+            setTopServers([])
+          } else if (data.servers && Array.isArray(data.servers)) {
+            setTopServers(data.servers)
+          } else if (Array.isArray(data.mutualGuilds)) {
+            // support other endpoint shapes
+            setTopServers(data.mutualGuilds)
           }
         }
       } catch (err) {
@@ -69,6 +80,26 @@ export default function Home() {
     
     return () => clearInterval(interval)
   }, [])
+
+  // Measure marquee inner width and compute distance to scroll
+  useEffect(() => {
+    const measure = () => {
+      try {
+        if (marqueeInnerRef.current && marqueeRef.current) {
+          const innerWidth = marqueeInnerRef.current.scrollWidth
+          const containerWidth = marqueeRef.current.clientWidth
+          // distance: scroll the full inner width so it loops
+          setMarqueeDistance(innerWidth)
+        }
+      } catch (e) {
+        // ignore
+      }
+    }
+
+    measure()
+    window.addEventListener("resize", measure)
+    return () => window.removeEventListener("resize", measure)
+  }, [topServers])
 
   useEffect(() => {
     const fetchGuilds = async () => {
@@ -125,16 +156,15 @@ export default function Home() {
         {/* Top Servers Banner */}
         {topServers.length > 0 && (
           <section className="w-full bg-gradient-to-r from-[#1B1B1B] to-[#0A0A0A] border-b border-[#FAFAFA]/10 py-4 overflow-hidden">
-            <div className="relative flex items-center h-20">
+            <div className="relative flex items-center h-20 overflow-hidden">
               <motion.div
-                animate={{ x: [0, -(topServers.length * 280)] }}
-                transition={{ duration: topServers.length * 3, repeat: Infinity, ease: "linear" }}
-                className="flex gap-4 whitespace-nowrap"
+                animate={{ x: [0, -1] }}
+                transition={{ duration: topServers.length * 0.3, repeat: Infinity, ease: "linear" }}
+                className="flex gap-4 whitespace-nowrap will-change-transform"
               >
-                {/* Display servers twice for seamless loop */}
-                {[...topServers, ...topServers].map((server, i) => (
+                {topServers.map((server) => (
                   <div
-                    key={`${server.id}-${i}`}
+                    key={server.id}
                     className="flex items-center gap-3 px-6 py-2 rounded-full bg-[#1B1B1B]/50 border border-[#FAFAFA]/10 hover:border-[#FAFAFA]/30 transition-all flex-shrink-0 w-fit"
                   >
                     {server.icon && (
