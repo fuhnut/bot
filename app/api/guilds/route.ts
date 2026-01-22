@@ -36,9 +36,9 @@ export async function GET() {
     // 2️⃣ Fetch bot's guild IDs from your stats endpoint or pre-saved JSON
     let botGuildIds: string[] = [];
     try {
-      const statsUrl = process.env.NEXTAUTH_URL
-        ? `${process.env.NEXTAUTH_URL}/api/stats`
-        : "http://localhost:5000/api/stats";
+      // Attempt to fetch the bot's reported guild IDs from the same deployment (robust fallback)
+      const base = process.env.NEXTAUTH_URL || `http://localhost:${process.env.PORT || 3000}`
+      const statsUrl = `${base.replace(/\/$/, "")}/api/stats`
 
       const statsResponse = await fetch(statsUrl, { signal: AbortSignal.timeout(5000) });
       if (statsResponse.ok) {

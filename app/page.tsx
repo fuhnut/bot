@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react"
 import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Navigation from "./components/Navigation"
 import FeatureCards from "./components/FeatureCards"
 import Link from "next/link"
@@ -81,15 +81,14 @@ export default function Home() {
     return () => clearInterval(interval)
   }, [])
 
-  // Measure marquee inner width and compute distance to scroll
+  // Measure marquee inner width and compute distance to scroll (half of duplicated content)
   useEffect(() => {
     const measure = () => {
       try {
         if (marqueeInnerRef.current && marqueeRef.current) {
-          const innerWidth = marqueeInnerRef.current.scrollWidth
-          const containerWidth = marqueeRef.current.clientWidth
-          // distance: scroll the full inner width so it loops
-          setMarqueeDistance(innerWidth)
+          const innerWidth = marqueeInnerRef.current.scrollWidth // duplicated content width
+          // distance: scroll one copy, so half of duplicated width
+          setMarqueeDistance(Math.floor(innerWidth / 2))
         }
       } catch (e) {
         // ignore
@@ -104,25 +103,50 @@ export default function Home() {
   useEffect(() => {
     const fetchGuilds = async () => {
       if (!session) return
-      
+
       try {
         setLoadingGuilds(true)
-        const guildsRes = await fetch("/api/guilds")
-        if (guildsRes.ok) {
-          const data = await guildsRes.json()
-          if (Array.isArray(data)) {
-            setGuilds(data)
+        setGuildsError(null)
+
+        const res = await fetch('/api/guilds')
+        // read as text to allow the endpoint to return different shapes or error strings
+        const text = await res.text()
+        let data: any = null
+        try { data = JSON.parse(text) } catch { data = text }
+
+        if (!res.ok) {
+          if (res.status === 401) {
+            setGuildsError('Not authenticated. Please sign in again.')
+          } else if (res.status === 403) {
+            setGuildsError('Missing guilds permission. Re-login and grant the guilds permission.')
+          } else {
+            setGuildsError(typeof data === 'string' ? data : (data?.error ?? 'Failed to fetch servers'))
           }
+          setGuilds([])
+          return
+        }
+
+        // support different server payload shapes
+        if (Array.isArray(data)) {
+          setGuilds(data)
+        } else if (Array.isArray(data.mutualGuilds)) {
+          setGuilds(data.mutualGuilds)
+          if ((data.botGuildCount ?? 0) === 0) {
+            setGuildsError('Bot is not reporting its server list or is offline. Invite the bot or ask admin to enable stats reporting.')
+          }
+        } else {
+          setGuilds([])
         }
       } catch (err) {
-        console.error("Failed to fetch guilds:", err)
+        console.error('Failed to fetch guilds:', err)
+        setGuildsError('Unexpected error fetching servers')
       } finally {
         setLoadingGuilds(false)
       }
     }
 
     fetchGuilds()
-    
+
     return () => {}
   }, [session])
 
@@ -156,15 +180,18 @@ export default function Home() {
         {/* Top Servers Banner */}
         {topServers.length > 0 && (
           <section className="w-full bg-gradient-to-r from-[#1B1B1B] to-[#0A0A0A] border-b border-[#FAFAFA]/10 py-4 overflow-hidden">
-            <div className="relative flex items-center h-20 overflow-hidden">
+            <div ref={marqueeRef} className="relative flex items-center h-20 overflow-hidden">
               <motion.div
-                animate={{ x: [0, -1] }}
-                transition={{ duration: topServers.length * 0.3, repeat: Infinity, ease: "linear" }}
+                ref={marqueeInnerRef}
+                animate={marqueeDistance > 0 ? { x: [0, -marqueeDistance] } : { x: 0 }}
+                transition={{ duration: marqueeDistance > 0 ? Math.max(12, marqueeDistance / 100) : 30, repeat: Infinity, ease: "linear" }}
+                style={{ display: 'flex' }}
                 className="flex gap-4 whitespace-nowrap will-change-transform"
               >
-                {topServers.map((server) => (
+                {/* duplicate visually for smooth loop, data stays unique */}
+                {[...topServers, ...topServers].map((server, i) => (
                   <div
-                    key={server.id}
+                    key={`${server.id}-${i}`}
                     className="flex items-center gap-3 px-6 py-2 rounded-full bg-[#1B1B1B]/50 border border-[#FAFAFA]/10 hover:border-[#FAFAFA]/30 transition-all flex-shrink-0 w-fit"
                   >
                     {server.icon && (
@@ -344,6 +371,14 @@ export default function Home() {
             {loadingGuilds ? (
               <div className="flex justify-center py-12">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#FAFAFA]"></div>
+              </div>
+            ) : guildsError ? (
+              <div className="text-center py-12 rounded-3xl bg-[#1B1B1B]/20 border border-dashed border-[#FAFAFA]/10 px-6">
+                <p className="text-[#CECECE] mb-4">{guildsError}</p>
+                <div className="flex gap-3 justify-center">
+                  <Link href="/api/auth/signin" className="px-4 py-2 rounded-lg bg-[#FAFAFA] text-[#000] font-semibold">Sign in</Link>
+                  <Link href={config.inviteLink} className="px-4 py-2 rounded-lg bg-[#1B1B1B] border border-[#FAFAFA]/10 text-[#FAFAFA]">Invite Bot</Link>
+                </div>
               </div>
             ) : guilds.length > 0 ? (
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
