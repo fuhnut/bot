@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from "react"
 import { useSiteConfig } from "@/lib/siteConfig"
 import Image from "next/image"
 import { Menu, X, Moon, Sun, Zap, Palette, HelpCircle, Activity, MessageCircle } from "lucide-react"
+import { motion } from "framer-motion"
 
 interface NavigationProps {
   isDark: boolean
@@ -51,7 +52,12 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
             href="/"
             className="flex items-center gap-2 text-xl sm:text-2xl font-bold text-[#FAFAFA] hover:text-[#CECECE] transition-colors flex-shrink-0"
           >
-            <Image src={siteConfig.botLogo} alt={siteConfig.botName} width={32} height={32} className="w-7 h-7 sm:w-8 sm:h-8 hover:scale-110 transition-transform duration-300" unoptimized />
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image src={siteConfig.botLogo} alt={siteConfig.botName} width={32} height={32} className="w-7 h-7 sm:w-8 sm:h-8" unoptimized />
+            </motion.div>
             <span className="hidden sm:inline">{siteConfig.botName}</span>
           </Link>
 

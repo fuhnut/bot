@@ -41,7 +41,13 @@ export default function Home() {
 
     fetchData()
     
-    return () => controller.abort()
+    // Refresh stats every 5 seconds
+    const interval = setInterval(fetchData, 5000)
+    
+    return () => {
+      controller.abort()
+      clearInterval(interval)
+    }
   }, [])
 
   useEffect(() => {
@@ -143,7 +149,11 @@ export default function Home() {
             >
               <div className="relative w-64 h-64 md:w-72 md:h-72 mx-auto cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FAFAFA]/20 to-transparent rounded-3xl blur-2xl animate-pulse" />
-                <div className="relative z-10 w-full h-full rounded-3xl p-1 bg-gradient-to-br from-[#FAFAFA]/30 to-[#FAFAFA]/5 backdrop-blur-xl border border-[#FAFAFA]/20 overflow-hidden shadow-2xl group-hover:scale-110 group-hover:shadow-2xl transition-transform duration-300">
+                <motion.div 
+                  animate={{ y: [0, -15, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative z-10 w-full h-full rounded-3xl p-1 bg-gradient-to-br from-[#FAFAFA]/30 to-[#FAFAFA]/5 backdrop-blur-xl border border-[#FAFAFA]/20 overflow-hidden shadow-2xl"
+                >
                   <Image
                     src={config.botLogo}
                     alt="Bot Logo"
@@ -151,7 +161,7 @@ export default function Home() {
                     className="object-cover rounded-2xl bg-[#1B1B1B]"
                     unoptimized
                   />
-                </div>
+                </motion.div>
               </div>
               
               {/* Floating elements */}
@@ -311,8 +321,13 @@ export default function Home() {
         {/* Footer */}
         <footer className="max-w-7xl mx-auto px-4 sm:px-6 py-12 border-t border-[#FAFAFA]/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-            <div className="flex items-center gap-3 group">
-              <Image src={config.botLogo} alt={config.botName} width={32} height={32} className="rounded-lg group-hover:scale-110 transition-transform duration-300" unoptimized />
+            <div className="flex items-center gap-3">
+              <motion.div
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Image src={config.botLogo} alt={config.botName} width={32} height={32} className="rounded-lg" unoptimized />
+              </motion.div>
               <span className="font-bold text-xl">{config.botName}</span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-[#CECECE]">
