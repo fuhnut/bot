@@ -6,13 +6,13 @@ export const revalidate = 300; // Cache for 5 minutes
 
 export async function GET() {
   const session = await getServerSession(authOptions) as any;
-  
+
   if (!session?.accessToken) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
   try {
-    // Fetch user's guilds
+    // 1️⃣ Fetch user's guilds
     const userResponse = await fetch("https://discord.com/api/users/@me/guilds", {
       headers: {
         Authorization: `Bearer ${session.accessToken}`,
@@ -22,59 +22,50 @@ export async function GET() {
     if (!userResponse.ok) {
       const errorData = await userResponse.text();
       console.error("Discord API error:", userResponse.status, errorData);
-      return NextResponse.json({ 
-        error: "Need to re-login to access servers", 
-        reason: "Missing guilds permission" 
-      }, { status: 403 });
+      return NextResponse.json(
+        {
+          error: "Need to re-login to access servers",
+          reason: "Missing guilds permission",
+        },
+        { status: 403 }
+      );
     }
+
     const userGuilds = await userResponse.json();
-    
-    // Fetch bot's guilds using Discord bot token
+
+    // 2️⃣ Fetch bot's guild IDs from your stats endpoint or pre-saved JSON
     let botGuildIds: string[] = [];
-    
-    if (process.env.DISCORD_BOT_TOKEN) {
-      try {
-        const botGuildsResponse = await fetch("https://discord.com/api/users/@me/guilds", {
-          headers: {
-            Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}`,
-          },
-        });
-        
-        if (botGuildsResponse.ok) {
-          const botGuilds = await botGuildsResponse.json();
-          botGuildIds = botGuilds.map((g: any) => g.id);
-          console.log(`Bot is in ${botGuildIds.length} servers`);
-        }
-      } catch (error) {
-        console.warn("Failed to fetch bot guilds:", error);
+    try {
+      const statsUrl = process.env.NEXTAUTH_URL
+        ? `${process.env.NEXTAUTH_URL}/api/stats`
+        : "http://localhost:5000/api/stats";
+
+      const statsResponse = await fetch(statsUrl, { signal: AbortSignal.timeout(5000) });
+      if (statsResponse.ok) {
+        const stats = await statsResponse.json();
+        botGuildIds = stats.guild_ids || [];
       }
+    } catch (statsError) {
+      console.warn("Stats endpoint unavailable", statsError);
     }
-    
-    // If bot token not available, try stats endpoint
-    if (botGuildIds.length === 0) {
-      try {
-        const statsUrl = process.env.NEXTAUTH_URL ? `${process.env.NEXTAUTH_URL}/api/stats` : "http://localhost:5000/api/stats";
-        const statsResponse = await fetch(statsUrl, { signal: AbortSignal.timeout(5000) });
-        
-        if (statsResponse.ok) {
-          const stats = await statsResponse.json();
-          botGuildIds = stats.guild_ids || [];
-        }
-      } catch (statsError) {
-        console.warn("Stats endpoint unavailable");
-      }
-    }
-    
-    // Filter for mutual servers (where both user and bot are members)
-    const mutualGuilds = botGuildIds.length > 0 
-      ? userGuilds.filter((guild: any) => botGuildIds.includes(guild.id))
-      : [];
-    
-    console.log(`User has ${userGuilds.length} servers, bot has ${botGuildIds.length}, mutual: ${mutualGuilds.length}`);
-    
+
+    // 3️⃣ Compute mutual guilds (where both user and bot are members)
+    const mutualGuilds =
+      botGuildIds.length > 0
+        ? userGuilds.filter((guild: any) => botGuildIds.includes(guild.id))
+        : [];
+
+    console.log(
+      `User has ${userGuilds.length} servers, bot has ${botGuildIds.length}, mutual: ${mutualGuilds.length}`
+    );
+
+    // 4️⃣ Return mutual guilds
     const response = NextResponse.json(mutualGuilds);
-    response.headers.set('Cache-Control', 'private, max-age=300, s-maxage=300, stale-while-revalidate=600');
-    
+    response.headers.set(
+      "Cache-Control",
+      "private, max-age=300, s-maxage=300, stale-while-revalidate=600"
+    );
+
     return response;
   } catch (error) {
     console.error("Guilds endpoint error:", error);
