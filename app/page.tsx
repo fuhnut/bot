@@ -53,6 +53,8 @@ export default function Home() {
           const data = await res.json()
           if (Array.isArray(data)) {
             setTopServers(data)
+          } else if (data.servers && Array.isArray(data.servers)) {
+            setTopServers(data.servers)
           }
         }
       } catch (err) {
@@ -129,15 +131,15 @@ export default function Home() {
           <section className="w-full bg-gradient-to-r from-[#1B1B1B] to-[#0A0A0A] border-b border-[#FAFAFA]/10 py-4 overflow-hidden">
             <div className="relative flex items-center h-20">
               <motion.div
-                animate={{ x: [0, -1500] }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                animate={{ x: [0, -(topServers.length * 280)] }}
+                transition={{ duration: topServers.length * 3, repeat: Infinity, ease: "linear" }}
                 className="flex gap-4 whitespace-nowrap"
               >
                 {/* Display servers twice for seamless loop */}
                 {[...topServers, ...topServers].map((server, i) => (
                   <div
                     key={`${server.id}-${i}`}
-                    className="flex items-center gap-3 px-6 py-2 rounded-full bg-[#1B1B1B]/50 border border-[#FAFAFA]/10 hover:border-[#FAFAFA]/30 transition-all flex-shrink-0"
+                    className="flex items-center gap-3 px-6 py-2 rounded-full bg-[#1B1B1B]/50 border border-[#FAFAFA]/10 hover:border-[#FAFAFA]/30 transition-all flex-shrink-0 w-fit"
                   >
                     {server.icon && (
                       <Image
