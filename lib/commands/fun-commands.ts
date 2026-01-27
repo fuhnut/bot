@@ -551,7 +551,6 @@ export const FUN_COMMANDS: Record<string, Command> = {
       "gpt ask",
       "gpt channel",
       "gpt disable",
-      "gpt edit",
       "gpt frequency",
       "gpt generate",
       "gpt personality",
@@ -727,31 +726,6 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
     "name": "gpt generate"
-  },
-  "gpt_edit": {
-    "raw_name": "edit",
-    "func_name": "gpt_edit",
-    "parent_func_name": "gpt",
-    "description": "Edit an image using AI",
-    "aliases": [],
-    "category": "fun",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "query",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!gpt edit [query]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
-    "name": "gpt edit"
   },
   "gpt_tts": {
     "raw_name": "tts",
