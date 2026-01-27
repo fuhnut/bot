@@ -1961,5 +1961,4 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\stats.py",
     "name": "stats server"
   }
-};`
-
+};
