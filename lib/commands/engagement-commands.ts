@@ -3,8 +3,6 @@
 
 export interface Command {
   name: string;
-  raw_name?: string;
-  func_name?: string;
   description: string;
   aliases: string[];
   category: string;
@@ -1826,8 +1824,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [],
     "optional_args": [],
@@ -1854,8 +1852,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [],
     "optional_args": [],
@@ -1877,8 +1875,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [],
     "optional_args": [
@@ -1905,8 +1903,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [
       {
@@ -1933,8 +1931,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [
       {
