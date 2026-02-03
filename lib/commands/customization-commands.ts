@@ -3,8 +3,6 @@
 
 export interface Command {
   name: string;
-  raw_name?: string;
-  func_name?: string;
   description: string;
   aliases: string[];
   category: string;
@@ -967,7 +965,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "roles"
     ],
     "category": "customization",
-    "permissions": [],
+    "permissions": [
+      "Manage Roles"
+    ],
     "required_args": [],
     "optional_args": [
       {
@@ -1186,7 +1186,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "make"
     ],
     "category": "customization",
-    "permissions": [],
+    "permissions": [
+      "Manage Roles"
+    ],
     "required_args": [],
     "optional_args": [
       {
@@ -1225,7 +1227,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "destroy"
     ],
     "category": "customization",
-    "permissions": [],
+    "permissions": [
+      "Manage Roles"
+    ],
     "required_args": [],
     "optional_args": [
       {
@@ -1255,7 +1259,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "changecolor"
     ],
     "category": "customization",
-    "permissions": [],
+    "permissions": [
+      "Manage Roles"
+    ],
     "required_args": [],
     "optional_args": [
       {
@@ -1319,7 +1325,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "many"
     ],
     "category": "customization",
-    "permissions": [],
+    "permissions": [
+      "Manage Roles"
+    ],
     "required_args": [],
     "optional_args": [
       {
@@ -1356,7 +1364,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "addall"
     ],
     "category": "customization",
-    "permissions": [],
+    "permissions": [
+      "Manage Roles"
+    ],
     "required_args": [],
     "optional_args": [
       {
