@@ -1,7 +1,7 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Providers } from "./providers"
 import "./globals.css"
+import type React from "react"
+import type { Metadata, Viewport } from "next"
+import { Providers } from "./providers"
 import DynamicFavicon from "./components/DynamicFavicon"
 import { getMetadataConfig } from "@/lib/metadata-config"
 
@@ -41,13 +41,20 @@ export const metadata: Metadata = {
   generator: 'v0.app'
 }
 
+export const viewport: Viewport = {
+  themeColor: '#050505',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <DynamicFavicon />
         <Providers>{children}</Providers>

@@ -3,8 +3,6 @@
 
 export interface Command {
   name: string;
-  raw_name?: string;
-  func_name?: string;
   description: string;
   aliases: string[];
   category: string;
@@ -698,15 +696,15 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "permissions": [
       "Manage Channels"
     ],
-    "required_args": [
+    "required_args": [],
+    "optional_args": [
       {
         "name": "category",
         "type": "CategoryChannel"
       }
     ],
-    "optional_args": [],
     "examples": [
-      "!channels category delete <category>"
+      "!channels category delete [category]"
     ],
     "has_prefix": true,
     "has_slash": false,

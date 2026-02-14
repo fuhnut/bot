@@ -4,10 +4,11 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { useState, useRef, useEffect } from "react"
-import { useSiteConfig } from "@/lib/siteConfig"
+import { useSiteConfig } from "@/lib/site-config"
 import Image from "next/image"
-import { Menu, X, Moon, Sun, Zap, Palette, HelpCircle, Activity, MessageCircle } from "lucide-react"
+import * as Icons from "lucide-react"
 import { motion } from "framer-motion"
+import SvgDiscord from "@/app/components/icons/DiscordIcon"
 
 interface NavigationProps {
   isDark: boolean
@@ -20,14 +21,14 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
-  const siteConfig = useSiteConfig()
+  const { config: siteConfig } = useSiteConfig()
 
   const links = [
-    { href: "/commands", label: "Commands", icon: Zap },
-    { href: "/embed-builder", label: "Embed Builder", icon: Palette },
-    { href: "/status", label: "Status", icon: Activity },
-    { href: "/faq", label: "FAQ", icon: HelpCircle },
-    { href: "/discord", label: "Support", icon: MessageCircle },
+    { href: "/commands", label: "commands", icon: Icons.Zap },
+    { href: "/embed-builder", label: "embed builder", icon: Icons.Palette },
+    { href: "/status", label: "status", icon: Icons.Activity },
+    { href: "/faq", label: "faq", icon: Icons.HelpCircle },
+    { href: "/discord", label: "support", icon: Icons.MessageCircle },
   ]
 
   useEffect(() => {
@@ -43,81 +44,91 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
 
   return (
     <nav
-      className="backdrop-blur-md sticky top-0 z-40 bg-[#1B1B1B]/80 border-[#CECECE]/10 border-b rim-light"
+      className="backdrop-blur-xl sticky top-0 z-50 bg-black/40 border-white/5 border-b"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo - Modern Tech Branding */}
           <Link
             href="/"
-            className="flex items-center gap-2 text-xl sm:text-2xl font-bold text-[#FAFAFA] hover:text-[#CECECE] transition-colors flex-shrink-0"
+            className="flex items-center gap-3 group"
           >
             <motion.div
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative w-10 h-10 flex items-center justify-center"
             >
-              <Image src={siteConfig.botLogo} alt={siteConfig.botName} width={32} height={32} className="w-7 h-7 sm:w-8 sm:h-8" unoptimized />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#5865F2] to-[#7289da] rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity" />
+              <div className="relative w-full h-full bg-[#111214] border border-white/10 rounded-xl flex items-center justify-center overflow-hidden shadow-2xl group-hover:border-[#5865F2]/50 transition-colors">
+                {siteConfig.botLogo ? (
+                  <img
+                    src={siteConfig.botLogo}
+                    alt={siteConfig.botName}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      const parent = e.currentTarget.parentElement;
+                      if (parent) {
+                        const fallback = document.createElement('div');
+                        fallback.className = "w-full h-full bg-gradient-to-br from-purple-500 to-red-500 flex items-center justify-center font-bold text-xs";
+                        fallback.innerText = siteConfig.botName?.[0] || "B";
+                        parent.appendChild(fallback);
+                      }
+                    }}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-purple-500 to-red-500 flex items-center justify-center font-bold text-xs">
+                    {siteConfig.botName?.[0] || "B"}
+                  </div>
+                )}
+              </div>
             </motion.div>
-            <span className="hidden sm:inline">{siteConfig.botName}</span>
+            <div className="flex flex-col">
+              <span className="text-lg font-black text-white lowercase tracking-tighter leading-none">{siteConfig.botName}</span>
+            </div>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex gap-1">
+          <div className="hidden md:flex gap-1 items-center bg-white/5 p-1 rounded-2xl border border-white/5">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 text-sm ${
-                  pathname === link.href
-                    ? "bg-[#CECECE]/15 text-[#FAFAFA] font-semibold"
-                    : "text-[#CECECE] hover:text-[#FAFAFA] hover:bg-[#CECECE]/5"
-                }`}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl transition-all duration-300 text-[13px] font-bold lowercase ${pathname === link.href
+                  ? "bg-white/10 text-white shadow-lg"
+                  : "text-white/40 hover:text-white hover:bg-white/5"
+                  }`}
               >
-                {link.icon && <link.icon className="w-4 h-4" />}
                 {link.label}
               </Link>
             ))}
           </div>
 
           {/* Right Section */}
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-3 items-center">
             {/* Invite Button */}
             <a
               href={siteConfig.inviteLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline px-4 py-2 bg-gradient-to-r from-[#FAFAFA] to-[#CECECE] text-[#000000] rounded-lg font-semibold hover:from-[#CECECE] hover:to-[#FAFAFA] transition-all duration-200 text-sm rim-light"
+              className="hidden sm:flex px-6 py-2.5 bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-xl font-black transition-all duration-300 text-sm lowercase shadow-[0_8px_20px_rgba(88,101,242,0.2)] hover:scale-[1.02] active:scale-95 items-center gap-2"
             >
-              Invite Bot
+              <SvgDiscord className="w-4 h-4" />
+              invite {siteConfig.botName}
             </a>
 
-            <button
-              onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-lg hover:bg-[#CECECE]/10 transition-all duration-200 text-[#FAFAFA]"
-              aria-label="Toggle dark mode"
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setShowMobileMenu(!showMobileMenu)}
-              className="md:hidden p-2 rounded-lg hover:bg-[#CECECE]/10 transition-all duration-200 text-[#FAFAFA]"
-            >
-              {showMobileMenu ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
             {session ? (
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setShowDropdown(!showDropdown)}
-                  className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#CECECE]/20 hover:border-[#CECECE]/50 transition-all duration-200"
+                  className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/10 hover:border-[#5865F2] transition-all duration-300 shadow-lg"
                 >
                   <Image
                     src={
                       (session.user as any)?.image ||
                       `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 5) || "/placeholder.svg"}.png`
                     }
-                    alt={(session.user as any)?.name || "Profile"}
+                    alt={(session.user as any)?.name || "profile"}
                     width={40}
                     height={40}
                     className="w-full h-full object-cover"
@@ -126,32 +137,28 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
                 </button>
                 {showDropdown && (
                   <div
-                    className="absolute right-0 mt-2 w-48 rounded-lg shadow-lg bg-[#1B1B1B] border-[#CECECE]/10 border overflow-hidden rim-light"
+                    className="absolute right-0 mt-3 w-56 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-[#0A0A0A] border-white/10 border overflow-hidden p-2 z-50 backdrop-blur-3xl"
                   >
-                    <div className="px-4 py-3 border-b border-[#CECECE]/10">
-                      <p className="text-sm font-medium text-[#FAFAFA]">
-                        {(session.user as any)?.name || "User"}
-                      </p>
-                      <p className="text-xs text-[#CECECE]/70">
-                        {(session.user as any)?.email || ""}
+                    <div className="px-4 py-3 border-b border-white/5 mb-2">
+                      <p className="text-xs text-white/40 lowercase mb-1">signed in as</p>
+                      <p className="text-sm font-black text-white lowercase">
+                        {(session.user as any)?.name || "user"}
                       </p>
                     </div>
                     <button
                       onClick={async () => {
                         setShowDropdown(false)
-                        // Handle both old and new session types
                         try {
-                          // Clear local auth state
                           await signOut({ callbackUrl: "/" })
                         } catch (error) {
-                          // Fallback: direct navigation after logout
                           await fetch("/api/auth/signout", { method: "POST" })
                           window.location.href = "/"
                         }
                       }}
-                      className="w-full text-left px-4 py-2 text-sm font-semibold bg-red-600/80 text-[#FAFAFA] hover:bg-red-600 transition-all duration-200"
+                      className="w-full text-left px-4 py-3 text-[13px] font-bold text-red-400 hover:bg-red-400/10 rounded-xl transition-all duration-200 lowercase flex items-center gap-2"
                     >
-                      Logout
+                      <Icons.LogOut className="w-4 h-4" />
+                      logout
                     </button>
                   </div>
                 )}
@@ -159,42 +166,50 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
             ) : (
               <button
                 onClick={() => signIn("discord")}
-                className="px-5 py-2 bg-gradient-to-r from-[#FAFAFA] to-[#CECECE] text-[#000000] hover:from-[#CECECE] hover:to-[#FAFAFA] rounded-lg transition-all duration-200 text-sm font-medium rim-light"
+                className="px-6 py-2.5 bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black rounded-xl transition-all duration-300 text-sm font-bold lowercase shadow-xl"
               >
-                Login with Discord
+                login
               </button>
             )}
+
+            <button
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              className="md:hidden p-2.5 rounded-xl hover:bg-white/5 text-white transition-colors"
+            >
+              {showMobileMenu ? <Icons.X className="w-6 h-6" /> : <Icons.Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {showMobileMenu && (
-          <div className="md:hidden border-t border-[#CECECE]/10 bg-[#1B1B1B]/50 mt-4 pt-4 pb-6 space-y-4">
+          <div className="md:hidden mt-6 pt-6 pb-8 space-y-4 border-t border-white/5">
             <div className="flex flex-col gap-2">
               {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setShowMobileMenu(false)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
-                    pathname === link.href
-                      ? "bg-[#CECECE]/15 text-[#FAFAFA] font-semibold"
-                      : "text-[#CECECE] hover:text-[#FAFAFA] hover:bg-[#CECECE]/5"
-                  }`}
+                  className={`flex items-center gap-4 px-6 py-4 rounded-2xl transition-all duration-200 text-base font-bold lowercase ${pathname === link.href
+                    ? "bg-white/10 text-white shadow-xl"
+                    : "text-white/40 hover:text-white hover:bg-white/5"
+                    }`}
                 >
+                  <link.icon className="w-5 h-5 opacity-40" />
                   {link.label}
                 </Link>
               ))}
             </div>
-            
-            <div className="px-4 pt-4 border-t border-[#CECECE]/10">
+
+            <div className="px-2 pt-6">
               <a
                 href={siteConfig.inviteLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-4 bg-[#FAFAFA] text-[#0A0A0A] rounded-xl font-bold transition-all duration-200"
+                className="flex items-center justify-center gap-3 w-full py-5 bg-[#5865F2] text-white rounded-2xl font-black transition-all duration-300 shadow-2xl lowercase"
               >
-                Invite Bot
+                <SvgDiscord className="w-5 h-5" />
+                invite {siteConfig.botName}
               </a>
             </div>
           </div>

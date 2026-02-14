@@ -17,6 +17,739 @@ export interface Command {
 }
 
 export const FUN_COMMANDS: Record<string, Command> = {
+  "animate": {
+    "raw_name": "animate",
+    "func_name": "animate_group",
+    "parent_func_name": null,
+    "description": "image maniupulation.",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!animate"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "animate ace",
+      "animate bonk",
+      "animate cow",
+      "animate dizzy",
+      "animate endless",
+      "animate explicit",
+      "animate flag",
+      "animate flush",
+      "animate gallery",
+      "animate globe",
+      "animate kanye",
+      "animate locket",
+      "animate lsd",
+      "animate matrix",
+      "animate melt",
+      "animate patpat",
+      "animate pizza",
+      "animate radiate",
+      "animate rain",
+      "animate ripple",
+      "animate roll",
+      "animate scrapbook",
+      "animate shoot",
+      "animate shred"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate"
+  },
+  "animate_roll": {
+    "raw_name": "roll",
+    "func_name": "animate_roll",
+    "parent_func_name": "animate_group",
+    "description": "roll an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate roll [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate roll"
+  },
+  "animate_cow": {
+    "raw_name": "cow",
+    "func_name": "animate_cow",
+    "parent_func_name": "animate_group",
+    "description": "add an image on to a cow",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate cow [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate cow"
+  },
+  "animate_ripple": {
+    "raw_name": "ripple",
+    "func_name": "animate_ripple",
+    "parent_func_name": "animate_group",
+    "description": "ripple an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate ripple [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate ripple"
+  },
+  "animate_scrapbook": {
+    "raw_name": "scrapbook",
+    "func_name": "animate_scrapbook",
+    "parent_func_name": "animate_group",
+    "description": "scrapbook some text",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "text",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!animate scrapbook <text>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate scrapbook"
+  },
+  "animate_ace": {
+    "raw_name": "ace",
+    "func_name": "animate_ace",
+    "parent_func_name": "animate_group",
+    "description": "generate sum ace",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "text",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!animate ace <text>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate ace"
+  },
+  "animate_patpat": {
+    "raw_name": "patpat",
+    "func_name": "animate_patpat",
+    "parent_func_name": "animate_group",
+    "description": "patpat an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate patpat [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate patpat"
+  },
+  "animate_lsd": {
+    "raw_name": "lsd",
+    "func_name": "animate_lsd",
+    "parent_func_name": "animate_group",
+    "description": "lsd an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate lsd [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate lsd"
+  },
+  "animate_kanye": {
+    "raw_name": "kanye",
+    "func_name": "animate_kanye",
+    "parent_func_name": "animate_group",
+    "description": "kanye an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate kanye [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate kanye"
+  },
+  "animate_locket": {
+    "raw_name": "locket",
+    "func_name": "animate_locket",
+    "parent_func_name": "animate_group",
+    "description": "heart locket an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate locket [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate locket"
+  },
+  "animate_globe": {
+    "raw_name": "globe",
+    "func_name": "animate_globe",
+    "parent_func_name": "animate_group",
+    "description": "globe an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate globe [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate globe"
+  },
+  "animate_melt": {
+    "raw_name": "melt",
+    "func_name": "animate_melt",
+    "parent_func_name": "animate_group",
+    "description": "melt an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate melt [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate melt"
+  },
+  "animate_shoot": {
+    "raw_name": "shoot",
+    "func_name": "animate_shoot",
+    "parent_func_name": "animate_group",
+    "description": "send to heaven",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate shoot [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate shoot"
+  },
+  "animate_shred": {
+    "raw_name": "shred",
+    "func_name": "animate_shred",
+    "parent_func_name": "animate_group",
+    "description": "shred an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate shred [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate shred"
+  },
+  "animate_bonk": {
+    "raw_name": "bonk",
+    "func_name": "animate_bonk",
+    "parent_func_name": "animate_group",
+    "description": "bonk an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate bonk [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate bonk"
+  },
+  "animate_rain": {
+    "raw_name": "rain",
+    "func_name": "animate_rain",
+    "parent_func_name": "animate_group",
+    "description": "add rain to an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate rain [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate rain"
+  },
+  "animate_radiate": {
+    "raw_name": "radiate",
+    "func_name": "animate_radiate",
+    "parent_func_name": "animate_group",
+    "description": "radiate an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate radiate [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate radiate"
+  },
+  "animate_pizza": {
+    "raw_name": "pizza",
+    "func_name": "animate_pizza",
+    "parent_func_name": "animate_group",
+    "description": "pizzafy an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate pizza [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate pizza"
+  },
+  "animate_matrix": {
+    "raw_name": "matrix",
+    "func_name": "animate_matrix",
+    "parent_func_name": "animate_group",
+    "description": "matrixify an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate matrix [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate matrix"
+  },
+  "animate_gallery": {
+    "raw_name": "gallery",
+    "func_name": "animate_gallery",
+    "parent_func_name": "animate_group",
+    "description": "gallery an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate gallery [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate gallery"
+  },
+  "animate_flag": {
+    "raw_name": "flag",
+    "func_name": "animate_flag",
+    "parent_func_name": "animate_group",
+    "description": "generate a flag of an image",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate flag [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate flag"
+  },
+  "animate_flush": {
+    "raw_name": "flush",
+    "func_name": "animate_flush",
+    "parent_func_name": "animate_group",
+    "description": "flush an image down the toilet",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate flush [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate flush"
+  },
+  "animate_explicit": {
+    "raw_name": "explicit",
+    "func_name": "animate_explicit",
+    "parent_func_name": "animate_group",
+    "description": "mark an image as explicit",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate explicit [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate explicit"
+  },
+  "animate_dizzy": {
+    "raw_name": "dizzy",
+    "func_name": "animate_dizzy",
+    "parent_func_name": "animate_group",
+    "description": "make an image dizzy",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate dizzy [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate dizzy"
+  },
+  "animate_endless": {
+    "raw_name": "endless",
+    "func_name": "animate_endless",
+    "parent_func_name": "animate_group",
+    "description": "make an image endless",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "text"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!animate endless [user] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
+    "name": "animate endless"
+  },
   "fun": {
     "raw_name": "fun",
     "func_name": "fun_group",
@@ -754,5 +1487,534 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
     "name": "gpt tts"
+  },
+  "uwulock": {
+    "raw_name": "uwulock",
+    "func_name": "uwulock_group",
+    "parent_func_name": null,
+    "description": "uwuify messages from users or roles",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!uwulock [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "uwulock add",
+      "uwulock config",
+      "uwulock disable",
+      "uwulock enable",
+      "uwulock invites",
+      "uwulock links",
+      "uwulock list",
+      "uwulock remove",
+      "uwulock whitelist"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock"
+  },
+  "uwulock_add": {
+    "raw_name": "add",
+    "func_name": "uwulock_add",
+    "parent_func_name": "uwulock_group",
+    "description": "add uwulock to a user or role",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!uwulock add [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock add"
+  },
+  "uwulock_remove": {
+    "raw_name": "remove",
+    "func_name": "uwulock_remove",
+    "parent_func_name": "uwulock_group",
+    "description": "remove uwulock from a user or role",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!uwulock remove [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock remove"
+  },
+  "uwulock_list": {
+    "raw_name": "list",
+    "func_name": "uwulock_list",
+    "parent_func_name": "uwulock_group",
+    "description": "list all uwulocked users and roles",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock list"
+  },
+  "uwulock_whitelist": {
+    "raw_name": "whitelist",
+    "func_name": "uwulock_whitelist",
+    "parent_func_name": "uwulock_group",
+    "description": "manage uwulock whitelist",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock whitelist"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "uwulock whitelist add",
+      "uwulock whitelist list",
+      "uwulock whitelist remove"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock whitelist"
+  },
+  "uwulock_whitelist_add": {
+    "raw_name": "add",
+    "func_name": "whitelist_add",
+    "parent_func_name": "uwulock_whitelist",
+    "description": "add a user or role to whitelist",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!uwulock whitelist add [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock whitelist add"
+  },
+  "uwulock_whitelist_remove": {
+    "raw_name": "remove",
+    "func_name": "whitelist_remove",
+    "parent_func_name": "uwulock_whitelist",
+    "description": "remove a user or role from whitelist",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!uwulock whitelist remove [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock whitelist remove"
+  },
+  "uwulock_whitelist_list": {
+    "raw_name": "list",
+    "func_name": "whitelist_list",
+    "parent_func_name": "uwulock_whitelist",
+    "description": "list all whitelisted users and roles",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock whitelist list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock whitelist list"
+  },
+  "uwulock_disable": {
+    "raw_name": "disable",
+    "func_name": "uwulock_disable",
+    "parent_func_name": "uwulock_group",
+    "description": "disable all uwulocks but keep them in database",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock disable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock disable"
+  },
+  "uwulock_enable": {
+    "raw_name": "enable",
+    "func_name": "uwulock_enable",
+    "parent_func_name": "uwulock_group",
+    "description": "re-enable uwulocks",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock enable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock enable"
+  },
+  "uwulock_invites": {
+    "raw_name": "invites",
+    "func_name": "uwulock_invites",
+    "parent_func_name": "uwulock_group",
+    "description": "manage invite blocking for uwulocked users",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock invites"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "uwulock invites disable",
+      "uwulock invites enable",
+      "uwulock invites unwhitelist",
+      "uwulock invites whitelist"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock invites"
+  },
+  "uwulock_invites_enable": {
+    "raw_name": "enable",
+    "func_name": "invites_enable",
+    "parent_func_name": "uwulock_invites",
+    "description": "enable invite blocking for uwulocked users",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock invites enable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock invites enable"
+  },
+  "uwulock_invites_disable": {
+    "raw_name": "disable",
+    "func_name": "invites_disable",
+    "parent_func_name": "uwulock_invites",
+    "description": "disable invite blocking",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock invites disable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock invites disable"
+  },
+  "uwulock_invites_whitelist": {
+    "raw_name": "whitelist",
+    "func_name": "invites_whitelist",
+    "parent_func_name": "uwulock_invites",
+    "description": "allow a user or role to send invites while uwulocked",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!uwulock invites whitelist [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock invites whitelist"
+  },
+  "uwulock_invites_unwhitelist": {
+    "raw_name": "unwhitelist",
+    "func_name": "invites_unwhitelist",
+    "parent_func_name": "uwulock_invites",
+    "description": "remove a user or role from invite whitelist",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!uwulock invites unwhitelist [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock invites unwhitelist"
+  },
+  "uwulock_links": {
+    "raw_name": "links",
+    "func_name": "uwulock_links",
+    "parent_func_name": "uwulock_group",
+    "description": "manage link blocking for uwulocked users",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock links"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "uwulock links disable",
+      "uwulock links enable",
+      "uwulock links unwhitelist",
+      "uwulock links whitelist"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock links"
+  },
+  "uwulock_links_enable": {
+    "raw_name": "enable",
+    "func_name": "links_enable",
+    "parent_func_name": "uwulock_links",
+    "description": "enable link blocking for uwulocked users",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock links enable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock links enable"
+  },
+  "uwulock_links_disable": {
+    "raw_name": "disable",
+    "func_name": "links_disable",
+    "parent_func_name": "uwulock_links",
+    "description": "disable link blocking",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock links disable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock links disable"
+  },
+  "uwulock_links_whitelist": {
+    "raw_name": "whitelist",
+    "func_name": "links_whitelist",
+    "parent_func_name": "uwulock_links",
+    "description": "allow a user or role to send links while uwulocked",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!uwulock links whitelist [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock links whitelist"
+  },
+  "uwulock_links_unwhitelist": {
+    "raw_name": "unwhitelist",
+    "func_name": "links_unwhitelist",
+    "parent_func_name": "uwulock_links",
+    "description": "remove a user or role from link whitelist",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!uwulock links unwhitelist [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock links unwhitelist"
+  },
+  "uwulock_config": {
+    "raw_name": "config",
+    "func_name": "uwulock_config",
+    "parent_func_name": "uwulock_group",
+    "description": "view current uwulock configuration",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!uwulock config"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\uwulock.py",
+    "name": "uwulock config"
   }
 };

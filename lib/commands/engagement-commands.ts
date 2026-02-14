@@ -1365,7 +1365,9 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
       "begin"
     ],
     "category": "engagement",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -1389,7 +1391,9 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
       "close"
     ],
     "category": "engagement",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "message_id",
@@ -1414,7 +1418,9 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "description": "pick new winners for a giveaway",
     "aliases": [],
     "category": "engagement",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "message_id",
@@ -1463,7 +1469,9 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "description": "change a giveaway's settings",
     "aliases": [],
     "category": "engagement",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "message_id",
@@ -1497,7 +1505,9 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "description": "block someone from entering giveaways",
     "aliases": [],
     "category": "engagement",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "user",
@@ -1522,7 +1532,9 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "description": "let someone enter giveaways again",
     "aliases": [],
     "category": "engagement",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "user",
@@ -1547,7 +1559,9 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "description": "see who entered a giveaway",
     "aliases": [],
     "category": "engagement",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "message_id",
@@ -1824,8 +1838,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Manage Guild",
-      "Administrator"
+      "Administrator",
+      "Manage Guild"
     ],
     "required_args": [],
     "optional_args": [],
@@ -1852,8 +1866,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Manage Guild",
-      "Administrator"
+      "Administrator",
+      "Manage Guild"
     ],
     "required_args": [],
     "optional_args": [],
@@ -1875,8 +1889,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Manage Guild",
-      "Administrator"
+      "Administrator",
+      "Manage Guild"
     ],
     "required_args": [],
     "optional_args": [
@@ -1903,8 +1917,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Manage Guild",
-      "Administrator"
+      "Administrator",
+      "Manage Guild"
     ],
     "required_args": [
       {
@@ -1931,8 +1945,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Manage Guild",
-      "Administrator"
+      "Administrator",
+      "Manage Guild"
     ],
     "required_args": [
       {

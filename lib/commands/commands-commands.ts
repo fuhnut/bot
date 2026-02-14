@@ -3,8 +3,6 @@
 
 export interface Command {
   name: string;
-  raw_name?: string;
-  func_name?: string;
   description: string;
   aliases: string[];
   category: string;
@@ -45,11 +43,37 @@ export const COMMANDS_COMMANDS: Record<string, Command> = {
       "commands disabled",
       "commands enable",
       "commands help",
+      "commands list",
       "commands restrict",
       "commands unrestrict"
     ],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\commands\\commands.py",
     "name": "commands"
+  },
+  "commands_list": {
+    "raw_name": "list",
+    "func_name": "list_restrictions",
+    "parent_func_name": "commands_group",
+    "description": "List all command restrictions in the server",
+    "aliases": [
+      "restrictions",
+      "show"
+    ],
+    "category": "commands",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!commands list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\commands\\commands.py",
+    "name": "commands list"
   },
   "commands_unrestrict": {
     "raw_name": "unrestrict",
@@ -209,7 +233,7 @@ export const COMMANDS_COMMANDS: Record<string, Command> = {
     "raw_name": "role",
     "func_name": "restrict_role",
     "parent_func_name": "restrict_group",
-    "description": "Block a role from using a command",
+    "description": "Require a role to use a command",
     "aliases": [
       "roles"
     ],
@@ -219,17 +243,18 @@ export const COMMANDS_COMMANDS: Record<string, Command> = {
     ],
     "required_args": [
       {
-        "name": "command",
-        "type": "str"
-      },
-      {
         "name": "role",
         "type": "Role"
       }
     ],
-    "optional_args": [],
+    "optional_args": [
+      {
+        "name": "command",
+        "type": "str"
+      }
+    ],
     "examples": [
-      "!commands restrict role <command> <role>"
+      "!commands restrict role <role> [command]"
     ],
     "has_prefix": true,
     "has_slash": false,

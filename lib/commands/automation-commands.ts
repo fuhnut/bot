@@ -57,7 +57,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "add a new autoreact rule",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "trigger",
@@ -86,7 +88,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "remove an autoreact rule",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "rule_id",
@@ -111,7 +115,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "show all autoreact rules",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -131,7 +137,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "clear all autoreact rules",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -151,7 +159,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "turn autoreactions on or off",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "enabled",
@@ -200,7 +210,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "set how a rule matches text",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "rule_id",
@@ -229,7 +241,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "check a rule's match type",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "rule_id",
@@ -254,7 +268,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "show rules by match type",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -301,7 +317,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "add reactions when a role messages",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "role",
@@ -330,7 +348,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "stop tracking a role",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "role",
@@ -352,10 +372,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "raw_name": "list",
     "func_name": "roletrack_list",
     "parent_func_name": "roletrack",
-    "description": "show all tracked roles",
+    "description": "list all tracked roles",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -375,7 +397,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "change emojis for a tracked role",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "role",
@@ -404,7 +428,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "only react to users with this role",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "role",
@@ -429,7 +455,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "let a role skip autoreactions",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "role",
@@ -478,7 +506,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "set where a rule applies",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "rule_id",
@@ -512,7 +542,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "check a rule's scope",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "rule_id",
@@ -537,7 +569,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "show rules by scope",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -2744,6 +2778,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "is_group": true,
     "subcommands": [
       "greet channel add",
+      "greet channel list",
       "greet channel remove"
     ],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
@@ -2808,6 +2843,31 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
     "name": "greet channel remove"
+  },
+  "greet_channel_list": {
+    "raw_name": "list",
+    "func_name": "channel_list",
+    "parent_func_name": "channel_group",
+    "description": "list all welcome channels",
+    "aliases": [
+      "show",
+      "all"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!greet channel list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "name": "greet channel list"
   },
   "greet_dm": {
     "raw_name": "dm",
@@ -2892,9 +2952,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "check if dm welcomes are on",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -2927,6 +2985,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "is_group": true,
     "subcommands": [
       "greet leave channel-add",
+      "greet leave channel-list",
       "greet leave channel-remove",
       "greet leave message-preview",
       "greet leave message-remove",
@@ -3072,6 +3131,31 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
     "name": "greet leave channel-remove"
   },
+  "greet_leave_channel-list": {
+    "raw_name": "channel-list",
+    "func_name": "leave_channel_list",
+    "parent_func_name": "leave_group",
+    "description": "list all leave channels",
+    "aliases": [
+      "showchannels",
+      "allchannels"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!greet leave channel-list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "name": "greet leave channel-list"
+  },
   "greet_autorole": {
     "raw_name": "autorole",
     "func_name": "autorole_group",
@@ -3091,6 +3175,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": true,
     "subcommands": [
+      "greet autorole both",
       "greet autorole bots",
       "greet autorole clear",
       "greet autorole humans",
@@ -3159,6 +3244,36 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
     "name": "greet autorole humans"
+  },
+  "greet_autorole_both": {
+    "raw_name": "both",
+    "func_name": "autorole_both",
+    "parent_func_name": "autorole_group",
+    "description": "give all members a role when they join",
+    "aliases": [
+      "everyone",
+      "all"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!greet autorole both <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "name": "greet autorole both"
   },
   "greet_autorole_remove": {
     "raw_name": "remove",

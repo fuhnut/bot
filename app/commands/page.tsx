@@ -1,11 +1,9 @@
-
 "use client";
 
 import { useState, useMemo } from "react";
 import Navigation from "../components/Navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ALL_COMMANDS, Command } from "@/lib/commands";
-import { getCommandParent } from "@/lib/command-hierarchy";
 import { CATEGORY_ICONS, CATEGORY_COLORS } from "@/lib/category-icons";
 import * as Icons from "lucide-react";
 
@@ -36,12 +34,12 @@ export default function Commands() {
 
       if (searchTerm) {
         const fullPath = getFullCommandPath(cmd);
-        const matchesSearch = 
+        const matchesSearch =
           fullPath.toLowerCase().includes(searchTerm.toLowerCase()) ||
           cmd.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           cmd.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
           cmd.aliases.some(alias => alias.toLowerCase().includes(searchTerm.toLowerCase()));
-        
+
         if (!matchesSearch) return false;
       }
 
@@ -50,52 +48,15 @@ export default function Commands() {
       if (a.category !== b.category) {
         return a.category.localeCompare(b.category);
       }
-      const fullA = getFullCommandPath(a);
-      const fullB = getFullCommandPath(b);
-      return fullA.localeCompare(fullB);
+      return a.name.localeCompare(b.name);
     });
   }, [searchTerm, selectedCategory]);
 
   const totalCommands = Object.values(ALL_COMMANDS).length;
 
   const formatPermissions = (permissions: string[] = []) => {
-    if (!permissions || permissions.length === 0) return "None";
-    return permissions.map(p => 
-      p.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
-    ).join(', ');
-  };
-
-  const formatArguments = (required: any[] = [], optional: any[] = []) => {
-    const total = required.length + optional.length;
-    if (total === 0) return { summary: "None", details: [] };
-    
-    const details: Array<{name: string, type: string, required: boolean}> = [];
-    
-    required.forEach(arg => {
-      if (arg.name) {
-        details.push({
-          name: arg.name,
-          type: arg.type || 'text',
-          required: true
-        });
-      }
-    });
-    
-    optional.forEach(arg => {
-      if (arg.name) {
-        details.push({
-          name: arg.name,
-          type: arg.type || 'text',
-          required: false
-        });
-      }
-    });
-    
-    const parts = [];
-    if (required.length > 0) parts.push(`${required.length} required`);
-    if (optional.length > 0) parts.push(`${optional.length} optional`);
-    
-    return { summary: parts.join(', '), details };
+    if (!permissions || permissions.length === 0) return "none";
+    return permissions.map(p => p.replace(/_/g, " ").toLowerCase()).join(", ");
   };
 
   const getCategoryIcon = (category: string) => {
@@ -105,287 +66,181 @@ export default function Commands() {
   };
 
   const getCategoryColor = (category: string) => {
+    // Return a solid color or gradient for the icon badge
     return CATEGORY_COLORS[category as keyof typeof CATEGORY_COLORS] || "from-gray-500 to-gray-600";
   };
 
   return (
-    <div className={`min-h-screen relative overflow-hidden ${isDark ? "bg-black text-white" : "bg-white text-black"}`}>
-      {/* Minimal background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className={`absolute w-1 h-1 rounded-full ${isDark ? "bg-white" : "bg-black"}`}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              opacity: [0.1, 0.4, 0.1],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
-
+    <div className="min-h-screen bg-black text-white selection:bg-purple-500/30">
       <Navigation isDark={isDark} setIsDark={setIsDark} />
 
-      <main className="relative max-w-7xl mx-auto px-6 py-12">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <div className="mb-8">
-            <h1 className={`text-4xl md:text-5xl font-bold mb-2 ${isDark ? "text-white" : "text-black"}`}>
-              Command Reference
-            </h1>
-            <p className={`${isDark ? "text-gray-400" : "text-gray-600"}`}>
-              Browse all {totalCommands} commands across {categories.length} categories
-            </p>
-          </div>
+      {/* Decorative Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] bg-purple-900/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#5865F2]/5 rounded-full blur-[120px]" />
+      </div>
 
-          {/* Category Tabs */}
-          <div className="mb-8">
-            <div className={`flex gap-2 overflow-x-auto pb-2 scrollbar-thin ${isDark ? "scrollbar-thumb-white/20" : "scrollbar-thumb-black/20"}`}>
-              {/* All Tab */}
-              <motion.button
-                onClick={() => setSelectedCategory("all")}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
-                  selectedCategory === "all"
-                    ? isDark 
-                      ? "bg-white/10 text-white border border-white/30" 
-                      : "bg-black/10 text-black border border-black/30"
-                    : isDark 
-                      ? "bg-gray-900/50 text-gray-400 border border-white/10 hover:border-white/30" 
-                      : "bg-gray-100/50 text-gray-600 border border-black/10 hover:border-black/30"
-                }`}
-              >
-                <Icons.Grid3x3 className="w-4 h-4" />
-                <span>All Commands</span>
-                <span className={`px-2 py-0.5 rounded-full text-xs ${
-                  selectedCategory === "all"
-                    ? isDark ? "bg-white/20" : "bg-black/20"
-                    : isDark ? "bg-white/10" : "bg-black/10"
-                }`}>
-                  {totalCommands}
-                </span>
-              </motion.button>
-
-              {/* Category Tabs */}
-              {categories.map(cat => {
-                const IconComponent = getCategoryIcon(cat);
-                const colorGradient = getCategoryColor(cat);
-                const catCount = Object.values(ALL_COMMANDS).filter(c => c.category === cat).length;
-                
-                return (
-                  <motion.button
-                    key={cat}
-                    onClick={() => setSelectedCategory(cat)}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
-                      selectedCategory === cat
-                        ? isDark 
-                          ? "bg-white/10 text-white border border-white/30" 
-                          : "bg-black/10 text-black border border-black/30"
-                        : isDark 
-                          ? "bg-gray-900/50 text-gray-400 border border-white/10 hover:border-white/30" 
-                          : "bg-gray-100/50 text-gray-600 border border-black/10 hover:border-black/30"
-                    }`}
-                  >
-                    <div className={`p-1 rounded bg-gradient-to-br ${colorGradient}`}>
-                      <IconComponent className="w-3 h-3 text-white" />
-                    </div>
-                    <span className="capitalize">{cat}</span>
-                    <span className={`px-2 py-0.5 rounded-full text-xs ${
-                      selectedCategory === cat
-                        ? isDark ? "bg-white/20" : "bg-black/20"
-                        : isDark ? "bg-white/10" : "bg-black/10"
-                    }`}>
-                      {catCount}
-                    </span>
-                  </motion.button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Search bar */}
-          <div className="relative max-w-2xl mx-auto">
-            <motion.div
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.3 }}
+      <main className="max-w-7xl mx-auto px-4 md:px-8 py-24">
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+          <div>
+            <motion.h1
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-6xl md:text-8xl font-black tracking-tighter lowercase leading-[0.8] mb-4 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
             >
+              commands
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-xl text-white/40 lowercase max-w-xl"
+            >
+              browse {totalCommands} powerful commands across {categories.length} core modules. everything you need to manage your community.
+            </motion.p>
+          </div>
+
+          <div className="flex flex-col gap-4 min-w-[300px]">
+            <div className="relative group">
+              <Icons.Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20 group-focus-within:text-white transition-colors" />
               <input
                 type="text"
-                placeholder="Search commands..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className={`w-full px-6 py-4 rounded-xl ${isDark ? "bg-gradient-to-r from-gray-900/90 to-black/90 border-white/10 text-white placeholder-gray-500" : "bg-gradient-to-r from-gray-100/90 to-white/90 border-black/10 text-black placeholder-gray-500"} border focus:outline-none transition-all duration-300`}
+                placeholder="search everything..."
+                className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-4 outline-none focus:border-white/20 focus:bg-white/[0.07] transition-all lowercase text-lg font-medium"
               />
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedCategory}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        {/* Category Filter */}
+        <div className="flex flex-wrap gap-2 mb-12">
+          <button
+            onClick={() => setSelectedCategory("all")}
+            className={`px-6 py-3 rounded-xl text-sm font-bold transition-all lowercase flex items-center gap-2 border ${selectedCategory === "all"
+              ? "bg-white text-black border-white"
+              : "bg-white/5 text-white/40 border-white/5 hover:border-white/20 hover:text-white"
+              }`}
           >
-            {filteredCommands.map((cmd, index) => {
-              const fullPath = getFullCommandPath(cmd);
-              
-              return (
-                <motion.div
-                  key={`${cmd.category}:${cmd.name}`}
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.02 }}
-                  whileHover={{ 
-                    scale: 1.03,
-                    y: -5,
-                    transition: { duration: 0.2 }
-                  }}
-                  className={`group relative p-5 rounded-xl ${isDark ? "bg-gradient-to-br from-gray-900/80 to-black/80 border-white/10 hover:border-white/30" : "bg-gradient-to-br from-gray-100/80 to-white/80 border-black/10 hover:border-black/30"} border transition-all duration-300 cursor-pointer overflow-hidden`}
-                >
-                  <motion.div
-                    className={`absolute inset-0 ${isDark ? "bg-gradient-to-br from-white/5 to-transparent" : "bg-gradient-to-br from-black/5 to-transparent"} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                    animate={{
-                      backgroundPosition: ["0% 0%", "100% 100%"],
-                    }}
-                    transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
-                  />
+            <Icons.LayoutGrid className="w-4 h-4" />
+            all
+          </button>
+          {categories.map(cat => {
+            const Icon = getCategoryIcon(cat);
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-6 py-3 rounded-xl text-sm font-bold transition-all lowercase flex items-center gap-2 border ${selectedCategory === cat
+                  ? "bg-[#5865F2] text-white border-[#5865F2]"
+                  : "bg-white/5 text-white/40 border-white/5 hover:border-white/20 hover:text-white"
+                  }`}
+              >
+                <Icon className="w-4 h-4" />
+                {cat}
+              </button>
+            )
+          })}
+        </div>
 
-                  <div className="relative z-10">
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <h3 className={`text-lg font-bold ${isDark ? "text-white group-hover:text-gray-200" : "text-black group-hover:text-gray-800"} transition-colors`}>
-                        {fullPath}
-                      </h3>
+        {/* Commands Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <AnimatePresence mode="popLayout">
+            {filteredCommands.map((cmd, idx) => (
+              <motion.div
+                layout
+                key={cmd.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3, delay: idx * 0.02 }}
+                className="group relative"
+              >
+                {/* Visual Accent */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative p-7 rounded-[1.5rem] bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all flex flex-col h-full overflow-hidden">
+
+                  {/* Category Badge */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className={`p-2 rounded-xl bg-gradient-to-br ${getCategoryColor(cmd.category)} shadow-lg`}>
+                      {(() => {
+                        const Icon = getCategoryIcon(cmd.category);
+                        return <Icon className="w-4 h-4 text-white" />
+                      })()}
                     </div>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/20 group-hover:text-white/40 transition-colors border border-white/5 px-2 py-0.5 rounded-full">
+                      {cmd.category}
+                    </span>
+                  </div>
 
-                    <div className="mb-3">
-                      <span className={`text-xs px-2 py-1 rounded-md ${isDark ? "bg-purple-500/20 border-purple-500/30 text-purple-300" : "bg-purple-500/20 border-purple-500/30 text-purple-700"} border`}>
-                        {cmd.category}
-                      </span>
-                    </div>
+                  <h3 className="text-2xl font-black text-white mb-2 tracking-tighter lowercase">
+                    {cmd.name}
+                  </h3>
 
+                  <p className="text-[#CECECE] text-sm leading-relaxed mb-8 flex-1 lowercase">
+                    {cmd.description}
+                  </p>
+
+                  <div className="space-y-4 pt-4 border-t border-white/5 mt-auto">
                     {cmd.aliases && cmd.aliases.length > 0 && (
-                      <motion.div 
-                        className="flex flex-wrap gap-2 mb-3"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.1 }}
-                      >
-                        <span className={`text-xs ${isDark ? "text-gray-500" : "text-gray-600"}`}>Aliases:</span>
-                        {cmd.aliases.map((alias, aliasIndex) => (
-                          <motion.span
-                            key={alias}
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ delay: index * 0.02 + aliasIndex * 0.05 }}
-                            className={`text-xs px-2 py-1 rounded-md ${isDark ? "bg-white/5 border-white/10 text-gray-400" : "bg-black/5 border-black/10 text-gray-600"} border`}
-                            whileHover={{ scale: 1.1 }}
-                          >
-                            {alias}
-                          </motion.span>
-                        ))}
-                      </motion.div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs font-bold text-white/20 lowercase">aliases</span>
+                        <div className="flex flex-wrap gap-2">
+                          {cmd.aliases.map(a => (
+                            <span key={a} className="px-2 py-1 rounded-md bg-white/[0.05] text-[10px] font-bold text-white/40 lowercase">
+                              {a}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     )}
 
-                    <div className="mb-3">
-                      <p className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"} leading-relaxed`}>
-                        {cmd.description}
-                      </p>
-                    </div>
-
-                    <motion.div 
-                      className={`flex items-center gap-2 text-xs ${isDark ? "text-gray-500" : "text-gray-600"}`}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      <span>Arguments</span>
-                      <div className={`flex-1 h-px ${isDark ? "bg-white/10" : "bg-black/10"}`} />
-                    </motion.div>
-                    <motion.div className="mt-2">
-                      {(() => {
-                        const argData = formatArguments(cmd.required_args, cmd.optional_args);
-                        if (argData.details.length === 0) {
-                          return (
-                            <span className={`text-xs ${isDark ? "text-gray-600" : "text-gray-500"}`}>
-                              {argData.summary}
-                            </span>
-                          );
-                        }
-                        return (
-                          <div className="space-y-1">
-                            {argData.details.map((arg, idx) => (
-                              <div key={idx} className="flex items-center gap-2">
-                                <span className={`text-xs px-2 py-0.5 rounded ${
-                                  arg.required 
-                                    ? isDark ? "bg-red-500/20 text-red-300 border border-red-500/30" : "bg-red-500/20 text-red-700 border border-red-500/30"
-                                    : isDark ? "bg-blue-500/20 text-blue-300 border border-blue-500/30" : "bg-blue-500/20 text-blue-700 border border-blue-500/30"
-                                }`}>
-                                  {arg.required ? 'required' : 'optional'}
-                                </span>
-                                <span className={`text-xs font-mono ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-                                  {arg.name}
-                                </span>
-                                <span className={`text-xs ${isDark ? "text-gray-500" : "text-gray-600"}`}>
-                                  ({arg.type})
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        );
-                      })()}
-                    </motion.div>
-
-                    <motion.div 
-                      className={`mt-3 flex items-center gap-2 text-xs ${isDark ? "text-gray-500" : "text-gray-600"}`}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.25 }}
-                    >
-                      <span>Permissions</span>
-                      <div className={`flex-1 h-px ${isDark ? "bg-white/10" : "bg-black/10"}`} />
-                    </motion.div>
-                    <motion.div 
-                      className="mt-2"
-                    >
-                      <span className={`text-xs px-3 py-1 rounded-full ${isDark ? "bg-white/10 text-gray-400 border-white/20" : "bg-black/10 text-gray-600 border-black/20"} border`}>
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-bold text-white/20 lowercase">perms</span>
+                      <span className="text-xs font-medium text-white/40 lowercase italic">
                         {formatPermissions(cmd.permissions)}
                       </span>
-                    </motion.div>
+                    </div>
+
+                    {/* Arguments Summary */}
+                    {(cmd.required_args?.length > 0 || cmd.optional_args?.length > 0) && (
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {cmd.required_args?.map(arg => (
+                          <div key={arg.name} className="px-3 py-1.5 rounded-xl bg-red-500/10 border border-red-500/20 text-[11px] font-bold text-red-400 lowercase whitespace-normal text-center">
+                            {arg.name}*
+                          </div>
+                        ))}
+                        {cmd.optional_args?.map(arg => (
+                          <div key={arg.name} className="px-3 py-1.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-[11px] font-bold text-blue-400 lowercase whitespace-normal text-center">
+                            {arg.name}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </AnimatePresence>
+
+                  {/* Hover Detail Glow */}
+                  <div className="absolute -bottom-1 -right-1 w-24 h-24 bg-white/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
 
         {filteredCommands.length === 0 && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-40"
           >
-            <p className={`text-lg ${isDark ? "text-gray-400" : "text-gray-600"}`}>
-              No commands found matching your search
-            </p>
+            <div className="inline-flex p-8 rounded-full bg-white/5 mb-8">
+              <Icons.SearchX className="w-12 h-12 text-white/20" />
+            </div>
+            <h2 className="text-2xl font-black lowercase mb-2">no commands found</h2>
+            <p className="text-white/40 lowercase">try checking another category or refining your search.</p>
           </motion.div>
         )}
       </main>

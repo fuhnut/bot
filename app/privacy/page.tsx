@@ -1,129 +1,75 @@
 "use client"
 
-import { useState } from "react"
 import Navigation from "../components/Navigation"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { useSiteConfig } from "@/lib/site-config"
 
 export default function PrivacyPage() {
-  const [isDark, setIsDark] = useState(true)
+  const { config } = useSiteConfig()
+  const botName = (config?.botName || "bot").toLowerCase()
 
   return (
-    <div className={`min-h-screen ${isDark ? "bg-black text-white" : "bg-white text-black"}`}>
-      <Navigation isDark={isDark} setIsDark={setIsDark} />
+    <div className="min-h-screen bg-black text-white selection:bg-purple-500/30">
+      <Navigation isDark={true} setIsDark={() => { }} />
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}>
-          <h1 className="text-5xl font-bold mb-2">Privacy Policy</h1>
-          <p className={`${isDark ? "text-gray-400" : "text-gray-600"} mb-12`}>Last Updated: October 28, 2025</p>
-        </motion.div>
-
+      <main className="max-w-4xl mx-auto px-6 py-24">
         <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="space-y-8"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="mb-16"
         >
-          <section>
-            <h2 className="text-2xl font-bold mb-3">1. WHAT WE COLLECT</h2>
-            <p className={`mb-3 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-              We collect data necessary for the bot to work:
-            </p>
-            <ul className={`list-disc pl-6 space-y-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-              <li>Server and user IDs</li>
-              <li>Command usage</li>
-              <li>Server configurations you set up</li>
-              <li>Content for features like custom commands, warnings, levels, and reminders</li>
-              <li>Temporary message data for snipe commands</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-3">2. HOW WE USE IT</h2>
-            <p className={`mb-3 ${isDark ? "text-gray-300" : "text-gray-700"}`}>We use your data only to:</p>
-            <ul className={`list-disc pl-6 space-y-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-              <li>Make the bot work</li>
-              <li>Save your server settings</li>
-              <li>Execute commands and features</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-3">3. DATA SHARING</h2>
-            <p className={`mb-3 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-              We do NOT sell or share your data with anyone except:
-            </p>
-            <ul className={`list-disc pl-6 space-y-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-              <li>Discord (required for bot functionality)</li>
-              <li>When required by law</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-3">4. DATA SECURITY</h2>
-            <p className={isDark ? "text-gray-300" : "text-gray-700"}>
-              We store data securely and protect it with reasonable security measures.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-3">5. DATA RETENTION</h2>
-            <ul className={`list-disc pl-6 space-y-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-              <li>Data stays while the bot is in your server</li>
-              <li>Temporary data (like snipe) is deleted automatically</li>
-              <li>Remove the bot to delete your server data</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-3">6. YOUR RIGHTS</h2>
-            <p className={`mb-3 ${isDark ? "text-gray-300" : "text-gray-700"}`}>You can:</p>
-            <ul className={`list-disc pl-6 space-y-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-              <li>Remove the bot anytime to delete server data</li>
-              <li>Contact us with questions through our support server</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-3">7. UPDATES</h2>
-            <p className={isDark ? "text-gray-300" : "text-gray-700"}>
-              We may update this policy. Continued use means you accept changes.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-3">8. CHILDREN</h2>
-            <p className={isDark ? "text-gray-300" : "text-gray-700"}>The bot is not for users under 13.</p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-3">9. CONTACT</h2>
-            <p className={isDark ? "text-gray-300" : "text-gray-700"}>
-              Questions? Contact us through our support server.
-            </p>
-          </section>
-
-          <section
-            className={`p-6 rounded-lg ${isDark ? "bg-gray-900/50 border-white/10" : "bg-gray-100/50 border-black/10"} border`}
-          >
-            <p className={`font-semibold ${isDark ? "text-white" : "text-black"}`}>
-              By using Eris, you agree to this Privacy Policy.
-            </p>
-          </section>
-        </motion.div>
-
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className={`mt-12 pt-8 border-t ${isDark ? "border-white/10" : "border-black/10"} text-center`}
-        >
-          <p className={isDark ? "text-gray-400" : "text-gray-600"}>
-            Read our{" "}
-            <Link href="/tos" className="underline hover:no-underline">
-              Terms of Service
-            </Link>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter lowercase leading-[0.8] mb-4 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+            privacy
+          </h1>
+          <p className="text-xl text-white/40 lowercase max-w-xl">
+            last updated: january 2026. how we handle your data.
           </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="space-y-16"
+        >
+          <section>
+            <h2 className="text-2xl font-black lowercase mb-4 tracking-tight">1. collection</h2>
+            <p className="text-white/40 lowercase text-lg leading-relaxed mb-4">we collect only what's needed for {botName} to function:</p>
+            <ul className="space-y-2 text-white/30 lowercase text-lg list-disc pl-6">
+              <li>server and user ids</li>
+              <li>command execution logs</li>
+              <li>custom server configurations</li>
+              <li>temporary moderation data</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-black lowercase mb-4 tracking-tight">2. usage</h2>
+            <p className="text-white/40 lowercase text-lg leading-relaxed">
+              your data is used exclusively to provide the bot's features. we do not sell, trade, or share your server information with third parties outside of discord's own infrastructure.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-black lowercase mb-4 tracking-tight">3. security</h2>
+            <p className="text-white/40 lowercase text-lg leading-relaxed">
+              all data is stored in encrypted databases with restricted access. temporary data (like snipes) is automatically purged after short intervals.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-black lowercase mb-4 tracking-tight">4. your rights</h2>
+            <p className="text-white/40 lowercase text-lg leading-relaxed">
+              you can request data deletion by removing {botName} from your server, or by contacting our support team via discord.
+            </p>
+          </section>
+
+          <section className="pt-16 border-t border-white/5 text-center">
+            <p className="text-white/20 lowercase">
+              return to our{" "}
+              <Link href="/tos" className="text-white hover:text-[#5865F2] transition-colors">terms of service</Link>
+            </p>
+          </section>
         </motion.div>
       </main>
     </div>

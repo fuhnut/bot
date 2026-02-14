@@ -17,6 +17,210 @@ export interface Command {
 }
 
 export const UTILITY_COMMANDS: Record<string, Command> = {
+  "embed": {
+    "raw_name": "embed",
+    "func_name": "embed_group",
+    "parent_func_name": null,
+    "description": "manage and create custom embeds",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [
+      "Embed Links"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!embed"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "embed create",
+      "embed delete",
+      "embed list",
+      "embed save",
+      "embed send"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\embeds.py",
+    "name": "embed"
+  },
+  "embed_create": {
+    "raw_name": "create",
+    "func_name": "embed_create",
+    "parent_func_name": "embed_group",
+    "description": "open an interactive embed creator",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [
+      "Embed Links"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!embed create"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\embeds.py",
+    "name": "embed create"
+  },
+  "embed_send": {
+    "raw_name": "send",
+    "func_name": "embed_send",
+    "parent_func_name": "embed_group",
+    "description": "send an embed using a script",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [
+      "Embed Links"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "script",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!embed send [script]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\embeds.py",
+    "name": "embed send"
+  },
+  "embed_save": {
+    "raw_name": "save",
+    "func_name": "embed_save",
+    "parent_func_name": "embed_group",
+    "description": "save an embed script for future use",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [
+      "Embed Links"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "name",
+        "type": "str"
+      },
+      {
+        "name": "script",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!embed save [name] [script]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\embeds.py",
+    "name": "embed save"
+  },
+  "embed_list": {
+    "raw_name": "list",
+    "func_name": "embed_list",
+    "parent_func_name": "embed_group",
+    "description": "list your saved embeds",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [
+      "Embed Links"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!embed list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\embeds.py",
+    "name": "embed list"
+  },
+  "variables": {
+    "raw_name": "variables",
+    "func_name": "variables_command",
+    "parent_func_name": null,
+    "description": "show all available script variables",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!variables"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\embeds.py",
+    "name": "variables"
+  },
+  "embed_delete": {
+    "raw_name": "delete",
+    "func_name": "embed_delete",
+    "parent_func_name": "embed_group",
+    "description": "delete a saved embed by id",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [
+      "Embed Links"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "embed_id",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!embed delete [embed_id]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\embeds.py",
+    "name": "embed delete"
+  },
+  "ce": {
+    "raw_name": "ce",
+    "func_name": "ce_command",
+    "parent_func_name": null,
+    "description": "send an embed using a script (prefix only)",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [
+      "Embed Links"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "script",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!ce [script]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\embeds.py",
+    "name": "ce"
+  },
   "get": {
     "raw_name": "get",
     "func_name": "get_group",
@@ -1030,6 +1234,109 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\tags.py",
     "name": "tag variables"
   },
+  "timezone": {
+    "raw_name": "timezone",
+    "func_name": "timezone_group",
+    "parent_func_name": null,
+    "description": "Manage your timezone settings",
+    "aliases": [
+      "tz"
+    ],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!timezone"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "timezone list",
+      "timezone set",
+      "timezone view"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\tz.py",
+    "name": "timezone"
+  },
+  "timezone_set": {
+    "raw_name": "set",
+    "func_name": "timezone_set",
+    "parent_func_name": "timezone_group",
+    "description": "Set your timezone",
+    "aliases": [
+      "update"
+    ],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "timezone",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!timezone set <timezone>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\tz.py",
+    "name": "timezone set"
+  },
+  "timezone_list": {
+    "raw_name": "list",
+    "func_name": "timezone_list",
+    "parent_func_name": "timezone_group",
+    "description": "View timezones of users in this server",
+    "aliases": [
+      "server"
+    ],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!timezone list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\tz.py",
+    "name": "timezone list"
+  },
+  "timezone_view": {
+    "raw_name": "view",
+    "func_name": "timezone_view",
+    "parent_func_name": "timezone_group",
+    "description": "Check your timezone or another user's",
+    "aliases": [
+      "check",
+      "get"
+    ],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "Member"
+      }
+    ],
+    "examples": [
+      "!timezone view [user]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\tz.py",
+    "name": "timezone view"
+  },
   "utility_botinfo": {
     "raw_name": "botinfo",
     "func_name": "botinfo",
@@ -1303,5 +1610,333 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
     "name": "utility scannsfw"
+  },
+  "voicemaster": {
+    "raw_name": "voicemaster",
+    "func_name": "voicemaster_group",
+    "parent_func_name": null,
+    "description": "voice channel management system",
+    "aliases": [
+      "vm",
+      "vc"
+    ],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!voicemaster"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "voicemaster claim",
+      "voicemaster delete",
+      "voicemaster deny",
+      "voicemaster drag",
+      "voicemaster information",
+      "voicemaster limit",
+      "voicemaster lock",
+      "voicemaster permit",
+      "voicemaster rename",
+      "voicemaster reset",
+      "voicemaster reveal",
+      "voicemaster setup",
+      "voicemaster unlock"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster"
+  },
+  "voicemaster_reset": {
+    "raw_name": "reset",
+    "func_name": "reset_voicemaster",
+    "parent_func_name": "voicemaster_group",
+    "description": "reset voicemaster configuration",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!voicemaster reset"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster reset"
+  },
+  "voicemaster_setup": {
+    "raw_name": "setup",
+    "func_name": "setup_voicemaster",
+    "parent_func_name": "voicemaster_group",
+    "description": "set up voicemaster system",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!voicemaster setup"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster setup"
+  },
+  "voicemaster_unlock": {
+    "raw_name": "unlock",
+    "func_name": "unlock_vc",
+    "parent_func_name": "voicemaster_group",
+    "description": "unlock your temporary voice channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!voicemaster unlock"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster unlock"
+  },
+  "voicemaster_lock": {
+    "raw_name": "lock",
+    "func_name": "lock_vc",
+    "parent_func_name": "voicemaster_group",
+    "description": "lock your temporary voice channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!voicemaster lock"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster lock"
+  },
+  "voicemaster_reveal": {
+    "raw_name": "reveal",
+    "func_name": "reveal_vc",
+    "parent_func_name": "voicemaster_group",
+    "description": "reveal your hidden voice channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!voicemaster reveal"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster reveal"
+  },
+  "voicemaster_permit": {
+    "raw_name": "permit",
+    "func_name": "permit_user",
+    "parent_func_name": "voicemaster_group",
+    "description": "allow a user in your voice channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "Member"
+      }
+    ],
+    "examples": [
+      "!voicemaster permit [user]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster permit"
+  },
+  "voicemaster_deny": {
+    "raw_name": "deny",
+    "func_name": "deny_user",
+    "parent_func_name": "voicemaster_group",
+    "description": "deny a user from your voice channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "Member"
+      }
+    ],
+    "examples": [
+      "!voicemaster deny [user]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster deny"
+  },
+  "voicemaster_claim": {
+    "raw_name": "claim",
+    "func_name": "claim_vc",
+    "parent_func_name": "voicemaster_group",
+    "description": "claim an unowned temporary voice channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!voicemaster claim"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster claim"
+  },
+  "voicemaster_drag": {
+    "raw_name": "drag",
+    "func_name": "drag_user",
+    "parent_func_name": "voicemaster_group",
+    "description": "drag a user to your voice channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "Member"
+      }
+    ],
+    "examples": [
+      "!voicemaster drag [user]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster drag"
+  },
+  "voicemaster_delete": {
+    "raw_name": "delete",
+    "func_name": "delete_vc",
+    "parent_func_name": "voicemaster_group",
+    "description": "delete your temporary voice channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!voicemaster delete"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster delete"
+  },
+  "voicemaster_information": {
+    "raw_name": "information",
+    "func_name": "vc_info",
+    "parent_func_name": "voicemaster_group",
+    "description": "view information about your voice channel",
+    "aliases": [
+      "info"
+    ],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!voicemaster information"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster information"
+  },
+  "voicemaster_limit": {
+    "raw_name": "limit",
+    "func_name": "set_limit",
+    "parent_func_name": "voicemaster_group",
+    "description": "set the member limit for your voice channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "limit",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!voicemaster limit [limit]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster limit"
+  },
+  "voicemaster_rename": {
+    "raw_name": "rename",
+    "func_name": "rename_vc",
+    "parent_func_name": "voicemaster_group",
+    "description": "rename your temporary voice channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "name",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!voicemaster rename [name]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\voicemaster.py",
+    "name": "voicemaster rename"
   }
 };

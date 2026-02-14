@@ -5,14 +5,19 @@ import { motion } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
 import Navigation from "./components/Navigation"
 import FeatureCards from "./components/FeatureCards"
+import ServerLogging from "./components/ServerLogging"
+import AntiNukeShowcase from "./components/AntiNukeShowcase"
+import SocialShowcase from "./components/SocialShowcase"
 import Link from "next/link"
 import Image from "next/image"
 import { useSiteConfig } from "@/lib/site-config"
 import * as Icons from "lucide-react"
+import SvgDiscord from "@/app/components/icons/DiscordIcon"
 
 export default function Home() {
   const { data: session } = useSession()
   const { config, loading: configLoading } = useSiteConfig()
+  const [imageError, setImageError] = useState(false)
   const [guilds, setGuilds] = useState<any[]>([])
   const [loadingGuilds, setLoadingGuilds] = useState(false)
 
@@ -149,140 +154,155 @@ export default function Home() {
     { label: "Status", value: stats?.status || "Offline", icon: Icons.Activity, color: stats?.status === "Online" ? "text-green-400" : "text-red-400" },
   ]
 
-  // Server card component for marquee
+  // Server card component for marquee - simple version
   const ServerCard = ({ server }: { server: any }) => (
-    <div className="flex items-center gap-3 px-6 py-2 rounded-full bg-[#1B1B1B]/50 border border-[#FAFAFA]/10 hover:border-[#FAFAFA]/30 transition-all flex-shrink-0 w-fit">
+    <div className="flex items-center gap-2.5 px-3 py-1 flex-shrink-0 w-fit">
       {server.icon ? (
         <Image
           src={server.icon}
           alt={server.name}
-          width={40}
-          height={40}
-          className="w-8 h-8 rounded-full"
+          width={32}
+          height={32}
+          className="w-6 h-6 rounded-full"
           unoptimized
         />
       ) : (
-        <div className="w-8 h-8 rounded-full bg-[#252525] flex items-center justify-center text-xs font-bold">
+        <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center text-[10px] font-bold">
           {server.name?.[0] ?? "?"}
         </div>
       )}
       <div className="flex flex-col">
-        <span className="font-semibold text-[#FAFAFA] text-sm">{server.name}</span>
-        <span className="text-xs text-[#CECECE]/70">{server.members?.toLocaleString() || 0} members</span>
+        <span className="font-bold text-[#FAFAFA] text-[11px] leading-tight lowercase">
+          {server.name}
+        </span>
+        <span className="text-[9px] text-white/30 lowercase leading-tight">
+          {server.members?.toLocaleString() || 0} members
+        </span>
       </div>
     </div>
   )
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA] selection:bg-[#FAFAFA] selection:text-[#0A0A0A]">
-      <Navigation isDark={true} setIsDark={() => {}} />
+    <div className="min-h-screen bg-transparent text-white selection:bg-purple-500/30 selection:text-white">
+      <Navigation isDark={true} setIsDark={() => { }} />
 
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[80%] md:w-[40%] h-[40%] bg-[#FAFAFA]/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[80%] md:w-[40%] h-[40%] bg-[#FAFAFA]/5 rounded-full blur-[120px]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[80%] md:w-[40%] h-[40%] bg-purple-900/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[80%] md:w-[40%] h-[40%] bg-red-900/20 rounded-full blur-[120px]" />
       </div>
 
       <main className="relative z-10 overflow-x-hidden">
-        {/* Top Servers Banner */}
-        {topServers.length > 0 && (
-          <section className="w-full bg-gradient-to-r from-[#1B1B1B] to-[#0A0A0A] border-b border-[#FAFAFA]/10 py-4 overflow-hidden">
-            <div ref={marqueeRef} className="relative flex items-center h-20 overflow-hidden">
-              <motion.div
-                ref={marqueeInnerRef}
-                initial={{ x: 0 }}
-                animate={marqueeDistance > 0 ? { x: [0, -marqueeDistance] } : { x: 0 }}
-                transition={{ duration: marqueeDuration, repeat: Infinity, repeatType: 'loop', ease: "linear" }}
-                style={{ display: 'flex' }}
-                className="flex gap-4 whitespace-nowrap will-change-transform"
-              >
-                {[...topServers, ...topServers].map((server, i) => (
-                  <ServerCard key={`${server.id}-${i}`} server={server} />
-                ))}
-              </motion.div>
-
-              {marqueeDistance === 0 && (
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#FAFAFA]/60"></div>
-                </div>
-              )}
-            </div>
-          </section>
-        )}
-
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-20 md:pt-32 pb-16 md:pb-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-24 md:pt-40 pb-20 md:pb-32">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center lg:text-left"
             >
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-br from-[#FAFAFA] to-[#A0A0A0] bg-clip-text text-transparent">
-                {config?.botName ?? "Bot"}
+              <h1 className="text-7xl sm:text-8xl md:text-9xl font-black tracking-tighter mb-8 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent lowercase leading-[0.8] pb-4">
+                {config?.botName ?? "bot"}
               </h1>
-              
-              <p className="text-lg md:text-xl text-[#CECECE] mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                {config?.tagline ?? "The ultimate multi-purpose Discord bot designed to elevate your server's experience with powerful automation and moderation."}
+
+              <p className="text-xl md:text-2xl text-white/40 mb-12 leading-relaxed max-w-xl mx-auto lg:mx-0 lowercase font-medium">
+                {config?.tagline ?? "the ultimate multi-purpose discord bot designed to elevate your server's experience with powerful automation and moderation."}
               </p>
 
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
-                <Link
-                  href={config?.inviteLink ?? "#"}
-                  className="px-8 py-4 rounded-2xl bg-[#FAFAFA] text-[#0A0A0A] font-bold hover:scale-105 transition-transform flex items-center justify-center gap-2"
-                >
-                  <Icons.Plus className="w-5 h-5" />
-                  Add to Discord
-                </Link>
-                <Link
-                  href="/commands"
-                  className="px-8 py-4 rounded-2xl bg-[#1B1B1B] border border-[#FAFAFA]/10 text-[#FAFAFA] font-bold hover:bg-[#252525] transition-colors flex items-center justify-center gap-2"
-                >
-                  <Icons.Zap className="w-5 h-5" />
-                  Explore Commands
-                </Link>
+              <div className="flex flex-col gap-8 justify-center lg:justify-start">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-4 items-center">
+                  <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <Link
+                      href={config?.inviteLink ?? "#"}
+                      className="px-10 py-5 rounded-2xl bg-[#5865F2] hover:bg-[#4752C4] text-white font-black transition-all flex items-center justify-center gap-3 lowercase shadow-[0_15px_40px_rgba(88,101,242,0.3)] hover:scale-[1.02] active:scale-95 text-lg"
+                    >
+                      <SvgDiscord className="w-5 h-5" />
+                      add to discord
+                    </Link>
+                    <Link
+                      href="/commands"
+                      className="px-10 py-5 rounded-2xl bg-[#4E5058] hover:bg-[#6D6F78] text-white font-black transition-all flex items-center justify-center gap-3 lowercase hover:scale-[1.02] active:scale-95 text-lg"
+                    >
+                      <Icons.Terminal className="w-5 h-5" />
+                      view commands
+                    </Link>
+                  </div>
+
+                  <div className="flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/5 rounded-full backdrop-blur-sm animate-in fade-in slide-in-from-left-4 duration-1000">
+                    <p className="text-[11px] font-bold text-white/40 lowercase tracking-tight">
+                      powering <span className="text-white">{stats?.servers || "0"}</span> communities with <span className="text-white">{stats?.users || "0"}</span> users.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Top Servers Marquee - Moved Here */}
+                {topServers.length > 0 && (
+                  <div className="relative w-full max-w-xl overflow-hidden group/marquee">
+                    <div ref={marqueeRef} className="relative flex items-center h-12">
+                      <motion.div
+                        ref={marqueeInnerRef}
+                        initial={{ x: 0 }}
+                        animate={marqueeDistance > 0 ? { x: [0, -marqueeDistance] } : { x: 0 }}
+                        transition={{ duration: marqueeDuration, repeat: Infinity, repeatType: 'loop', ease: "linear" }}
+                        style={{ display: 'flex' }}
+                        className="flex gap-8 whitespace-nowrap will-change-transform"
+                      >
+                        {[...topServers, ...topServers].map((server, i) => (
+                          <ServerCard key={`${server.id}-${i}`} server={server} />
+                        ))}
+                      </motion.div>
+                    </div>
+                    {/* Fades */}
+                    <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#050505] to-transparent z-10" />
+                    <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#050505] to-transparent z-10" />
+                  </div>
+                )}
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
               className="relative hidden lg:block group"
             >
-              <div className="relative w-64 h-64 md:w-72 md:h-72 mx-auto cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#FAFAFA]/20 to-transparent rounded-3xl blur-2xl animate-pulse" />
-                <motion.div 
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative z-10 w-full h-full rounded-3xl p-1 bg-gradient-to-br from-[#FAFAFA]/30 to-[#FAFAFA]/5 backdrop-blur-xl border border-[#FAFAFA]/20 overflow-hidden shadow-2xl"
+              <div className="relative w-96 h-96 mx-auto">
+                {/* Modern Brand Showcase */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#5865F2] to-[#7289da] rounded-[4rem] blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity animate-pulse" />
+
+                <motion.div
+                  animate={{ y: [0, -20, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative z-10 w-full h-full rounded-[4rem] p-4 bg-[#111214] border border-white/10 overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.8)] flex items-center justify-center transition-all duration-500 group-hover:border-[#5865F2]/30"
                 >
-                  <Image
-                    src={config?.botLogo ?? ""}
-                    alt="Bot Logo"
-                    fill
-                    className="object-cover rounded-2xl bg-[#1B1B1B]"
-                    unoptimized
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+                  <div className="relative w-full h-full rounded-[3.5rem] overflow-hidden">
+                    {config?.botLogo && !imageError ? (
+                      <img
+                        src={config.botLogo}
+                        alt="bot logo"
+                        className="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-700"
+                        onError={() => setImageError(true)}
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-[#5865F2] to-purple-600 flex items-center justify-center font-black text-6xl">
+                        {config?.botName?.[0] || "B"}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+
+                {/* Status Indicator */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1, duration: 0.5 }}
+                  className="absolute -bottom-4 -right-4 p-4 bg-[#23a55a] rounded-full border-[8px] border-[#0A0A0A] z-20 shadow-2xl"
+                >
+                  <div className="w-6 h-6 bg-white rounded-full opacity-20 animate-ping absolute inset-0" />
                 </motion.div>
               </div>
-              
-              {/* Floating elements */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 right-0 p-4 rounded-2xl bg-[#1B1B1B]/80 backdrop-blur-md border border-[#FAFAFA]/10 shadow-xl"
-              >
-                <Icons.Shield className="w-6 h-6 text-[#FAFAFA]" />
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-10 left-[-20px] p-4 rounded-2xl bg-[#1B1B1B]/80 backdrop-blur-md border border-[#FAFAFA]/10 shadow-xl"
-              >
-                <Icons.Zap className="w-6 h-6 text-[#FAFAFA]" />
-              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -330,49 +350,61 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-6 md:p-8 rounded-3xl bg-[#1B1B1B]/40 border border-[#FAFAFA]/5 backdrop-blur-sm flex items-center gap-6"
+                className="p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/5 backdrop-blur-3xl flex items-center gap-8 hover:bg-white/[0.05] transition-colors"
               >
-                <div className="p-4 rounded-2xl bg-[#FAFAFA]/5">
-                  <stat.icon className="w-6 h-6 text-[#FAFAFA]" />
+                <div className="p-5 rounded-2xl bg-white/5 group-hover:bg-purple-500/10 transition-colors">
+                  <stat.icon className="w-8 h-8 text-white/40" />
                 </div>
                 <div>
-                  <p className="text-sm text-[#CECECE] font-medium">{stat.label}</p>
-                  <p className={`text-2xl font-bold ${stat.color || "text-[#FAFAFA]"}`}>{stat.value}</p>
+                  <p className="text-sm text-white/30 font-bold lowercase mb-1">{stat.label}</p>
+                  <p className={`text-4xl font-black tracking-tighter ${stat.color || "text-white"}`}>{stat.value}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </section>
 
+
         {/* Features Section */}
         <section className="py-16 md:py-20">
           <FeatureCards isDark={true} />
         </section>
 
+        {/* Showcase Grid Section */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+            <ServerLogging />
+            <AntiNukeShowcase />
+            <div className="lg:col-span-2">
+              <SocialShowcase />
+            </div>
+          </div>
+        </section>
+
         {/* User Servers Section */}
         {session && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20 border-t border-[#FAFAFA]/5">
-            <div className="flex flex-col sm:flex-row items-center justify-between mb-10 gap-6">
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-white/5">
+            <div className="flex flex-col sm:flex-row items-center justify-between mb-12 gap-8">
               <div className="text-center sm:text-left">
-                <h2 className="text-3xl font-bold mb-2">Your Servers</h2>
-                <p className="text-[#CECECE]">Manage {config?.botName ?? "the bot"} in your communities.</p>
+                <h2 className="text-4xl md:text-5xl font-black mb-3 tracking-tighter lowercase">your servers</h2>
+                <p className="text-white/40 text-lg lowercase leading-relaxed">manage <span className="text-white font-bold">{config?.botName ?? "the bot"}</span> in your communities.</p>
               </div>
-              <div className="flex items-center gap-3 px-4 py-2 rounded-2xl bg-[#1B1B1B]/40 border border-[#FAFAFA]/10">
-                <Image src={session.user?.image || ""} alt={session.user?.name || 'User avatar'} width={40} height={40} className="rounded-full border border-[#FAFAFA]/20" unoptimized />
-                <span className="font-medium">{session.user?.name}</span>
+              <div className="flex items-center gap-4 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 shadow-xl">
+                <Image src={session.user?.image || ""} alt={session.user?.name || 'user avatar'} width={44} height={44} className="rounded-full border-2 border-white/10" unoptimized />
+                <span className="font-bold lowercase">{session.user?.name}</span>
               </div>
             </div>
 
             {loadingGuilds ? (
-              <div className="flex justify-center py-12">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#FAFAFA]"></div>
+              <div className="flex justify-center py-20">
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-purple-500"></div>
               </div>
             ) : guildsError ? (
-              <div className="text-center py-12 rounded-3xl bg-[#1B1B1B]/20 border border-dashed border-[#FAFAFA]/10 px-6">
-                <p className="text-[#CECECE] mb-4">{guildsError}</p>
-                <div className="flex gap-3 justify-center">
-                  <Link href="/api/auth/signin" className="px-4 py-2 rounded-lg bg-[#FAFAFA] text-[#000] font-semibold">Sign in</Link>
-                  <Link href={config?.inviteLink ?? "#"} className="px-4 py-2 rounded-lg bg-[#1B1B1B] border border-[#FAFAFA]/10 text-[#FAFAFA]">Invite Bot</Link>
+              <div className="text-center py-20 rounded-[2.5rem] bg-white/[0.02] border border-dashed border-white/10 px-8">
+                <p className="text-white/40 mb-6 lowercase">{guildsError}</p>
+                <div className="flex gap-4 justify-center">
+                  <Link href="/api/auth/signin" className="px-6 py-3 rounded-xl bg-white text-black font-black lowercase transition-all hover:bg-purple-400">sign in</Link>
+                  <Link href={config?.inviteLink ?? "#"} className="px-6 py-3 rounded-xl bg-black border border-white/10 text-white font-black lowercase transition-all hover:bg-white hover:text-black">invite {config?.botName ?? "bot"}</Link>
                 </div>
               </div>
             ) : guilds.length > 0 ? (
@@ -397,17 +429,17 @@ export default function Home() {
                         {guild.name?.[0] ?? "?"}
                       </div>
                     )}
-                    <span className="text-sm font-medium truncate w-full px-2">{guild.name}</span>
-                    <button className="mt-4 px-4 py-2 rounded-xl bg-[#FAFAFA]/5 hover:bg-[#FAFAFA]/10 text-xs font-semibold sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
-                      Manage
+                    <span className="text-sm font-medium truncate w-full px-2 lowercase">{guild.name}</span>
+                    <button className="mt-4 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-bold sm:opacity-0 sm:group-hover:opacity-100 transition-opacity lowercase">
+                      manage
                     </button>
                   </motion.div>
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 rounded-3xl bg-[#1B1B1B]/20 border border-dashed border-[#FAFAFA]/10 px-6">
-                <p className="text-[#CECECE]">No mutual servers found.</p>
-                <Link href={config?.inviteLink ?? "#"} className="text-[#FAFAFA] text-sm font-medium hover:underline mt-2 inline-block">Invite the bot to your server</Link>
+              <div className="text-center py-12 rounded-3xl bg-white/[0.02] border border-dashed border-white/10 px-6">
+                <p className="text-white/40 lowercase">no mutual servers found.</p>
+                <Link href={config?.inviteLink ?? "#"} className="text-white text-sm font-bold hover:underline mt-2 inline-block lowercase">invite the bot to your server</Link>
               </div>
             )}
           </section>
@@ -415,41 +447,40 @@ export default function Home() {
 
         {/* CTA Section */}
         {!session && (
-          <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-20">
-            <div className="relative p-8 md:p-16 rounded-[2rem] md:rounded-[3rem] bg-gradient-to-br from-[#1B1B1B] to-[#0A0A0A] border border-[#FAFAFA]/10 overflow-hidden text-center">
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5 pointer-events-none" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-10">join plenty of other servers who trust and use {config?.botName ?? "the bot"}.</h2>
+          <section className="max-w-5xl mx-auto px-4 sm:px-6 py-20 pb-32">
+            <div className="relative p-12 md:p-24 rounded-[3rem] bg-gradient-to-br from-purple-900/20 via-black to-red-900/20 border border-white/5 overflow-hidden text-center">
+              <div className="absolute inset-0 bg-grid-white/[0.02] pointer-events-none" />
+              <h2 className="text-4xl md:text-6xl font-black mb-12 tracking-tighter lowercase">join plenty of other servers who trust and use {config?.botName ?? "the bot"}.</h2>
               <Link
                 href="/api/auth/signin"
-                className="inline-flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 rounded-2xl bg-[#FAFAFA] text-[#0A0A0A] font-bold hover:scale-105 transition-transform"
+                className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-white text-black font-black hover:bg-purple-400 transition-all lowercase"
               >
-                <Icons.LogIn className="w-5 h-5" />
-                Get Started Now
+                get started now
               </Link>
             </div>
           </section>
         )}
 
         {/* Footer */}
-        <footer className="max-w-7xl mx-auto px-4 sm:px-6 py-12 border-t border-[#FAFAFA]/5">
+        <footer className="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-10">
             <div className="flex items-center gap-3">
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Image src={config?.botLogo ?? ""} alt={config?.botName ?? "Bot"} width={32} height={32} className="rounded-lg" unoptimized />
+                <Image src={config?.botLogo ?? ""} alt={config?.botName ?? "bot"} width={32} height={32} className="rounded-lg" unoptimized />
               </motion.div>
-              <span className="font-bold text-xl">{config?.botName ?? "Bot"}</span>
+              <span className="font-black text-xl lowercase">{config?.botName ?? "bot"}</span>
             </div>
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-[#CECECE]">
-              <Link href="/tos" className="hover:text-[#FAFAFA] transition-colors">Terms of Service</Link>
-              <Link href="/privacy" className="hover:text-[#FAFAFA] transition-colors">Privacy Policy</Link>
-              <Link href="/faq" className="hover:text-[#FAFAFA] transition-colors">FAQ</Link>
-              <Link href="/discord" className="hover:text-[#FAFAFA] transition-colors">Support</Link>
-              <Link href="/status" className="hover:text-[#FAFAFA] transition-colors">Status</Link>
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-white/40">
+              <Link href="/tos" className="hover:text-purple-400 transition-colors lowercase">terms of service</Link>
+              <Link href="/privacy" className="hover:text-purple-400 transition-colors lowercase">privacy policy</Link>
+              <Link href="/faq" className="hover:text-purple-400 transition-colors lowercase">faq</Link>
+              <Link href="/discord" className="hover:text-purple-400 transition-colors lowercase">support</Link>
+              <Link href="/status" className="hover:text-purple-400 transition-colors lowercase">status</Link>
             </div>
-            <p className="text-xs text-[#666] text-center md:text-right">© {new Date().getFullYear()} {config?.botName ?? "Bot"}. All rights reserved.</p>
+            <p className="text-xs text-white/20 text-center md:text-right lowercase">© {new Date().getFullYear()} {config?.botName ?? "bot"}. all rights reserved.</p>
           </div>
         </footer>
       </main>

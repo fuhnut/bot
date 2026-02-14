@@ -233,7 +233,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "description": "custom booster roles",
     "aliases": [
       "boosterrole",
-      "br"
+      "br",
+      "boosterole",
+      "bc"
     ],
     "category": "customization",
     "permissions": [],
@@ -283,20 +285,16 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     ],
     "optional_args": [
       {
-        "name": "primary_color",
+        "name": "primary",
         "type": "str"
       },
       {
-        "name": "secondary_color",
-        "type": "str"
-      },
-      {
-        "name": "tertiary_color",
+        "name": "secondary",
         "type": "str"
       }
     ],
     "examples": [
-      "!boosterroles create <name> [primary_color] [secondary_color] [tertiary_color]"
+      "!boosterroles create <name> [primary] [secondary]"
     ],
     "has_prefix": true,
     "has_slash": false,
@@ -342,13 +340,18 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "permissions": [],
     "required_args": [
       {
-        "name": "color",
+        "name": "primary",
         "type": "str"
       }
     ],
-    "optional_args": [],
+    "optional_args": [
+      {
+        "name": "secondary",
+        "type": "str"
+      }
+    ],
     "examples": [
-      "!boosterroles color <color>"
+      "!boosterroles color <primary> [secondary]"
     ],
     "has_prefix": true,
     "has_slash": false,
@@ -625,7 +628,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "description": "add a role to give boosters automatically",
     "aliases": [],
     "category": "customization",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "role",
@@ -650,7 +655,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "description": "remove an award role",
     "aliases": [],
     "category": "customization",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [
       {
         "name": "role",
@@ -677,7 +684,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "list"
     ],
     "category": "customization",
-    "permissions": [],
+    "permissions": [
+      "Manage Messages"
+    ],
     "required_args": [],
     "optional_args": [],
     "examples": [

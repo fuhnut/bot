@@ -21,6 +21,7 @@ export const CATEGORY_ICONS = {
   music: "Music",
   fun_games: "Gamepad2",
   admin: "CrownIcon",
+  social: "Share2",
 };
 
 export const CATEGORY_COLORS = {
@@ -45,6 +46,7 @@ export const CATEGORY_COLORS = {
   music: "from-fuchsia-500 to-fuchsia-600",
   fun_games: "from-red-500 to-pink-600",
   admin: "from-purple-500 to-indigo-600",
+  social: "from-blue-400 to-blue-500",
 };
 
 export const CATEGORY_DESCRIPTIONS = {
@@ -69,4 +71,5 @@ export const CATEGORY_DESCRIPTIONS = {
   music: "Music playback and management",
   fun_games: "Games and entertainment",
   admin: "Admin-only commands",
+  social: "Search social media profiles (TikTok, Roblox, etc.)",
 };

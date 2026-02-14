@@ -1,96 +1,147 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
 import * as Icons from "lucide-react"
+import { useSiteConfig } from "@/lib/site-config"
+import DiscordEmbed from "@/app/components/DiscordEmbed"
+import BotTag from "@/app/components/BotTag"
 
 const FEATURES = [
-  { title: "Advanced Moderation", description: "Keep your server safe with powerful moderation tools and anti-spam protection", icon: Icons.Shield },
-  { title: "Smart Leveling System", description: "Engage members with XP rewards, rank cards, and role progression", icon: Icons.TrendingUp },
-  { title: "Custom Automation", description: "Set up triggers, welcome messages, and auto-responses instantly", icon: Icons.Zap },
-  { title: "Giveaway Manager", description: "Run exciting giveaways with easy setup and automatic winner selection", icon: Icons.Gift },
-  { title: "Embed Builder", description: "Create stunning embeds without writing any code", icon: Icons.Palette },
-  { title: "Server Analytics", description: "Gain insights into your server with detailed stats and charts", icon: Icons.BarChart3 },
-  { title: "Raid Protection", description: "Anti-nuke system with automatic enforcement and whitelist management", icon: Icons.Lock },
-  { title: "Role Management", description: "Mass assign roles, create self-role systems, and manage permissions", icon: Icons.Users },
-  { title: "Content Moderation", description: "Filter unwanted content with word filters and invite detection", icon: Icons.Eye },
-  { title: "Suggestions System", description: "Let your community vote on suggestions with built-in voting workflows", icon: Icons.MessageSquare },
-  { title: "User Profiles", description: "Check user info, badges, and server statistics at a glance", icon: Icons.User },
-  { title: "Logging & Audits", description: "Track all server changes with detailed logs and audit trails", icon: Icons.FileText },
+  {
+    title: "autoresponders",
+    description: "reply with messages or embeds on keyword triggers with variables.",
+    icon: Icons.MessageSquare
+  },
+  {
+    title: "customization",
+    description: "customize {botName}'s look and feel to match your server's identity.",
+    icon: Icons.Palette
+  },
+  {
+    title: "moderation",
+    description: "keep your server safe with advanced auto-moderation and logging system.",
+    icon: Icons.Shield
+  },
 ]
 
-interface Feature {
-  title: string
-  description: string
-  icon: typeof Icons.Shield
-}
-
-interface FeatureCardsProps {
-  isDark: boolean
-}
-
-export default function FeatureCards({ isDark }: FeatureCardsProps) {
-  const [cards, setCards] = useState<Feature[]>([])
-
-  useEffect(() => {
-    // Shuffle features and select random subset on mount and periodically
-    const updateCards = () => {
-      const shuffled = [...FEATURES].sort(() => Math.random() - 0.5)
-      setCards(shuffled.slice(0, 6))
-    }
-
-    updateCards()
-    const interval = setInterval(updateCards, 8000) // Change every 8 seconds
-
-    return () => clearInterval(interval)
-  }, [])
+export default function FeatureCards({ isDark }: { isDark: boolean }) {
+  const { config } = useSiteConfig()
+  const botName = (config?.botName || "bot").toLowerCase()
+  const botLogo = config?.botLogo || "https://cdn.discordapp.com/embed/avatars/0.png"
 
   return (
-    <div className="relative w-full py-12">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-[#FAFAFA] mb-4">Powerful Features</h2>
-        <p className="text-[#CECECE] max-w-2xl mx-auto">Everything you need to manage and grow your Discord community with ease.</p>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-32 overflow-hidden">
+      <div className="text-center mb-24">
+        <h2 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter lowercase leading-[0.9]">
+          features that stay <span className="text-[#5865F2] drop-shadow-[0_0_30px_rgba(88,101,242,0.4)]">highly</span> customizable
+        </h2>
+        <p className="text-xl text-white/40 lowercase max-w-2xl mx-auto leading-relaxed">
+          every feature of <span className="text-white font-bold">{botName}</span> is designed to be as customizable as possible
+        </p>
       </div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4"
-      >
-        {cards.map((feature, idx) => {
-          const Icon = feature.icon
 
-          return (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className="relative p-6 rounded-2xl border backdrop-blur-sm cursor-pointer group overflow-hidden bg-[#1B1B1B]/40 border-[#CECECE]/10 hover:border-[#CECECE]/30 transition-all duration-300 soft-bevel"
-            >
-              {/* Subtle gradient background on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-[#FAFAFA]/5 to-transparent" />
+      <div className="grid lg:grid-cols-2 gap-24 items-center">
+        {/* Left: Authentic Discord Mockups */}
+        <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-[#313338] rounded-xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.6)] relative z-20 border border-white/5 max-w-lg p-4 flex flex-col gap-4 font-sans"
+          >
+            {/* User Message */}
+            <div className="flex gap-4 group hover:bg-[#2e3035] -mx-4 px-4 py-1 transition-colors">
+              <img src="https://files.catbox.moe/bkstbg.webp" alt="User Avatar" className="w-10 h-10 rounded-full mt-0.5 cursor-pointer hover:opacity-80 transition-opacity" />
+              <div className="flex flex-col w-full">
+                <div className="flex items-center gap-2">
+                  <span className="font-medium text-[#b490f0] hover:underline cursor-pointer">
+                    cakedave
+                  </span>
+                  <span className="text-xs text-[#949BA4] ml-1">
+                    Today at 9:37 PM
+                  </span>
+                </div>
+                <div className="text-[#dbdee1] whitespace-pre-wrap">
+                  67
+                </div>
+              </div>
+            </div>
 
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="mb-4 p-3 rounded-xl bg-[#FAFAFA]/5 w-fit group-hover:bg-[#FAFAFA]/10 transition-colors duration-300">
-                  <Icon className="w-6 h-6 text-[#FAFAFA]" />
+            {/* Bot Response */}
+            <div className="flex gap-4 group hover:bg-[#2e3035] -mx-4 px-4 py-1 transition-colors mt-0">
+              <img src={botLogo} alt="Bot Avatar" className="w-10 h-10 rounded-full mt-0.5 cursor-pointer hover:opacity-80 transition-opacity" />
+              <div className="flex flex-col w-full">
+                <div className="flex items-center gap-2">
+                  <span className="font-medium text-white hover:underline cursor-pointer">
+                    {botName}
+                  </span>
+                  <BotTag />
+                  <span className="text-xs text-[#949BA4] ml-1">
+                    Today at 9:37 PM
+                  </span>
                 </div>
 
-                <h3 className="font-bold text-lg mb-2 text-[#FAFAFA]">
-                  {feature.title}
+                {/* Reply Context */}
+                <div className="flex items-center gap-2 text-[#b5bac1] text-xs mb-1 group-hover:text-white transition-colors">
+                  <div className="w-8 border-t-2 border-l-2 border-[#4f545c] rounded-tl-md h-2 -ml-9 mt-2 absolute border-b-0 border-r-0" />
+                  <img src="https://files.catbox.moe/bkstbg.webp" className="w-4 h-4 rounded-full" alt="" />
+                  <span className="font-bold text-[#b490f0] hover:underline cursor-pointer">@cakedave</span>
+                  <span className="hover:text-white text-[#b5bac1] cursor-pointer truncate max-w-[200px]">67</span>
+                </div>
+
+                <div className="text-[#dbdee1] whitespace-pre-wrap mb-1">
+                  <span className="bg-[#3e404f] text-[#c9cdfb] rounded px-1 hover:bg-[#5865F2] hover:text-white transition-colors cursor-pointer font-medium">@cakedave</span>
+                </div>
+
+                <div className="mt-1">
+                  <DiscordEmbed embed={{
+                    color: "#5865F2",
+                    author: {
+                      name: `${botName} autoresponder`,
+                      iconUrl: botLogo
+                    },
+                    description: `**trigger detected:** "67"\n\nyeah 67 is better than 41! 😂👉🏾👉🏾`,
+                    footer: {
+                      text: `${botName} • today at 9:37 pm`
+                    },
+                    fields: []
+                  }} />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Main Background Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-[#5865F2]/10 blur-[150px] z-0" />
+        </div>
+
+        {/* Right: Feature List */}
+        <div className="flex flex-col gap-16">
+          {FEATURES.map((feature, idx) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="flex gap-8 group"
+            >
+              <div className="flex-shrink-0 w-16 h-16 rounded-3xl bg-white/5 border border-white/5 flex items-center justify-center group-hover:bg-[#5865F2]/10 group-hover:border-[#5865F2]/20 transition-all shadow-2xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <feature.icon className="w-8 h-8 text-white/40 group-hover:text-[#5865F2] transition-colors relative z-10" />
+              </div>
+              <div className="flex-grow pb-16 border-b border-white/5 last:border-0">
+                <h3 className="text-3xl font-black mb-4 group-hover:text-[#5865F2] transition-colors tracking-tight lowercase">
+                  {feature.title.replace("{botName}", botName)}
                 </h3>
-                <p className="text-sm leading-relaxed text-[#CECECE]">
-                  {feature.description}
+                <p className="text-white/30 leading-relaxed text-xl lowercase">
+                  {feature.description.replace("{botName}", botName)}
                 </p>
               </div>
             </motion.div>
-          )
-        })}
-      </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

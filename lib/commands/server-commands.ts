@@ -1719,8 +1719,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Manage Guild",
-      "Administrator"
+      "Administrator",
+      "Manage Guild"
     ],
     "required_args": [],
     "optional_args": [
@@ -1751,8 +1751,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Manage Guild",
-      "Administrator"
+      "Administrator",
+      "Manage Guild"
     ],
     "required_args": [
       {
@@ -1779,8 +1779,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Manage Guild",
-      "Administrator"
+      "Administrator",
+      "Manage Guild"
     ],
     "required_args": [],
     "optional_args": [
@@ -1811,8 +1811,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Manage Guild",
-      "Administrator"
+      "Administrator",
+      "Manage Guild"
     ],
     "required_args": [
       {

@@ -3,8 +3,6 @@
 
 export interface Command {
   name: string;
-  raw_name?: string;
-  func_name?: string;
   description: string;
   aliases: string[];
   category: string;
@@ -26,6 +24,7 @@ import { FUN_COMMANDS } from "./fun-commands";
 import { MODERATION_COMMANDS } from "./moderation-commands";
 import { SECURITY_COMMANDS } from "./security-commands";
 import { SERVER_COMMANDS } from "./server-commands";
+import { SOCIAL_COMMANDS } from "./social-commands";
 import { UTILITY_COMMANDS } from "./utility-commands";
 
 export const ALL_COMMANDS: Record<string, Command> = {
@@ -37,5 +36,6 @@ export const ALL_COMMANDS: Record<string, Command> = {
   ...MODERATION_COMMANDS,
   ...SECURITY_COMMANDS,
   ...SERVER_COMMANDS,
+  ...SOCIAL_COMMANDS,
   ...UTILITY_COMMANDS,
 };

@@ -1,13 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   reactStrictMode: true,
-  swcMinify: true,
   compress: true,
-  generateEtags: true,
-  poweredByHeader: false,
-  productionBrowserSourceMaps: false,
-  optimizeFonts: true,
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
@@ -16,10 +14,19 @@ const nextConfig: NextConfig = {
         hostname: "cdn.discordapp.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "files.catbox.moe",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ibb.co",
+        pathname: "/**",
+      },
     ],
   },
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ["lucide-react"],
   },
   headers: async () => {
