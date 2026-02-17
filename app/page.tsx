@@ -274,7 +274,7 @@ export default function Home() {
                 <motion.div
                   animate={{ y: [0, -20, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative z-10 w-full h-full rounded-[4rem] p-4 bg-[#111214] border border-white/10 overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.8)] flex items-center justify-center transition-all duration-500 group-hover:border-[#5865F2]/30"
+                  className="relative z-10 w-full h-full rounded-[4rem] p-4 bg-transparent border border-white/5 overflow-hidden shadow-lg flex items-center justify-center transition-all duration-500 group-hover:border-[#5865F2]/30"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
                   <div className="relative w-full h-full rounded-[3.5rem] overflow-hidden">
