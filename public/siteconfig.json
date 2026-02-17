@@ -1,11 +1,11 @@
 {
   "botName": "breed",
-  "botLogo": "https://i.ibb.co/rKjqv7hs/output-1.jpg",
-  "favicon": "https://i.ibb.co/rKjqv7hs/output-1.jpg",
+  "botLogo": "https://files.catbox.moe/g9fe9e.png",
+  "favicon": "https://files.catbox.moe/g9fe9e.png",
   "tagline": "breed. discord's most versatile bot.",
-  "description": "**Breed bot.**",
-  "image": "https://i.ibb.co/rKjqv7hs/output-1.jpg",
-  "inviteLink": "https://discord.com/oauth2/authorize?client_id=1461665163957764201",
+  "description": "breed. discord's most versatile bot.",
+  "image": "https://files.catbox.moe/g9fe9e.png",
+  "inviteLink": "https://discord.com/oauth2/authorize?client_id=146166516395774201",
   "clientSecret": "",
-  "discordServerInvite": "https://discord.gg/NeYgSnmj"
+  "discordServerInvite": "https://discord.gg/breed-bot"
 }
