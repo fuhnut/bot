@@ -185,19 +185,20 @@ export default function DiscordEmbed({ embed }: { embed: Embed }) {
             {embed.buttons && embed.buttons.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-2 px-1">
                     {embed.buttons.map((btn, i) => {
-                        const styleClasses = {
+                        const styles: Record<string, string> = {
                             primary: "bg-[#5865F2] hover:bg-[#4752C4]",
                             secondary: "bg-[#4E5058] hover:bg-[#6D6F78]",
                             success: "bg-[#248046] hover:bg-[#1A6334]",
                             danger: "bg-[#DA373C] hover:bg-[#A12828]",
                             link: "bg-[#4E5058] hover:bg-[#6D6F78]"
-                        }[btn.style as keyof typeof styleClasses] || "bg-[#4E5058]";
+                        };
+                        const styleClasses = styles[btn.style] || "bg-[#4E5058]";
 
                         return (
                             <button
                                 key={i}
                                 disabled={btn.disabled}
-                                className={`${styleClasses} text-white px-4 py-1.5 rounded-[3px] text-sm font-medium transition-colors flex items-center gap-1.5 min-h-[32px]`}
+                                className={`${styleClasses} text-white px-4 py-1.5 rounded-[3px] text-sm font-medium transition-colors flex items-center gap-1.5 min-h-[32px] disabled:opacity-50 disabled:cursor-not-allowed`}
                             >
                                 {btn.emoji && <span>{btn.emoji}</span>}
                                 {btn.label}
