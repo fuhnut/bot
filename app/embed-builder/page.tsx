@@ -754,6 +754,41 @@ export default function EmbedBuilder() {
                                 </select>
                               </div>
                             </div>
+                            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+                              <div className="space-y-2">
+                                <label className="font-black uppercase tracking-[0.2em] text-[8px] text-white/20">Emoji</label>
+                                <input
+                                  type="text"
+                                  placeholder="e.g. 👋"
+                                  className="w-full bg-[#0a0a0a] border border-white/5 rounded-lg p-3 text-xs"
+                                  value={btn.emoji}
+                                  onChange={(e) => updateButton(index, "emoji", e.target.value)}
+                                />
+                              </div>
+                              {btn.style === 'link' && (
+                                <div className="space-y-2">
+                                  <label className="font-black uppercase tracking-[0.2em] text-[8px] text-white/20">URL</label>
+                                  <input
+                                    type="text"
+                                    placeholder="https://..."
+                                    className="w-full bg-[#0a0a0a] border border-white/5 rounded-lg p-3 text-xs"
+                                    value={btn.url}
+                                    onChange={(e) => updateButton(index, "url", e.target.value)}
+                                  />
+                                </div>
+                              )}
+                            </div>
+                            <div className="mt-4 pt-4 border-t border-white/5">
+                              <label className="flex items-center gap-3 cursor-pointer select-none">
+                                <input
+                                  type="checkbox"
+                                  className="w-5 h-5 rounded-md accent-[#5865F2]"
+                                  checked={btn.disabled}
+                                  onChange={(e) => updateButton(index, "disabled", e.target.checked)}
+                                />
+                                <span className="font-black uppercase tracking-widest text-[10px] text-white/40">Disabled</span>
+                              </label>
+                            </div>
                           </div>
                         ))}
                         {embedData.buttons.length < 5 && (
