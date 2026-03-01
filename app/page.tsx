@@ -35,7 +35,7 @@ const ServerCard = ({ server }: { server: any }) => (
     </div>
     <div className="flex flex-col">
       <span className="text-[15px] font-black text-white tracking-tight leading-tight lowercase">
-        {server.name}
+        {server?.name || "Unknown Server"}
       </span>
       <span className="text-[11px] text-white/30 font-bold lowercase tracking-wide">
         {formatMembers(server.members || 0)} members

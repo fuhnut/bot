@@ -29,31 +29,42 @@ const Sparkline = ({ data, color, height = 40 }: { data: number[], color: string
   const max = Math.max(...data);
   const range = max - min === 0 ? 1 : max - min;
 
-  const points = data.map((val, i) => {
-    const x = (i / (data.length - 1)) * 100;
-    const y = height - ((val - min) / range) * height;
-    return `${x},${y}`;
-  }).join(" ");
+  const points = data.map((val, i) => ({
+    x: (i / (data.length - 1)) * 100,
+    y: height - ((val - min) / range) * height
+  }));
+
+  // Cubic Bezier smoothing
+  let path = `M ${points[0].x},${points[0].y}`;
+  for (let i = 0; i < points.length - 1; i++) {
+    const curr = points[i];
+    const next = points[i + 1];
+    const mx = (curr.x + next.x) / 2;
+    path += ` C ${mx},${curr.y} ${mx},${next.y} ${next.x},${next.y}`;
+  }
+
+  const fillPath = `${path} L 100,${height} L 0,${height} Z`;
 
   return (
     <svg viewBox={`0 0 100 ${height}`} className="w-full h-full overflow-visible">
       <defs>
-        <linearGradient id={`gradient-${color}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={color} stopOpacity="0.2" />
+        <linearGradient id={`gradient-${color.replace('#', '')}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.3" />
           <stop offset="100%" stopColor={color} stopOpacity="0" />
         </linearGradient>
       </defs>
       <path
-        d={`M ${points.split(" ")[0]} L ${points} L 100,${height} L 0,${height} Z`}
-        fill={`url(#gradient-${color})`}
+        d={fillPath}
+        fill={`url(#gradient-${color.replace('#', '')})`}
       />
-      <polyline
+      <path
+        d={path}
         fill="none"
         stroke={color}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        points={points}
+        className="drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"
       />
     </svg>
   );
@@ -92,10 +103,10 @@ export default function Status() {
   if (!hasMounted) return <div className="min-h-screen bg-black" />;
 
   const metrics = [
-    { label: "latency", value: `${stats?.websocket_latency ?? 0}ms`, history: stats?.history?.latency || [], color: "#ffffff" },
-    { label: "cpu", value: `${stats?.cpu_usage ?? 0}%`, history: stats?.history?.cpu || [], color: "#ffffff" },
-    { label: "memory", value: `${stats?.ram_usage ?? 0} mb`, history: stats?.history?.ram || [], color: "#ffffff" },
-    { label: "network", value: `${stats?.net_speed ?? 0} mb/s`, history: stats?.history?.net || [], color: "#ffffff" }
+    { label: "latency", value: `${stats?.websocket_latency ?? 0}ms`, history: stats?.history?.latency || [], color: "#5865F2" },
+    { label: "cpu", value: `${stats?.cpu_usage ?? 0}%`, history: stats?.history?.cpu || [], color: "#3498DB" },
+    { label: "memory", value: `${Math.round(stats?.ram_usage ?? 0)} mb`, history: stats?.history?.ram || [], color: "#E91E63" },
+    { label: "network", value: `${stats?.net_speed ?? 0} mb/s`, history: stats?.history?.net || [], color: "#1ABC9C" }
   ];
 
   return (
@@ -146,20 +157,45 @@ export default function Status() {
               {metrics.map((metric, index) => (
                 <div
                   key={metric.label}
-                  className="relative p-8 bg-[#0a0a0a] border border-white/5 rounded-[2rem] overflow-hidden group hover:bg-white/[0.02] transition-all"
+                  className="relative p-8 bg-[#0a0a0a] border border-white/5 rounded-[2rem] overflow-hidden group hover:bg-white/[0.03] transition-all duration-500"
                 >
-                  <div className="flex justify-between items-start mb-10">
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">{metric.label}</span>
-                    <span className="text-2xl font-black text-white/80 tracking-tighter">{metric.value}</span>
+                  {/* Subtle Grid Background */}
+                  <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+
+                  <div className="flex justify-between items-start mb-10 relative z-10">
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">{metric.label}</span>
+                    <span className="text-3xl font-black text-white tracking-tighter">{metric.value}</span>
                   </div>
-                  <div className="h-16 w-full mt-auto opacity-20 group-hover:opacity-100 transition-opacity">
-                    <Sparkline data={metric.history} color={metric.color} />
+                  <div className="h-20 w-full mt-auto opacity-40 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-[1.02] relative z-10">
+                    <Sparkline data={metric.history} color={metric.color} height={60} />
                   </div>
                 </div>
               ))}
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* System Details */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-8 bg-[#0a0a0a] border border-white/5 rounded-[2rem] flex items-center justify-between">
+            <div className="space-y-1">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">shard uptime</span>
+              <p className="text-xl font-black lowercase">{stats?.uptime || "0h 0m"}</p>
+            </div>
+            <div className="w-12 h-12 rounded-2xl bg-white/[0.03] flex items-center justify-center">
+              <CustomIcons.ActivityIcon className="w-5 h-5 text-white/40" />
+            </div>
+          </div>
+          <div className="p-8 bg-[#0a0a0a] border border-white/5 rounded-[2rem] flex items-center justify-between">
+            <div className="space-y-1">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">engine status</span>
+              <p className="text-xl font-black lowercase">v2.0.4-stable</p>
+            </div>
+            <div className="w-12 h-12 rounded-2xl bg-white/[0.03] flex items-center justify-center">
+              <CustomIcons.TerminalIcon className="w-5 h-5 text-white/40" />
+            </div>
+          </div>
+        </div>
 
       </main >
     </div >

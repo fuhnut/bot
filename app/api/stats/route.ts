@@ -6,6 +6,7 @@ let cachedStats = {
   uptime: "Offline",
   status: "Offline",
   guild_ids: [] as string[],
+  top_servers: [] as any[],
   websocket_latency: 0,
   cpu_usage: 0,
   ram_usage: 0,
