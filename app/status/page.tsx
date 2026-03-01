@@ -175,28 +175,6 @@ export default function Status() {
           )}
         </AnimatePresence>
 
-        {/* System Details */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-8 bg-[#0a0a0a] border border-white/5 rounded-[2rem] flex items-center justify-between">
-            <div className="space-y-1">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">shard uptime</span>
-              <p className="text-xl font-black lowercase">{stats?.uptime || "0h 0m"}</p>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-white/[0.03] flex items-center justify-center">
-              <CustomIcons.ActivityIcon className="w-5 h-5 text-white/40" />
-            </div>
-          </div>
-          <div className="p-8 bg-[#0a0a0a] border border-white/5 rounded-[2rem] flex items-center justify-between">
-            <div className="space-y-1">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">engine status</span>
-              <p className="text-xl font-black lowercase">v2.0.4-stable</p>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-white/[0.03] flex items-center justify-center">
-              <CustomIcons.TerminalIcon className="w-5 h-5 text-white/40" />
-            </div>
-          </div>
-        </div>
-
       </main >
     </div >
   );
