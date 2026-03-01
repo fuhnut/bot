@@ -414,7 +414,10 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "func_name": "help_command",
     "parent_func_name": null,
     "description": "show all commands and how to use them",
-    "aliases": [],
+    "aliases": [
+      "h",
+      "cmds"
+    ],
     "category": "utility",
     "permissions": [],
     "required_args": [],
@@ -433,6 +436,272 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\help.py",
     "name": "help"
+  },
+  "emotes": {
+    "raw_name": "emotes",
+    "func_name": "emotes",
+    "parent_func_name": null,
+    "description": "View all emotes in the server",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emotes"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "emotes"
+  },
+  "boosters": {
+    "raw_name": "boosters",
+    "func_name": "boosters",
+    "parent_func_name": null,
+    "description": "View all recent server boosters",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosters"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "boosters lost"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "boosters"
+  },
+  "boosters_lost": {
+    "raw_name": "lost",
+    "func_name": "boosters_lost",
+    "parent_func_name": "boosters",
+    "description": "View list of most recent lost boosters",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosters lost"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "boosters lost"
+  },
+  "rolelist": {
+    "raw_name": "rolelist",
+    "func_name": "rolelist",
+    "parent_func_name": null,
+    "description": "View all roles in the server",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!rolelist"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "rolelist"
+  },
+  "bots": {
+    "raw_name": "bots",
+    "func_name": "bots",
+    "parent_func_name": null,
+    "description": "View all bots in the server",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!bots"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "bots"
+  },
+  "members": {
+    "raw_name": "members",
+    "func_name": "members",
+    "parent_func_name": null,
+    "description": "View members in a role",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "examples": [
+      "!members [role]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "members"
+  },
+  "seen": {
+    "raw_name": "seen",
+    "func_name": "seen",
+    "parent_func_name": null,
+    "description": "Seen when a member was last seen in the server",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      }
+    ],
+    "examples": [
+      "!seen [member]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "seen"
+  },
+  "membercount": {
+    "raw_name": "membercount",
+    "func_name": "membercount",
+    "parent_func_name": null,
+    "description": "View server member count",
+    "aliases": [
+      "mc"
+    ],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!membercount"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "membercount"
+  },
+  "channelinfo": {
+    "raw_name": "channelinfo",
+    "func_name": "channelinfo",
+    "parent_func_name": null,
+    "description": "View information about a channel",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "channel",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!channelinfo [channel]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "channelinfo"
+  },
+  "randomhex": {
+    "raw_name": "randomhex",
+    "func_name": "randomhex",
+    "parent_func_name": null,
+    "description": "Generate a random hex (color)",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!randomhex"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "randomhex"
+  },
+  "charinfo": {
+    "raw_name": "charinfo",
+    "func_name": "charinfo",
+    "parent_func_name": null,
+    "description": "Get information about a character/symbol..etc...",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "characters",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!charinfo [characters]"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "charinfo"
+  },
+  "invites": {
+    "raw_name": "invites",
+    "func_name": "invites",
+    "parent_func_name": null,
+    "description": "View all active invites",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invites"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
+    "name": "invites"
   },
   "pagination": {
     "raw_name": "pagination",
@@ -1245,17 +1514,21 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "category": "utility",
     "permissions": [],
     "required_args": [],
-    "optional_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "Member"
+      }
+    ],
     "examples": [
-      "!timezone"
+      "!timezone [user]"
     ],
     "has_prefix": true,
     "has_slash": true,
     "is_group": true,
     "subcommands": [
       "timezone list",
-      "timezone set",
-      "timezone view"
+      "timezone set"
     ],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\tz.py",
     "name": "timezone"
@@ -1264,21 +1537,22 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "set",
     "func_name": "timezone_set",
     "parent_func_name": "timezone_group",
-    "description": "Set your timezone",
+    "description": "Set your timezone location",
     "aliases": [
-      "update"
+      "update",
+      "location"
     ],
     "category": "utility",
     "permissions": [],
     "required_args": [
       {
-        "name": "timezone",
+        "name": "location",
         "type": "str"
       }
     ],
     "optional_args": [],
     "examples": [
-      "!timezone set <timezone>"
+      "!timezone set <location>"
     ],
     "has_prefix": true,
     "has_slash": false,
@@ -1293,7 +1567,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "parent_func_name": "timezone_group",
     "description": "View timezones of users in this server",
     "aliases": [
-      "server"
+      "everyone"
     ],
     "category": "utility",
     "permissions": [],
@@ -1309,89 +1583,10 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\tz.py",
     "name": "timezone list"
   },
-  "timezone_view": {
-    "raw_name": "view",
-    "func_name": "timezone_view",
-    "parent_func_name": "timezone_group",
-    "description": "Check your timezone or another user's",
-    "aliases": [
-      "check",
-      "get"
-    ],
-    "category": "utility",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "user",
-        "type": "Member"
-      }
-    ],
-    "examples": [
-      "!timezone view [user]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\tz.py",
-    "name": "timezone view"
-  },
-  "utility_botinfo": {
-    "raw_name": "botinfo",
-    "func_name": "botinfo",
-    "parent_func_name": "utility_group",
-    "description": "shows detailed information about the bot",
-    "aliases": [],
-    "category": "utility",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!utility botinfo"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility botinfo"
-  },
-  "utility": {
-    "raw_name": "utility",
-    "func_name": "utility_group",
-    "parent_func_name": null,
-    "description": "handy tools for your server",
-    "aliases": [],
-    "category": "utility",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!utility"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "utility botinfo",
-      "utility changelog",
-      "utility checkdev",
-      "utility myid",
-      "utility ping",
-      "utility poll",
-      "utility qr",
-      "utility reminder",
-      "utility reminders",
-      "utility scannsfw"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility"
-  },
-  "utility_ping": {
+  "ping": {
     "raw_name": "ping",
     "func_name": "ping",
-    "parent_func_name": "utility_group",
+    "parent_func_name": null,
     "description": "check if bot is alive",
     "aliases": [],
     "category": "utility",
@@ -1399,217 +1594,63 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!utility ping"
+      "!ping"
     ],
     "has_prefix": true,
-    "has_slash": false,
+    "has_slash": true,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility ping"
+    "name": "ping"
   },
-  "utility_changelog": {
+  "changelog": {
     "raw_name": "changelog",
     "func_name": "changelog",
-    "parent_func_name": "utility_group",
-    "description": "see what's new",
-    "aliases": [],
-    "category": "utility",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!utility changelog"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility changelog"
-  },
-  "utility_myid": {
-    "raw_name": "myid",
-    "func_name": "my_id",
-    "parent_func_name": "utility_group",
-    "description": "see your discord user id number",
-    "aliases": [],
-    "category": "utility",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!utility myid"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility myid"
-  },
-  "utility_checkdev": {
-    "raw_name": "checkdev",
-    "func_name": "check_dev",
-    "parent_func_name": "utility_group",
-    "description": "check if you have bot developer permissions",
-    "aliases": [],
-    "category": "utility",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!utility checkdev"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility checkdev"
-  },
-  "utility_poll": {
-    "raw_name": "poll",
-    "func_name": "poll",
-    "parent_func_name": "utility_group",
-    "description": "creates a voting poll where everyone can pick their favorite",
-    "aliases": [],
-    "category": "utility",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "question",
-        "type": "str"
-      }
-    ],
-    "optional_args": [
-      {
-        "name": "options",
-        "type": "str"
-      },
-      {
-        "name": "duration",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!utility poll <question> [options] [duration]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility poll"
-  },
-  "utility_reminder": {
-    "raw_name": "reminder",
-    "func_name": "reminder",
-    "parent_func_name": "utility_group",
-    "description": "sets a reminder so you remember important things later",
+    "parent_func_name": null,
+    "description": "shows the latest updates and changes to the bot",
     "aliases": [
-      "remind",
-      "remindme"
+      "changes",
+      "updates",
+      "log"
     ],
-    "category": "utility",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "duration",
-        "type": "str"
-      },
-      {
-        "name": "text",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!utility reminder <duration> <text>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility reminder"
-  },
-  "utility_reminders": {
-    "raw_name": "reminders",
-    "func_name": "list_reminders",
-    "parent_func_name": "utility_group",
-    "description": "shows all reminders you have set up",
-    "aliases": [],
     "category": "utility",
     "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
-      "!utility reminders"
+      "!changelog"
     ],
     "has_prefix": true,
-    "has_slash": false,
+    "has_slash": true,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility reminders"
+    "name": "changelog"
   },
-  "utility_qr": {
-    "raw_name": "qr",
-    "func_name": "qr_code",
-    "parent_func_name": "utility_group",
-    "description": "makes a QR code picture from your text",
-    "aliases": [],
-    "category": "utility",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "text",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!utility qr <text>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility qr"
-  },
-  "utility_scannsfw": {
-    "raw_name": "scannsfw",
-    "func_name": "scannsfw",
-    "parent_func_name": "utility_group",
-    "description": "checks if a picture is appropriate for everyone",
+  "botinfo": {
+    "raw_name": "botinfo",
+    "func_name": "botinfo_cmd",
+    "parent_func_name": null,
+    "description": "shows detailed bot system information",
     "aliases": [
-      "nsfw",
-      "scan"
+      "bi",
+      "info",
+      "about",
+      "i"
     ],
     "category": "utility",
     "permissions": [],
     "required_args": [],
-    "optional_args": [
-      {
-        "name": "user",
-        "type": "Member"
-      },
-      {
-        "name": "file",
-        "type": "str"
-      }
-    ],
+    "optional_args": [],
     "examples": [
-      "!utility scannsfw [user] [file]"
+      "!botinfo"
     ],
     "has_prefix": true,
-    "has_slash": false,
+    "has_slash": true,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\utility.py",
-    "name": "utility scannsfw"
+    "name": "botinfo"
   },
   "voicemaster": {
     "raw_name": "voicemaster",

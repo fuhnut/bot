@@ -1579,6 +1579,249 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\giveaways.py",
     "name": "giveaway entries"
   },
+  "highlight": {
+    "raw_name": "highlight",
+    "func_name": "highlight",
+    "parent_func_name": null,
+    "description": "Set notifications for when a keyword is said",
+    "aliases": [
+      "hl"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!highlight"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "highlight add",
+      "highlight ignore",
+      "highlight list",
+      "highlight remove",
+      "highlight reset"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
+    "name": "highlight"
+  },
+  "highlight_add": {
+    "raw_name": "add",
+    "func_name": "hl_add",
+    "parent_func_name": "highlight",
+    "description": "Add a highlighted keyword",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "keyword",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!highlight add <keyword>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
+    "name": "highlight add"
+  },
+  "highlight_list": {
+    "raw_name": "list",
+    "func_name": "hl_list",
+    "parent_func_name": "highlight",
+    "description": "List all keywords set in a server",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!highlight list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
+    "name": "highlight list"
+  },
+  "highlight_remove": {
+    "raw_name": "remove",
+    "func_name": "hl_remove",
+    "parent_func_name": "highlight",
+    "description": "Remove a highlighted keyword",
+    "aliases": [
+      "delete",
+      "rm"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "keyword",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!highlight remove <keyword>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
+    "name": "highlight remove"
+  },
+  "highlight_ignore": {
+    "raw_name": "ignore",
+    "func_name": "hl_ignore",
+    "parent_func_name": "highlight",
+    "description": "Ignore notifications from a specific entity",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!highlight ignore"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "highlight ignore channel",
+      "highlight ignore list",
+      "highlight ignore role",
+      "highlight ignore user"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
+    "name": "highlight ignore"
+  },
+  "highlight_ignore_user": {
+    "raw_name": "user",
+    "func_name": "hl_ignore_user",
+    "parent_func_name": "hl_ignore",
+    "description": "Ignore highlights triggered by a specific user",
+    "aliases": [
+      "member"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!highlight ignore user <member>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
+    "name": "highlight ignore user"
+  },
+  "highlight_ignore_channel": {
+    "raw_name": "channel",
+    "func_name": "hl_ignore_channel",
+    "parent_func_name": "hl_ignore",
+    "description": "Ignore highlights triggered in a specific channel",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!highlight ignore channel <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
+    "name": "highlight ignore channel"
+  },
+  "highlight_ignore_role": {
+    "raw_name": "role",
+    "func_name": "hl_ignore_role",
+    "parent_func_name": "hl_ignore",
+    "description": "Ignore highlights triggered by members with a specific role",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!highlight ignore role <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
+    "name": "highlight ignore role"
+  },
+  "highlight_ignore_list": {
+    "raw_name": "list",
+    "func_name": "hl_ignore_list",
+    "parent_func_name": "hl_ignore",
+    "description": "List all ignored members, channel & roles",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!highlight ignore list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
+    "name": "highlight ignore list"
+  },
+  "highlight_reset": {
+    "raw_name": "reset",
+    "func_name": "hl_reset",
+    "parent_func_name": "highlight",
+    "description": "Reset your highlighted key references in the server",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!highlight reset"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
+    "name": "highlight reset"
+  },
   "level": {
     "raw_name": "level",
     "func_name": "level",
@@ -1838,8 +2081,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [],
     "optional_args": [],
@@ -1866,8 +2109,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [],
     "optional_args": [],
@@ -1889,8 +2132,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [],
     "optional_args": [
@@ -1917,8 +2160,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [
       {
@@ -1945,8 +2188,8 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "engagement",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [
       {

@@ -1,14 +1,16 @@
+import { Suspense } from "react"
 import "./globals.css"
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Providers } from "./providers"
 import DynamicFavicon from "./components/DynamicFavicon"
 import { getMetadataConfig } from "@/lib/metadata-config"
+import Header from "./components/Header"
 
 const config = getMetadataConfig()
 
 export const metadata: Metadata = {
-  title: `${config.botName} - Discord Bot`,
+  title: `${config.botName}`,
   description: config.description,
   icons: {
     icon: [
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
     apple: config.botLogo,
   },
   openGraph: {
-    title: `${config.botName} - Discord Bot`,
+    title: `${config.botName}`,
     description: config.description,
     type: "website",
     url: config.discordServerInvite,
@@ -33,12 +35,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `${config.botName} - Discord Bot`,
+    title: `${config.botName}`,
     description: config.description,
     images: [config.image],
     creator: "@discord",
   },
-  generator: 'v0.app'
+  generator: '69'
 }
 
 export const viewport: Viewport = {
@@ -55,9 +57,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="bg-[#050505]">
         <DynamicFavicon />
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-1 pt-20 relative">
+              {children}
+            </main>
+          </div>
+        </Providers>
       </body>
     </html>
   )

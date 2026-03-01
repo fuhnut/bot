@@ -21,7 +21,7 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "raw_name": "animate",
     "func_name": "animate_group",
     "parent_func_name": null,
-    "description": "image maniupulation.",
+    "description": "image manipulation.",
     "aliases": [],
     "category": "fun",
     "permissions": [],
@@ -749,6 +749,217 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\animate.py",
     "name": "animate endless"
+  },
+  "emoji": {
+    "raw_name": "emoji",
+    "func_name": "emoji_group",
+    "parent_func_name": null,
+    "description": "Manage server emojis",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emoji"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "emoji add",
+      "emoji addmany",
+      "emoji information",
+      "emoji remove",
+      "emoji removemany",
+      "emoji rename",
+      "emoji stats"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\emojis.py",
+    "name": "emoji"
+  },
+  "emoji_add": {
+    "raw_name": "add",
+    "func_name": "emoji_add",
+    "parent_func_name": "emoji_group",
+    "description": "Add an emoji to the server",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Expressions"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "emoji",
+        "type": "str"
+      },
+      {
+        "name": "name",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!emoji add [emoji] [name]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\emojis.py",
+    "name": "emoji add"
+  },
+  "emoji_addmany": {
+    "raw_name": "addmany",
+    "func_name": "emoji_addmany",
+    "parent_func_name": "emoji_group",
+    "description": "Bulk add emojis from attachments",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Expressions"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emoji addmany"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\emojis.py",
+    "name": "emoji addmany"
+  },
+  "emoji_rename": {
+    "raw_name": "rename",
+    "func_name": "emoji_rename",
+    "parent_func_name": "emoji_group",
+    "description": "Rename an emoji",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Expressions"
+    ],
+    "required_args": [
+      {
+        "name": "emoji",
+        "type": "Emoji"
+      },
+      {
+        "name": "new_name",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emoji rename <emoji> <new_name>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\emojis.py",
+    "name": "emoji rename"
+  },
+  "emoji_remove": {
+    "raw_name": "remove",
+    "func_name": "emoji_remove",
+    "parent_func_name": "emoji_group",
+    "description": "Remove an emoji",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Expressions"
+    ],
+    "required_args": [
+      {
+        "name": "emoji",
+        "type": "Emoji"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emoji remove <emoji>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\emojis.py",
+    "name": "emoji remove"
+  },
+  "emoji_removemany": {
+    "raw_name": "removemany",
+    "func_name": "emoji_removemany",
+    "parent_func_name": "emoji_group",
+    "description": "Bulk remove emojis",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Expressions"
+    ],
+    "required_args": [
+      {
+        "name": "emojis",
+        "type": "Emoji"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emoji removemany <emojis>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\emojis.py",
+    "name": "emoji removemany"
+  },
+  "emoji_information": {
+    "raw_name": "information",
+    "func_name": "emoji_info",
+    "parent_func_name": "emoji_group",
+    "description": "View emoji usage info",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "target",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emoji information <target>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\emojis.py",
+    "name": "emoji information"
+  },
+  "emoji_stats": {
+    "raw_name": "stats",
+    "func_name": "emoji_stats",
+    "parent_func_name": "emoji_group",
+    "description": "Top 10 most used emojis",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emoji stats"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\emojis.py",
+    "name": "emoji stats"
   },
   "fun": {
     "raw_name": "fun",
@@ -1488,6 +1699,358 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\gpt.py",
     "name": "gpt tts"
   },
+  "uwu": {
+    "raw_name": "uwu",
+    "func_name": "uwu",
+    "parent_func_name": null,
+    "description": "uwuify text",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "text",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!uwu [text]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\juul.py",
+    "name": "uwu"
+  },
+  "juul": {
+    "raw_name": "juul",
+    "func_name": "juul",
+    "parent_func_name": null,
+    "description": "share a juul with your friends!",
+    "aliases": [
+      "vape"
+    ],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!juul"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "juul flavor",
+      "juul hit",
+      "juul pass",
+      "juul stats",
+      "juul steal",
+      "juul toggle"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\juul.py",
+    "name": "juul"
+  },
+  "juul_flavor": {
+    "raw_name": "flavor",
+    "func_name": "juul_flavor",
+    "parent_func_name": "juul",
+    "description": "change the servers juul's flavor",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "flavor",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!juul flavor [flavor]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\juul.py",
+    "name": "juul flavor"
+  },
+  "juul_toggle": {
+    "raw_name": "toggle",
+    "func_name": "juul_toggle",
+    "parent_func_name": "juul",
+    "description": "toggle the servers juul on or off",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!juul toggle"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\juul.py",
+    "name": "juul toggle"
+  },
+  "juul_hit": {
+    "raw_name": "hit",
+    "func_name": "juul_hit",
+    "parent_func_name": "juul",
+    "description": "hit the servers juul",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!juul hit"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\juul.py",
+    "name": "juul hit"
+  },
+  "juul_stats": {
+    "raw_name": "stats",
+    "func_name": "juul_stats",
+    "parent_func_name": "juul",
+    "description": "show the servers juul stats",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!juul stats"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\juul.py",
+    "name": "juul stats"
+  },
+  "juul_steal": {
+    "raw_name": "steal",
+    "func_name": "juul_steal",
+    "parent_func_name": "juul",
+    "description": "steal the servers juul",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!juul steal"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\juul.py",
+    "name": "juul steal"
+  },
+  "juul_pass": {
+    "raw_name": "pass",
+    "func_name": "juul_pass",
+    "parent_func_name": "juul",
+    "description": "pass the servers juul to someone else",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      }
+    ],
+    "examples": [
+      "!juul pass [member]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\juul.py",
+    "name": "juul pass"
+  },
+  "sticker": {
+    "raw_name": "sticker",
+    "func_name": "sticker",
+    "parent_func_name": null,
+    "description": "manage server stickers",
+    "aliases": [
+      "stickers"
+    ],
+    "category": "fun",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!sticker"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "sticker add",
+      "sticker cleanup",
+      "sticker remove",
+      "sticker rename",
+      "sticker tag"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\stickers.py",
+    "name": "sticker"
+  },
+  "sticker_add": {
+    "raw_name": "add",
+    "func_name": "sticker_add",
+    "parent_func_name": "sticker",
+    "description": "add a sticker to the server",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Emojis And Stickers"
+    ],
+    "required_args": [
+      {
+        "name": "name",
+        "type": "str"
+      }
+    ],
+    "optional_args": [
+      {
+        "name": "url",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!sticker add <name> [url]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\stickers.py",
+    "name": "sticker add"
+  },
+  "sticker_remove": {
+    "raw_name": "remove",
+    "func_name": "sticker_remove",
+    "parent_func_name": "sticker",
+    "description": "remove a sticker by name",
+    "aliases": [
+      "delete"
+    ],
+    "category": "fun",
+    "permissions": [
+      "Manage Emojis And Stickers"
+    ],
+    "required_args": [
+      {
+        "name": "name",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!sticker remove <name>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\stickers.py",
+    "name": "sticker remove"
+  },
+  "sticker_rename": {
+    "raw_name": "rename",
+    "func_name": "sticker_rename",
+    "parent_func_name": "sticker",
+    "description": "rename a sticker",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Emojis And Stickers"
+    ],
+    "required_args": [
+      {
+        "name": "old_name",
+        "type": "str"
+      },
+      {
+        "name": "new_name",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!sticker rename <old_name> <new_name>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\stickers.py",
+    "name": "sticker rename"
+  },
+  "sticker_tag": {
+    "raw_name": "tag",
+    "func_name": "sticker_tag",
+    "parent_func_name": "sticker",
+    "description": "append server vanity url to all stickers",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Emojis And Stickers"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!sticker tag"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\stickers.py",
+    "name": "sticker tag"
+  },
+  "sticker_cleanup": {
+    "raw_name": "cleanup",
+    "func_name": "sticker_cleanup",
+    "parent_func_name": "sticker",
+    "description": "normalize sticker names to ascii",
+    "aliases": [],
+    "category": "fun",
+    "permissions": [
+      "Manage Emojis And Stickers"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!sticker cleanup"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\fun\\stickers.py",
+    "name": "sticker cleanup"
+  },
   "uwulock": {
     "raw_name": "uwulock",
     "func_name": "uwulock_group",
@@ -1501,10 +2064,14 @@ export const FUN_COMMANDS: Record<string, Command> = {
       {
         "name": "target",
         "type": "text"
+      },
+      {
+        "name": "channel",
+        "type": "text"
       }
     ],
     "examples": [
-      "!uwulock [target]"
+      "!uwulock [target] [channel]"
     ],
     "has_prefix": true,
     "has_slash": true,
@@ -1538,10 +2105,14 @@ export const FUN_COMMANDS: Record<string, Command> = {
       {
         "name": "target",
         "type": "text"
+      },
+      {
+        "name": "channel",
+        "type": "text"
       }
     ],
     "examples": [
-      "!uwulock add [target]"
+      "!uwulock add [target] [channel]"
     ],
     "has_prefix": true,
     "has_slash": false,
@@ -1565,10 +2136,14 @@ export const FUN_COMMANDS: Record<string, Command> = {
       {
         "name": "target",
         "type": "text"
+      },
+      {
+        "name": "channel",
+        "type": "text"
       }
     ],
     "examples": [
-      "!uwulock remove [target]"
+      "!uwulock remove [target] [channel]"
     ],
     "has_prefix": true,
     "has_slash": false,
@@ -1581,16 +2156,21 @@ export const FUN_COMMANDS: Record<string, Command> = {
     "raw_name": "list",
     "func_name": "uwulock_list",
     "parent_func_name": "uwulock_group",
-    "description": "list all uwulocked users and roles",
+    "description": "list all uwulocked users and roles in a channel",
     "aliases": [],
     "category": "fun",
     "permissions": [
       "Manage Messages"
     ],
     "required_args": [],
-    "optional_args": [],
+    "optional_args": [
+      {
+        "name": "channel",
+        "type": "text"
+      }
+    ],
     "examples": [
-      "!uwulock list"
+      "!uwulock list [channel]"
     ],
     "has_prefix": true,
     "has_slash": false,
@@ -2006,9 +2586,14 @@ export const FUN_COMMANDS: Record<string, Command> = {
       "Manage Messages"
     ],
     "required_args": [],
-    "optional_args": [],
+    "optional_args": [
+      {
+        "name": "channel",
+        "type": "text"
+      }
+    ],
     "examples": [
-      "!uwulock config"
+      "!uwulock config [channel]"
     ],
     "has_prefix": true,
     "has_slash": false,

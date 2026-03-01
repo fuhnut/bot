@@ -3,9 +3,11 @@
   "botLogo": "https://files.catbox.moe/g9fe9e.png",
   "favicon": "https://files.catbox.moe/g9fe9e.png",
   "tagline": "breed. discord's most versatile bot.",
-  "description": "breed. discord's most versatile bot.",
+  "description": "**Breed bot.**",
   "image": "https://files.catbox.moe/g9fe9e.png",
-  "inviteLink": "https://discord.com/oauth2/authorize?client_id=146166516395774201",
+  "inviteLink": "https://discord.com/oauth2/authorize?client_id=1461665163957764201",
+  "prefix": ",",
+  "serverTagIcon": "https://i.ibb.co/xtkGmhGK/image.png",
   "clientSecret": "",
-  "discordServerInvite": "https://discord.gg/breed-bot"
+  "discordServerInvite": "https://discord.gg/NeYgSnmj"
 }

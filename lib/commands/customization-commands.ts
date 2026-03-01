@@ -21,7 +21,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "raw_name": "badge",
     "func_name": "badge",
     "parent_func_name": null,
-    "description": "badge role settings",
+    "description": "manage roles for people with the server tag",
     "aliases": [],
     "category": "customization",
     "permissions": [
@@ -51,7 +51,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "raw_name": "add",
     "func_name": "badge_add",
     "parent_func_name": "badge",
-    "description": "add a badge role",
+    "description": "add a role for users with the server tag",
     "aliases": [],
     "category": "customization",
     "permissions": [
@@ -78,7 +78,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "raw_name": "remove",
     "func_name": "badge_remove",
     "parent_func_name": "badge",
-    "description": "remove a badge role",
+    "description": "remove a role for users with the server tag",
     "aliases": [],
     "category": "customization",
     "permissions": [
@@ -105,7 +105,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "raw_name": "list",
     "func_name": "badge_list",
     "parent_func_name": "badge",
-    "description": "see all badge roles",
+    "description": "list all roles given for having the server tag",
     "aliases": [],
     "category": "customization",
     "permissions": [
@@ -127,7 +127,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "raw_name": "channel",
     "func_name": "badge_channel",
     "parent_func_name": "badge",
-    "description": "set where badge notifications go",
+    "description": "set channel for server tag notifications",
     "aliases": [],
     "category": "customization",
     "permissions": [
@@ -154,7 +154,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "raw_name": "equipped",
     "func_name": "badge_equipped",
     "parent_func_name": "badge",
-    "description": "set the message when someone equips the badge",
+    "description": "message for when someone equips the server tag",
     "aliases": [],
     "category": "customization",
     "permissions": [
@@ -181,7 +181,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "raw_name": "unequipped",
     "func_name": "badge_unequipped",
     "parent_func_name": "badge",
-    "description": "set the message when someone unequips the badge",
+    "description": "message for when someone unequips the server tag",
     "aliases": [],
     "category": "customization",
     "permissions": [
@@ -208,7 +208,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "raw_name": "variables",
     "func_name": "badge_variables",
     "parent_func_name": "badge",
-    "description": "see available placeholders for badge messages",
+    "description": "placeholders for server tag messages",
     "aliases": [],
     "category": "customization",
     "permissions": [

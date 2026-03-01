@@ -1541,157 +1541,15 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\prefixes.py",
     "name": "prefixes noprefix"
   },
-  "settings": {
-    "raw_name": "settings",
-    "func_name": "settings_group",
-    "parent_func_name": null,
-    "description": "server settings",
-    "aliases": [],
-    "category": "server",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!settings"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "settings backup"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
-    "name": "settings"
-  },
-  "settings_backup": {
-    "raw_name": "backup",
-    "func_name": "backup_group",
-    "parent_func_name": "settings_group",
-    "description": "server backups",
-    "aliases": [],
-    "category": "server",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!settings backup"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "settings backup create",
-      "settings backup delete",
-      "settings backup list",
-      "settings backup restore"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
-    "name": "settings backup"
-  },
-  "settings_backup_create": {
-    "raw_name": "create",
-    "func_name": "backup_create",
-    "parent_func_name": "backup_group",
-    "description": "save a backup",
-    "aliases": [],
-    "category": "server",
-    "permissions": [
-      "Administrator"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!settings backup create"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
-    "name": "settings backup create"
-  },
-  "settings_backup_list": {
-    "raw_name": "list",
-    "func_name": "backup_list",
-    "parent_func_name": "backup_group",
-    "description": "see your backups",
-    "aliases": [],
-    "category": "server",
-    "permissions": [
-      "Administrator"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!settings backup list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
-    "name": "settings backup list"
-  },
-  "settings_backup_restore": {
-    "raw_name": "restore",
-    "func_name": "backup_restore",
-    "parent_func_name": "backup_group",
-    "description": "restore from a backup",
-    "aliases": [],
-    "category": "server",
-    "permissions": [
-      "Administrator"
-    ],
-    "required_args": [
-      {
-        "name": "backup_id",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!settings backup restore <backup_id>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
-    "name": "settings backup restore"
-  },
-  "settings_backup_delete": {
-    "raw_name": "delete",
-    "func_name": "backup_delete",
-    "parent_func_name": "backup_group",
-    "description": "delete a backup",
-    "aliases": [],
-    "category": "server",
-    "permissions": [
-      "Administrator"
-    ],
-    "required_args": [
-      {
-        "name": "backup_id",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!settings backup delete <backup_id>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
-    "name": "settings backup delete"
-  },
   "customise": {
     "raw_name": "customise",
     "func_name": "customise_group",
     "parent_func_name": null,
     "description": "customize how the bot looks",
-    "aliases": [],
+    "aliases": [
+      "reskin",
+      "customize"
+    ],
     "category": "server",
     "permissions": [],
     "required_args": [],
@@ -1706,7 +1564,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
       "customise banner",
       "customise bio",
       "customise name",
-      "customise pfp"
+      "customise pfp",
+      "customise reset"
     ],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
     "name": "customise"
@@ -1719,8 +1578,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [],
     "optional_args": [
@@ -1751,8 +1610,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [
       {
@@ -1779,8 +1638,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [],
     "optional_args": [
@@ -1811,8 +1670,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Administrator",
-      "Manage Guild"
+      "Manage Guild",
+      "Administrator"
     ],
     "required_args": [
       {
@@ -1830,6 +1689,119 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
     "name": "customise name"
+  },
+  "customise_reset": {
+    "raw_name": "reset",
+    "func_name": "customise_reset",
+    "parent_func_name": "customise_group",
+    "description": "reset bot customization",
+    "aliases": [],
+    "category": "server",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!customise reset"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "customise reset all",
+      "customise reset banner",
+      "customise reset bio",
+      "customise reset pfp"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
+    "name": "customise reset"
+  },
+  "customise_reset_all": {
+    "raw_name": "all",
+    "func_name": "customise_reset_all",
+    "parent_func_name": "customise_reset",
+    "description": "reset bio, pfp, banner and nickname",
+    "aliases": [],
+    "category": "server",
+    "permissions": [
+      "Administrator"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!customise reset all"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
+    "name": "customise reset all"
+  },
+  "customise_reset_pfp": {
+    "raw_name": "pfp",
+    "func_name": "customise_reset_pfp",
+    "parent_func_name": "customise_reset",
+    "description": "reset the bot's server pfp",
+    "aliases": [],
+    "category": "server",
+    "permissions": [
+      "Administrator"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!customise reset pfp"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
+    "name": "customise reset pfp"
+  },
+  "customise_reset_banner": {
+    "raw_name": "banner",
+    "func_name": "customise_reset_banner",
+    "parent_func_name": "customise_reset",
+    "description": "reset the bot's server banner",
+    "aliases": [],
+    "category": "server",
+    "permissions": [
+      "Administrator"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!customise reset banner"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
+    "name": "customise reset banner"
+  },
+  "customise_reset_bio": {
+    "raw_name": "bio",
+    "func_name": "customise_reset_bio",
+    "parent_func_name": "customise_reset",
+    "description": "reset the bot's server bio",
+    "aliases": [],
+    "category": "server",
+    "permissions": [
+      "Administrator"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!customise reset bio"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\settings.py",
+    "name": "customise reset bio"
   },
   "stats": {
     "raw_name": "stats",
@@ -1960,5 +1932,330 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\stats.py",
     "name": "stats server"
+  },
+  "webhook": {
+    "raw_name": "webhook",
+    "func_name": "webhook_group",
+    "parent_func_name": null,
+    "description": "manage webhooks in your server",
+    "aliases": [
+      "webhooks",
+      "hook",
+      "whook"
+    ],
+    "category": "server",
+    "permissions": [
+      "Manage Webhooks"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!webhook"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "webhook avatar",
+      "webhook create",
+      "webhook delete",
+      "webhook edit",
+      "webhook list",
+      "webhook lock",
+      "webhook recreate",
+      "webhook send",
+      "webhook unlock"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\webhooks.py",
+    "name": "webhook"
+  },
+  "webhook_create": {
+    "raw_name": "create",
+    "func_name": "webhook_create",
+    "parent_func_name": "webhook_group",
+    "description": "create a new webhook in the current channel",
+    "aliases": [
+      "make",
+      "new",
+      "add",
+      "c"
+    ],
+    "category": "server",
+    "permissions": [
+      "Manage Webhooks"
+    ],
+    "required_args": [
+      {
+        "name": "name",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!webhook create <name>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\webhooks.py",
+    "name": "webhook create"
+  },
+  "webhook_delete": {
+    "raw_name": "delete",
+    "func_name": "webhook_delete",
+    "parent_func_name": "webhook_group",
+    "description": "delete a webhook by its identifier",
+    "aliases": [
+      "remove",
+      "del",
+      "rm",
+      "d"
+    ],
+    "category": "server",
+    "permissions": [
+      "Manage Webhooks"
+    ],
+    "required_args": [
+      {
+        "name": "identifier",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!webhook delete <identifier>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\webhooks.py",
+    "name": "webhook delete"
+  },
+  "webhook_list": {
+    "raw_name": "list",
+    "func_name": "webhook_list",
+    "parent_func_name": "webhook_group",
+    "description": "list all available webhooks in the server",
+    "aliases": [
+      "show",
+      "all",
+      "l"
+    ],
+    "category": "server",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!webhook list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\webhooks.py",
+    "name": "webhook list"
+  },
+  "webhook_send": {
+    "raw_name": "send",
+    "func_name": "webhook_send",
+    "parent_func_name": "webhook_group",
+    "description": "send a message using a webhook",
+    "aliases": [
+      "s",
+      "msg",
+      "message",
+      "post"
+    ],
+    "category": "server",
+    "permissions": [
+      "Manage Webhooks"
+    ],
+    "required_args": [
+      {
+        "name": "identifier",
+        "type": "str"
+      },
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!webhook send <identifier> <message>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\webhooks.py",
+    "name": "webhook send"
+  },
+  "webhook_edit": {
+    "raw_name": "edit",
+    "func_name": "webhook_edit",
+    "parent_func_name": "webhook_group",
+    "description": "edit a message sent by a webhook",
+    "aliases": [
+      "update",
+      "e"
+    ],
+    "category": "server",
+    "permissions": [
+      "Manage Webhooks"
+    ],
+    "required_args": [
+      {
+        "name": "message_ref",
+        "type": "str"
+      },
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!webhook edit <message_ref> <message>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\webhooks.py",
+    "name": "webhook edit"
+  },
+  "webhook_lock": {
+    "raw_name": "lock",
+    "func_name": "webhook_lock",
+    "parent_func_name": "webhook_group",
+    "description": "lock your webhook from being used by others",
+    "aliases": [
+      "restrict"
+    ],
+    "category": "server",
+    "permissions": [
+      "Manage Webhooks"
+    ],
+    "required_args": [
+      {
+        "name": "identifier",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!webhook lock <identifier>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\webhooks.py",
+    "name": "webhook lock"
+  },
+  "webhook_unlock": {
+    "raw_name": "unlock",
+    "func_name": "webhook_unlock",
+    "parent_func_name": "webhook_group",
+    "description": "unlock your webhook",
+    "aliases": [
+      "unrestrict"
+    ],
+    "category": "server",
+    "permissions": [
+      "Manage Webhooks"
+    ],
+    "required_args": [
+      {
+        "name": "identifier",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!webhook unlock <identifier>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\webhooks.py",
+    "name": "webhook unlock"
+  },
+  "webhook_avatar": {
+    "raw_name": "avatar",
+    "func_name": "webhook_avatar",
+    "parent_func_name": "webhook_group",
+    "description": "set the avatar for your webhook",
+    "aliases": [
+      "pfp",
+      "icon",
+      "image",
+      "pf"
+    ],
+    "category": "server",
+    "permissions": [
+      "Manage Webhooks"
+    ],
+    "required_args": [
+      {
+        "name": "identifier",
+        "type": "str"
+      }
+    ],
+    "optional_args": [
+      {
+        "name": "image_url",
+        "type": "str"
+      },
+      {
+        "name": "attachment",
+        "type": "Attachment"
+      }
+    ],
+    "examples": [
+      "!webhook avatar <identifier> [image_url] [attachment]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\webhooks.py",
+    "name": "webhook avatar"
+  },
+  "webhook_recreate": {
+    "raw_name": "recreate",
+    "func_name": "webhook_recreate",
+    "parent_func_name": "webhook_group",
+    "description": "recreate a webhook from its identifier",
+    "aliases": [
+      "reset",
+      "restore",
+      "repair",
+      "rec"
+    ],
+    "category": "server",
+    "permissions": [
+      "Manage Webhooks"
+    ],
+    "required_args": [
+      {
+        "name": "identifier",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!webhook recreate <identifier>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\server\\webhooks.py",
+    "name": "webhook recreate"
   }
 };

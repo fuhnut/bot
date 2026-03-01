@@ -1276,36 +1276,14 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\clear.py",
     "name": "clear"
   },
-  "mod": {
-    "raw_name": "mod",
-    "func_name": "mod_group",
-    "parent_func_name": null,
-    "description": "moderation commands for kicks, bans, timeouts, and warns",
-    "aliases": [],
-    "category": "moderation",
-    "permissions": [
-      "Kick Members"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!mod"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "mod forcenick"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\forcenick.py",
-    "name": "mod"
-  },
-  "mod_forcenick": {
+  "forcenick": {
     "raw_name": "forcenick",
-    "func_name": "mod_forcenick",
-    "parent_func_name": "mod_group",
+    "func_name": "forcenick",
+    "parent_func_name": null,
     "description": "force a nickname that sticks even if they try to change it",
-    "aliases": [],
+    "aliases": [
+      "fn"
+    ],
     "category": "moderation",
     "permissions": [
       "Manage Nicknames"
@@ -1323,18 +1301,18 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
       }
     ],
     "examples": [
-      "!mod forcenick <member> [nickname]"
+      "!forcenick <member> [nickname]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\forcenick.py",
-    "name": "mod forcenick"
+    "name": "forcenick"
   },
   "removeforcenick": {
     "raw_name": "removeforcenick",
-    "func_name": "removeforcenick_prefix",
+    "func_name": "removeforcenick",
     "parent_func_name": null,
     "description": "remove a forced nickname from someone",
     "aliases": [
@@ -1483,10 +1461,14 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
       {
         "name": "channel",
         "type": "TextChannel"
+      },
+      {
+        "name": "role",
+        "type": "Role"
       }
     ],
     "examples": [
-      "!lock [channel]"
+      "!lock [channel] [role]"
     ],
     "has_prefix": true,
     "has_slash": false,
@@ -1510,10 +1492,14 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
       {
         "name": "channel",
         "type": "TextChannel"
+      },
+      {
+        "name": "role",
+        "type": "Role"
       }
     ],
     "examples": [
-      "!unlock [channel]"
+      "!unlock [channel] [role]"
     ],
     "has_prefix": true,
     "has_slash": false,
@@ -1934,6 +1920,142 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
     "name": "unmute"
+  },
+  "reactionmute": {
+    "raw_name": "reactionmute",
+    "func_name": "reactionmute_prefix",
+    "parent_func_name": null,
+    "description": "prevent someone from reacting for a while",
+    "aliases": [
+      "rmute"
+    ],
+    "category": "moderation",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      },
+      {
+        "name": "duration",
+        "type": "str"
+      },
+      {
+        "name": "reason",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!reactionmute [member] [duration] [reason]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "name": "reactionmute"
+  },
+  "unreactionmute": {
+    "raw_name": "unreactionmute",
+    "func_name": "unreactionmute_prefix",
+    "parent_func_name": null,
+    "description": "unreactionmute someone",
+    "aliases": [],
+    "category": "moderation",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      },
+      {
+        "name": "reason",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!unreactionmute [member] [reason]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "name": "unreactionmute"
+  },
+  "imagemute": {
+    "raw_name": "imagemute",
+    "func_name": "imagemute_prefix",
+    "parent_func_name": null,
+    "description": "prevent someone from sending images/embeds for a while",
+    "aliases": [
+      "imute"
+    ],
+    "category": "moderation",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      },
+      {
+        "name": "duration",
+        "type": "str"
+      },
+      {
+        "name": "reason",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!imagemute [member] [duration] [reason]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "name": "imagemute"
+  },
+  "unimagemute": {
+    "raw_name": "unimagemute",
+    "func_name": "unimagemute_prefix",
+    "parent_func_name": null,
+    "description": "unimagemute someone",
+    "aliases": [],
+    "category": "moderation",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      },
+      {
+        "name": "reason",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!unimagemute [member] [reason]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "name": "unimagemute"
   },
   "timeout": {
     "raw_name": "timeout",

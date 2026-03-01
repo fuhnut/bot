@@ -7,6 +7,8 @@ export interface SiteConfig {
   favicon: string;
   tagline: string;
   inviteLink: string;
+  prefix: string;
+  serverTagIcon: string;
 }
 
 const defaultConfig: SiteConfig = {
@@ -14,7 +16,9 @@ const defaultConfig: SiteConfig = {
   botLogo: process.env.NEXT_PUBLIC_BOT_LOGO || "",
   favicon: process.env.NEXT_PUBLIC_FAVICON || "/favicon.png",
   tagline: process.env.NEXT_PUBLIC_BOT_TAGLINE || "Systematically does it all",
-  inviteLink: process.env.NEXT_PUBLIC_BOT_INVITE_LINK || "https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID"
+  inviteLink: process.env.NEXT_PUBLIC_BOT_INVITE_LINK || "https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID",
+  prefix: process.env.NEXT_PUBLIC_BOT_PREFIX || "!",
+  serverTagIcon: ""
 };
 
 export function useSiteConfig() {

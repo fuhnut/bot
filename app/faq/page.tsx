@@ -1,11 +1,10 @@
 "use client"
 
-import { useState } from "react"
-import Navigation from "../components/Navigation"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { useSiteConfig } from "@/lib/site-config"
-import * as Icons from "lucide-react"
+import * as CustomIcons from "../components/CustomIcons"
 
 interface FAQItem {
   question: string
@@ -14,8 +13,13 @@ interface FAQItem {
 
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [hasMounted, setHasMounted] = useState(false)
   const { config } = useSiteConfig()
   const botName = (config?.botName || "bot").toLowerCase()
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
 
   const faqs: FAQItem[] = [
     {
@@ -44,49 +48,50 @@ export default function FAQPage() {
     }
   ]
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
+  if (!hasMounted) return <div className="min-h-screen bg-black" />
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-purple-500/30">
-      <Navigation isDark={true} setIsDark={() => { }} />
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-[#5865F2]/30 p-8 md:p-20">
 
-      {/* Decorative Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-        <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] bg-purple-900/10 rounded-full blur-[120px]" />
-      </div>
 
-      <main className="max-w-4xl mx-auto px-6 py-24">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-16"
-        >
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter lowercase leading-[0.8] mb-4 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+      <main className="max-w-4xl mx-auto py-12">
+        <div className="flex flex-col gap-4 mb-20">
+          <div className="flex items-center gap-3 text-purple-400">
+            <CustomIcons.FaqIcon className="w-5 h-5" />
+            <span className="text-[11px] font-black uppercase tracking-[0.4em]">knowledge base</span>
+          </div>
+          <motion.h1
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-7xl md:text-9xl font-black tracking-tighter lowercase leading-[0.8] mb-4 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
+          >
             faq
-          </h1>
-          <p className="text-xl text-white/40 lowercase max-w-xl">
-            answers to common questions about {botName} and its operations.
+          </motion.h1>
+          <p className="text-xl text-white/30 lowercase max-w-xl font-medium">
+            answers to common questions about {botName}.
           </p>
-        </motion.div>
+        </div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              className="rounded-3xl bg-white/[0.03] border border-white/5 overflow-hidden transition-all hover:bg-white/[0.05]"
+              className={`rounded-[2.5rem] border transition-all duration-500 overflow-hidden
+                ${openIndex === index ? "bg-[#111] border-white/10 shadow-2xl" : "bg-[#0a0a0a] border-white/5 hover:border-white/10"}
+              `}
             >
               <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full p-8 text-left flex justify-between items-center group"
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full p-10 text-left flex justify-between items-center group"
               >
-                <span className="text-xl font-bold lowercase pr-8 group-hover:text-[#5865F2] transition-colors">{faq.question}</span>
-                <div className={`p-2 rounded-xl bg-white/5 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}>
-                  <Icons.ChevronDown className="w-5 h-5 text-white/20" />
+                <span className={`text-xl font-black tracking-tight lowercase transition-colors
+                  ${openIndex === index ? "text-white" : "text-white/40 group-hover:text-white/60"}
+                `}>{faq.question}</span>
+                <div className={`p-3 rounded-2xl bg-white/[0.03] border border-white/5 transition-all duration-500 ${openIndex === index ? 'rotate-180 bg-[#5865F2]/10 border-[#5865F2]/20' : ''}`}>
+                  <CustomIcons.ChevronDown className={`w-4 h-4 ${openIndex === index ? 'text-[#5865F2]' : 'text-white/10'}`} />
                 </div>
               </button>
 
@@ -96,10 +101,10 @@ export default function FAQPage() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <div className="px-8 pb-8 text-lg text-white/40 lowercase leading-relaxed">
-                      {faq.answer.replace("{botName}", botName)}
+                    <div className="px-10 pb-10 text-lg text-white/30 lowercase leading-relaxed font-medium">
+                      {faq.answer}
                     </div>
                   </motion.div>
                 )}
@@ -111,16 +116,26 @@ export default function FAQPage() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="mt-32 p-16 rounded-[4rem] bg-gradient-to-br from-[#5865F2]/20 via-black to-black border border-white/5 text-center"
+          className="mt-32 p-16 rounded-[4rem] bg-[#111] border border-white/10 text-center relative overflow-hidden"
         >
-          <h2 className="text-4xl font-black lowercase mb-6">still have questions?</h2>
-          <p className="text-white/40 lowercase mb-12 text-lg">join our community for direct support and feature requests.</p>
-          <Link
-            href="/discord"
-            className="px-12 py-5 bg-white text-black font-black rounded-2xl hover:bg-purple-400 transition-all lowercase inline-block"
-          >
-            join discord server
-          </Link>
+          <div className="relative z-10">
+            <div className="flex justify-center mb-6">
+              <div className="p-4 bg-[#5865F2]/10 rounded-3xl border border-[#5865F2]/20">
+                <CustomIcons.SupportIcon className="w-8 h-8 text-[#5865F2]" />
+              </div>
+            </div>
+            <h2 className="text-4xl font-black tracking-tighter lowercase mb-6">still have questions?</h2>
+            <p className="text-white/20 lowercase mb-12 text-lg font-medium">join our community for direct support and feature requests.</p>
+            <Link
+              href="/discord"
+              className="px-12 py-5 bg-white text-black font-black rounded-2xl hover:scale-105 transition-all lowercase inline-block shadow-2xl"
+            >
+              join discord server
+            </Link>
+          </div>
+          <div className="absolute top-0 right-0 p-12 opacity-[0.02]">
+            <CustomIcons.SparklesIcon className="w-32 h-32 rotate-12" />
+          </div>
         </motion.div>
       </main>
     </div>

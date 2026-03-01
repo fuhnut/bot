@@ -25,7 +25,7 @@ This creates `website/public/commands.json` which should be committed to your re
 In your Cloudflare Pages dashboard, configure:
 
 - **Framework preset**: Next.js (Static HTML Export)
-- **Build command**: `pnpm run build`
+- **Build command**: `npm run build`
 - **Build output directory**: `out`
 - **Node version**: 18 or higher
 - **Root directory**: `website`

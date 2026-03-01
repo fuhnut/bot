@@ -584,6 +584,182 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
     "name": "autoreact scope list"
   },
+  "bumpreminder": {
+    "raw_name": "bumpreminder",
+    "func_name": "bumpreminder",
+    "parent_func_name": null,
+    "description": "manage disboard bump reminders",
+    "aliases": [
+      "bump"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "bumpreminder autoclean",
+      "bumpreminder autolock",
+      "bumpreminder channel",
+      "bumpreminder config",
+      "bumpreminder message",
+      "bumpreminder thankyou"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
+    "name": "bumpreminder"
+  },
+  "bumpreminder_channel": {
+    "raw_name": "channel",
+    "func_name": "bump_channel",
+    "parent_func_name": "bumpreminder",
+    "description": "set the channel for bump reminders",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder channel <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
+    "name": "bumpreminder channel"
+  },
+  "bumpreminder_message": {
+    "raw_name": "message",
+    "func_name": "bump_message",
+    "parent_func_name": "bumpreminder",
+    "description": "set the reminder message",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "script",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder message <script>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
+    "name": "bumpreminder message"
+  },
+  "bumpreminder_thankyou": {
+    "raw_name": "thankyou",
+    "func_name": "bump_thankyou",
+    "parent_func_name": "bumpreminder",
+    "description": "set the thank you message",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "script",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder thankyou <script>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
+    "name": "bumpreminder thankyou"
+  },
+  "bumpreminder_autoclean": {
+    "raw_name": "autoclean",
+    "func_name": "bump_autoclean",
+    "parent_func_name": "bumpreminder",
+    "description": "toggle auto-cleaning of non-bump messages",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "enabled",
+        "type": "bool"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder autoclean <enabled>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
+    "name": "bumpreminder autoclean"
+  },
+  "bumpreminder_autolock": {
+    "raw_name": "autolock",
+    "func_name": "bump_autolock",
+    "parent_func_name": "bumpreminder",
+    "description": "toggle auto-locking of the channel",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "enabled",
+        "type": "bool"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder autolock <enabled>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
+    "name": "bumpreminder autolock"
+  },
+  "bumpreminder_config": {
+    "raw_name": "config",
+    "func_name": "bump_config",
+    "parent_func_name": "bumpreminder",
+    "description": "view current configuration",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder config"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
+    "name": "bumpreminder config"
+  },
   "invoke": {
     "raw_name": "invoke",
     "func_name": "invoke",
@@ -605,12 +781,16 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "subcommands": [
       "invoke ban",
       "invoke hardban",
+      "invoke imagemute",
       "invoke kick",
       "invoke mute",
+      "invoke reactionmute",
       "invoke softban",
       "invoke timeout",
       "invoke unban",
+      "invoke unimagemute",
       "invoke unmute",
+      "invoke unreactionmute",
       "invoke untimeout",
       "invoke variables",
       "invoke warn"
@@ -1842,13 +2022,681 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
     "name": "invoke untimeout message-view"
   },
+  "invoke_reactionmute": {
+    "raw_name": "reactionmute",
+    "func_name": "invoke_reactionmute",
+    "parent_func_name": "invoke",
+    "description": "reactionmute message settings",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke reactionmute"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "invoke reactionmute dm",
+      "invoke reactionmute dm-view",
+      "invoke reactionmute message",
+      "invoke reactionmute message-view"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke reactionmute"
+  },
+  "invoke_reactionmute_dm": {
+    "raw_name": "dm",
+    "func_name": "reactionmute_dm",
+    "parent_func_name": "invoke_reactionmute",
+    "description": "set the dm sent for reactionmutes",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke reactionmute dm [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke reactionmute dm"
+  },
+  "invoke_reactionmute_dm-view": {
+    "raw_name": "dm-view",
+    "func_name": "reactionmute_dmview",
+    "parent_func_name": "invoke_reactionmute",
+    "description": "see the reactionmute dm",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke reactionmute dm-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke reactionmute dm-view"
+  },
+  "invoke_reactionmute_message": {
+    "raw_name": "message",
+    "func_name": "reactionmute_message",
+    "parent_func_name": "invoke_reactionmute",
+    "description": "set the server message for reactionmutes",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke reactionmute message [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke reactionmute message"
+  },
+  "invoke_reactionmute_message-view": {
+    "raw_name": "message-view",
+    "func_name": "reactionmute_messageview",
+    "parent_func_name": "invoke_reactionmute",
+    "description": "see the reactionmute server message",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke reactionmute message-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke reactionmute message-view"
+  },
+  "invoke_unreactionmute": {
+    "raw_name": "unreactionmute",
+    "func_name": "invoke_unreactionmute",
+    "parent_func_name": "invoke",
+    "description": "unreactionmute message settings",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke unreactionmute"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "invoke unreactionmute dm",
+      "invoke unreactionmute dm-view",
+      "invoke unreactionmute message",
+      "invoke unreactionmute message-view"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke unreactionmute"
+  },
+  "invoke_unreactionmute_dm": {
+    "raw_name": "dm",
+    "func_name": "unreactionmute_dm",
+    "parent_func_name": "invoke_unreactionmute",
+    "description": "set the dm sent for unreactionmutes",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke unreactionmute dm [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke unreactionmute dm"
+  },
+  "invoke_unreactionmute_dm-view": {
+    "raw_name": "dm-view",
+    "func_name": "unreactionmute_dmview",
+    "parent_func_name": "invoke_unreactionmute",
+    "description": "see the unreactionmute dm",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke unreactionmute dm-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke unreactionmute dm-view"
+  },
+  "invoke_unreactionmute_message": {
+    "raw_name": "message",
+    "func_name": "unreactionmute_message",
+    "parent_func_name": "invoke_unreactionmute",
+    "description": "set the server message for unreactionmutes",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke unreactionmute message [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke unreactionmute message"
+  },
+  "invoke_unreactionmute_message-view": {
+    "raw_name": "message-view",
+    "func_name": "unreactionmute_messageview",
+    "parent_func_name": "invoke_unreactionmute",
+    "description": "see the unreactionmute server message",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke unreactionmute message-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke unreactionmute message-view"
+  },
+  "invoke_imagemute": {
+    "raw_name": "imagemute",
+    "func_name": "invoke_imagemute",
+    "parent_func_name": "invoke",
+    "description": "imagemute message settings",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke imagemute"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "invoke imagemute dm",
+      "invoke imagemute dm-view",
+      "invoke imagemute message",
+      "invoke imagemute message-view"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke imagemute"
+  },
+  "invoke_imagemute_dm": {
+    "raw_name": "dm",
+    "func_name": "imagemute_dm",
+    "parent_func_name": "invoke_imagemute",
+    "description": "set the dm sent for imagemutes",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke imagemute dm [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke imagemute dm"
+  },
+  "invoke_imagemute_dm-view": {
+    "raw_name": "dm-view",
+    "func_name": "imagemute_dmview",
+    "parent_func_name": "invoke_imagemute",
+    "description": "see the imagemute dm",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke imagemute dm-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke imagemute dm-view"
+  },
+  "invoke_imagemute_message": {
+    "raw_name": "message",
+    "func_name": "imagemute_message",
+    "parent_func_name": "invoke_imagemute",
+    "description": "set the server message for imagemutes",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke imagemute message [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke imagemute message"
+  },
+  "invoke_imagemute_message-view": {
+    "raw_name": "message-view",
+    "func_name": "imagemute_messageview",
+    "parent_func_name": "invoke_imagemute",
+    "description": "see the imagemute server message",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke imagemute message-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke imagemute message-view"
+  },
+  "invoke_unimagemute": {
+    "raw_name": "unimagemute",
+    "func_name": "invoke_unimagemute",
+    "parent_func_name": "invoke",
+    "description": "unimagemute message settings",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke unimagemute"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "invoke unimagemute dm",
+      "invoke unimagemute dm-view",
+      "invoke unimagemute message",
+      "invoke unimagemute message-view"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke unimagemute"
+  },
+  "invoke_unimagemute_dm": {
+    "raw_name": "dm",
+    "func_name": "unimagemute_dm",
+    "parent_func_name": "invoke_unimagemute",
+    "description": "set the dm sent for unimagemutes",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke unimagemute dm [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke unimagemute dm"
+  },
+  "invoke_unimagemute_dm-view": {
+    "raw_name": "dm-view",
+    "func_name": "unimagemute_dmview",
+    "parent_func_name": "invoke_unimagemute",
+    "description": "see the unimagemute dm",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke unimagemute dm-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke unimagemute dm-view"
+  },
+  "invoke_unimagemute_message": {
+    "raw_name": "message",
+    "func_name": "unimagemute_message",
+    "parent_func_name": "invoke_unimagemute",
+    "description": "set the server message for unimagemutes",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke unimagemute message [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke unimagemute message"
+  },
+  "invoke_unimagemute_message-view": {
+    "raw_name": "message-view",
+    "func_name": "unimagemute_messageview",
+    "parent_func_name": "invoke_unimagemute",
+    "description": "see the unimagemute server message",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke unimagemute message-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke unimagemute message-view"
+  },
+  "timer": {
+    "raw_name": "timer",
+    "func_name": "timer",
+    "parent_func_name": null,
+    "description": "manage repeating messages",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!timer"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "timer activity",
+      "timer add",
+      "timer list",
+      "timer remove",
+      "timer view"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "name": "timer"
+  },
+  "timer_add": {
+    "raw_name": "add",
+    "func_name": "timer_add",
+    "parent_func_name": "timer",
+    "description": "add a repeating message to a channel",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      },
+      {
+        "name": "interval",
+        "type": "str"
+      },
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!timer add <channel> <interval> <message>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "name": "timer add"
+  },
+  "timer_remove": {
+    "raw_name": "remove",
+    "func_name": "timer_remove",
+    "parent_func_name": "timer",
+    "description": "remove all repeating messages from a channel",
+    "aliases": [
+      "delete"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!timer remove <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "name": "timer remove"
+  },
+  "timer_list": {
+    "raw_name": "list",
+    "func_name": "timer_list",
+    "parent_func_name": "timer",
+    "description": "list all repeating messages in the server",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!timer list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "name": "timer list"
+  },
+  "timer_view": {
+    "raw_name": "view",
+    "func_name": "timer_view",
+    "parent_func_name": "timer",
+    "description": "preview the repeating message for a channel",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!timer view <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "name": "timer view"
+  },
+  "timer_activity": {
+    "raw_name": "activity",
+    "func_name": "timer_activity",
+    "parent_func_name": "timer",
+    "description": "enable/disable activity requirement for all timers",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "enabled",
+        "type": "bool"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!timer activity <enabled>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "name": "timer activity"
+  },
   "triggers": {
     "raw_name": "triggers",
     "func_name": "triggers_group",
     "parent_func_name": null,
     "description": "auto response triggers",
     "aliases": [
-      "trigger"
+      "trigger",
+      "autoresp",
+      "autoresponder"
     ],
     "category": "automation",
     "permissions": [
@@ -1872,9 +2720,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "triggers enable",
       "triggers endswith",
       "triggers exact",
-      "triggers export",
       "triggers ignore",
-      "triggers import",
       "triggers info",
       "triggers list",
       "triggers log",
@@ -2568,54 +3414,6 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
     "name": "triggers search"
-  },
-  "triggers_import": {
-    "raw_name": "import",
-    "func_name": "triggers_import",
-    "parent_func_name": "triggers_group",
-    "description": "import triggers from a file",
-    "aliases": [
-      "restore"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!triggers import"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
-    "name": "triggers import"
-  },
-  "triggers_export": {
-    "raw_name": "export",
-    "func_name": "triggers_export",
-    "parent_func_name": "triggers_group",
-    "description": "save triggers to a file",
-    "aliases": [
-      "backup"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!triggers export"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
-    "name": "triggers export"
   },
   "greet": {
     "raw_name": "greet",
