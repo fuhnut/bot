@@ -24,7 +24,7 @@ const ServerCard = ({ server }: { server: any }) => (
           alt={server.name}
           width={44}
           height={44}
-          className="rounded-full ring-1 ring-white/5 grayscale saturate-0"
+          className="rounded-full ring-1 ring-white/5"
           unoptimized
         />
       ) : (
