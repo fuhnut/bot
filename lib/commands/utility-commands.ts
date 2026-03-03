@@ -198,12 +198,10 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "ce",
     "func_name": "ce_command",
     "parent_func_name": null,
-    "description": "send an embed using a script (prefix only)",
+    "description": "send an embed using a script",
     "aliases": [],
     "category": "utility",
-    "permissions": [
-      "Embed Links"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [
       {

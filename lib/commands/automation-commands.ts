@@ -584,6 +584,227 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
     "name": "autoreact scope list"
   },
+  "boost": {
+    "raw_name": "boost",
+    "func_name": "boost_group",
+    "parent_func_name": null,
+    "description": "manage boost notifications and awards for this server",
+    "aliases": [
+      "boosts",
+      "boosting"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "boost channel",
+      "boost message",
+      "boost remove",
+      "boost settings",
+      "boost test",
+      "boost variables",
+      "boost view"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
+    "name": "boost"
+  },
+  "boost_channel": {
+    "raw_name": "channel",
+    "func_name": "boost_channel",
+    "parent_func_name": "boost_group",
+    "description": "set the channel where boost notifications are sent",
+    "aliases": [
+      "ch",
+      "add",
+      "set"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boost channel <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
+    "name": "boost channel"
+  },
+  "boost_message": {
+    "raw_name": "message",
+    "func_name": "boost_message",
+    "parent_func_name": "boost_group",
+    "description": "set the message template for boost notifications",
+    "aliases": [
+      "msg",
+      "text"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boost message <message>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
+    "name": "boost message"
+  },
+  "boost_remove": {
+    "raw_name": "remove",
+    "func_name": "boost_remove",
+    "parent_func_name": "boost_group",
+    "description": "remove boost notification configuration",
+    "aliases": [
+      "rm",
+      "delete",
+      "reset"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost remove"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
+    "name": "boost remove"
+  },
+  "boost_settings": {
+    "raw_name": "settings",
+    "func_name": "boost_settings",
+    "parent_func_name": "boost_group",
+    "description": "view the current boost message configuration",
+    "aliases": [
+      "config",
+      "cfg"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost settings"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
+    "name": "boost settings"
+  },
+  "boost_variables": {
+    "raw_name": "variables",
+    "func_name": "boost_variables",
+    "parent_func_name": "boost_group",
+    "description": "view available variables for boost notification messages",
+    "aliases": [
+      "vars",
+      "info",
+      "list",
+      "available",
+      "options"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost variables"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
+    "name": "boost variables"
+  },
+  "boost_view": {
+    "raw_name": "view",
+    "func_name": "boost_view",
+    "parent_func_name": "boost_group",
+    "description": "preview how the boost notification message will look",
+    "aliases": [
+      "preview"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
+    "name": "boost view"
+  },
+  "boost_test": {
+    "raw_name": "test",
+    "func_name": "boost_test",
+    "parent_func_name": "boost_group",
+    "description": "simulate a boost notification using yourself as the booster",
+    "aliases": [
+      "simulate"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost test"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
+    "name": "boost test"
+  },
   "bumpreminder": {
     "raw_name": "bumpreminder",
     "func_name": "bumpreminder",
@@ -610,6 +831,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "bumpreminder channel",
       "bumpreminder config",
       "bumpreminder message",
+      "bumpreminder test",
       "bumpreminder thankyou"
     ],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
@@ -622,7 +844,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "set the channel for bump reminders",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "channel",
@@ -647,7 +871,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "set the reminder message",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "script",
@@ -672,7 +898,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "set the thank you message",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "script",
@@ -697,7 +925,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "toggle auto-cleaning of non-bump messages",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "enabled",
@@ -722,7 +952,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "toggle auto-locking of the channel",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [
       {
         "name": "enabled",
@@ -747,7 +979,9 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "description": "view current configuration",
     "aliases": [],
     "category": "automation",
-    "permissions": [],
+    "permissions": [
+      "Manage Guild"
+    ],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -759,6 +993,28 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
     "name": "bumpreminder config"
+  },
+  "bumpreminder_test": {
+    "raw_name": "test",
+    "func_name": "bump_test",
+    "parent_func_name": "bumpreminder",
+    "description": "test the currently configured bump messages",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder test"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
+    "name": "bumpreminder test"
   },
   "invoke": {
     "raw_name": "invoke",
@@ -785,6 +1041,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "invoke kick",
       "invoke mute",
       "invoke reactionmute",
+      "invoke removehardban",
       "invoke softban",
       "invoke timeout",
       "invoke unban",
@@ -1217,11 +1474,62 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": true,
     "subcommands": [
+      "invoke hardban dm",
+      "invoke hardban dm-view",
       "invoke hardban message",
       "invoke hardban message-view"
     ],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
     "name": "invoke hardban"
+  },
+  "invoke_hardban_dm": {
+    "raw_name": "dm",
+    "func_name": "hardban_dm",
+    "parent_func_name": "invoke_hardban",
+    "description": "set the dm sent for hardbans",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke hardban dm [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke hardban dm"
+  },
+  "invoke_hardban_dm-view": {
+    "raw_name": "dm-view",
+    "func_name": "hardban_dmview",
+    "parent_func_name": "invoke_hardban",
+    "description": "see the hardban dm",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke hardban dm-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke hardban dm-view"
   },
   "invoke_hardban_message": {
     "raw_name": "message",
@@ -1271,6 +1579,131 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
     "name": "invoke hardban message-view"
+  },
+  "invoke_removehardban": {
+    "raw_name": "removehardban",
+    "func_name": "invoke_removehardban",
+    "parent_func_name": "invoke",
+    "description": "removehardban message settings",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke removehardban"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "invoke removehardban dm",
+      "invoke removehardban dm-view",
+      "invoke removehardban message",
+      "invoke removehardban message-view"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke removehardban"
+  },
+  "invoke_removehardban_dm": {
+    "raw_name": "dm",
+    "func_name": "removehardban_dm",
+    "parent_func_name": "invoke_removehardban",
+    "description": "set the dm sent for removing hardbans",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke removehardban dm [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke removehardban dm"
+  },
+  "invoke_removehardban_dm-view": {
+    "raw_name": "dm-view",
+    "func_name": "removehardban_dmview",
+    "parent_func_name": "invoke_removehardban",
+    "description": "see the removehardban dm",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke removehardban dm-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke removehardban dm-view"
+  },
+  "invoke_removehardban_message": {
+    "raw_name": "message",
+    "func_name": "removehardban_message",
+    "parent_func_name": "invoke_removehardban",
+    "description": "set the server message for removing hardbans",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invoke removehardban message [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke removehardban message"
+  },
+  "invoke_removehardban_message-view": {
+    "raw_name": "message-view",
+    "func_name": "removehardban_messageview",
+    "parent_func_name": "invoke_removehardban",
+    "description": "see the removehardban server message",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invoke removehardban message-view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
+    "name": "invoke removehardban message-view"
   },
   "invoke_unban": {
     "raw_name": "unban",

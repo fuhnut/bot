@@ -18,7 +18,7 @@ export default function TOSPage() {
         <div className="flex flex-col gap-4 mb-20">
           <div className="flex items-center gap-3 text-red-400">
             <CustomIcons.LegalIcon className="w-5 h-5" />
-            <span className="text-[11px] font-black uppercase tracking-[0.4em]">Usage Terms</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.4em]">tos</span>
           </div>
           <motion.h1
             initial={{ opacity: 0, x: -20 }}

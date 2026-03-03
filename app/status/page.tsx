@@ -121,7 +121,7 @@ export default function Status() {
           >
             <div className="flex items-center gap-3 text-white/30">
               <CustomIcons.ActivityIcon className="w-4 h-4" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em]">telemetry</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em]">status</span>
             </div>
             <h1 className="text-7xl md:text-9xl font-black tracking-tighter lowercase leading-[0.8] mb-4">
               status
@@ -134,7 +134,7 @@ export default function Status() {
                 <div className={`w-2 h-2 rounded-full ${stats?.status === "Online" ? "bg-white shadow-[0_0_10px_white]" : "bg-white/10"}`} />
               </div>
               <span className="text-[10px] font-black uppercase tracking-widest text-white/40">
-                {stats?.status === "Online" ? "Operational" : "Dead"}
+                {stats?.status === "Online" ? "awake!" : "Dead"}
               </span>
             </div>
           </div>

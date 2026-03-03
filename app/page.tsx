@@ -302,11 +302,10 @@ export default function Home() {
               <span className="text-[10px] font-black uppercase tracking-[0.4em]">capabilities</span>
             </div>
             <h2 className="text-6xl md:text-8xl font-black tracking-tighter lowercase leading-[0.8]">
-              engineered for scale
+              ...
             </h2>
             <p className="text-xl text-white/20 lowercase max-w-xl font-medium">
-              professional tools built for high-velocity communities.
-              everything you need to govern and grow.
+              ...
             </p>
           </div>
 
@@ -593,7 +592,7 @@ export default function Home() {
               <div className="max-w-2xl space-y-8 relative z-10">
                 <div className="flex items-center gap-3 text-white/20">
                   <CustomIcons.TerminalIcon className="w-5 h-5" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em]">engine architecture</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em]">modern feel</span>
                 </div>
                 <h3 className="text-5xl font-black tracking-tighter leading-tight">
                   built for the <span className="text-white/40">modern discord experience.</span>
@@ -605,7 +604,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-[15px] font-black tracking-widest uppercase text-white/60 mb-1">components v2</p>
-                      <p className="text-[14px] text-white/20 font-medium leading-relaxed lowercase">utilises discords latest interactable components and structures.</p>
+                      <p className="text-[14px] text-white/20 font-medium leading-relaxed lowercase">utilises discords latest components and features.</p>
                     </div>
                   </li>
                   <li className="flex gap-4 group">

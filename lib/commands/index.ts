@@ -22,6 +22,7 @@ import { CUSTOMIZATION_COMMANDS } from "./customization-commands";
 import { ENGAGEMENT_COMMANDS } from "./engagement-commands";
 import { FUN_COMMANDS } from "./fun-commands";
 import { MODERATION_COMMANDS } from "./moderation-commands";
+import { MUSIC_COMMANDS } from "./music-commands";
 import { SECURITY_COMMANDS } from "./security-commands";
 import { SERVER_COMMANDS } from "./server-commands";
 import { SOCIAL_COMMANDS } from "./social-commands";
@@ -34,6 +35,7 @@ export const ALL_COMMANDS: Record<string, Command> = {
   ...ENGAGEMENT_COMMANDS,
   ...FUN_COMMANDS,
   ...MODERATION_COMMANDS,
+  ...MUSIC_COMMANDS,
   ...SECURITY_COMMANDS,
   ...SERVER_COMMANDS,
   ...SOCIAL_COMMANDS,

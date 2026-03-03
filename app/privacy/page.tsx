@@ -18,7 +18,7 @@ export default function PrivacyPage() {
         <div className="flex flex-col gap-4 mb-20">
           <div className="flex items-center gap-3 text-blue-400">
             <CustomIcons.ShieldIcon className="w-5 h-5" />
-            <span className="text-[11px] font-black uppercase tracking-[0.4em]">Privacy Protocols</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.4em]">Privacy</span>
           </div>
           <motion.h1
             initial={{ opacity: 0, x: -20 }}

@@ -1098,7 +1098,9 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "del"
     ],
     "category": "customization",
-    "permissions": [],
+    "permissions": [
+      "Manage Roles"
+    ],
     "required_args": [],
     "optional_args": [
       {
@@ -1705,6 +1707,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": true,
     "subcommands": [
+      "vanity message preview",
       "vanity message set",
       "vanity message view"
     ],
@@ -1759,6 +1762,28 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
     "name": "vanity message view"
+  },
+  "vanity_message_preview": {
+    "raw_name": "preview",
+    "func_name": "vanity_message_preview",
+    "parent_func_name": "vanity_message",
+    "description": "preview your vanity reward message",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!vanity message preview"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "name": "vanity message preview"
   },
   "vanity_channels": {
     "raw_name": "channels",
