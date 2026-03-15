@@ -17,1005 +17,6 @@ export interface Command {
 }
 
 export const AUTOMATION_COMMANDS: Record<string, Command> = {
-  "autoreact": {
-    "raw_name": "autoreact",
-    "func_name": "autoreact",
-    "parent_func_name": null,
-    "description": "set up auto reactions for messages",
-    "aliases": [
-      "ar"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!autoreact"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "autoreact add",
-      "autoreact clear",
-      "autoreact list",
-      "autoreact matchtype",
-      "autoreact remove",
-      "autoreact roletrack",
-      "autoreact scope",
-      "autoreact toggle"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact"
-  },
-  "autoreact_add": {
-    "raw_name": "add",
-    "func_name": "autoreact_add",
-    "parent_func_name": "autoreact",
-    "description": "add a new autoreact rule",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "trigger",
-        "type": "str"
-      },
-      {
-        "name": "emojis",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact add <trigger> <emojis>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact add"
-  },
-  "autoreact_remove": {
-    "raw_name": "remove",
-    "func_name": "autoreact_remove",
-    "parent_func_name": "autoreact",
-    "description": "remove an autoreact rule",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "rule_id",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact remove <rule_id>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact remove"
-  },
-  "autoreact_list": {
-    "raw_name": "list",
-    "func_name": "autoreact_list",
-    "parent_func_name": "autoreact",
-    "description": "show all autoreact rules",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!autoreact list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact list"
-  },
-  "autoreact_clear": {
-    "raw_name": "clear",
-    "func_name": "autoreact_clear",
-    "parent_func_name": "autoreact",
-    "description": "clear all autoreact rules",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!autoreact clear"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact clear"
-  },
-  "autoreact_toggle": {
-    "raw_name": "toggle",
-    "func_name": "autoreact_toggle",
-    "parent_func_name": "autoreact",
-    "description": "turn autoreactions on or off",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "enabled",
-        "type": "bool"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact toggle <enabled>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact toggle"
-  },
-  "autoreact_matchtype": {
-    "raw_name": "matchtype",
-    "func_name": "matchtype",
-    "parent_func_name": "autoreact",
-    "description": "change how rules match text",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!autoreact matchtype"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "autoreact matchtype get",
-      "autoreact matchtype list",
-      "autoreact matchtype set"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact matchtype"
-  },
-  "autoreact_matchtype_set": {
-    "raw_name": "set",
-    "func_name": "matchtype_set",
-    "parent_func_name": "matchtype",
-    "description": "set how a rule matches text",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "rule_id",
-        "type": "int"
-      },
-      {
-        "name": "match_type",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact matchtype set <rule_id> <match_type>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact matchtype set"
-  },
-  "autoreact_matchtype_get": {
-    "raw_name": "get",
-    "func_name": "matchtype_get",
-    "parent_func_name": "matchtype",
-    "description": "check a rule's match type",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "rule_id",
-        "type": "int"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact matchtype get <rule_id>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact matchtype get"
-  },
-  "autoreact_matchtype_list": {
-    "raw_name": "list",
-    "func_name": "matchtype_list",
-    "parent_func_name": "matchtype",
-    "description": "show rules by match type",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!autoreact matchtype list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact matchtype list"
-  },
-  "autoreact_roletrack": {
-    "raw_name": "roletrack",
-    "func_name": "roletrack",
-    "parent_func_name": "autoreact",
-    "description": "react to messages from specific roles",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!autoreact roletrack"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "autoreact roletrack add",
-      "autoreact roletrack bypass",
-      "autoreact roletrack emoji",
-      "autoreact roletrack list",
-      "autoreact roletrack remove",
-      "autoreact roletrack restrict"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact roletrack"
-  },
-  "autoreact_roletrack_add": {
-    "raw_name": "add",
-    "func_name": "roletrack_add",
-    "parent_func_name": "roletrack",
-    "description": "add reactions when a role messages",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      },
-      {
-        "name": "emojis",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact roletrack add <role> <emojis>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact roletrack add"
-  },
-  "autoreact_roletrack_remove": {
-    "raw_name": "remove",
-    "func_name": "roletrack_remove",
-    "parent_func_name": "roletrack",
-    "description": "stop tracking a role",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact roletrack remove <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact roletrack remove"
-  },
-  "autoreact_roletrack_list": {
-    "raw_name": "list",
-    "func_name": "roletrack_list",
-    "parent_func_name": "roletrack",
-    "description": "list all tracked roles",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!autoreact roletrack list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact roletrack list"
-  },
-  "autoreact_roletrack_emoji": {
-    "raw_name": "emoji",
-    "func_name": "roletrack_emoji",
-    "parent_func_name": "roletrack",
-    "description": "change emojis for a tracked role",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      },
-      {
-        "name": "emojis",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact roletrack emoji <role> <emojis>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact roletrack emoji"
-  },
-  "autoreact_roletrack_restrict": {
-    "raw_name": "restrict",
-    "func_name": "roletrack_restrict",
-    "parent_func_name": "roletrack",
-    "description": "only react to users with this role",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact roletrack restrict <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact roletrack restrict"
-  },
-  "autoreact_roletrack_bypass": {
-    "raw_name": "bypass",
-    "func_name": "roletrack_bypass",
-    "parent_func_name": "roletrack",
-    "description": "let a role skip autoreactions",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact roletrack bypass <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact roletrack bypass"
-  },
-  "autoreact_scope": {
-    "raw_name": "scope",
-    "func_name": "scope",
-    "parent_func_name": "autoreact",
-    "description": "set where rules work",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!autoreact scope"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "autoreact scope get",
-      "autoreact scope list",
-      "autoreact scope set"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact scope"
-  },
-  "autoreact_scope_set": {
-    "raw_name": "set",
-    "func_name": "scope_set",
-    "parent_func_name": "scope",
-    "description": "set where a rule applies",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "rule_id",
-        "type": "int"
-      },
-      {
-        "name": "scope_type",
-        "type": "str"
-      }
-    ],
-    "optional_args": [
-      {
-        "name": "target",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!autoreact scope set <rule_id> <scope_type> [target]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact scope set"
-  },
-  "autoreact_scope_get": {
-    "raw_name": "get",
-    "func_name": "scope_get",
-    "parent_func_name": "scope",
-    "description": "check a rule's scope",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "rule_id",
-        "type": "int"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!autoreact scope get <rule_id>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact scope get"
-  },
-  "autoreact_scope_list": {
-    "raw_name": "list",
-    "func_name": "scope_list",
-    "parent_func_name": "scope",
-    "description": "show rules by scope",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!autoreact scope list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions.py",
-    "name": "autoreact scope list"
-  },
-  "boost": {
-    "raw_name": "boost",
-    "func_name": "boost_group",
-    "parent_func_name": null,
-    "description": "manage boost notifications and awards for this server",
-    "aliases": [
-      "boosts",
-      "boosting"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boost"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "boost channel",
-      "boost message",
-      "boost remove",
-      "boost settings",
-      "boost test",
-      "boost variables",
-      "boost view"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
-    "name": "boost"
-  },
-  "boost_channel": {
-    "raw_name": "channel",
-    "func_name": "boost_channel",
-    "parent_func_name": "boost_group",
-    "description": "set the channel where boost notifications are sent",
-    "aliases": [
-      "ch",
-      "add",
-      "set"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "channel",
-        "type": "TextChannel"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boost channel <channel>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
-    "name": "boost channel"
-  },
-  "boost_message": {
-    "raw_name": "message",
-    "func_name": "boost_message",
-    "parent_func_name": "boost_group",
-    "description": "set the message template for boost notifications",
-    "aliases": [
-      "msg",
-      "text"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "message",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boost message <message>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
-    "name": "boost message"
-  },
-  "boost_remove": {
-    "raw_name": "remove",
-    "func_name": "boost_remove",
-    "parent_func_name": "boost_group",
-    "description": "remove boost notification configuration",
-    "aliases": [
-      "rm",
-      "delete",
-      "reset"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boost remove"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
-    "name": "boost remove"
-  },
-  "boost_settings": {
-    "raw_name": "settings",
-    "func_name": "boost_settings",
-    "parent_func_name": "boost_group",
-    "description": "view the current boost message configuration",
-    "aliases": [
-      "config",
-      "cfg"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boost settings"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
-    "name": "boost settings"
-  },
-  "boost_variables": {
-    "raw_name": "variables",
-    "func_name": "boost_variables",
-    "parent_func_name": "boost_group",
-    "description": "view available variables for boost notification messages",
-    "aliases": [
-      "vars",
-      "info",
-      "list",
-      "available",
-      "options"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boost variables"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
-    "name": "boost variables"
-  },
-  "boost_view": {
-    "raw_name": "view",
-    "func_name": "boost_view",
-    "parent_func_name": "boost_group",
-    "description": "preview how the boost notification message will look",
-    "aliases": [
-      "preview"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boost view"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
-    "name": "boost view"
-  },
-  "boost_test": {
-    "raw_name": "test",
-    "func_name": "boost_test",
-    "parent_func_name": "boost_group",
-    "description": "simulate a boost notification using yourself as the booster",
-    "aliases": [
-      "simulate"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boost test"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost.py",
-    "name": "boost test"
-  },
-  "bumpreminder": {
-    "raw_name": "bumpreminder",
-    "func_name": "bumpreminder",
-    "parent_func_name": null,
-    "description": "manage disboard bump reminders",
-    "aliases": [
-      "bump"
-    ],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!bumpreminder"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "bumpreminder autoclean",
-      "bumpreminder autolock",
-      "bumpreminder channel",
-      "bumpreminder config",
-      "bumpreminder message",
-      "bumpreminder test",
-      "bumpreminder thankyou"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
-    "name": "bumpreminder"
-  },
-  "bumpreminder_channel": {
-    "raw_name": "channel",
-    "func_name": "bump_channel",
-    "parent_func_name": "bumpreminder",
-    "description": "set the channel for bump reminders",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "channel",
-        "type": "TextChannel"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!bumpreminder channel <channel>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
-    "name": "bumpreminder channel"
-  },
-  "bumpreminder_message": {
-    "raw_name": "message",
-    "func_name": "bump_message",
-    "parent_func_name": "bumpreminder",
-    "description": "set the reminder message",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "script",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!bumpreminder message <script>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
-    "name": "bumpreminder message"
-  },
-  "bumpreminder_thankyou": {
-    "raw_name": "thankyou",
-    "func_name": "bump_thankyou",
-    "parent_func_name": "bumpreminder",
-    "description": "set the thank you message",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "script",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!bumpreminder thankyou <script>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
-    "name": "bumpreminder thankyou"
-  },
-  "bumpreminder_autoclean": {
-    "raw_name": "autoclean",
-    "func_name": "bump_autoclean",
-    "parent_func_name": "bumpreminder",
-    "description": "toggle auto-cleaning of non-bump messages",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "enabled",
-        "type": "bool"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!bumpreminder autoclean <enabled>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
-    "name": "bumpreminder autoclean"
-  },
-  "bumpreminder_autolock": {
-    "raw_name": "autolock",
-    "func_name": "bump_autolock",
-    "parent_func_name": "bumpreminder",
-    "description": "toggle auto-locking of the channel",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "enabled",
-        "type": "bool"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!bumpreminder autolock <enabled>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
-    "name": "bumpreminder autolock"
-  },
-  "bumpreminder_config": {
-    "raw_name": "config",
-    "func_name": "bump_config",
-    "parent_func_name": "bumpreminder",
-    "description": "view current configuration",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!bumpreminder config"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
-    "name": "bumpreminder config"
-  },
-  "bumpreminder_test": {
-    "raw_name": "test",
-    "func_name": "bump_test",
-    "parent_func_name": "bumpreminder",
-    "description": "test the currently configured bump messages",
-    "aliases": [],
-    "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!bumpreminder test"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump.py",
-    "name": "bumpreminder test"
-  },
   "invoke": {
     "raw_name": "invoke",
     "func_name": "invoke",
@@ -2955,9 +1956,795 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\invoke.py",
     "name": "invoke unimagemute message-view"
   },
+  "autoreact": {
+    "raw_name": "autoreact",
+    "func_name": "autoreact_group",
+    "parent_func_name": null,
+    "description": "set up auto reactions for messages",
+    "aliases": [
+      "ar"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!autoreact"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "autoreact add",
+      "autoreact clear",
+      "autoreact list",
+      "autoreact matchtype",
+      "autoreact remove",
+      "autoreact roletrack",
+      "autoreact scope",
+      "autoreact toggle"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact"
+  },
+  "autoreact_add": {
+    "raw_name": "add",
+    "func_name": "add_sub",
+    "parent_func_name": "autoreact_group",
+    "description": "add a new autoreact rule",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "trigger",
+        "type": "text"
+      },
+      {
+        "name": "emojis",
+        "type": "text"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!autoreact add <trigger> <emojis>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact add"
+  },
+  "autoreact_remove": {
+    "raw_name": "remove",
+    "func_name": "remove_sub",
+    "parent_func_name": "autoreact_group",
+    "description": "remove an autoreact rule",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "rule_id",
+        "type": "text"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!autoreact remove <rule_id>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact remove"
+  },
+  "autoreact_list": {
+    "raw_name": "list",
+    "func_name": "list_sub",
+    "parent_func_name": "autoreact_group",
+    "description": "show all autoreact rules",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!autoreact list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact list"
+  },
+  "autoreact_clear": {
+    "raw_name": "clear",
+    "func_name": "clear_sub",
+    "parent_func_name": "autoreact_group",
+    "description": "clear all autoreact rules",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!autoreact clear"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact clear"
+  },
+  "autoreact_toggle": {
+    "raw_name": "toggle",
+    "func_name": "toggle_sub",
+    "parent_func_name": "autoreact_group",
+    "description": "turn autoreactions on or off",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "enabled",
+        "type": "bool"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!autoreact toggle <enabled>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact toggle"
+  },
+  "autoreact_matchtype": {
+    "raw_name": "matchtype",
+    "func_name": "matchtype_group",
+    "parent_func_name": "autoreact_group",
+    "description": "change how rules match text",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!autoreact matchtype"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "autoreact matchtype get",
+      "autoreact matchtype list",
+      "autoreact matchtype set"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact matchtype"
+  },
+  "autoreact_matchtype_set": {
+    "raw_name": "set",
+    "func_name": "matchtype_set_sub",
+    "parent_func_name": "matchtype_group",
+    "description": "set how a rule matches text",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "rule_id",
+        "type": "int"
+      },
+      {
+        "name": "match_type",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!autoreact matchtype set <rule_id> <match_type>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact matchtype set"
+  },
+  "autoreact_matchtype_get": {
+    "raw_name": "get",
+    "func_name": "matchtype_get_sub",
+    "parent_func_name": "matchtype_group",
+    "description": "check a rule's match type",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "rule_id",
+        "type": "int"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!autoreact matchtype get <rule_id>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact matchtype get"
+  },
+  "autoreact_matchtype_list": {
+    "raw_name": "list",
+    "func_name": "matchtype_list_sub",
+    "parent_func_name": "matchtype_group",
+    "description": "show rules by match type",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!autoreact matchtype list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact matchtype list"
+  },
+  "autoreact_roletrack": {
+    "raw_name": "roletrack",
+    "func_name": "roletrack_group",
+    "parent_func_name": "autoreact_group",
+    "description": "react to messages from specific roles",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!autoreact roletrack"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "autoreact roletrack add",
+      "autoreact roletrack list",
+      "autoreact roletrack remove"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact roletrack"
+  },
+  "autoreact_roletrack_add": {
+    "raw_name": "add",
+    "func_name": "roletrack_add_sub",
+    "parent_func_name": "roletrack_group",
+    "description": "add reactions when a role messages",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      },
+      {
+        "name": "emojis",
+        "type": "text"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!autoreact roletrack add <role> <emojis>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact roletrack add"
+  },
+  "autoreact_roletrack_remove": {
+    "raw_name": "remove",
+    "func_name": "roletrack_remove_sub",
+    "parent_func_name": "roletrack_group",
+    "description": "remove reactions when a role messages",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "track_id",
+        "type": "text"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!autoreact roletrack remove <track_id>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact roletrack remove"
+  },
+  "autoreact_roletrack_list": {
+    "raw_name": "list",
+    "func_name": "roletrack_list_sub",
+    "parent_func_name": "roletrack_group",
+    "description": "show all roletrack rules",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!autoreact roletrack list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact roletrack list"
+  },
+  "autoreact_scope": {
+    "raw_name": "scope",
+    "func_name": "scope_sub",
+    "parent_func_name": "autoreact_group",
+    "description": "change where a rule applies",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "rule_id",
+        "type": "int"
+      },
+      {
+        "name": "scope_type",
+        "type": "str"
+      }
+    ],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!autoreact scope <rule_id> <scope_type> [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\autoreactions\\__init__.py",
+    "name": "autoreact scope"
+  },
+  "boost": {
+    "raw_name": "boost",
+    "func_name": "boost_group",
+    "parent_func_name": null,
+    "description": "manage boost notifications and awards for this server",
+    "aliases": [
+      "boosts",
+      "boosting"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "boost channel",
+      "boost message",
+      "boost remove",
+      "boost settings",
+      "boost test",
+      "boost variables",
+      "boost view"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost\\__init__.py",
+    "name": "boost"
+  },
+  "boost_channel": {
+    "raw_name": "channel",
+    "func_name": "channel_sub",
+    "parent_func_name": "boost_group",
+    "description": "set the channel where boost notifications are sent",
+    "aliases": [
+      "ch",
+      "add",
+      "set"
+    ],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boost channel <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost\\__init__.py",
+    "name": "boost channel"
+  },
+  "boost_message": {
+    "raw_name": "message",
+    "func_name": "message_sub",
+    "parent_func_name": "boost_group",
+    "description": "set the message template for boost notifications",
+    "aliases": [
+      "msg",
+      "text"
+    ],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boost message <message>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost\\__init__.py",
+    "name": "boost message"
+  },
+  "boost_remove": {
+    "raw_name": "remove",
+    "func_name": "remove_sub",
+    "parent_func_name": "boost_group",
+    "description": "remove boost notification configuration",
+    "aliases": [
+      "rm",
+      "delete",
+      "reset"
+    ],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost remove"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost\\__init__.py",
+    "name": "boost remove"
+  },
+  "boost_settings": {
+    "raw_name": "settings",
+    "func_name": "settings_sub",
+    "parent_func_name": "boost_group",
+    "description": "view the current boost message configuration",
+    "aliases": [
+      "config",
+      "cfg"
+    ],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost settings"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost\\__init__.py",
+    "name": "boost settings"
+  },
+  "boost_variables": {
+    "raw_name": "variables",
+    "func_name": "variables_sub",
+    "parent_func_name": "boost_group",
+    "description": "view available variables for boost notification messages",
+    "aliases": [
+      "vars",
+      "info",
+      "list",
+      "available",
+      "options"
+    ],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost variables"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost\\__init__.py",
+    "name": "boost variables"
+  },
+  "boost_view": {
+    "raw_name": "view",
+    "func_name": "view_sub",
+    "parent_func_name": "boost_group",
+    "description": "preview how the boost notification message will look",
+    "aliases": [
+      "preview"
+    ],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost\\__init__.py",
+    "name": "boost view"
+  },
+  "boost_test": {
+    "raw_name": "test",
+    "func_name": "test_sub",
+    "parent_func_name": "boost_group",
+    "description": "simulate a boost notification using yourself as the booster",
+    "aliases": [
+      "simulate"
+    ],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boost test"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\boost\\__init__.py",
+    "name": "boost test"
+  },
+  "bumpreminder": {
+    "raw_name": "bumpreminder",
+    "func_name": "bump_group",
+    "parent_func_name": null,
+    "description": "manage disboard bump reminders",
+    "aliases": [
+      "bump"
+    ],
+    "category": "automation",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "bumpreminder autoclean",
+      "bumpreminder autolock",
+      "bumpreminder channel",
+      "bumpreminder config",
+      "bumpreminder message",
+      "bumpreminder test",
+      "bumpreminder thankyou"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump\\__init__.py",
+    "name": "bumpreminder"
+  },
+  "bumpreminder_channel": {
+    "raw_name": "channel",
+    "func_name": "channel_sub",
+    "parent_func_name": "bump_group",
+    "description": "set reminder channel",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder channel <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump\\__init__.py",
+    "name": "bumpreminder channel"
+  },
+  "bumpreminder_message": {
+    "raw_name": "message",
+    "func_name": "message_sub",
+    "parent_func_name": "bump_group",
+    "description": "set reminder script",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "script",
+        "type": "text"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder message <script>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump\\__init__.py",
+    "name": "bumpreminder message"
+  },
+  "bumpreminder_thankyou": {
+    "raw_name": "thankyou",
+    "func_name": "thankyou_sub",
+    "parent_func_name": "bump_group",
+    "description": "set thank you script",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "script",
+        "type": "text"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder thankyou <script>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump\\__init__.py",
+    "name": "bumpreminder thankyou"
+  },
+  "bumpreminder_autoclean": {
+    "raw_name": "autoclean",
+    "func_name": "autoclean_sub",
+    "parent_func_name": "bump_group",
+    "description": "toggle autoclean",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "enabled",
+        "type": "bool"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder autoclean <enabled>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump\\__init__.py",
+    "name": "bumpreminder autoclean"
+  },
+  "bumpreminder_autolock": {
+    "raw_name": "autolock",
+    "func_name": "autolock_sub",
+    "parent_func_name": "bump_group",
+    "description": "toggle autolock",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "enabled",
+        "type": "bool"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder autolock <enabled>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump\\__init__.py",
+    "name": "bumpreminder autolock"
+  },
+  "bumpreminder_config": {
+    "raw_name": "config",
+    "func_name": "config_sub",
+    "parent_func_name": "bump_group",
+    "description": "view bump config",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder config"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump\\__init__.py",
+    "name": "bumpreminder config"
+  },
+  "bumpreminder_test": {
+    "raw_name": "test",
+    "func_name": "test_sub",
+    "parent_func_name": "bump_group",
+    "description": "test bump scripts",
+    "aliases": [],
+    "category": "automation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!bumpreminder test"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\bump\\__init__.py",
+    "name": "bumpreminder test"
+  },
   "timer": {
     "raw_name": "timer",
-    "func_name": "timer",
+    "func_name": "timer_group",
     "parent_func_name": null,
     "description": "manage repeating messages",
     "aliases": [],
@@ -2978,19 +2765,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "timer remove",
       "timer view"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer\\__init__.py",
     "name": "timer"
   },
   "timer_add": {
     "raw_name": "add",
-    "func_name": "timer_add",
-    "parent_func_name": "timer",
+    "func_name": "add_sub",
+    "parent_func_name": "timer_group",
     "description": "add a repeating message to a channel",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "channel",
@@ -3013,21 +2798,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer\\__init__.py",
     "name": "timer add"
   },
   "timer_remove": {
     "raw_name": "remove",
-    "func_name": "timer_remove",
-    "parent_func_name": "timer",
-    "description": "remove all repeating messages from a channel",
-    "aliases": [
-      "delete"
-    ],
+    "func_name": "remove_sub",
+    "parent_func_name": "timer_group",
+    "description": "remove repeating messages from a channel",
+    "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "channel",
@@ -3042,19 +2823,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer\\__init__.py",
     "name": "timer remove"
   },
   "timer_list": {
     "raw_name": "list",
-    "func_name": "timer_list",
-    "parent_func_name": "timer",
-    "description": "list all repeating messages in the server",
+    "func_name": "list_sub",
+    "parent_func_name": "timer_group",
+    "description": "list server timers",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -3064,19 +2843,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer\\__init__.py",
     "name": "timer list"
   },
   "timer_view": {
     "raw_name": "view",
-    "func_name": "timer_view",
-    "parent_func_name": "timer",
-    "description": "preview the repeating message for a channel",
+    "func_name": "view_sub",
+    "parent_func_name": "timer_group",
+    "description": "preview a timer script",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "channel",
@@ -3091,19 +2868,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer\\__init__.py",
     "name": "timer view"
   },
   "timer_activity": {
     "raw_name": "activity",
-    "func_name": "timer_activity",
-    "parent_func_name": "timer",
-    "description": "enable/disable activity requirement for all timers",
+    "func_name": "activity_sub",
+    "parent_func_name": "timer_group",
+    "description": "toggle activity requirement",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "enabled",
@@ -3118,7 +2893,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\timer\\__init__.py",
     "name": "timer activity"
   },
   "triggers": {
@@ -3168,21 +2943,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "triggers toggle",
       "triggers unignore"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers"
   },
   "triggers_list": {
     "raw_name": "list",
-    "func_name": "triggers_list",
+    "func_name": "list_sub",
     "parent_func_name": "triggers_group",
     "description": "show all triggers",
     "aliases": [
       "ls"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -3192,21 +2965,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers list"
   },
   "triggers_create": {
     "raw_name": "create",
-    "func_name": "triggers_create",
+    "func_name": "create_sub",
     "parent_func_name": "triggers_group",
     "description": "create a new trigger",
     "aliases": [
       "add"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3225,21 +2996,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers create"
   },
   "triggers_strict": {
     "raw_name": "strict",
-    "func_name": "triggers_strict",
+    "func_name": "strict_sub",
     "parent_func_name": "triggers_group",
     "description": "create a case-sensitive trigger",
     "aliases": [
       "s"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3258,21 +3027,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers strict"
   },
   "triggers_exact": {
     "raw_name": "exact",
-    "func_name": "triggers_exact",
+    "func_name": "exact_sub",
     "parent_func_name": "triggers_group",
     "description": "create a trigger that matches exactly",
     "aliases": [
       "e"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3291,21 +3058,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers exact"
   },
   "triggers_startswith": {
     "raw_name": "startswith",
-    "func_name": "triggers_startswith",
+    "func_name": "startswith_sub",
     "parent_func_name": "triggers_group",
     "description": "trigger when message starts with text",
     "aliases": [
       "sw"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3324,21 +3089,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers startswith"
   },
   "triggers_endswith": {
     "raw_name": "endswith",
-    "func_name": "triggers_endswith",
+    "func_name": "endswith_sub",
     "parent_func_name": "triggers_group",
     "description": "trigger when message ends with text",
     "aliases": [
       "ew"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3357,21 +3120,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers endswith"
   },
   "triggers_regex": {
     "raw_name": "regex",
-    "func_name": "triggers_regex",
+    "func_name": "regex_sub",
     "parent_func_name": "triggers_group",
     "description": "create a trigger using regex",
     "aliases": [
       "re"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3390,12 +3151,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers regex"
   },
   "triggers_remove": {
     "raw_name": "remove",
-    "func_name": "triggers_remove",
+    "func_name": "remove_sub",
     "parent_func_name": "triggers_group",
     "description": "delete a trigger",
     "aliases": [
@@ -3403,9 +3164,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "delete"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3420,21 +3179,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers remove"
   },
   "triggers_clear": {
     "raw_name": "clear",
-    "func_name": "triggers_clear",
+    "func_name": "clear_sub",
     "parent_func_name": "triggers_group",
     "description": "delete all triggers",
     "aliases": [
       "deleteall"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -3444,21 +3201,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers clear"
   },
   "triggers_channel": {
     "raw_name": "channel",
-    "func_name": "triggers_channel",
+    "func_name": "channel_sub",
     "parent_func_name": "triggers_group",
     "description": "create a trigger for a specific channel",
     "aliases": [
       "ch"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3481,19 +3236,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers channel"
   },
   "triggers_ignore": {
     "raw_name": "ignore",
-    "func_name": "triggers_ignore",
+    "func_name": "ignore_sub",
     "parent_func_name": "triggers_group",
     "description": "ignore triggers for a user or channel",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "target",
@@ -3508,19 +3261,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers ignore"
   },
   "triggers_unignore": {
     "raw_name": "unignore",
-    "func_name": "triggers_unignore",
+    "func_name": "unignore_sub",
     "parent_func_name": "triggers_group",
     "description": "stop ignoring a user or channel",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "target",
@@ -3535,19 +3286,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers unignore"
   },
   "triggers_edit": {
     "raw_name": "edit",
-    "func_name": "triggers_edit",
+    "func_name": "edit_sub",
     "parent_func_name": "triggers_group",
     "description": "change a trigger's response",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3566,19 +3315,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers edit"
   },
   "triggers_info": {
     "raw_name": "info",
-    "func_name": "triggers_info",
+    "func_name": "info_sub",
     "parent_func_name": "triggers_group",
     "description": "see details about a trigger",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3593,19 +3340,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers info"
   },
   "triggers_enable": {
     "raw_name": "enable",
-    "func_name": "triggers_enable",
+    "func_name": "enable_sub",
     "parent_func_name": "triggers_group",
     "description": "turn on a trigger",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3620,19 +3365,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers enable"
   },
   "triggers_disable": {
     "raw_name": "disable",
-    "func_name": "triggers_disable",
+    "func_name": "disable_sub",
     "parent_func_name": "triggers_group",
     "description": "turn off a trigger",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3647,19 +3390,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers disable"
   },
   "triggers_move": {
     "raw_name": "move",
-    "func_name": "triggers_move",
+    "func_name": "move_sub",
     "parent_func_name": "triggers_group",
     "description": "move a trigger to another channel",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3678,19 +3419,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers move"
   },
   "triggers_rename": {
     "raw_name": "rename",
-    "func_name": "triggers_rename",
+    "func_name": "rename_sub",
     "parent_func_name": "triggers_group",
     "description": "change a trigger's text",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3709,21 +3448,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers rename"
   },
   "triggers_duplicate": {
     "raw_name": "duplicate",
-    "func_name": "triggers_duplicate",
+    "func_name": "duplicate_sub",
     "parent_func_name": "triggers_group",
     "description": "copy a trigger",
     "aliases": [
       "copy"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3738,19 +3475,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers duplicate"
   },
   "triggers_toggle": {
     "raw_name": "toggle",
-    "func_name": "triggers_toggle",
+    "func_name": "toggle_sub",
     "parent_func_name": "triggers_group",
     "description": "switch a trigger on or off",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3765,21 +3500,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers toggle"
   },
   "triggers_log": {
     "raw_name": "log",
-    "func_name": "triggers_log",
+    "func_name": "log_sub",
     "parent_func_name": "triggers_group",
-    "description": "see how often a trigger is used",
+    "description": "how often a trigger is used",
     "aliases": [
       "usage"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "trigger",
@@ -3794,19 +3527,17 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers log"
   },
   "triggers_stats": {
     "raw_name": "stats",
-    "func_name": "triggers_stats",
+    "func_name": "stats_sub",
     "parent_func_name": "triggers_group",
     "description": "see trigger stats for this server",
     "aliases": [],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -3816,21 +3547,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers stats"
   },
   "triggers_search": {
     "raw_name": "search",
-    "func_name": "triggers_search",
+    "func_name": "search_sub",
     "parent_func_name": "triggers_group",
     "description": "find triggers by keyword",
     "aliases": [
       "find"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "query",
@@ -3845,12 +3574,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\triggers\\__init__.py",
     "name": "triggers search"
   },
   "greet": {
     "raw_name": "greet",
-    "func_name": "greet_prefix",
+    "func_name": "greet_group",
     "parent_func_name": null,
     "description": "set up welcome and leave messages",
     "aliases": [
@@ -3878,13 +3607,13 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "greet test",
       "greet variables"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet"
   },
   "greet_message": {
     "raw_name": "message",
     "func_name": "message_group",
-    "parent_func_name": "greet_prefix",
+    "parent_func_name": "greet_group",
     "description": "set up welcome messages",
     "aliases": [
       "msg"
@@ -3906,21 +3635,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "greet message remove",
       "greet message set"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet message"
   },
   "greet_message_set": {
     "raw_name": "set",
-    "func_name": "message_set",
+    "func_name": "message_set_sub",
     "parent_func_name": "message_group",
     "description": "set the welcome message",
     "aliases": [
       "setmessage"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "text",
@@ -3935,12 +3662,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet message set"
   },
   "greet_message_remove": {
     "raw_name": "remove",
-    "func_name": "message_remove",
+    "func_name": "message_remove_sub",
     "parent_func_name": "message_group",
     "description": "delete the welcome message",
     "aliases": [
@@ -3948,9 +3675,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "delmsg"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -3960,21 +3685,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet message remove"
   },
   "greet_message_preview": {
     "raw_name": "preview",
-    "func_name": "message_preview",
+    "func_name": "message_preview_sub",
     "parent_func_name": "message_group",
     "description": "see how your welcome message looks",
     "aliases": [
       "previewmsg"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -3984,13 +3707,13 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet message preview"
   },
   "greet_channel": {
     "raw_name": "channel",
     "func_name": "channel_group",
-    "parent_func_name": "greet_prefix",
+    "parent_func_name": "greet_group",
     "description": "set where welcome messages go",
     "aliases": [
       "ch"
@@ -4012,12 +3735,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "greet channel list",
       "greet channel remove"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet channel"
   },
   "greet_channel_add": {
     "raw_name": "add",
-    "func_name": "channel_add",
+    "func_name": "channel_add_sub",
     "parent_func_name": "channel_group",
     "description": "add a welcome channel",
     "aliases": [
@@ -4025,9 +3748,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "setchannel"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "channel",
@@ -4042,12 +3763,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet channel add"
   },
   "greet_channel_remove": {
     "raw_name": "remove",
-    "func_name": "channel_remove",
+    "func_name": "channel_remove_sub",
     "parent_func_name": "channel_group",
     "description": "remove a welcome channel",
     "aliases": [
@@ -4055,9 +3776,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "delchannel"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "channel",
@@ -4072,12 +3791,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet channel remove"
   },
   "greet_channel_list": {
     "raw_name": "list",
-    "func_name": "channel_list",
+    "func_name": "channel_list_sub",
     "parent_func_name": "channel_group",
     "description": "list all welcome channels",
     "aliases": [
@@ -4085,9 +3804,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "all"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4097,13 +3814,13 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet channel list"
   },
   "greet_dm": {
     "raw_name": "dm",
     "func_name": "dm_group",
-    "parent_func_name": "greet_prefix",
+    "parent_func_name": "greet_group",
     "description": "dm welcome settings",
     "aliases": [],
     "category": "automation",
@@ -4123,12 +3840,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "greet dm enable",
       "greet dm status"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet dm"
   },
   "greet_dm_enable": {
     "raw_name": "enable",
-    "func_name": "dm_enable",
+    "func_name": "dm_enable_sub",
     "parent_func_name": "dm_group",
     "description": "send welcome messages via dm",
     "aliases": [
@@ -4136,9 +3853,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "on"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4148,12 +3863,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet dm enable"
   },
   "greet_dm_disable": {
     "raw_name": "disable",
-    "func_name": "dm_disable",
+    "func_name": "dm_disable_sub",
     "parent_func_name": "dm_group",
     "description": "stop sending dm welcomes",
     "aliases": [
@@ -4161,9 +3876,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "off"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4173,12 +3886,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet dm disable"
   },
   "greet_dm_status": {
     "raw_name": "status",
-    "func_name": "dm_status",
+    "func_name": "dm_status_sub",
     "parent_func_name": "dm_group",
     "description": "check if dm welcomes are on",
     "aliases": [],
@@ -4193,13 +3906,13 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet dm status"
   },
   "greet_leave": {
     "raw_name": "leave",
     "func_name": "leave_group",
-    "parent_func_name": "greet_prefix",
+    "parent_func_name": "greet_group",
     "description": "goodbye message settings",
     "aliases": [],
     "category": "automation",
@@ -4222,12 +3935,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "greet leave message-remove",
       "greet leave message-set"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet leave"
   },
   "greet_leave_message-set": {
     "raw_name": "message-set",
-    "func_name": "leave_message_set",
+    "func_name": "leave_message_set_sub",
     "parent_func_name": "leave_group",
     "description": "set the leave message",
     "aliases": [
@@ -4235,9 +3948,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "leavemsg"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "text",
@@ -4252,12 +3963,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet leave message-set"
   },
   "greet_leave_message-remove": {
     "raw_name": "message-remove",
-    "func_name": "leave_message_remove",
+    "func_name": "leave_message_remove_sub",
     "parent_func_name": "leave_group",
     "description": "delete the leave message",
     "aliases": [
@@ -4265,9 +3976,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "delleave"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4277,21 +3986,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet leave message-remove"
   },
   "greet_leave_message-preview": {
     "raw_name": "message-preview",
-    "func_name": "leave_message_preview",
+    "func_name": "leave_message_preview_sub",
     "parent_func_name": "leave_group",
     "description": "see how your leave message looks",
     "aliases": [
       "previewleave"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4301,21 +4008,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet leave message-preview"
   },
   "greet_leave_channel-add": {
     "raw_name": "channel-add",
-    "func_name": "leave_channel_add",
+    "func_name": "leave_channel_add_sub",
     "parent_func_name": "leave_group",
     "description": "add a leave message channel",
     "aliases": [
       "addleavechannel"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "channel",
@@ -4330,21 +4035,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet leave channel-add"
   },
   "greet_leave_channel-remove": {
     "raw_name": "channel-remove",
-    "func_name": "leave_channel_remove",
+    "func_name": "leave_channel_remove_sub",
     "parent_func_name": "leave_group",
     "description": "remove a leave message channel",
     "aliases": [
       "removeleavechannel"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "channel",
@@ -4359,12 +4062,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet leave channel-remove"
   },
   "greet_leave_channel-list": {
     "raw_name": "channel-list",
-    "func_name": "leave_channel_list",
+    "func_name": "leave_channel_list_sub",
     "parent_func_name": "leave_group",
     "description": "list all leave channels",
     "aliases": [
@@ -4372,9 +4075,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "allchannels"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4384,13 +4085,13 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet leave channel-list"
   },
   "greet_autorole": {
     "raw_name": "autorole",
     "func_name": "autorole_group",
-    "parent_func_name": "greet_prefix",
+    "parent_func_name": "greet_group",
     "description": "give roles to new members",
     "aliases": [],
     "category": "automation",
@@ -4413,12 +4114,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "greet autorole list",
       "greet autorole remove"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet autorole"
   },
   "greet_autorole_bots": {
     "raw_name": "bots",
-    "func_name": "autorole_bots",
+    "func_name": "autorole_bots_sub",
     "parent_func_name": "autorole_group",
     "description": "give bots a role when they join",
     "aliases": [
@@ -4426,9 +4127,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "botrole"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "role",
@@ -4443,12 +4142,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet autorole bots"
   },
   "greet_autorole_humans": {
     "raw_name": "humans",
-    "func_name": "autorole_humans",
+    "func_name": "autorole_humans_sub",
     "parent_func_name": "autorole_group",
     "description": "give humans a role when they join",
     "aliases": [
@@ -4456,9 +4155,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "humanrole"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "role",
@@ -4473,12 +4170,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet autorole humans"
   },
   "greet_autorole_both": {
     "raw_name": "both",
-    "func_name": "autorole_both",
+    "func_name": "autorole_both_sub",
     "parent_func_name": "autorole_group",
     "description": "give all members a role when they join",
     "aliases": [
@@ -4486,9 +4183,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "all"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "role",
@@ -4503,12 +4198,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet autorole both"
   },
   "greet_autorole_remove": {
     "raw_name": "remove",
-    "func_name": "autorole_remove",
+    "func_name": "autorole_remove_sub",
     "parent_func_name": "autorole_group",
     "description": "remove an autorole",
     "aliases": [
@@ -4516,9 +4211,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "delautorole"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [
       {
         "name": "role",
@@ -4533,21 +4226,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet autorole remove"
   },
   "greet_autorole_list": {
     "raw_name": "list",
-    "func_name": "autorole_list",
+    "func_name": "autorole_list_sub",
     "parent_func_name": "autorole_group",
     "description": "show all autoroles",
     "aliases": [
       "listautoroles"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4557,21 +4248,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet autorole list"
   },
   "greet_autorole_clear": {
     "raw_name": "clear",
-    "func_name": "autorole_clear",
+    "func_name": "autorole_clear_sub",
     "parent_func_name": "autorole_group",
     "description": "remove all autoroles",
     "aliases": [
       "clearautoroles"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4581,22 +4270,20 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet autorole clear"
   },
   "greet_variables": {
     "raw_name": "variables",
-    "func_name": "greet_variables",
-    "parent_func_name": "greet_prefix",
+    "func_name": "variables_sub",
+    "parent_func_name": "greet_group",
     "description": "see all available placeholders",
     "aliases": [
       "vars",
       "placeholders"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4606,13 +4293,13 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet variables"
   },
   "greet_test": {
     "raw_name": "test",
     "func_name": "test_group",
-    "parent_func_name": "greet_prefix",
+    "parent_func_name": "greet_group",
     "description": "test your messages",
     "aliases": [],
     "category": "automation",
@@ -4631,12 +4318,12 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "greet test leave",
       "greet test welcome"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet test"
   },
   "greet_test_welcome": {
     "raw_name": "welcome",
-    "func_name": "test_welcome",
+    "func_name": "test_welcome_sub",
     "parent_func_name": "test_group",
     "description": "send a test welcome message",
     "aliases": [
@@ -4644,9 +4331,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
       "join"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4656,21 +4341,19 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet test welcome"
   },
   "greet_test_leave": {
     "raw_name": "leave",
-    "func_name": "test_leave",
+    "func_name": "test_leave_sub",
     "parent_func_name": "test_group",
     "description": "send a test leave message",
     "aliases": [
       "goodbye"
     ],
     "category": "automation",
-    "permissions": [
-      "Manage Guild"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -4680,7 +4363,7 @@ export const AUTOMATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\automation\\welcome\\__init__.py",
     "name": "greet test leave"
   }
 };

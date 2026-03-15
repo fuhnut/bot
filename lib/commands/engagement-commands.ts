@@ -17,1310 +17,6 @@ export interface Command {
 }
 
 export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
-  "afk": {
-    "raw_name": "afk",
-    "func_name": "afk_group",
-    "parent_func_name": null,
-    "description": "set yourself as afk",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "reason",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!afk [reason]"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "afk clear",
-      "afk clearall",
-      "afk config",
-      "afk ignore",
-      "afk list",
-      "afk logchannel",
-      "afk nickname",
-      "afk pinglog",
-      "afk preset",
-      "afk reset",
-      "afk set",
-      "afk status",
-      "afk timeout"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk"
-  },
-  "afk_set": {
-    "raw_name": "set",
-    "func_name": "afk_set",
-    "parent_func_name": "afk_group",
-    "description": "set yourself as afk",
-    "aliases": [
-      "away",
-      "brb"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "status",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!afk set [status]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk set"
-  },
-  "afk_clear": {
-    "raw_name": "clear",
-    "func_name": "afk_clear",
-    "parent_func_name": "afk_group",
-    "description": "clear someone's afk status",
-    "aliases": [
-      "back",
-      "return"
-    ],
-    "category": "engagement",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "member",
-        "type": "Member"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk clear <member>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk clear"
-  },
-  "afk_clearall": {
-    "raw_name": "clearall",
-    "func_name": "afk_clearall",
-    "parent_func_name": "afk_group",
-    "description": "clear everyone's afk status",
-    "aliases": [
-      "resetall",
-      "wipeafk"
-    ],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!afk clearall"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk clearall"
-  },
-  "afk_reset": {
-    "raw_name": "reset",
-    "func_name": "afk_reset",
-    "parent_func_name": "afk_group",
-    "description": "reset someone's afk message to default",
-    "aliases": [
-      "defaultafk"
-    ],
-    "category": "engagement",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "member",
-        "type": "Member"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk reset <member>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk reset"
-  },
-  "afk_ignore": {
-    "raw_name": "ignore",
-    "func_name": "afk_ignore",
-    "parent_func_name": "afk_group",
-    "description": "stop afk from clearing in a channel",
-    "aliases": [
-      "exempt"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "channel",
-        "type": "TextChannel"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk ignore <channel>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk ignore"
-  },
-  "afk_list": {
-    "raw_name": "list",
-    "func_name": "afk_list",
-    "parent_func_name": "afk_group",
-    "description": "see who's currently afk",
-    "aliases": [
-      "whoisafk",
-      "afklist"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "page",
-        "type": "int"
-      }
-    ],
-    "examples": [
-      "!afk list [page]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk list"
-  },
-  "afk_status": {
-    "raw_name": "status",
-    "func_name": "afk_status",
-    "parent_func_name": "afk_group",
-    "description": "check if someone is afk",
-    "aliases": [
-      "checkafk",
-      "afkwho"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "user",
-        "type": "Member"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk status <user>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk status"
-  },
-  "afk_pinglog": {
-    "raw_name": "pinglog",
-    "func_name": "afk_pinglog",
-    "parent_func_name": "afk_group",
-    "description": "see who pinged you while afk",
-    "aliases": [
-      "mentions",
-      "afklog"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!afk pinglog"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk pinglog"
-  },
-  "afk_timeout": {
-    "raw_name": "timeout",
-    "func_name": "afk_timeout",
-    "parent_func_name": "afk_group",
-    "description": "set how long before afk auto-clears",
-    "aliases": [
-      "min",
-      "delay"
-    ],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "minutes",
-        "type": "int"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk timeout <minutes>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk timeout"
-  },
-  "afk_config": {
-    "raw_name": "config",
-    "func_name": "afk_config",
-    "parent_func_name": "afk_group",
-    "description": "change afk settings",
-    "aliases": [
-      "settings"
-    ],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "option",
-        "type": "str"
-      },
-      {
-        "name": "value",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk config <option> <value>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk config"
-  },
-  "afk_nickname": {
-    "raw_name": "nickname",
-    "func_name": "afk_nickname",
-    "parent_func_name": "afk_group",
-    "description": "toggle the [afk] tag in nicknames",
-    "aliases": [
-      "tag",
-      "name"
-    ],
-    "category": "engagement",
-    "permissions": [
-      "Manage Nicknames"
-    ],
-    "required_args": [
-      {
-        "name": "toggle",
-        "type": "bool"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk nickname <toggle>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk nickname"
-  },
-  "afk_logchannel": {
-    "raw_name": "logchannel",
-    "func_name": "afk_logchannel",
-    "parent_func_name": "afk_group",
-    "description": "set where afk logs go",
-    "aliases": [
-      "logset"
-    ],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "channel",
-        "type": "TextChannel"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk logchannel <channel>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk logchannel"
-  },
-  "afk_preset": {
-    "raw_name": "preset",
-    "func_name": "afk_preset_group",
-    "parent_func_name": "afk_group",
-    "description": "afk presets",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!afk preset"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "afk preset add",
-      "afk preset delete",
-      "afk preset use"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk preset"
-  },
-  "afk_preset_add": {
-    "raw_name": "add",
-    "func_name": "preset_add",
-    "parent_func_name": "afk_preset_group",
-    "description": "save a new afk preset",
-    "aliases": [
-      "save",
-      "template"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "name",
-        "type": "str"
-      },
-      {
-        "name": "status",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk preset add <name> <status>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk preset add"
-  },
-  "afk_preset_use": {
-    "raw_name": "use",
-    "func_name": "preset_use",
-    "parent_func_name": "afk_preset_group",
-    "description": "go afk with a saved preset",
-    "aliases": [
-      "quickafk",
-      "usepreset"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "name",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk preset use <name>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk preset use"
-  },
-  "afk_preset_delete": {
-    "raw_name": "delete",
-    "func_name": "preset_delete",
-    "parent_func_name": "afk_preset_group",
-    "description": "delete a saved preset",
-    "aliases": [
-      "delpreset",
-      "removepreset"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "name",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!afk preset delete <name>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk.py",
-    "name": "afk preset delete"
-  },
-  "emojiboard": {
-    "raw_name": "emojiboard",
-    "func_name": "emojiboard",
-    "parent_func_name": null,
-    "description": "emojiboard settings",
-    "aliases": [
-      "eb",
-      "starboard"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "emojiboard addemoji",
-      "emojiboard blacklist",
-      "emojiboard channel",
-      "emojiboard channels",
-      "emojiboard config",
-      "emojiboard disable",
-      "emojiboard enable",
-      "emojiboard list",
-      "emojiboard lock",
-      "emojiboard pingrole",
-      "emojiboard removechannel",
-      "emojiboard removeemoji",
-      "emojiboard reset",
-      "emojiboard self",
-      "emojiboard set",
-      "emojiboard setchannel",
-      "emojiboard stats",
-      "emojiboard threshold",
-      "emojiboard top",
-      "emojiboard unlock",
-      "emojiboard whitelist"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard"
-  },
-  "emojiboard_set": {
-    "raw_name": "set",
-    "func_name": "set_emoji",
-    "parent_func_name": "emojiboard",
-    "description": "set the main emoji for the board",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "emoji",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard set <emoji>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard set"
-  },
-  "emojiboard_addemoji": {
-    "raw_name": "addemoji",
-    "func_name": "add_emoji",
-    "parent_func_name": "emojiboard",
-    "description": "add another emoji to track",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "emoji",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard addemoji <emoji>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard addemoji"
-  },
-  "emojiboard_removeemoji": {
-    "raw_name": "removeemoji",
-    "func_name": "remove_emoji",
-    "parent_func_name": "emojiboard",
-    "description": "stop tracking an emoji",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "emoji",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard removeemoji <emoji>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard removeemoji"
-  },
-  "emojiboard_list": {
-    "raw_name": "list",
-    "func_name": "list_emojis",
-    "parent_func_name": "emojiboard",
-    "description": "see all tracked emojis",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard list"
-  },
-  "emojiboard_channel": {
-    "raw_name": "channel",
-    "func_name": "set_channel",
-    "parent_func_name": "emojiboard",
-    "description": "set where featured messages go",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Channels"
-    ],
-    "required_args": [
-      {
-        "name": "channel",
-        "type": "TextChannel"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard channel <channel>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard channel"
-  },
-  "emojiboard_setchannel": {
-    "raw_name": "setchannel",
-    "func_name": "set_emoji_channel",
-    "parent_func_name": "emojiboard",
-    "description": "set a different channel for a specific emoji",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Channels"
-    ],
-    "required_args": [
-      {
-        "name": "emoji",
-        "type": "str"
-      },
-      {
-        "name": "channel",
-        "type": "TextChannel"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard setchannel <emoji> <channel>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard setchannel"
-  },
-  "emojiboard_removechannel": {
-    "raw_name": "removechannel",
-    "func_name": "remove_emoji_channel",
-    "parent_func_name": "emojiboard",
-    "description": "reset an emoji back to the default channel",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Channels"
-    ],
-    "required_args": [
-      {
-        "name": "emoji",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard removechannel <emoji>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard removechannel"
-  },
-  "emojiboard_channels": {
-    "raw_name": "channels",
-    "func_name": "list_emoji_channels",
-    "parent_func_name": "emojiboard",
-    "description": "see which emojis go to which channels",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard channels"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard channels"
-  },
-  "emojiboard_threshold": {
-    "raw_name": "threshold",
-    "func_name": "set_threshold",
-    "parent_func_name": "emojiboard",
-    "description": "set how many reactions needed to get featured",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "number",
-        "type": "int"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard threshold <number>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard threshold"
-  },
-  "emojiboard_config": {
-    "raw_name": "config",
-    "func_name": "show_config",
-    "parent_func_name": "emojiboard",
-    "description": "see the current settings",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard config"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard config"
-  },
-  "emojiboard_enable": {
-    "raw_name": "enable",
-    "func_name": "enable_board",
-    "parent_func_name": "emojiboard",
-    "description": "turn on the emojiboard",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard enable"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard enable"
-  },
-  "emojiboard_disable": {
-    "raw_name": "disable",
-    "func_name": "disable_board",
-    "parent_func_name": "emojiboard",
-    "description": "turn off the emojiboard",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard disable"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard disable"
-  },
-  "emojiboard_lock": {
-    "raw_name": "lock",
-    "func_name": "lock_board",
-    "parent_func_name": "emojiboard",
-    "description": "pause new posts temporarily",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard lock"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard lock"
-  },
-  "emojiboard_unlock": {
-    "raw_name": "unlock",
-    "func_name": "unlock_board",
-    "parent_func_name": "emojiboard",
-    "description": "resume posting to the board",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard unlock"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard unlock"
-  },
-  "emojiboard_top": {
-    "raw_name": "top",
-    "func_name": "top_users",
-    "parent_func_name": "emojiboard",
-    "description": "see who gets featured the most",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "limit",
-        "type": "int"
-      }
-    ],
-    "examples": [
-      "!emojiboard top [limit]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard top"
-  },
-  "emojiboard_stats": {
-    "raw_name": "stats",
-    "func_name": "board_stats",
-    "parent_func_name": "emojiboard",
-    "description": "see board statistics",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard stats"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard stats"
-  },
-  "emojiboard_whitelist": {
-    "raw_name": "whitelist",
-    "func_name": "whitelist",
-    "parent_func_name": "emojiboard",
-    "description": "allow only certain channels, roles, or users",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard whitelist"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "emojiboard whitelist channel",
-      "emojiboard whitelist role",
-      "emojiboard whitelist user"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard whitelist"
-  },
-  "emojiboard_whitelist_channel": {
-    "raw_name": "channel",
-    "func_name": "whitelist_channel",
-    "parent_func_name": "whitelist",
-    "description": "allow a channel for the board",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Channels"
-    ],
-    "required_args": [
-      {
-        "name": "channel",
-        "type": "TextChannel"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard whitelist channel <channel>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard whitelist channel"
-  },
-  "emojiboard_whitelist_role": {
-    "raw_name": "role",
-    "func_name": "whitelist_role",
-    "parent_func_name": "whitelist",
-    "description": "allow a role for the board",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard whitelist role <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard whitelist role"
-  },
-  "emojiboard_whitelist_user": {
-    "raw_name": "user",
-    "func_name": "whitelist_user",
-    "parent_func_name": "whitelist",
-    "description": "allow a user for the board",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "user",
-        "type": "Member"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard whitelist user <user>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard whitelist user"
-  },
-  "emojiboard_blacklist": {
-    "raw_name": "blacklist",
-    "func_name": "blacklist",
-    "parent_func_name": "emojiboard",
-    "description": "block certain channels, roles, or users",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard blacklist"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "emojiboard blacklist channel",
-      "emojiboard blacklist role",
-      "emojiboard blacklist user"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard blacklist"
-  },
-  "emojiboard_blacklist_channel": {
-    "raw_name": "channel",
-    "func_name": "blacklist_channel",
-    "parent_func_name": "blacklist",
-    "description": "block a channel from the board",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Channels"
-    ],
-    "required_args": [
-      {
-        "name": "channel",
-        "type": "TextChannel"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard blacklist channel <channel>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard blacklist channel"
-  },
-  "emojiboard_blacklist_role": {
-    "raw_name": "role",
-    "func_name": "blacklist_role",
-    "parent_func_name": "blacklist",
-    "description": "block a role from the board",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard blacklist role <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard blacklist role"
-  },
-  "emojiboard_blacklist_user": {
-    "raw_name": "user",
-    "func_name": "blacklist_user",
-    "parent_func_name": "blacklist",
-    "description": "block a user from the board",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "user",
-        "type": "Member"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard blacklist user <user>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard blacklist user"
-  },
-  "emojiboard_pingrole": {
-    "raw_name": "pingrole",
-    "func_name": "pingrole",
-    "parent_func_name": "emojiboard",
-    "description": "ping roles for featured posts",
-    "aliases": [
-      "ping"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard pingrole"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "emojiboard pingrole add",
-      "emojiboard pingrole clear",
-      "emojiboard pingrole list",
-      "emojiboard pingrole remove"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard pingrole"
-  },
-  "emojiboard_pingrole_add": {
-    "raw_name": "add",
-    "func_name": "pingrole_add",
-    "parent_func_name": "pingrole",
-    "description": "add a role to ping on featured posts",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard pingrole add <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard pingrole add"
-  },
-  "emojiboard_pingrole_remove": {
-    "raw_name": "remove",
-    "func_name": "pingrole_remove",
-    "parent_func_name": "pingrole",
-    "description": "stop pinging a role",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard pingrole remove <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard pingrole remove"
-  },
-  "emojiboard_pingrole_list": {
-    "raw_name": "list",
-    "func_name": "pingrole_list",
-    "parent_func_name": "pingrole",
-    "description": "see which roles get pinged",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard pingrole list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard pingrole list"
-  },
-  "emojiboard_pingrole_clear": {
-    "raw_name": "clear",
-    "func_name": "pingrole_clear",
-    "parent_func_name": "pingrole",
-    "description": "clear all ping roles",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard pingrole clear"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard pingrole clear"
-  },
-  "emojiboard_self": {
-    "raw_name": "self",
-    "func_name": "self_react",
-    "parent_func_name": "emojiboard",
-    "description": "toggle if people can react to their own posts",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "enabled",
-        "type": "bool"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard self <enabled>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard self"
-  },
-  "emojiboard_reset": {
-    "raw_name": "reset",
-    "func_name": "reset_config",
-    "parent_func_name": "emojiboard",
-    "description": "reset everything to default",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [
-      "Administrator"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!emojiboard reset"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard.py",
-    "name": "emojiboard reset"
-  },
   "giveaway": {
     "raw_name": "giveaway",
     "func_name": "giveaway",
@@ -1579,249 +275,6 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\giveaways.py",
     "name": "giveaway entries"
   },
-  "highlight": {
-    "raw_name": "highlight",
-    "func_name": "highlight",
-    "parent_func_name": null,
-    "description": "Set notifications for when a keyword is said",
-    "aliases": [
-      "hl"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!highlight"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "highlight add",
-      "highlight ignore",
-      "highlight list",
-      "highlight remove",
-      "highlight reset"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
-    "name": "highlight"
-  },
-  "highlight_add": {
-    "raw_name": "add",
-    "func_name": "hl_add",
-    "parent_func_name": "highlight",
-    "description": "Add a highlighted keyword",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "keyword",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!highlight add <keyword>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
-    "name": "highlight add"
-  },
-  "highlight_list": {
-    "raw_name": "list",
-    "func_name": "hl_list",
-    "parent_func_name": "highlight",
-    "description": "List all keywords set in a server",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!highlight list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
-    "name": "highlight list"
-  },
-  "highlight_remove": {
-    "raw_name": "remove",
-    "func_name": "hl_remove",
-    "parent_func_name": "highlight",
-    "description": "Remove a highlighted keyword",
-    "aliases": [
-      "delete",
-      "rm"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "keyword",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!highlight remove <keyword>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
-    "name": "highlight remove"
-  },
-  "highlight_ignore": {
-    "raw_name": "ignore",
-    "func_name": "hl_ignore",
-    "parent_func_name": "highlight",
-    "description": "Ignore notifications from a specific entity",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!highlight ignore"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "highlight ignore channel",
-      "highlight ignore list",
-      "highlight ignore role",
-      "highlight ignore user"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
-    "name": "highlight ignore"
-  },
-  "highlight_ignore_user": {
-    "raw_name": "user",
-    "func_name": "hl_ignore_user",
-    "parent_func_name": "hl_ignore",
-    "description": "Ignore highlights triggered by a specific user",
-    "aliases": [
-      "member"
-    ],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "member",
-        "type": "Member"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!highlight ignore user <member>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
-    "name": "highlight ignore user"
-  },
-  "highlight_ignore_channel": {
-    "raw_name": "channel",
-    "func_name": "hl_ignore_channel",
-    "parent_func_name": "hl_ignore",
-    "description": "Ignore highlights triggered in a specific channel",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "channel",
-        "type": "TextChannel"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!highlight ignore channel <channel>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
-    "name": "highlight ignore channel"
-  },
-  "highlight_ignore_role": {
-    "raw_name": "role",
-    "func_name": "hl_ignore_role",
-    "parent_func_name": "hl_ignore",
-    "description": "Ignore highlights triggered by members with a specific role",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!highlight ignore role <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
-    "name": "highlight ignore role"
-  },
-  "highlight_ignore_list": {
-    "raw_name": "list",
-    "func_name": "hl_ignore_list",
-    "parent_func_name": "hl_ignore",
-    "description": "List all ignored members, channel & roles",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!highlight ignore list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
-    "name": "highlight ignore list"
-  },
-  "highlight_reset": {
-    "raw_name": "reset",
-    "func_name": "hl_reset",
-    "parent_func_name": "highlight",
-    "description": "Reset your highlighted key references in the server",
-    "aliases": [],
-    "category": "engagement",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!highlight reset"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights.py",
-    "name": "highlight reset"
-  },
   "level": {
     "raw_name": "level",
     "func_name": "level",
@@ -1856,7 +309,7 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
       "level settings",
       "level up"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\leveling.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\levelling.py",
     "name": "level"
   },
   "level_leaderboard": {
@@ -1884,7 +337,7 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\leveling.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\levelling.py",
     "name": "level leaderboard"
   },
   "level_up": {
@@ -1911,7 +364,7 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\leveling.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\levelling.py",
     "name": "level up"
   },
   "level_rank": {
@@ -1938,7 +391,7 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\leveling.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\levelling.py",
     "name": "level rank"
   },
   "level_card": {
@@ -1963,7 +416,7 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\leveling.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\levelling.py",
     "name": "level card"
   },
   "level_settings": {
@@ -1983,7 +436,7 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\leveling.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\levelling.py",
     "name": "level settings"
   },
   "level_add": {
@@ -2012,7 +465,7 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\leveling.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\levelling.py",
     "name": "level add"
   },
   "level_remove": {
@@ -2041,7 +494,7 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\leveling.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\levelling.py",
     "name": "level remove"
   },
   "level_exempt": {
@@ -2070,7 +523,7 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\leveling.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\levelling.py",
     "name": "level exempt"
   },
   "suggestions": {
@@ -2207,5 +660,2132 @@ export const ENGAGEMENT_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\suggestions.py",
     "name": "suggestions unblacklist"
+  },
+  "afk": {
+    "raw_name": "afk",
+    "func_name": "afk_group",
+    "parent_func_name": null,
+    "description": "set yourself as afk",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "reason",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!afk [reason]"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "afk clear",
+      "afk ignore",
+      "afk list",
+      "afk logchannel",
+      "afk preset",
+      "afk set",
+      "afk timeout"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk"
+  },
+  "afk_set": {
+    "raw_name": "set",
+    "func_name": "afk_set",
+    "parent_func_name": "afk_group",
+    "description": "set yourself as afk",
+    "aliases": [
+      "away",
+      "brb"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "status",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!afk set [status]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk set"
+  },
+  "afk_clear": {
+    "raw_name": "clear",
+    "func_name": "afk_clear",
+    "parent_func_name": "afk_group",
+    "description": "clear someone's afk status",
+    "aliases": [
+      "back",
+      "return"
+    ],
+    "category": "engagement",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!afk clear <member>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk clear"
+  },
+  "afk_list": {
+    "raw_name": "list",
+    "func_name": "afk_list",
+    "parent_func_name": "afk_group",
+    "description": "see who's currently afk",
+    "aliases": [
+      "whoisafk",
+      "afklist"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "page",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!afk list [page]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk list"
+  },
+  "afk_timeout": {
+    "raw_name": "timeout",
+    "func_name": "afk_timeout",
+    "parent_func_name": "afk_group",
+    "description": "set how long before afk auto-clears",
+    "aliases": [
+      "min",
+      "delay"
+    ],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "minutes",
+        "type": "int"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!afk timeout <minutes>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk timeout"
+  },
+  "afk_logchannel": {
+    "raw_name": "logchannel",
+    "func_name": "afk_logchannel",
+    "parent_func_name": "afk_group",
+    "description": "set where afk logs go",
+    "aliases": [
+      "logset"
+    ],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!afk logchannel <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk logchannel"
+  },
+  "afk_ignore": {
+    "raw_name": "ignore",
+    "func_name": "afk_ignore",
+    "parent_func_name": "afk_group",
+    "description": "stop afk from clearing in a channel",
+    "aliases": [
+      "exempt"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!afk ignore <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk ignore"
+  },
+  "afk_preset": {
+    "raw_name": "preset",
+    "func_name": "afk_preset_group",
+    "parent_func_name": "afk_group",
+    "description": "manage your afk presets",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!afk preset"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "afk preset add",
+      "afk preset delete",
+      "afk preset list",
+      "afk preset use"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk preset"
+  },
+  "afk_preset_add": {
+    "raw_name": "add",
+    "func_name": "preset_add",
+    "parent_func_name": "afk_preset_group",
+    "description": "save a new afk preset",
+    "aliases": [
+      "save",
+      "create"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "name",
+        "type": "str"
+      },
+      {
+        "name": "status",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!afk preset add <name> <status>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk preset add"
+  },
+  "afk_preset_use": {
+    "raw_name": "use",
+    "func_name": "preset_use",
+    "parent_func_name": "afk_preset_group",
+    "description": "go afk with a saved preset",
+    "aliases": [
+      "quickafk",
+      "usepreset"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "name",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!afk preset use <name>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk preset use"
+  },
+  "afk_preset_delete": {
+    "raw_name": "delete",
+    "func_name": "preset_delete",
+    "parent_func_name": "afk_preset_group",
+    "description": "delete a saved preset",
+    "aliases": [
+      "delpreset",
+      "removepreset"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "name",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!afk preset delete <name>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk preset delete"
+  },
+  "afk_preset_list": {
+    "raw_name": "list",
+    "func_name": "preset_list",
+    "parent_func_name": "afk_preset_group",
+    "description": "list your afk presets",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!afk preset list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\afk\\afk.py",
+    "name": "afk preset list"
+  },
+  "emojiboard": {
+    "raw_name": "emojiboard",
+    "func_name": "emojiboard",
+    "parent_func_name": null,
+    "description": "emojiboard settings",
+    "aliases": [
+      "eb",
+      "starboard"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "emojiboard addemoji",
+      "emojiboard blacklist",
+      "emojiboard channel",
+      "emojiboard channels",
+      "emojiboard config",
+      "emojiboard disable",
+      "emojiboard enable",
+      "emojiboard list",
+      "emojiboard lock",
+      "emojiboard pingrole",
+      "emojiboard removechannel",
+      "emojiboard removeemoji",
+      "emojiboard reset",
+      "emojiboard self",
+      "emojiboard set",
+      "emojiboard setchannel",
+      "emojiboard stats",
+      "emojiboard threshold",
+      "emojiboard top",
+      "emojiboard unlock",
+      "emojiboard whitelist"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard"
+  },
+  "emojiboard_set": {
+    "raw_name": "set",
+    "func_name": "set_emoji",
+    "parent_func_name": "emojiboard",
+    "description": "set the main emoji for the board",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "emoji",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard set <emoji>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard set"
+  },
+  "emojiboard_addemoji": {
+    "raw_name": "addemoji",
+    "func_name": "add_emoji",
+    "parent_func_name": "emojiboard",
+    "description": "add another emoji to track",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "emoji",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard addemoji <emoji>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard addemoji"
+  },
+  "emojiboard_removeemoji": {
+    "raw_name": "removeemoji",
+    "func_name": "remove_emoji",
+    "parent_func_name": "emojiboard",
+    "description": "stop tracking an emoji",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "emoji",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard removeemoji <emoji>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard removeemoji"
+  },
+  "emojiboard_list": {
+    "raw_name": "list",
+    "func_name": "list_emojis",
+    "parent_func_name": "emojiboard",
+    "description": "see all tracked emojis",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard list"
+  },
+  "emojiboard_channel": {
+    "raw_name": "channel",
+    "func_name": "set_channel",
+    "parent_func_name": "emojiboard",
+    "description": "set where featured messages go",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Channels"
+    ],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard channel <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard channel"
+  },
+  "emojiboard_setchannel": {
+    "raw_name": "setchannel",
+    "func_name": "set_emoji_channel",
+    "parent_func_name": "emojiboard",
+    "description": "set a different channel for a specific emoji",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Channels"
+    ],
+    "required_args": [
+      {
+        "name": "emoji",
+        "type": "str"
+      },
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard setchannel <emoji> <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard setchannel"
+  },
+  "emojiboard_removechannel": {
+    "raw_name": "removechannel",
+    "func_name": "remove_emoji_channel",
+    "parent_func_name": "emojiboard",
+    "description": "reset an emoji back to the default channel",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Channels"
+    ],
+    "required_args": [
+      {
+        "name": "emoji",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard removechannel <emoji>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard removechannel"
+  },
+  "emojiboard_channels": {
+    "raw_name": "channels",
+    "func_name": "list_emoji_channels",
+    "parent_func_name": "emojiboard",
+    "description": "see which emojis go to which channels",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard channels"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard channels"
+  },
+  "emojiboard_threshold": {
+    "raw_name": "threshold",
+    "func_name": "set_threshold",
+    "parent_func_name": "emojiboard",
+    "description": "set how many reactions needed to get featured",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "number",
+        "type": "int"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard threshold <number>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard threshold"
+  },
+  "emojiboard_config": {
+    "raw_name": "config",
+    "func_name": "show_config",
+    "parent_func_name": "emojiboard",
+    "description": "see the current settings",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard config"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard config"
+  },
+  "emojiboard_enable": {
+    "raw_name": "enable",
+    "func_name": "enable_board",
+    "parent_func_name": "emojiboard",
+    "description": "turn on the emojiboard",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard enable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard enable"
+  },
+  "emojiboard_disable": {
+    "raw_name": "disable",
+    "func_name": "disable_board",
+    "parent_func_name": "emojiboard",
+    "description": "turn off the emojiboard",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard disable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard disable"
+  },
+  "emojiboard_lock": {
+    "raw_name": "lock",
+    "func_name": "lock_board",
+    "parent_func_name": "emojiboard",
+    "description": "pause new posts temporarily",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard lock"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard lock"
+  },
+  "emojiboard_unlock": {
+    "raw_name": "unlock",
+    "func_name": "unlock_board",
+    "parent_func_name": "emojiboard",
+    "description": "resume posting to the board",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard unlock"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard unlock"
+  },
+  "emojiboard_top": {
+    "raw_name": "top",
+    "func_name": "top_users",
+    "parent_func_name": "emojiboard",
+    "description": "see who gets featured the most",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "limit",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!emojiboard top [limit]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard top"
+  },
+  "emojiboard_stats": {
+    "raw_name": "stats",
+    "func_name": "board_stats",
+    "parent_func_name": "emojiboard",
+    "description": "see board statistics",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard stats"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard stats"
+  },
+  "emojiboard_whitelist": {
+    "raw_name": "whitelist",
+    "func_name": "whitelist",
+    "parent_func_name": "emojiboard",
+    "description": "allow only certain channels, roles, or users",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard whitelist"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "emojiboard whitelist channel",
+      "emojiboard whitelist role",
+      "emojiboard whitelist user"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard whitelist"
+  },
+  "emojiboard_whitelist_channel": {
+    "raw_name": "channel",
+    "func_name": "whitelist_channel",
+    "parent_func_name": "whitelist",
+    "description": "allow a channel for the board",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Channels"
+    ],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard whitelist channel <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard whitelist channel"
+  },
+  "emojiboard_whitelist_role": {
+    "raw_name": "role",
+    "func_name": "whitelist_role",
+    "parent_func_name": "whitelist",
+    "description": "allow a role for the board",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard whitelist role <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard whitelist role"
+  },
+  "emojiboard_whitelist_user": {
+    "raw_name": "user",
+    "func_name": "whitelist_user",
+    "parent_func_name": "whitelist",
+    "description": "allow a user for the board",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "user",
+        "type": "Member"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard whitelist user <user>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard whitelist user"
+  },
+  "emojiboard_blacklist": {
+    "raw_name": "blacklist",
+    "func_name": "blacklist",
+    "parent_func_name": "emojiboard",
+    "description": "block certain channels, roles, or users",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard blacklist"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "emojiboard blacklist channel",
+      "emojiboard blacklist role",
+      "emojiboard blacklist user"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard blacklist"
+  },
+  "emojiboard_blacklist_channel": {
+    "raw_name": "channel",
+    "func_name": "blacklist_channel",
+    "parent_func_name": "blacklist",
+    "description": "block a channel from the board",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Channels"
+    ],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard blacklist channel <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard blacklist channel"
+  },
+  "emojiboard_blacklist_role": {
+    "raw_name": "role",
+    "func_name": "blacklist_role",
+    "parent_func_name": "blacklist",
+    "description": "block a role from the board",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard blacklist role <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard blacklist role"
+  },
+  "emojiboard_blacklist_user": {
+    "raw_name": "user",
+    "func_name": "blacklist_user",
+    "parent_func_name": "blacklist",
+    "description": "block a user from the board",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "user",
+        "type": "Member"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard blacklist user <user>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard blacklist user"
+  },
+  "emojiboard_pingrole": {
+    "raw_name": "pingrole",
+    "func_name": "pingrole",
+    "parent_func_name": "emojiboard",
+    "description": "ping roles for featured posts",
+    "aliases": [
+      "ping"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard pingrole"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "emojiboard pingrole add",
+      "emojiboard pingrole clear",
+      "emojiboard pingrole list",
+      "emojiboard pingrole remove"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard pingrole"
+  },
+  "emojiboard_pingrole_add": {
+    "raw_name": "add",
+    "func_name": "pingrole_add",
+    "parent_func_name": "pingrole",
+    "description": "add a role to ping on featured posts",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard pingrole add <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard pingrole add"
+  },
+  "emojiboard_pingrole_remove": {
+    "raw_name": "remove",
+    "func_name": "pingrole_remove",
+    "parent_func_name": "pingrole",
+    "description": "stop pinging a role",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard pingrole remove <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard pingrole remove"
+  },
+  "emojiboard_pingrole_list": {
+    "raw_name": "list",
+    "func_name": "pingrole_list",
+    "parent_func_name": "pingrole",
+    "description": "see which roles get pinged",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard pingrole list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard pingrole list"
+  },
+  "emojiboard_pingrole_clear": {
+    "raw_name": "clear",
+    "func_name": "pingrole_clear",
+    "parent_func_name": "pingrole",
+    "description": "clear all ping roles",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard pingrole clear"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard pingrole clear"
+  },
+  "emojiboard_self": {
+    "raw_name": "self",
+    "func_name": "self_react",
+    "parent_func_name": "emojiboard",
+    "description": "toggle if people can react to their own posts",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [
+      {
+        "name": "enabled",
+        "type": "bool"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard self <enabled>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard self"
+  },
+  "emojiboard_reset": {
+    "raw_name": "reset",
+    "func_name": "reset_config",
+    "parent_func_name": "emojiboard",
+    "description": "reset everything to default",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Administrator"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!emojiboard reset"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\emojiboard\\emojiboard.py",
+    "name": "emojiboard reset"
+  },
+  "highlight": {
+    "raw_name": "highlight",
+    "func_name": "highlight",
+    "parent_func_name": null,
+    "description": "Set notifications for when a keyword is said",
+    "aliases": [
+      "hl"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!highlight"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "highlight add",
+      "highlight ignore",
+      "highlight list",
+      "highlight remove",
+      "highlight reset"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights\\highlights.py",
+    "name": "highlight"
+  },
+  "highlight_add": {
+    "raw_name": "add",
+    "func_name": "hl_add",
+    "parent_func_name": "highlight",
+    "description": "Add a highlighted keyword",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "keyword",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!highlight add <keyword>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights\\highlights.py",
+    "name": "highlight add"
+  },
+  "highlight_list": {
+    "raw_name": "list",
+    "func_name": "hl_list",
+    "parent_func_name": "highlight",
+    "description": "List all keywords set in a server",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!highlight list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights\\highlights.py",
+    "name": "highlight list"
+  },
+  "highlight_remove": {
+    "raw_name": "remove",
+    "func_name": "hl_remove",
+    "parent_func_name": "highlight",
+    "description": "Remove a highlighted keyword",
+    "aliases": [
+      "delete",
+      "rm"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "keyword",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!highlight remove <keyword>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights\\highlights.py",
+    "name": "highlight remove"
+  },
+  "highlight_ignore": {
+    "raw_name": "ignore",
+    "func_name": "hl_ignore",
+    "parent_func_name": "highlight",
+    "description": "Ignore notifications from a specific entity",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!highlight ignore"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "highlight ignore channel",
+      "highlight ignore list",
+      "highlight ignore role",
+      "highlight ignore user"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights\\highlights.py",
+    "name": "highlight ignore"
+  },
+  "highlight_ignore_user": {
+    "raw_name": "user",
+    "func_name": "hl_ignore_user",
+    "parent_func_name": "hl_ignore",
+    "description": "Ignore highlights triggered by a specific user",
+    "aliases": [
+      "member"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!highlight ignore user <member>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights\\highlights.py",
+    "name": "highlight ignore user"
+  },
+  "highlight_ignore_channel": {
+    "raw_name": "channel",
+    "func_name": "hl_ignore_channel",
+    "parent_func_name": "hl_ignore",
+    "description": "Ignore highlights triggered in a specific channel",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!highlight ignore channel <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights\\highlights.py",
+    "name": "highlight ignore channel"
+  },
+  "highlight_ignore_role": {
+    "raw_name": "role",
+    "func_name": "hl_ignore_role",
+    "parent_func_name": "hl_ignore",
+    "description": "Ignore highlights triggered by members with a specific role",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!highlight ignore role <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights\\highlights.py",
+    "name": "highlight ignore role"
+  },
+  "highlight_ignore_list": {
+    "raw_name": "list",
+    "func_name": "hl_ignore_list",
+    "parent_func_name": "hl_ignore",
+    "description": "List all ignored members, channel & roles",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!highlight ignore list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights\\highlights.py",
+    "name": "highlight ignore list"
+  },
+  "highlight_reset": {
+    "raw_name": "reset",
+    "func_name": "hl_reset",
+    "parent_func_name": "highlight",
+    "description": "Reset your highlighted key references in the server",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!highlight reset"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\highlights\\highlights.py",
+    "name": "highlight reset"
+  },
+  "invitecodes": {
+    "raw_name": "invitecodes",
+    "func_name": "invitecodes",
+    "parent_func_name": null,
+    "description": "list invite codes for a user",
+    "aliases": [
+      "invc"
+    ],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!invitecodes [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invitecodes"
+  },
+  "invited": {
+    "raw_name": "invited",
+    "func_name": "invited",
+    "parent_func_name": null,
+    "description": "list members invited by a user",
+    "aliases": [
+      "invitedby"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      },
+      {
+        "name": "page",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!invited [target] [page]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invited"
+  },
+  "inviter": {
+    "raw_name": "inviter",
+    "func_name": "inviter",
+    "parent_func_name": null,
+    "description": "show who invited a user",
+    "aliases": [
+      "whoinvited"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!inviter [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "inviter"
+  },
+  "invites": {
+    "raw_name": "invites",
+    "func_name": "base_invites",
+    "parent_func_name": null,
+    "description": "manage and view invite stats",
+    "aliases": [
+      "invs",
+      "invite"
+    ],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!invites [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "invites add",
+      "invites bypass",
+      "invites clear",
+      "invites config",
+      "invites leave",
+      "invites remove",
+      "invites required",
+      "invites reset",
+      "invites roles",
+      "invites variables",
+      "invites welcome"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites"
+  },
+  "invites_add": {
+    "raw_name": "add",
+    "func_name": "invites_add",
+    "parent_func_name": "base_invites",
+    "description": "add bonus invites to a user",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      },
+      {
+        "name": "amount",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!invites add [target] [amount]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites add"
+  },
+  "invites_remove": {
+    "raw_name": "remove",
+    "func_name": "invites_remove",
+    "parent_func_name": "base_invites",
+    "description": "remove bonus invites from a user",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      },
+      {
+        "name": "amount",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!invites remove [target] [amount]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites remove"
+  },
+  "invites_clear": {
+    "raw_name": "clear",
+    "func_name": "invites_clear",
+    "parent_func_name": "base_invites",
+    "description": "clear a user's invites",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!invites clear [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites clear"
+  },
+  "invites_reset": {
+    "raw_name": "reset",
+    "func_name": "invites_reset",
+    "parent_func_name": "base_invites",
+    "description": "clear all server invite stats",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invites reset"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites reset"
+  },
+  "invites_config": {
+    "raw_name": "config",
+    "func_name": "invites_config",
+    "parent_func_name": "base_invites",
+    "description": "view invites configuration",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invites config"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites config"
+  },
+  "invites_variables": {
+    "raw_name": "variables",
+    "func_name": "invites_variables",
+    "parent_func_name": "base_invites",
+    "description": "show available invite variables",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invites variables"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites variables"
+  },
+  "invites_required": {
+    "raw_name": "required",
+    "func_name": "invites_required",
+    "parent_func_name": "base_invites",
+    "description": "manage invite requirements",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invites required"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "invites required age",
+      "invites required roles"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites required"
+  },
+  "invites_required_age": {
+    "raw_name": "age",
+    "func_name": "required_age",
+    "parent_func_name": "invites_required",
+    "description": "set required account age for credit",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "days",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!invites required age [days]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites required age"
+  },
+  "invites_required_roles": {
+    "raw_name": "roles",
+    "func_name": "required_roles",
+    "parent_func_name": "invites_required",
+    "description": "view or set required roles for credit",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "roles",
+        "type": "Role"
+      }
+    ],
+    "examples": [
+      "!invites required roles [roles]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites required roles"
+  },
+  "invites_welcome": {
+    "raw_name": "welcome",
+    "func_name": "invites_welcome",
+    "parent_func_name": "base_invites",
+    "description": "manage invite welcome messages",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invites welcome"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "invites welcome channel",
+      "invites welcome message",
+      "invites welcome off",
+      "invites welcome unknown",
+      "invites welcome vanity"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites welcome"
+  },
+  "invites_welcome_channel": {
+    "raw_name": "channel",
+    "func_name": "welcome_channel",
+    "parent_func_name": "invites_welcome",
+    "description": "set the welcome message channel",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "examples": [
+      "!invites welcome channel [channel]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites welcome channel"
+  },
+  "invites_welcome_message": {
+    "raw_name": "message",
+    "func_name": "welcome_message",
+    "parent_func_name": "invites_welcome",
+    "description": "set the welcome message",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "script",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invites welcome message [script]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites welcome message"
+  },
+  "invites_welcome_unknown": {
+    "raw_name": "unknown",
+    "func_name": "welcome_unknown",
+    "parent_func_name": "invites_welcome",
+    "description": "set message for unknown invites",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "script",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invites welcome unknown [script]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites welcome unknown"
+  },
+  "invites_welcome_vanity": {
+    "raw_name": "vanity",
+    "func_name": "welcome_vanity",
+    "parent_func_name": "invites_welcome",
+    "description": "set message for vanity URL joins",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "script",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invites welcome vanity [script]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites welcome vanity"
+  },
+  "invites_welcome_off": {
+    "raw_name": "off",
+    "func_name": "welcome_off",
+    "parent_func_name": "invites_welcome",
+    "description": "disable invite welcome messages",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invites welcome off"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites welcome off"
+  },
+  "invites_leave": {
+    "raw_name": "leave",
+    "func_name": "invites_leave",
+    "parent_func_name": "base_invites",
+    "description": "manage invite leave messages",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invites leave"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "invites leave channel",
+      "invites leave message",
+      "invites leave off",
+      "invites leave vanity"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites leave"
+  },
+  "invites_leave_channel": {
+    "raw_name": "channel",
+    "func_name": "leave_channel",
+    "parent_func_name": "invites_leave",
+    "description": "set the leave message channel",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "examples": [
+      "!invites leave channel [channel]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites leave channel"
+  },
+  "invites_leave_message": {
+    "raw_name": "message",
+    "func_name": "leave_message",
+    "parent_func_name": "invites_leave",
+    "description": "set the leave message",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "script",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invites leave message [script]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites leave message"
+  },
+  "invites_leave_vanity": {
+    "raw_name": "vanity",
+    "func_name": "leave_vanity",
+    "parent_func_name": "invites_leave",
+    "description": "set vanity leave message",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "script",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!invites leave vanity [script]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites leave vanity"
+  },
+  "invites_leave_off": {
+    "raw_name": "off",
+    "func_name": "leave_off",
+    "parent_func_name": "invites_leave",
+    "description": "disable invite leave messages",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invites leave off"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites leave off"
+  },
+  "invites_roles": {
+    "raw_name": "roles",
+    "func_name": "invites_roles",
+    "parent_func_name": "base_invites",
+    "description": "view invite roles",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!invites roles"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "invites roles add",
+      "invites roles remove"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites roles"
+  },
+  "invites_roles_add": {
+    "raw_name": "add",
+    "func_name": "invites_roles_add",
+    "parent_func_name": "invites_roles",
+    "description": "add an invite role",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      },
+      {
+        "name": "invites_req",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!invites roles add [role] [invites_req]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites roles add"
+  },
+  "invites_roles_remove": {
+    "raw_name": "remove",
+    "func_name": "invites_roles_remove",
+    "parent_func_name": "invites_roles",
+    "description": "remove an invite role",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "invites_req",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!invites roles remove [invites_req]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites roles remove"
+  },
+  "invites_bypass": {
+    "raw_name": "bypass",
+    "func_name": "invites_bypass",
+    "parent_func_name": "base_invites",
+    "description": "bypass invite requirements for a user",
+    "aliases": [],
+    "category": "engagement",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "examples": [
+      "!invites bypass [target]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\engagement\\invites\\invites.py",
+    "name": "invites bypass"
   }
 };

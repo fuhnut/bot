@@ -17,1388 +17,6 @@ export interface Command {
 }
 
 export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
-  "badge": {
-    "raw_name": "badge",
-    "func_name": "badge",
-    "parent_func_name": null,
-    "description": "manage roles for people with the server tag",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!badge"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "badge add",
-      "badge channel",
-      "badge equipped",
-      "badge list",
-      "badge remove",
-      "badge unequipped",
-      "badge variables"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge.py",
-    "name": "badge"
-  },
-  "badge_add": {
-    "raw_name": "add",
-    "func_name": "badge_add",
-    "parent_func_name": "badge",
-    "description": "add a role for users with the server tag",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!badge add <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge.py",
-    "name": "badge add"
-  },
-  "badge_remove": {
-    "raw_name": "remove",
-    "func_name": "badge_remove",
-    "parent_func_name": "badge",
-    "description": "remove a role for users with the server tag",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!badge remove <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge.py",
-    "name": "badge remove"
-  },
-  "badge_list": {
-    "raw_name": "list",
-    "func_name": "badge_list",
-    "parent_func_name": "badge",
-    "description": "list all roles given for having the server tag",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!badge list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge.py",
-    "name": "badge list"
-  },
-  "badge_channel": {
-    "raw_name": "channel",
-    "func_name": "badge_channel",
-    "parent_func_name": "badge",
-    "description": "set channel for server tag notifications",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "channel",
-        "type": "TextChannel"
-      }
-    ],
-    "examples": [
-      "!badge channel [channel]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge.py",
-    "name": "badge channel"
-  },
-  "badge_equipped": {
-    "raw_name": "equipped",
-    "func_name": "badge_equipped",
-    "parent_func_name": "badge",
-    "description": "message for when someone equips the server tag",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "message",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!badge equipped [message]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge.py",
-    "name": "badge equipped"
-  },
-  "badge_unequipped": {
-    "raw_name": "unequipped",
-    "func_name": "badge_unequipped",
-    "parent_func_name": "badge",
-    "description": "message for when someone unequips the server tag",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "message",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!badge unequipped [message]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge.py",
-    "name": "badge unequipped"
-  },
-  "badge_variables": {
-    "raw_name": "variables",
-    "func_name": "badge_variables",
-    "parent_func_name": "badge",
-    "description": "placeholders for server tag messages",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!badge variables"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge.py",
-    "name": "badge variables"
-  },
-  "boosterroles": {
-    "raw_name": "boosterroles",
-    "func_name": "boosterroles",
-    "parent_func_name": null,
-    "description": "custom booster roles",
-    "aliases": [
-      "boosterrole",
-      "br",
-      "boosterole",
-      "bc"
-    ],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "boosterroles award",
-      "boosterroles base",
-      "boosterroles cleanup",
-      "boosterroles color",
-      "boosterroles create",
-      "boosterroles delete",
-      "boosterroles disable",
-      "boosterroles dominant",
-      "boosterroles filter",
-      "boosterroles hoist",
-      "boosterroles icon",
-      "boosterroles limit",
-      "boosterroles list",
-      "boosterroles random",
-      "boosterroles rename",
-      "boosterroles setup",
-      "boosterroles shares"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles"
-  },
-  "boosterroles_create": {
-    "raw_name": "create",
-    "func_name": "create_role",
-    "parent_func_name": "boosterroles",
-    "description": "create your custom booster role",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "name",
-        "type": "str"
-      }
-    ],
-    "optional_args": [
-      {
-        "name": "primary",
-        "type": "str"
-      },
-      {
-        "name": "secondary",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!boosterroles create <name> [primary] [secondary]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles create"
-  },
-  "boosterroles_rename": {
-    "raw_name": "rename",
-    "func_name": "rename_role",
-    "parent_func_name": "boosterroles",
-    "description": "rename your booster role",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "new_name",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles rename <new_name>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles rename"
-  },
-  "boosterroles_color": {
-    "raw_name": "color",
-    "func_name": "change_color",
-    "parent_func_name": "boosterroles",
-    "description": "change your booster role color",
-    "aliases": [
-      "colour"
-    ],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "primary",
-        "type": "str"
-      }
-    ],
-    "optional_args": [
-      {
-        "name": "secondary",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!boosterroles color <primary> [secondary]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles color"
-  },
-  "boosterroles_icon": {
-    "raw_name": "icon",
-    "func_name": "set_icon",
-    "parent_func_name": "boosterroles",
-    "description": "set your booster role icon",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "image_url",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!boosterroles icon [image_url]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles icon"
-  },
-  "boosterroles_delete": {
-    "raw_name": "delete",
-    "func_name": "delete_role",
-    "parent_func_name": "boosterroles",
-    "description": "delete your booster role",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles delete"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles delete"
-  },
-  "boosterroles_dominant": {
-    "raw_name": "dominant",
-    "func_name": "dominant_color",
-    "parent_func_name": "boosterroles",
-    "description": "set color from your avatar's main color",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles dominant"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles dominant"
-  },
-  "boosterroles_random": {
-    "raw_name": "random",
-    "func_name": "random_color",
-    "parent_func_name": "boosterroles",
-    "description": "give your role a random color",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles random"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles random"
-  },
-  "boosterroles_shares": {
-    "raw_name": "shares",
-    "func_name": "shares",
-    "parent_func_name": "boosterroles",
-    "description": "share your role with others",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles shares"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "boosterroles shares add",
-      "boosterroles shares limit",
-      "boosterroles shares list",
-      "boosterroles shares max",
-      "boosterroles shares remove"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles shares"
-  },
-  "boosterroles_shares_add": {
-    "raw_name": "add",
-    "func_name": "shares_add",
-    "parent_func_name": "shares",
-    "description": "share your booster role with someone",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "member",
-        "type": "Member"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles shares add <member>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles shares add"
-  },
-  "boosterroles_shares_remove": {
-    "raw_name": "remove",
-    "func_name": "shares_remove",
-    "parent_func_name": "shares",
-    "description": "stop sharing your role with someone",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "member",
-        "type": "Member"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles shares remove <member>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles shares remove"
-  },
-  "boosterroles_shares_list": {
-    "raw_name": "list",
-    "func_name": "shares_list",
-    "parent_func_name": "shares",
-    "description": "see who you're sharing with",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles shares list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles shares list"
-  },
-  "boosterroles_shares_max": {
-    "raw_name": "max",
-    "func_name": "shares_max",
-    "parent_func_name": "shares",
-    "description": "set how many people a booster can share with",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "number",
-        "type": "int"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles shares max <number>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles shares max"
-  },
-  "boosterroles_shares_limit": {
-    "raw_name": "limit",
-    "func_name": "shares_limit",
-    "parent_func_name": "shares",
-    "description": "set how many shared roles someone can have",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "number",
-        "type": "int"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles shares limit <number>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles shares limit"
-  },
-  "boosterroles_award": {
-    "raw_name": "award",
-    "func_name": "award",
-    "parent_func_name": "boosterroles",
-    "description": "manage auto-given roles for boosters",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles award"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "boosterroles award add",
-      "boosterroles award remove",
-      "boosterroles award view"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles award"
-  },
-  "boosterroles_award_add": {
-    "raw_name": "add",
-    "func_name": "award_add",
-    "parent_func_name": "award",
-    "description": "add a role to give boosters automatically",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles award add <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles award add"
-  },
-  "boosterroles_award_remove": {
-    "raw_name": "remove",
-    "func_name": "award_remove",
-    "parent_func_name": "award",
-    "description": "remove an award role",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles award remove <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles award remove"
-  },
-  "boosterroles_award_view": {
-    "raw_name": "view",
-    "func_name": "award_view",
-    "parent_func_name": "award",
-    "description": "see all award roles",
-    "aliases": [
-      "list"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles award view"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles award view"
-  },
-  "boosterroles_filter": {
-    "raw_name": "filter",
-    "func_name": "filter",
-    "parent_func_name": "boosterroles",
-    "description": "manage filtered words for role names",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles filter"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": true,
-    "subcommands": [
-      "boosterroles filter add",
-      "boosterroles filter list",
-      "boosterroles filter remove"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles filter"
-  },
-  "boosterroles_filter_add": {
-    "raw_name": "add",
-    "func_name": "filter_add",
-    "parent_func_name": "filter",
-    "description": "add a word to the filter",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "word",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles filter add <word>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles filter add"
-  },
-  "boosterroles_filter_remove": {
-    "raw_name": "remove",
-    "func_name": "filter_remove",
-    "parent_func_name": "filter",
-    "description": "remove a word from the filter",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [
-      {
-        "name": "word",
-        "type": "str"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles filter remove <word>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles filter remove"
-  },
-  "boosterroles_filter_list": {
-    "raw_name": "list",
-    "func_name": "filter_list",
-    "parent_func_name": "filter",
-    "description": "see all filtered words",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles filter list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles filter list"
-  },
-  "boosterroles_setup": {
-    "raw_name": "setup",
-    "func_name": "setup",
-    "parent_func_name": "boosterroles",
-    "description": "enable the booster role system",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles setup"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles setup"
-  },
-  "boosterroles_disable": {
-    "raw_name": "disable",
-    "func_name": "disable",
-    "parent_func_name": "boosterroles",
-    "description": "disable the booster role system",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles disable"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles disable"
-  },
-  "boosterroles_base": {
-    "raw_name": "base",
-    "func_name": "base",
-    "parent_func_name": "boosterroles",
-    "description": "set where booster roles appear in the list",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles base <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles base"
-  },
-  "boosterroles_hoist": {
-    "raw_name": "hoist",
-    "func_name": "hoist",
-    "parent_func_name": "boosterroles",
-    "description": "toggle if booster roles show separately in member list",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "enabled",
-        "type": "bool"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles hoist <enabled>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles hoist"
-  },
-  "boosterroles_limit": {
-    "raw_name": "limit",
-    "func_name": "limit",
-    "parent_func_name": "boosterroles",
-    "description": "set max number of booster roles",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [
-      {
-        "name": "number",
-        "type": "int"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles limit <number>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles limit"
-  },
-  "boosterroles_list": {
-    "raw_name": "list",
-    "func_name": "list_roles",
-    "parent_func_name": "boosterroles",
-    "description": "see all booster roles",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles list"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles list"
-  },
-  "boosterroles_cleanup": {
-    "raw_name": "cleanup",
-    "func_name": "cleanup",
-    "parent_func_name": "boosterroles",
-    "description": "remove unused booster roles",
-    "aliases": [],
-    "category": "customization",
-    "permissions": [
-      "Manage Guild"
-    ],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!boosterroles cleanup"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles.py",
-    "name": "boosterroles cleanup"
-  },
-  "role": {
-    "raw_name": "role",
-    "func_name": "roles_group",
-    "parent_func_name": null,
-    "description": "role commands",
-    "aliases": [
-      "r",
-      "roles"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "member",
-        "type": "Member"
-      },
-      {
-        "name": "roles",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!role [member] [roles]"
-    ],
-    "has_prefix": true,
-    "has_slash": true,
-    "is_group": true,
-    "subcommands": [
-      "role add",
-      "role bulk",
-      "role color",
-      "role create",
-      "role delete",
-      "role info",
-      "role list",
-      "role massadd",
-      "role members",
-      "role remove"
-    ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role"
-  },
-  "roletoggle": {
-    "raw_name": "roletoggle",
-    "func_name": "role_toggle",
-    "parent_func_name": null,
-    "description": "toggle roles on or off for someone",
-    "aliases": [
-      "rt"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "member",
-        "type": "Member"
-      },
-      {
-        "name": "roles",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!roletoggle [member] [roles]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "roletoggle"
-  },
-  "role_add": {
-    "raw_name": "add",
-    "func_name": "add_role",
-    "parent_func_name": "roles_group",
-    "description": "give someone a role",
-    "aliases": [
-      "give",
-      "grant",
-      "assign"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "user",
-        "type": "Member"
-      },
-      {
-        "name": "role",
-        "type": "Role"
-      },
-      {
-        "name": "duration",
-        "type": "str"
-      },
-      {
-        "name": "reason",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!role add [user] [role] [duration] [reason]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role add"
-  },
-  "role_remove": {
-    "raw_name": "remove",
-    "func_name": "remove_role",
-    "parent_func_name": "roles_group",
-    "description": "take a role away from someone",
-    "aliases": [
-      "take",
-      "revoke",
-      "strip",
-      "rm",
-      "del"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "user",
-        "type": "Member"
-      },
-      {
-        "name": "role",
-        "type": "Role"
-      },
-      {
-        "name": "reason",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!role remove [user] [role] [reason]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role remove"
-  },
-  "role_list": {
-    "raw_name": "list",
-    "func_name": "roles_list",
-    "parent_func_name": "roles_group",
-    "description": "see all roles someone has",
-    "aliases": [
-      "ls",
-      "show"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "member",
-        "type": "Member"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!role list <member>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role list"
-  },
-  "role_info": {
-    "raw_name": "info",
-    "func_name": "roles_info",
-    "parent_func_name": "roles_group",
-    "description": "get info about a role",
-    "aliases": [
-      "i",
-      "details",
-      "about"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!role info <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role info"
-  },
-  "role_create": {
-    "raw_name": "create",
-    "func_name": "create_role",
-    "parent_func_name": "roles_group",
-    "description": "create a new role",
-    "aliases": [
-      "new",
-      "make"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "name",
-        "type": "str"
-      },
-      {
-        "name": "color",
-        "type": "str"
-      },
-      {
-        "name": "hoist",
-        "type": "bool"
-      },
-      {
-        "name": "mentionable",
-        "type": "bool"
-      }
-    ],
-    "examples": [
-      "!role create [name] [color] [hoist] [mentionable]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role create"
-  },
-  "role_delete": {
-    "raw_name": "delete",
-    "func_name": "delete_role",
-    "parent_func_name": "roles_group",
-    "description": "delete a role from the server",
-    "aliases": [
-      "destroy"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "examples": [
-      "!role delete [role]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role delete"
-  },
-  "role_color": {
-    "raw_name": "color",
-    "func_name": "color_role",
-    "parent_func_name": "roles_group",
-    "description": "change a role's color",
-    "aliases": [
-      "colour",
-      "col",
-      "setcolor",
-      "changecolor"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      },
-      {
-        "name": "color",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!role color [role] [color]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role color"
-  },
-  "role_members": {
-    "raw_name": "members",
-    "func_name": "roles_members",
-    "parent_func_name": "roles_group",
-    "description": "see everyone who has a role",
-    "aliases": [
-      "users",
-      "who",
-      "list-members"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      }
-    ],
-    "optional_args": [],
-    "examples": [
-      "!role members <role>"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role members"
-  },
-  "role_bulk": {
-    "raw_name": "bulk",
-    "func_name": "roles_bulk",
-    "parent_func_name": "roles_group",
-    "description": "add or remove a role from multiple people",
-    "aliases": [
-      "mass",
-      "multiple",
-      "many"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "action",
-        "type": "str"
-      },
-      {
-        "name": "role",
-        "type": "Role"
-      },
-      {
-        "name": "members",
-        "type": "str"
-      }
-    ],
-    "examples": [
-      "!role bulk [action] [role] [members]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role bulk"
-  },
-  "role_massadd": {
-    "raw_name": "massadd",
-    "func_name": "roles_massadd",
-    "parent_func_name": "roles_group",
-    "description": "give a role to everyone in the server",
-    "aliases": [
-      "all",
-      "everyone",
-      "addall"
-    ],
-    "category": "customization",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
-      {
-        "name": "role",
-        "type": "Role"
-      },
-      {
-        "name": "filter_bots",
-        "type": "bool"
-      }
-    ],
-    "examples": [
-      "!role massadd [role] [filter_bots]"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles.py",
-    "name": "role massadd"
-  },
   "selfroles": {
     "raw_name": "selfroles",
     "func_name": "selfroles",
@@ -1529,6 +147,1350 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\selfroles.py",
     "name": "selfroles delete"
   },
+  "badge": {
+    "raw_name": "badge",
+    "func_name": "badge_group",
+    "parent_func_name": null,
+    "description": "manage roles for people with the server tag",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!badge"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "badge add",
+      "badge channel",
+      "badge equipped",
+      "badge list",
+      "badge remove",
+      "badge unequipped",
+      "badge variables"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge\\__init__.py",
+    "name": "badge"
+  },
+  "badge_add": {
+    "raw_name": "add",
+    "func_name": "badge_add_sub",
+    "parent_func_name": "badge_group",
+    "description": "add a role for users with the server tag",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!badge add <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge\\__init__.py",
+    "name": "badge add"
+  },
+  "badge_remove": {
+    "raw_name": "remove",
+    "func_name": "badge_remove_sub",
+    "parent_func_name": "badge_group",
+    "description": "remove a role for users with the server tag",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!badge remove <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge\\__init__.py",
+    "name": "badge remove"
+  },
+  "badge_list": {
+    "raw_name": "list",
+    "func_name": "badge_list_sub",
+    "parent_func_name": "badge_group",
+    "description": "list all roles given for having the server tag",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!badge list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge\\__init__.py",
+    "name": "badge list"
+  },
+  "badge_channel": {
+    "raw_name": "channel",
+    "func_name": "badge_channel_sub",
+    "parent_func_name": "badge_group",
+    "description": "set channel for server tag notifications",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "examples": [
+      "!badge channel [channel]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge\\__init__.py",
+    "name": "badge channel"
+  },
+  "badge_equipped": {
+    "raw_name": "equipped",
+    "func_name": "badge_equipped_sub",
+    "parent_func_name": "badge_group",
+    "description": "message for when someone equips the server tag",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!badge equipped [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge\\__init__.py",
+    "name": "badge equipped"
+  },
+  "badge_unequipped": {
+    "raw_name": "unequipped",
+    "func_name": "badge_unequipped_sub",
+    "parent_func_name": "badge_group",
+    "description": "message for when someone unequips the server tag",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "message",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!badge unequipped [message]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge\\__init__.py",
+    "name": "badge unequipped"
+  },
+  "badge_variables": {
+    "raw_name": "variables",
+    "func_name": "badge_variables_sub",
+    "parent_func_name": "badge_group",
+    "description": "placeholders for server tag messages",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!badge variables"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\badge\\__init__.py",
+    "name": "badge variables"
+  },
+  "boosterroles": {
+    "raw_name": "boosterroles",
+    "func_name": "boosterroles_group",
+    "parent_func_name": null,
+    "description": "custom booster roles",
+    "aliases": [
+      "boosterrole",
+      "br",
+      "boosterole",
+      "bc"
+    ],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "boosterroles award",
+      "boosterroles base",
+      "boosterroles cleanup",
+      "boosterroles color",
+      "boosterroles create",
+      "boosterroles delete",
+      "boosterroles disable",
+      "boosterroles dominant",
+      "boosterroles filter",
+      "boosterroles hoist",
+      "boosterroles icon",
+      "boosterroles limit",
+      "boosterroles list",
+      "boosterroles random",
+      "boosterroles rename",
+      "boosterroles setup",
+      "boosterroles shares"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles"
+  },
+  "boosterroles_create": {
+    "raw_name": "create",
+    "func_name": "create_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "create your custom booster role",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "name",
+        "type": "str"
+      }
+    ],
+    "optional_args": [
+      {
+        "name": "primary",
+        "type": "str"
+      },
+      {
+        "name": "secondary",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!boosterroles create <name> [primary] [secondary]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles create"
+  },
+  "boosterroles_rename": {
+    "raw_name": "rename",
+    "func_name": "rename_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "rename your booster role",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "new_name",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles rename <new_name>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles rename"
+  },
+  "boosterroles_color": {
+    "raw_name": "color",
+    "func_name": "color_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "change your booster role color",
+    "aliases": [
+      "colour"
+    ],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "primary",
+        "type": "str"
+      }
+    ],
+    "optional_args": [
+      {
+        "name": "secondary",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!boosterroles color <primary> [secondary]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles color"
+  },
+  "boosterroles_icon": {
+    "raw_name": "icon",
+    "func_name": "icon_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "set your booster role icon",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "image_url",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!boosterroles icon [image_url]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles icon"
+  },
+  "boosterroles_delete": {
+    "raw_name": "delete",
+    "func_name": "delete_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "delete your booster role",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles delete"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles delete"
+  },
+  "boosterroles_dominant": {
+    "raw_name": "dominant",
+    "func_name": "dominant_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "set color from your avatar's main color",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles dominant"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles dominant"
+  },
+  "boosterroles_random": {
+    "raw_name": "random",
+    "func_name": "random_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "give your role a random color",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles random"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles random"
+  },
+  "boosterroles_shares": {
+    "raw_name": "shares",
+    "func_name": "shares_group",
+    "parent_func_name": "boosterroles_group",
+    "description": "share your role with others",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles shares"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "boosterroles shares add",
+      "boosterroles shares limit",
+      "boosterroles shares list",
+      "boosterroles shares max",
+      "boosterroles shares remove"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles shares"
+  },
+  "boosterroles_shares_add": {
+    "raw_name": "add",
+    "func_name": "shares_add_sub",
+    "parent_func_name": "shares_group",
+    "description": "share your booster role with someone",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles shares add <member>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles shares add"
+  },
+  "boosterroles_shares_remove": {
+    "raw_name": "remove",
+    "func_name": "shares_remove_sub",
+    "parent_func_name": "shares_group",
+    "description": "stop sharing your role with someone",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles shares remove <member>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles shares remove"
+  },
+  "boosterroles_shares_list": {
+    "raw_name": "list",
+    "func_name": "shares_list_sub",
+    "parent_func_name": "shares_group",
+    "description": "see who you're sharing with",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles shares list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles shares list"
+  },
+  "boosterroles_shares_max": {
+    "raw_name": "max",
+    "func_name": "shares_max_sub",
+    "parent_func_name": "shares_group",
+    "description": "set how many people a booster can share with",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "number",
+        "type": "int"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles shares max <number>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles shares max"
+  },
+  "boosterroles_shares_limit": {
+    "raw_name": "limit",
+    "func_name": "shares_limit_sub",
+    "parent_func_name": "shares_group",
+    "description": "set how many shared roles someone can have",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "number",
+        "type": "int"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles shares limit <number>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles shares limit"
+  },
+  "boosterroles_award": {
+    "raw_name": "award",
+    "func_name": "award_group",
+    "parent_func_name": "boosterroles_group",
+    "description": "manage auto-given roles for boosters",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles award"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "boosterroles award add",
+      "boosterroles award remove",
+      "boosterroles award view"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles award"
+  },
+  "boosterroles_award_add": {
+    "raw_name": "add",
+    "func_name": "award_add_sub",
+    "parent_func_name": "award_group",
+    "description": "add a role to give boosters automatically",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles award add <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles award add"
+  },
+  "boosterroles_award_remove": {
+    "raw_name": "remove",
+    "func_name": "award_remove_sub",
+    "parent_func_name": "award_group",
+    "description": "remove an award role",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles award remove <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles award remove"
+  },
+  "boosterroles_award_view": {
+    "raw_name": "view",
+    "func_name": "award_view_sub",
+    "parent_func_name": "award_group",
+    "description": "see all award roles",
+    "aliases": [
+      "list"
+    ],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles award view"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles award view"
+  },
+  "boosterroles_filter": {
+    "raw_name": "filter",
+    "func_name": "filter_group",
+    "parent_func_name": "boosterroles_group",
+    "description": "manage filtered words for role names",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [
+      "Manage Guild"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles filter"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "boosterroles filter add",
+      "boosterroles filter list",
+      "boosterroles filter remove"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles filter"
+  },
+  "boosterroles_filter_add": {
+    "raw_name": "add",
+    "func_name": "filter_add_sub",
+    "parent_func_name": "filter_group",
+    "description": "add a word to the filter",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "word",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles filter add <word>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles filter add"
+  },
+  "boosterroles_filter_remove": {
+    "raw_name": "remove",
+    "func_name": "filter_remove_sub",
+    "parent_func_name": "filter_group",
+    "description": "remove a word from the filter",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "word",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles filter remove <word>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles filter remove"
+  },
+  "boosterroles_filter_list": {
+    "raw_name": "list",
+    "func_name": "filter_list_sub",
+    "parent_func_name": "filter_group",
+    "description": "see all filtered words",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles filter list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles filter list"
+  },
+  "boosterroles_setup": {
+    "raw_name": "setup",
+    "func_name": "setup_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "enable the booster role system",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles setup"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles setup"
+  },
+  "boosterroles_disable": {
+    "raw_name": "disable",
+    "func_name": "disable_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "disable the booster role system",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles disable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles disable"
+  },
+  "boosterroles_base": {
+    "raw_name": "base",
+    "func_name": "base_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "set where booster roles appear in the list",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles base <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles base"
+  },
+  "boosterroles_hoist": {
+    "raw_name": "hoist",
+    "func_name": "hoist_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "toggle if booster roles show separately in member list",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "enabled",
+        "type": "bool"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles hoist <enabled>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles hoist"
+  },
+  "boosterroles_limit": {
+    "raw_name": "limit",
+    "func_name": "limit_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "set max number of booster roles",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "number",
+        "type": "int"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles limit <number>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles limit"
+  },
+  "boosterroles_list": {
+    "raw_name": "list",
+    "func_name": "list_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "see all booster roles",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles list"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles list"
+  },
+  "boosterroles_cleanup": {
+    "raw_name": "cleanup",
+    "func_name": "cleanup_sub",
+    "parent_func_name": "boosterroles_group",
+    "description": "remove unused booster roles",
+    "aliases": [],
+    "category": "customization",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!boosterroles cleanup"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\boosterroles\\__init__.py",
+    "name": "boosterroles cleanup"
+  },
+  "role": {
+    "raw_name": "role",
+    "func_name": "roles_group",
+    "parent_func_name": null,
+    "description": "role commands",
+    "aliases": [
+      "r",
+      "roles"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      },
+      {
+        "name": "roles",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!role [member] [roles]"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "role add",
+      "role bulk",
+      "role color",
+      "role create",
+      "role delete",
+      "role info",
+      "role list",
+      "role massadd",
+      "role members",
+      "role remove"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role"
+  },
+  "roletoggle": {
+    "raw_name": "roletoggle",
+    "func_name": "role_toggle",
+    "parent_func_name": null,
+    "description": "toggle roles on or off for someone",
+    "aliases": [
+      "rt"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      },
+      {
+        "name": "roles",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!roletoggle [member] [roles]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "roletoggle"
+  },
+  "role_add": {
+    "raw_name": "add",
+    "func_name": "add_role_sub",
+    "parent_func_name": "roles_group",
+    "description": "give someone a role",
+    "aliases": [
+      "give",
+      "grant",
+      "assign"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "Member"
+      },
+      {
+        "name": "role",
+        "type": "Role"
+      },
+      {
+        "name": "duration",
+        "type": "str"
+      },
+      {
+        "name": "reason",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!role add [user] [role] [duration] [reason]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role add"
+  },
+  "role_remove": {
+    "raw_name": "remove",
+    "func_name": "remove_role_sub",
+    "parent_func_name": "roles_group",
+    "description": "take a role away from someone",
+    "aliases": [
+      "take",
+      "revoke",
+      "strip",
+      "rm",
+      "del"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "user",
+        "type": "Member"
+      },
+      {
+        "name": "role",
+        "type": "Role"
+      },
+      {
+        "name": "reason",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!role remove [user] [role] [reason]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role remove"
+  },
+  "role_list": {
+    "raw_name": "list",
+    "func_name": "roles_list_sub",
+    "parent_func_name": "roles_group",
+    "description": "see all roles someone has",
+    "aliases": [
+      "ls",
+      "show"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!role list <member>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role list"
+  },
+  "role_info": {
+    "raw_name": "info",
+    "func_name": "roles_info_sub",
+    "parent_func_name": "roles_group",
+    "description": "get info about a role",
+    "aliases": [
+      "i",
+      "details",
+      "about"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!role info <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role info"
+  },
+  "role_create": {
+    "raw_name": "create",
+    "func_name": "create_role_sub",
+    "parent_func_name": "roles_group",
+    "description": "create a new role",
+    "aliases": [
+      "new",
+      "make"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "name",
+        "type": "str"
+      },
+      {
+        "name": "color",
+        "type": "str"
+      },
+      {
+        "name": "hoist",
+        "type": "bool"
+      },
+      {
+        "name": "mentionable",
+        "type": "bool"
+      }
+    ],
+    "examples": [
+      "!role create [name] [color] [hoist] [mentionable]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role create"
+  },
+  "role_delete": {
+    "raw_name": "delete",
+    "func_name": "delete_role_sub",
+    "parent_func_name": "roles_group",
+    "description": "delete a role from the server",
+    "aliases": [
+      "destroy"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "examples": [
+      "!role delete [role]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role delete"
+  },
+  "role_color": {
+    "raw_name": "color",
+    "func_name": "color_role_sub",
+    "parent_func_name": "roles_group",
+    "description": "change a role's color",
+    "aliases": [
+      "colour",
+      "col",
+      "setcolor",
+      "changecolor"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      },
+      {
+        "name": "color",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!role color [role] [color]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role color"
+  },
+  "role_members": {
+    "raw_name": "members",
+    "func_name": "roles_members_sub",
+    "parent_func_name": "roles_group",
+    "description": "see everyone who has a role",
+    "aliases": [
+      "users",
+      "who",
+      "list-members"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Messages"
+    ],
+    "required_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!role members <role>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role members"
+  },
+  "role_bulk": {
+    "raw_name": "bulk",
+    "func_name": "roles_bulk_sub",
+    "parent_func_name": "roles_group",
+    "description": "add or remove a role from multiple people",
+    "aliases": [
+      "mass",
+      "multiple",
+      "many"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "action",
+        "type": "str"
+      },
+      {
+        "name": "role",
+        "type": "Role"
+      },
+      {
+        "name": "members",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!role bulk [action] [role] [members]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role bulk"
+  },
+  "role_massadd": {
+    "raw_name": "massadd",
+    "func_name": "roles_massadd_sub",
+    "parent_func_name": "roles_group",
+    "description": "give a role to everyone in the server",
+    "aliases": [
+      "all",
+      "everyone",
+      "addall"
+    ],
+    "category": "customization",
+    "permissions": [
+      "Manage Roles"
+    ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "role",
+        "type": "Role"
+      },
+      {
+        "name": "filter_bots",
+        "type": "bool"
+      }
+    ],
+    "examples": [
+      "!role massadd [role] [filter_bots]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\roles\\__init__.py",
+    "name": "role massadd"
+  },
   "vanity": {
     "raw_name": "vanity",
     "func_name": "vanity",
@@ -1556,12 +1518,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "vanity unblacklist",
       "vanity variables"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity"
   },
   "vanity_set": {
     "raw_name": "set",
-    "func_name": "vanity_set",
+    "func_name": "vanity_set_sub",
     "parent_func_name": "vanity",
     "description": "set the keyword people need in their status",
     "aliases": [],
@@ -1583,7 +1545,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity set"
   },
   "vanity_role": {
@@ -1609,12 +1571,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "vanity role list",
       "vanity role remove"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity role"
   },
   "vanity_role_add": {
     "raw_name": "add",
-    "func_name": "vanity_role_add",
+    "func_name": "vanity_role_add_sub",
     "parent_func_name": "vanity_role",
     "description": "add a role to give for vanity",
     "aliases": [],
@@ -1636,12 +1598,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity role add"
   },
   "vanity_role_remove": {
     "raw_name": "remove",
-    "func_name": "vanity_role_remove",
+    "func_name": "vanity_role_remove_sub",
     "parent_func_name": "vanity_role",
     "description": "remove a vanity reward role",
     "aliases": [],
@@ -1663,12 +1625,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity role remove"
   },
   "vanity_role_list": {
     "raw_name": "list",
-    "func_name": "vanity_role_list",
+    "func_name": "vanity_role_list_sub",
     "parent_func_name": "vanity_role",
     "description": "see all vanity reward roles",
     "aliases": [],
@@ -1685,7 +1647,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity role list"
   },
   "vanity_message": {
@@ -1711,12 +1673,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "vanity message set",
       "vanity message view"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity message"
   },
   "vanity_message_set": {
     "raw_name": "set",
-    "func_name": "vanity_message_set",
+    "func_name": "vanity_message_set_sub",
     "parent_func_name": "vanity_message",
     "description": "set the message to send when someone gets vanity",
     "aliases": [],
@@ -1738,12 +1700,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity message set"
   },
   "vanity_message_view": {
     "raw_name": "view",
-    "func_name": "vanity_message_view",
+    "func_name": "vanity_message_view_sub",
     "parent_func_name": "vanity_message",
     "description": "see the current vanity message",
     "aliases": [],
@@ -1760,12 +1722,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity message view"
   },
   "vanity_message_preview": {
     "raw_name": "preview",
-    "func_name": "vanity_message_preview",
+    "func_name": "vanity_message_preview_sub",
     "parent_func_name": "vanity_message",
     "description": "preview your vanity reward message",
     "aliases": [],
@@ -1782,7 +1744,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity message preview"
   },
   "vanity_channels": {
@@ -1808,12 +1770,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "vanity channels remove",
       "vanity channels view"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity channels"
   },
   "vanity_channels_add": {
     "raw_name": "add",
-    "func_name": "vanity_channels_add",
+    "func_name": "vanity_channels_add_sub",
     "parent_func_name": "vanity_channels",
     "description": "add a channel for vanity messages",
     "aliases": [],
@@ -1835,12 +1797,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity channels add"
   },
   "vanity_channels_remove": {
     "raw_name": "remove",
-    "func_name": "vanity_channels_remove",
+    "func_name": "vanity_channels_remove_sub",
     "parent_func_name": "vanity_channels",
     "description": "remove a vanity message channel",
     "aliases": [],
@@ -1862,12 +1824,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity channels remove"
   },
   "vanity_channels_view": {
     "raw_name": "view",
-    "func_name": "vanity_channels_view",
+    "func_name": "vanity_channels_view_sub",
     "parent_func_name": "vanity_channels",
     "description": "see all vanity message channels",
     "aliases": [],
@@ -1884,7 +1846,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity channels view"
   },
   "vanity_variables": {
@@ -1908,12 +1870,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "subcommands": [
       "vanity variables view"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity variables"
   },
   "vanity_variables_view": {
     "raw_name": "view",
-    "func_name": "vanity_variables_view",
+    "func_name": "vanity_variables_view_sub",
     "parent_func_name": "vanity_variables",
     "description": "see vanity message placeholders",
     "aliases": [],
@@ -1930,7 +1892,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity variables view"
   },
   "vanity_blacklist": {
@@ -1957,12 +1919,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "vanity blacklist text",
       "vanity blacklist user"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity blacklist"
   },
   "vanity_blacklist_user": {
     "raw_name": "user",
-    "func_name": "vanity_blacklist_user",
+    "func_name": "vanity_blacklist_user_sub",
     "parent_func_name": "vanity_blacklist",
     "description": "block someone from getting vanity rewards",
     "aliases": [],
@@ -1984,12 +1946,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity blacklist user"
   },
   "vanity_blacklist_role": {
     "raw_name": "role",
-    "func_name": "vanity_blacklist_role",
+    "func_name": "vanity_blacklist_role_sub",
     "parent_func_name": "vanity_blacklist",
     "description": "block a role from getting vanity rewards",
     "aliases": [],
@@ -2011,12 +1973,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity blacklist role"
   },
   "vanity_blacklist_text": {
     "raw_name": "text",
-    "func_name": "vanity_blacklist_text",
+    "func_name": "vanity_blacklist_text_sub",
     "parent_func_name": "vanity_blacklist",
     "description": "block certain text from triggering vanity",
     "aliases": [],
@@ -2043,12 +2005,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity blacklist text"
   },
   "vanity_blacklist_list": {
     "raw_name": "list",
-    "func_name": "vanity_blacklist_list",
+    "func_name": "vanity_blacklist_list_sub",
     "parent_func_name": "vanity_blacklist",
     "description": "see everything that's blacklisted",
     "aliases": [],
@@ -2065,7 +2027,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity blacklist list"
   },
   "vanity_unblacklist": {
@@ -2091,12 +2053,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
       "vanity unblacklist text",
       "vanity unblacklist user"
     ],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity unblacklist"
   },
   "vanity_unblacklist_user": {
     "raw_name": "user",
-    "func_name": "vanity_unblacklist_user",
+    "func_name": "vanity_unblacklist_user_sub",
     "parent_func_name": "vanity_unblacklist",
     "description": "unblock someone from vanity",
     "aliases": [],
@@ -2118,12 +2080,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity unblacklist user"
   },
   "vanity_unblacklist_role": {
     "raw_name": "role",
-    "func_name": "vanity_unblacklist_role",
+    "func_name": "vanity_unblacklist_role_sub",
     "parent_func_name": "vanity_unblacklist",
     "description": "unblock a role from vanity",
     "aliases": [],
@@ -2145,12 +2107,12 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity unblacklist role"
   },
   "vanity_unblacklist_text": {
     "raw_name": "text",
-    "func_name": "vanity_unblacklist_text",
+    "func_name": "vanity_unblacklist_text_sub",
     "parent_func_name": "vanity_unblacklist",
     "description": "unblock a text pattern",
     "aliases": [],
@@ -2172,7 +2134,7 @@ export const CUSTOMIZATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\customization\\vanity\\__init__.py",
     "name": "vanity unblacklist text"
   }
 };

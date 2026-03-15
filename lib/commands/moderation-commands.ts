@@ -19,130 +19,112 @@ export interface Command {
 export const MODERATION_COMMANDS: Record<string, Command> = {
   "kick": {
     "raw_name": "kick",
-    "func_name": "kick_prefix",
-    "parent_func_name": null,
-    "description": "kick someone from the server",
-    "aliases": [
-      "boot",
-      "remove",
-      "k"
-    ],
+    "func_name": "kick_command",
+    "parent_func_name": "moderation_user",
+    "description": "kick a member from the server",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Kick Members"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "reason",
         "type": "str"
       }
     ],
     "examples": [
-      "!kick [member] [reason]"
+      "!kick <member> [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\ban.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "kick"
   },
   "hardban": {
     "raw_name": "hardban",
-    "func_name": "hardban_prefix",
-    "parent_func_name": null,
-    "description": "permanently ban someone (only bot owner can unban)",
-    "aliases": [
-      "hb"
-    ],
+    "func_name": "hardban_command",
+    "parent_func_name": "moderation_user",
+    "description": "permanently ban a member",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Ban Members"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "target",
-        "type": "text"
-      },
+        "type": "str"
+      }
+    ],
+    "optional_args": [
       {
         "name": "reason",
         "type": "str"
       }
     ],
     "examples": [
-      "!hardban [target] [reason]"
+      "!hardban <target> [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\ban.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "hardban"
   },
   "softban": {
     "raw_name": "softban",
-    "func_name": "softban_prefix",
-    "parent_func_name": null,
-    "description": "ban and unban someone to clear their messages",
-    "aliases": [
-      "sb"
-    ],
+    "func_name": "softban_command",
+    "parent_func_name": "moderation_user",
+    "description": "ban and immediately unban a member (clears messages)",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Ban Members"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "target",
-        "type": "text"
-      },
+        "type": "str"
+      }
+    ],
+    "optional_args": [
       {
         "name": "reason",
         "type": "str"
       }
     ],
     "examples": [
-      "!softban [target] [reason]"
+      "!softban <target> [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\ban.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "softban"
   },
   "ban": {
     "raw_name": "ban",
-    "func_name": "ban_prefix",
-    "parent_func_name": null,
-    "description": "ban someone from the server",
-    "aliases": [
-      "yeet",
-      "banish",
-      "hackban",
-      "forceban",
-      "b"
-    ],
+    "func_name": "ban_command",
+    "parent_func_name": "moderation_user",
+    "description": "ban a member or user ID",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Ban Members"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "target",
-        "type": "text"
-      },
+        "type": "str"
+      }
+    ],
+    "optional_args": [
       {
         "name": "duration",
-        "type": "text"
+        "type": "str"
       },
       {
         "name": "reason",
@@ -150,25 +132,23 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
       }
     ],
     "examples": [
-      "!ban [target] [duration] [reason]"
+      "!ban <target> [duration] [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\ban.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "ban"
   },
   "unbanall": {
     "raw_name": "unbanall",
-    "func_name": "unbanall_prefix",
-    "parent_func_name": null,
-    "description": "unban everyone",
+    "func_name": "unbanall_command",
+    "parent_func_name": "moderation_bulk",
+    "description": "unban all banned users",
     "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Administrator"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -178,73 +158,67 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\ban.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "unbanall"
   },
   "unban": {
     "raw_name": "unban",
-    "func_name": "unban_prefix",
-    "parent_func_name": null,
-    "description": "unban someone",
+    "func_name": "unban_command",
+    "parent_func_name": "moderation_user",
+    "description": "unban a user",
     "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Ban Members"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "user_id",
         "type": "str"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "reason",
         "type": "str"
       }
     ],
     "examples": [
-      "!unban [user_id] [reason]"
+      "!unban <user_id> [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\ban.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "unban"
   },
   "removehardban": {
     "raw_name": "removehardban",
-    "func_name": "removehardban_prefix",
-    "parent_func_name": null,
-    "description": "remove hardban status from someone",
-    "aliases": [
-      "rhb",
-      "unhardban",
-      "unhb"
-    ],
+    "func_name": "removehardban_command",
+    "parent_func_name": "moderation_user",
+    "description": "remove hardban status from a user",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Ban Members"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "user_id",
         "type": "str"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "reason",
         "type": "str"
       }
     ],
     "examples": [
-      "!removehardban [user_id] [reason]"
+      "!removehardban <user_id> [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\ban.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "removehardban"
   },
   "channels": {
@@ -747,16 +721,12 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
   },
   "nuke": {
     "raw_name": "nuke",
-    "func_name": "nuke_prefix",
-    "parent_func_name": null,
-    "description": "delete and recreate a channel (wipes all messages)",
-    "aliases": [
-      "recreate"
-    ],
+    "func_name": "nuke_command",
+    "parent_func_name": "moderation_channel",
+    "description": "delete and recreate channel",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Administrator"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [
       {
@@ -771,7 +741,7 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\clear.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "nuke"
   },
   "purge": {
@@ -1246,48 +1216,66 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
   },
   "clear": {
     "raw_name": "clear",
-    "func_name": "clear_prefix",
-    "parent_func_name": null,
-    "description": "delete messages with filters",
+    "func_name": "snipe_clear_command",
+    "parent_func_name": "moderation_snipe",
+    "description": "clear sniped messages",
     "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [
-      {
-        "name": "args",
-        "type": "text"
-      }
-    ],
-    "optional_args": [
-      {
-        "name": "purge_type",
-        "type": "str"
-      }
-    ],
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
     "examples": [
-      "!clear <args> [purge_type]"
+      "!clear"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\clear.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "clear"
   },
-  "forcenick": {
-    "raw_name": "forcenick",
-    "func_name": "forcenick",
+  "nickname": {
+    "raw_name": "nickname",
+    "func_name": "nick_prefix",
     "parent_func_name": null,
-    "description": "force a nickname that sticks even if they try to change it",
+    "description": "change a user's nickname",
     "aliases": [
-      "fn"
+      "nick",
+      "setnick"
     ],
     "category": "moderation",
     "permissions": [
       "Manage Nicknames"
     ],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "member",
+        "type": "Member"
+      },
+      {
+        "name": "nickname",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!nickname [member] [nickname]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\forcenick.py",
+    "name": "nickname"
+  },
+  "forcenick": {
+    "raw_name": "forcenick",
+    "func_name": "forcenick_command",
+    "parent_func_name": "moderation_user",
+    "description": "force a nickname on a user",
+    "aliases": [],
+    "category": "moderation",
+    "permissions": [],
     "required_args": [
       {
         "name": "member",
@@ -1307,38 +1295,32 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\forcenick.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "forcenick"
   },
   "removeforcenick": {
     "raw_name": "removeforcenick",
-    "func_name": "removeforcenick",
-    "parent_func_name": null,
-    "description": "remove a forced nickname from someone",
-    "aliases": [
-      "rfn",
-      "unforcenick",
-      "unfn"
-    ],
+    "func_name": "removeforcenick_command",
+    "parent_func_name": "moderation_user",
+    "description": "remove forced nickname from a user",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Nicknames"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
       }
     ],
+    "optional_args": [],
     "examples": [
-      "!removeforcenick [member]"
+      "!removeforcenick <member>"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\forcenick.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "removeforcenick"
   },
   "ghostping": {
@@ -1448,14 +1430,12 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
   },
   "lock": {
     "raw_name": "lock",
-    "func_name": "lock_prefix",
-    "parent_func_name": null,
-    "description": "stop people from sending messages here",
+    "func_name": "lock_command",
+    "parent_func_name": "moderation_channel",
+    "description": "lock a channel",
     "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Channels"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [
       {
@@ -1474,19 +1454,17 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\lock.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "lock"
   },
   "unlock": {
     "raw_name": "unlock",
-    "func_name": "unlock_prefix",
-    "parent_func_name": null,
-    "description": "let people send messages here again",
+    "func_name": "unlock_command",
+    "parent_func_name": "moderation_channel",
+    "description": "unlock a channel",
     "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Channels"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [
       {
@@ -1505,21 +1483,17 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\lock.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "unlock"
   },
   "lockall": {
     "raw_name": "lockall",
-    "func_name": "lockall_prefix",
-    "parent_func_name": null,
-    "description": "lock all channels at once",
-    "aliases": [
-      "lock-all"
-    ],
+    "func_name": "lockall_command",
+    "parent_func_name": "moderation_channel",
+    "description": "lock all channels",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Channels"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [
       {
@@ -1534,21 +1508,17 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\lock.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "lockall"
   },
   "unlockall": {
     "raw_name": "unlockall",
-    "func_name": "unlockall_prefix",
-    "parent_func_name": null,
-    "description": "unlock all channels at once",
-    "aliases": [
-      "unlock-all"
-    ],
+    "func_name": "unlockall_command",
+    "parent_func_name": "moderation_channel",
+    "description": "unlock all channels",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Channels"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [
       {
@@ -1563,37 +1533,32 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\lock.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "unlockall"
   },
   "slowmode": {
     "raw_name": "slowmode",
-    "func_name": "slowmode_prefix",
-    "parent_func_name": null,
-    "description": "set how long people wait between messages",
-    "aliases": [
-      "slow",
-      "sm"
-    ],
+    "func_name": "slowmode_command",
+    "parent_func_name": "moderation_channel",
+    "description": "set channel slowmode",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "delay",
         "type": "int"
       }
     ],
+    "optional_args": [],
     "examples": [
-      "!slowmode [delay]"
+      "!slowmode <delay>"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\slowmode.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "slowmode"
   },
   "snipe": {
@@ -1849,24 +1814,19 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
   },
   "mute": {
     "raw_name": "mute",
-    "func_name": "mute_prefix",
-    "parent_func_name": null,
-    "description": "mute someone for a while",
-    "aliases": [
-      "silence",
-      "quiet",
-      "m"
-    ],
+    "func_name": "mute_command",
+    "parent_func_name": "moderation_user",
+    "description": "mute a member",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "duration",
         "type": "str"
@@ -1877,68 +1837,60 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
       }
     ],
     "examples": [
-      "!mute [member] [duration] [reason]"
+      "!mute <member> [duration] [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "mute"
   },
   "unmute": {
     "raw_name": "unmute",
-    "func_name": "unmute_prefix",
-    "parent_func_name": null,
-    "description": "unmute someone",
-    "aliases": [
-      "unsilence",
-      "unquiet",
-      "um"
-    ],
+    "func_name": "unmute_command",
+    "parent_func_name": "moderation_user",
+    "description": "unmute a member",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "reason",
         "type": "str"
       }
     ],
     "examples": [
-      "!unmute [member] [reason]"
+      "!unmute <member> [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "unmute"
   },
   "reactionmute": {
     "raw_name": "reactionmute",
-    "func_name": "reactionmute_prefix",
-    "parent_func_name": null,
+    "func_name": "reactionmute_command",
+    "parent_func_name": "moderation_user",
     "description": "prevent someone from reacting for a while",
-    "aliases": [
-      "rmute"
-    ],
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "duration",
         "type": "str"
@@ -1949,64 +1901,60 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
       }
     ],
     "examples": [
-      "!reactionmute [member] [duration] [reason]"
+      "!reactionmute <member> [duration] [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "reactionmute"
   },
   "unreactionmute": {
     "raw_name": "unreactionmute",
-    "func_name": "unreactionmute_prefix",
-    "parent_func_name": null,
-    "description": "unreactionmute someone",
+    "func_name": "unreactionmute_command",
+    "parent_func_name": "moderation_user",
+    "description": "unreactionmute a member",
     "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "reason",
         "type": "str"
       }
     ],
     "examples": [
-      "!unreactionmute [member] [reason]"
+      "!unreactionmute <member> [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "unreactionmute"
   },
   "imagemute": {
     "raw_name": "imagemute",
-    "func_name": "imagemute_prefix",
-    "parent_func_name": null,
+    "func_name": "imagemute_command",
+    "parent_func_name": "moderation_user",
     "description": "prevent someone from sending images/embeds for a while",
-    "aliases": [
-      "imute"
-    ],
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "duration",
         "type": "str"
@@ -2017,65 +1965,60 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
       }
     ],
     "examples": [
-      "!imagemute [member] [duration] [reason]"
+      "!imagemute <member> [duration] [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "imagemute"
   },
   "unimagemute": {
     "raw_name": "unimagemute",
-    "func_name": "unimagemute_prefix",
-    "parent_func_name": null,
-    "description": "unimagemute someone",
+    "func_name": "unimagemute_command",
+    "parent_func_name": "moderation_user",
+    "description": "unimagemute a member",
     "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Roles"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "reason",
         "type": "str"
       }
     ],
     "examples": [
-      "!unimagemute [member] [reason]"
+      "!unimagemute <member> [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "unimagemute"
   },
   "timeout": {
     "raw_name": "timeout",
-    "func_name": "timeout_prefix",
-    "parent_func_name": null,
-    "description": "timeout someone using discord's built-in timeout",
-    "aliases": [
-      "to",
-      "t"
-    ],
+    "func_name": "timeout_command",
+    "parent_func_name": "moderation_user",
+    "description": "timeout a member",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Moderate Members"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "duration",
         "type": "str"
@@ -2086,58 +2029,53 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
       }
     ],
     "examples": [
-      "!timeout [member] [duration] [reason]"
+      "!timeout <member> [duration] [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "timeout"
   },
   "untimeout": {
     "raw_name": "untimeout",
-    "func_name": "untimeout_prefix",
-    "parent_func_name": null,
-    "description": "remove someone's timeout",
+    "func_name": "untimeout_command",
+    "parent_func_name": "moderation_user",
+    "description": "remove timeout from a member",
     "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Moderate Members"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "reason",
         "type": "str"
       }
     ],
     "examples": [
-      "!untimeout [member] [reason]"
+      "!untimeout <member> [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "untimeout"
   },
   "untimeoutall": {
     "raw_name": "untimeoutall",
-    "func_name": "untimeoutall_prefix",
-    "parent_func_name": null,
-    "description": "remove timeout from everyone",
-    "aliases": [
-      "untoall"
-    ],
+    "func_name": "untimeoutall_command",
+    "parent_func_name": "moderation_bulk",
+    "description": "remove timeout from all timed out members",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Moderate Members"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -2147,21 +2085,17 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "untimeoutall"
   },
   "unmuteall": {
     "raw_name": "unmuteall",
-    "func_name": "unmuteall_prefix",
-    "parent_func_name": null,
-    "description": "unmute everyone",
-    "aliases": [
-      "umuteall"
-    ],
+    "func_name": "unmuteall_command",
+    "parent_func_name": "moderation_bulk",
+    "description": "unmute all muted members",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Roles"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -2171,40 +2105,37 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\timeout.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "unmuteall"
   },
   "warn": {
     "raw_name": "warn",
-    "func_name": "warn_prefix",
-    "parent_func_name": null,
-    "description": "give someone a warning",
-    "aliases": [
-      "w"
-    ],
+    "func_name": "warn_command",
+    "parent_func_name": "moderation_user",
+    "description": "warn a member",
+    "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Messages"
-    ],
-    "required_args": [],
-    "optional_args": [
+    "permissions": [],
+    "required_args": [
       {
         "name": "member",
         "type": "Member"
-      },
+      }
+    ],
+    "optional_args": [
       {
         "name": "reason",
         "type": "str"
       }
     ],
     "examples": [
-      "!warn [member] [reason]"
+      "!warn <member> [reason]"
     ],
     "has_prefix": true,
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\warn.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "warn"
   },
   "modwarnings": {
@@ -2289,14 +2220,12 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
   },
   "thresholds": {
     "raw_name": "thresholds",
-    "func_name": "thresholds_prefix",
-    "parent_func_name": null,
-    "description": "see how many warnings trigger punishments",
+    "func_name": "thresholds_command",
+    "parent_func_name": "moderation_warnings",
+    "description": "view warning thresholds",
     "aliases": [],
     "category": "moderation",
-    "permissions": [
-      "Manage Messages"
-    ],
+    "permissions": [],
     "required_args": [],
     "optional_args": [],
     "examples": [
@@ -2306,7 +2235,7 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "has_slash": false,
     "is_group": false,
     "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\warn.py",
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
     "name": "thresholds"
   },
   "setwarnthreshold": {
@@ -2342,5 +2271,134 @@ export const MODERATION_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\warn.py",
     "name": "setwarnthreshold"
+  },
+  "view": {
+    "raw_name": "view",
+    "func_name": "warnings_view_command",
+    "parent_func_name": "moderation_warnings",
+    "description": "view warnings for a user",
+    "aliases": [],
+    "category": "moderation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "user",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!view <user>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
+    "name": "view"
+  },
+  "setthreshold": {
+    "raw_name": "setthreshold",
+    "func_name": "setthreshold_command",
+    "parent_func_name": "moderation_warnings",
+    "description": "set warning thresholds",
+    "aliases": [],
+    "category": "moderation",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "threshold_type",
+        "type": "str"
+      },
+      {
+        "name": "value",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!setthreshold <threshold_type> <value>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
+    "name": "setthreshold"
+  },
+  "deleted": {
+    "raw_name": "deleted",
+    "func_name": "snipe_deleted_command",
+    "parent_func_name": "moderation_snipe",
+    "description": "view deleted messages",
+    "aliases": [],
+    "category": "moderation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "index",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!deleted [index]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
+    "name": "deleted"
+  },
+  "edited": {
+    "raw_name": "edited",
+    "func_name": "snipe_edited_command",
+    "parent_func_name": "moderation_snipe",
+    "description": "view edited messages",
+    "aliases": [],
+    "category": "moderation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "index",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!edited [index]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
+    "name": "edited"
+  },
+  "reaction": {
+    "raw_name": "reaction",
+    "func_name": "snipe_reaction_command",
+    "parent_func_name": "moderation_snipe",
+    "description": "view removed reactions",
+    "aliases": [],
+    "category": "moderation",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [
+      {
+        "name": "limit",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!reaction [limit]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\moderation\\__init__.py",
+    "name": "reaction"
   }
 };

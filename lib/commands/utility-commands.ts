@@ -407,11 +407,35 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\get.py",
     "name": "get serverbanner"
   },
+  "serversplash": {
+    "raw_name": "serversplash",
+    "func_name": "serversplash_standalone",
+    "parent_func_name": null,
+    "description": "show the server splash",
+    "aliases": [
+      "ssplash",
+      "guildsplash",
+      "splash"
+    ],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!serversplash"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\get.py",
+    "name": "serversplash"
+  },
   "help": {
     "raw_name": "help",
     "func_name": "help_command",
     "parent_func_name": null,
-    "description": "show all commands and how to use them",
+    "description": "Show all commands and how to use them",
     "aliases": [
       "h",
       "cmds"
@@ -439,7 +463,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "emotes",
     "func_name": "emotes",
     "parent_func_name": null,
-    "description": "View all emotes in the server",
+    "description": "view all emotes in the server",
     "aliases": [],
     "category": "utility",
     "permissions": [],
@@ -459,7 +483,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "boosters",
     "func_name": "boosters",
     "parent_func_name": null,
-    "description": "View all recent server boosters",
+    "description": "view all recent server boosters",
     "aliases": [],
     "category": "utility",
     "permissions": [],
@@ -481,7 +505,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "lost",
     "func_name": "boosters_lost",
     "parent_func_name": "boosters",
-    "description": "View list of most recent lost boosters",
+    "description": "view list of most recent lost boosters",
     "aliases": [],
     "category": "utility",
     "permissions": [],
@@ -501,7 +525,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "rolelist",
     "func_name": "rolelist",
     "parent_func_name": null,
-    "description": "View all roles in the server",
+    "description": "view all roles in the server",
     "aliases": [],
     "category": "utility",
     "permissions": [],
@@ -521,7 +545,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "bots",
     "func_name": "bots",
     "parent_func_name": null,
-    "description": "View all bots in the server",
+    "description": "view all bots in the server",
     "aliases": [],
     "category": "utility",
     "permissions": [],
@@ -541,7 +565,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "members",
     "func_name": "members",
     "parent_func_name": null,
-    "description": "View members in a role",
+    "description": "view members in a role",
     "aliases": [],
     "category": "utility",
     "permissions": [],
@@ -566,7 +590,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "seen",
     "func_name": "seen",
     "parent_func_name": null,
-    "description": "Seen when a member was last seen in the server",
+    "description": "seen when a member was last seen in the server",
     "aliases": [],
     "category": "utility",
     "permissions": [],
@@ -591,7 +615,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "membercount",
     "func_name": "membercount",
     "parent_func_name": null,
-    "description": "View server member count",
+    "description": "view server member count",
     "aliases": [
       "mc"
     ],
@@ -613,7 +637,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "channelinfo",
     "func_name": "channelinfo",
     "parent_func_name": null,
-    "description": "View information about a channel",
+    "description": "view information about a channel",
     "aliases": [],
     "category": "utility",
     "permissions": [],
@@ -638,7 +662,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "randomhex",
     "func_name": "randomhex",
     "parent_func_name": null,
-    "description": "Generate a random hex (color)",
+    "description": "generate a random hex (color)",
     "aliases": [],
     "category": "utility",
     "permissions": [],
@@ -648,7 +672,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
       "!randomhex"
     ],
     "has_prefix": true,
-    "has_slash": true,
+    "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
@@ -658,7 +682,7 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "raw_name": "charinfo",
     "func_name": "charinfo",
     "parent_func_name": null,
-    "description": "Get information about a character/symbol..etc...",
+    "description": "get information about a character/symbol",
     "aliases": [],
     "category": "utility",
     "permissions": [],
@@ -673,33 +697,36 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
       "!charinfo [characters]"
     ],
     "has_prefix": true,
-    "has_slash": true,
+    "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
     "name": "charinfo"
   },
-  "invites": {
-    "raw_name": "invites",
-    "func_name": "invites",
+  "svg": {
+    "raw_name": "svg",
+    "func_name": "svg",
     "parent_func_name": null,
-    "description": "View all active invites",
+    "description": "render svg code into an image",
     "aliases": [],
     "category": "utility",
-    "permissions": [
-      "Manage Guild"
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "code",
+        "type": "str"
+      }
     ],
-    "required_args": [],
     "optional_args": [],
     "examples": [
-      "!invites"
+      "!svg <code>"
     ],
     "has_prefix": true,
-    "has_slash": true,
+    "has_slash": false,
     "is_group": false,
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\info.py",
-    "name": "invites"
+    "name": "svg"
   },
   "pagination": {
     "raw_name": "pagination",
@@ -979,6 +1006,83 @@ export const UTILITY_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\pagination.py",
     "name": "pagination restorereactions"
+  },
+  "privacy": {
+    "raw_name": "privacy",
+    "func_name": "privacy",
+    "parent_func_name": null,
+    "description": "view your privacy settings",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!privacy"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "privacy messagecontent"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\privacy.py",
+    "name": "privacy"
+  },
+  "privacy_messagecontent": {
+    "raw_name": "messagecontent",
+    "func_name": "privacy_messagecontent",
+    "parent_func_name": "privacy",
+    "description": "opt in or out of message content tracking",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "setting",
+        "type": "str"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!privacy messagecontent <setting>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\privacy.py",
+    "name": "privacy messagecontent"
+  },
+  "rtfm": {
+    "raw_name": "rtfm",
+    "func_name": "rtfm_command",
+    "parent_func_name": null,
+    "description": "search documentation",
+    "aliases": [],
+    "category": "utility",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "obj",
+        "type": "str"
+      }
+    ],
+    "optional_args": [
+      {
+        "name": "doc",
+        "type": "str"
+      }
+    ],
+    "examples": [
+      "!rtfm <obj> [doc]"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\utility\\rtfm.py",
+    "name": "rtfm"
   },
   "tag": {
     "raw_name": "tag",

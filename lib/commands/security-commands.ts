@@ -215,6 +215,554 @@ export const SECURITY_COMMANDS: Record<string, Command> = {
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antinuke.py",
     "name": "antinuke logchannel"
   },
+  "antiraid": {
+    "raw_name": "antiraid",
+    "func_name": "antiraid",
+    "parent_func_name": null,
+    "description": "antiraid system management",
+    "aliases": [
+      "antir",
+      "araid"
+    ],
+    "category": "security",
+    "permissions": [
+      "Administrator"
+    ],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid"
+    ],
+    "has_prefix": true,
+    "has_slash": true,
+    "is_group": true,
+    "subcommands": [
+      "antiraid bots",
+      "antiraid joins",
+      "antiraid logs",
+      "antiraid newaccounts"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid"
+  },
+  "antiraid_bots": {
+    "raw_name": "bots",
+    "func_name": "bots",
+    "parent_func_name": "antiraid",
+    "description": "manage bot protection",
+    "aliases": [
+      "externalapps",
+      "appraid",
+      "botraid"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid bots"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "antiraid bots config",
+      "antiraid bots disable",
+      "antiraid bots enable",
+      "antiraid bots punishment",
+      "antiraid bots threshold",
+      "antiraid bots whitelist"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid bots"
+  },
+  "antiraid_bots_enable": {
+    "raw_name": "enable",
+    "func_name": "bots_enable",
+    "parent_func_name": "bots",
+    "description": "enable external app protection",
+    "aliases": [],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid bots enable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid bots enable"
+  },
+  "antiraid_bots_disable": {
+    "raw_name": "disable",
+    "func_name": "bots_disable",
+    "parent_func_name": "bots",
+    "description": "disable external app protection",
+    "aliases": [],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid bots disable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid bots disable"
+  },
+  "antiraid_bots_whitelist": {
+    "raw_name": "whitelist",
+    "func_name": "bots_whitelist",
+    "parent_func_name": "bots",
+    "description": "whitelist role or user from bot protection",
+    "aliases": [
+      "wl"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "target",
+        "type": "text"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!antiraid bots whitelist <target>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid bots whitelist"
+  },
+  "antiraid_bots_threshold": {
+    "raw_name": "threshold",
+    "func_name": "bots_threshold",
+    "parent_func_name": "bots",
+    "description": "set external app spam threshold",
+    "aliases": [
+      "limit",
+      "setting"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "threshold",
+        "type": "int"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!antiraid bots threshold <threshold>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid bots threshold"
+  },
+  "antiraid_bots_punishment": {
+    "raw_name": "punishment",
+    "func_name": "bots_punishment",
+    "parent_func_name": "bots",
+    "description": "set external app punishment",
+    "aliases": [
+      "action",
+      "punish"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "punishment",
+        "type": "text"
+      }
+    ],
+    "optional_args": [
+      {
+        "name": "duration",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!antiraid bots punishment <punishment> [duration]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid bots punishment"
+  },
+  "antiraid_bots_config": {
+    "raw_name": "config",
+    "func_name": "bots_config",
+    "parent_func_name": "bots",
+    "description": "view bots protection config",
+    "aliases": [
+      "settings",
+      "show"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid bots config"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid bots config"
+  },
+  "antiraid_joins": {
+    "raw_name": "joins",
+    "func_name": "joins",
+    "parent_func_name": "antiraid",
+    "description": "manage massjoin protection",
+    "aliases": [
+      "massjoin",
+      "mj",
+      "massjoins"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid joins"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "antiraid joins config",
+      "antiraid joins disable",
+      "antiraid joins enable",
+      "antiraid joins punishment",
+      "antiraid joins threshold"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid joins"
+  },
+  "antiraid_joins_enable": {
+    "raw_name": "enable",
+    "func_name": "joins_enable",
+    "parent_func_name": "joins",
+    "description": "enable massjoin protection",
+    "aliases": [],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid joins enable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid joins enable"
+  },
+  "antiraid_joins_disable": {
+    "raw_name": "disable",
+    "func_name": "joins_disable",
+    "parent_func_name": "joins",
+    "description": "disable massjoin protection",
+    "aliases": [],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid joins disable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid joins disable"
+  },
+  "antiraid_joins_threshold": {
+    "raw_name": "threshold",
+    "func_name": "joins_threshold",
+    "parent_func_name": "joins",
+    "description": "set massjoin threshold",
+    "aliases": [
+      "limit",
+      "setting"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "threshold",
+        "type": "int"
+      }
+    ],
+    "optional_args": [
+      {
+        "name": "duration",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!antiraid joins threshold <threshold> [duration]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid joins threshold"
+  },
+  "antiraid_joins_punishment": {
+    "raw_name": "punishment",
+    "func_name": "joins_punishment",
+    "parent_func_name": "joins",
+    "description": "set massjoin punishment",
+    "aliases": [
+      "action",
+      "punish"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "punishment",
+        "type": "text"
+      }
+    ],
+    "optional_args": [
+      {
+        "name": "duration",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!antiraid joins punishment <punishment> [duration]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid joins punishment"
+  },
+  "antiraid_joins_config": {
+    "raw_name": "config",
+    "func_name": "joins_config",
+    "parent_func_name": "joins",
+    "description": "view joins protection config",
+    "aliases": [
+      "settings",
+      "show"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid joins config"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid joins config"
+  },
+  "antiraid_newaccounts": {
+    "raw_name": "newaccounts",
+    "func_name": "newaccounts",
+    "parent_func_name": "antiraid",
+    "description": "manage new account protection",
+    "aliases": [
+      "newaccs",
+      "alt",
+      "na",
+      "newacc"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid newaccounts"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": true,
+    "subcommands": [
+      "antiraid newaccounts config",
+      "antiraid newaccounts days",
+      "antiraid newaccounts disable",
+      "antiraid newaccounts enable",
+      "antiraid newaccounts punishment"
+    ],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid newaccounts"
+  },
+  "antiraid_newaccounts_enable": {
+    "raw_name": "enable",
+    "func_name": "newaccounts_enable",
+    "parent_func_name": "newaccounts",
+    "description": "enable new account protection",
+    "aliases": [],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid newaccounts enable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid newaccounts enable"
+  },
+  "antiraid_newaccounts_disable": {
+    "raw_name": "disable",
+    "func_name": "newaccounts_disable",
+    "parent_func_name": "newaccounts",
+    "description": "disable new account protection",
+    "aliases": [],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid newaccounts disable"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid newaccounts disable"
+  },
+  "antiraid_newaccounts_days": {
+    "raw_name": "days",
+    "func_name": "newaccounts_days",
+    "parent_func_name": "newaccounts",
+    "description": "set minimum account age in days",
+    "aliases": [],
+    "category": "security",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "days",
+        "type": "int"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!antiraid newaccounts days <days>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid newaccounts days"
+  },
+  "antiraid_newaccounts_punishment": {
+    "raw_name": "punishment",
+    "func_name": "newaccounts_punishment",
+    "parent_func_name": "newaccounts",
+    "description": "set new account punishment",
+    "aliases": [
+      "action",
+      "punish"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "punishment",
+        "type": "text"
+      }
+    ],
+    "optional_args": [
+      {
+        "name": "duration",
+        "type": "int"
+      }
+    ],
+    "examples": [
+      "!antiraid newaccounts punishment <punishment> [duration]"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid newaccounts punishment"
+  },
+  "antiraid_newaccounts_config": {
+    "raw_name": "config",
+    "func_name": "newaccounts_config",
+    "parent_func_name": "newaccounts",
+    "description": "view new accounts protection config",
+    "aliases": [
+      "settings",
+      "show"
+    ],
+    "category": "security",
+    "permissions": [],
+    "required_args": [],
+    "optional_args": [],
+    "examples": [
+      "!antiraid newaccounts config"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid newaccounts config"
+  },
+  "antiraid_logs": {
+    "raw_name": "logs",
+    "func_name": "antiraid_logs",
+    "parent_func_name": "antiraid",
+    "description": "setup logging channel (auto-creates webhook)",
+    "aliases": [],
+    "category": "security",
+    "permissions": [],
+    "required_args": [
+      {
+        "name": "channel",
+        "type": "TextChannel"
+      }
+    ],
+    "optional_args": [],
+    "examples": [
+      "!antiraid logs <channel>"
+    ],
+    "has_prefix": true,
+    "has_slash": false,
+    "is_group": false,
+    "subcommands": [],
+    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\security\\antiraid.py",
+    "name": "antiraid logs"
+  },
   "automod": {
     "raw_name": "automod",
     "func_name": "automod_group",

@@ -530,8 +530,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "category": "server",
     "permissions": [
-      "Manage Channels",
-      "Manage Threads"
+      "Manage Threads",
+      "Manage Channels"
     ],
     "required_args": [],
     "optional_args": [
@@ -561,8 +561,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "category": "server",
     "permissions": [
-      "Manage Channels",
-      "Manage Threads"
+      "Manage Threads",
+      "Manage Channels"
     ],
     "required_args": [],
     "optional_args": [
@@ -591,8 +591,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "category": "server",
     "permissions": [
-      "Manage Channels",
-      "Manage Threads"
+      "Manage Threads",
+      "Manage Channels"
     ],
     "required_args": [],
     "optional_args": [
@@ -621,8 +621,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "category": "server",
     "permissions": [
-      "Manage Channels",
-      "Manage Threads"
+      "Manage Threads",
+      "Manage Channels"
     ],
     "required_args": [],
     "optional_args": [
@@ -651,8 +651,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "category": "server",
     "permissions": [
-      "Manage Channels",
-      "Manage Threads"
+      "Manage Threads",
+      "Manage Channels"
     ],
     "required_args": [],
     "optional_args": [
@@ -685,8 +685,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "category": "server",
     "permissions": [
-      "Manage Channels",
-      "Manage Threads"
+      "Manage Threads",
+      "Manage Channels"
     ],
     "required_args": [],
     "optional_args": [
@@ -720,8 +720,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     ],
     "category": "server",
     "permissions": [
-      "Manage Channels",
-      "Manage Threads"
+      "Manage Threads",
+      "Manage Channels"
     ],
     "required_args": [],
     "optional_args": [
@@ -1375,8 +1375,8 @@ export const SERVER_COMMANDS: Record<string, Command> = {
     "aliases": [],
     "category": "server",
     "permissions": [
-      "Manage Channels",
-      "Manage Guild"
+      "Manage Guild",
+      "Manage Channels"
     ],
     "required_args": [],
     "optional_args": [],

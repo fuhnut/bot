@@ -23,6 +23,7 @@ import { ENGAGEMENT_COMMANDS } from "./engagement-commands";
 import { FUN_COMMANDS } from "./fun-commands";
 import { MODERATION_COMMANDS } from "./moderation-commands";
 import { MUSIC_COMMANDS } from "./music-commands";
+import { ROLEPLAY_COMMANDS } from "./roleplay-commands";
 import { SECURITY_COMMANDS } from "./security-commands";
 import { SERVER_COMMANDS } from "./server-commands";
 import { SOCIAL_COMMANDS } from "./social-commands";
@@ -36,6 +37,7 @@ export const ALL_COMMANDS: Record<string, Command> = {
   ...FUN_COMMANDS,
   ...MODERATION_COMMANDS,
   ...MUSIC_COMMANDS,
+  ...ROLEPLAY_COMMANDS,
   ...SECURITY_COMMANDS,
   ...SERVER_COMMANDS,
   ...SOCIAL_COMMANDS,

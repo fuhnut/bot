@@ -69,7 +69,7 @@ export const SOCIAL_COMMANDS: Record<string, Command> = {
     "raw_name": "tiktok",
     "func_name": "tiktok_hybrid",
     "parent_func_name": "social_group",
-    "description": "Search for a TikTok user or view foryou feed",
+    "description": "Search for a TikTok user",
     "aliases": [],
     "category": "social",
     "permissions": [],
@@ -89,25 +89,5 @@ export const SOCIAL_COMMANDS: Record<string, Command> = {
     "subcommands": [],
     "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\social\\commands.py",
     "name": "social tiktok"
-  },
-  "fyp": {
-    "raw_name": "fyp",
-    "func_name": "fyp_prefix",
-    "parent_func_name": null,
-    "description": "view tiktok foryou feed",
-    "aliases": [],
-    "category": "social",
-    "permissions": [],
-    "required_args": [],
-    "optional_args": [],
-    "examples": [
-      "!fyp"
-    ],
-    "has_prefix": true,
-    "has_slash": false,
-    "is_group": false,
-    "subcommands": [],
-    "file_path": "C:\\Users\\bobby\\Downloads\\pybotv2\\plugins\\social\\commands.py",
-    "name": "fyp"
   }
 };
