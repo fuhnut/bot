@@ -23,6 +23,7 @@ export const CATEGORY_ICONS = {
   admin: "CrownIcon",
   social: "UsersIcon",
   commands: "TerminalIcon",
+  roleplay: "HeartIcon",
   all: "CommandsIcon",
 };
 
@@ -49,6 +50,7 @@ export const CATEGORY_COLORS = {
   fun_games: "from-white/10 to-white/20",
   admin: "from-white/10 to-white/20",
   social: "from-white/10 to-white/20",
+  roleplay: "from-rose-500/10 to-rose-500/20",
 };
 
 export const CATEGORY_DESCRIPTIONS = {
@@ -74,4 +76,5 @@ export const CATEGORY_DESCRIPTIONS = {
   fun_games: "Games and entertainment",
   admin: "Admin-only commands",
   social: "Search social media profiles (TikTok, Roblox, etc.)",
+  roleplay: "Roleplay interactions with other users",
 };
